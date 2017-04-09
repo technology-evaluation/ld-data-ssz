@@ -1,0 +1,73 @@
+@base <http://data.zuerich.ch/statistics/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <htp://purl.org/dc/terms/> .
+@prefix adms:    <http://www.w3.org/ns/adms#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix schema: <http://schema.org/> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix gont: <https://gont.ch/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix szh: <http://data.zuerich.ch/statistik/qb/> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+
+## Dataset
+
+<dataset/HDB> a qb:DataSet;
+    qb:structure <structure/HDB> ;
+    rdfs:label "Statistik Zürich"@de ;
+    rdfs:comment "Datenset Statistik Stadt Zürich"@de .
+
+## Data structure definition
+
+<structure/HDB> a qb:DataStructureDefinition;
+    rdfs:comment "Statistik Zürich"@de;
+    qb:component 
+        [ qb:dimension  <property/ZEIT>; qb:order 1 ],
+        [ qb:dimension  <property/RAUM>; qb:order 2 ],
+        [ qb:dimension  <property/KENNZAHL>; qb:order 3 ],
+        [ qb:dimension  <property/GRUPPENCODE1>; qb:order 4 ],
+        [ qb:dimension  <property/GRUPPENCODE2>; qb:order 5 ],
+        [ qb:dimension  <property/GRUPPENCODE3>; qb:order 6 ],
+        [ qb:dimension  <property/GRUPPENCODE4>; qb:order 7 ],
+        [ qb:dimension  <property/GRUPPENCODE5>; qb:order 8 ],
+        [ qb:attribute  <property/EINHEIT>; qb:order 9 ],
+        [ qb:measure    <property/WERT>; qb:order 10 ].
+
+## Dimensions and measures
+
+<property/ZEIT> a qb:DimensionProperty ;
+    rdfs:label "Zeit"@de .
+
+<property/RAUM> a qb:DimensionProperty ;
+    rdfs:label "Raum"@de .
+
+<property/KENNZAHL> a qb:DimensionProperty ;
+    rdfs:label "Kennzahl"@de .
+
+<property/GRUPPENCODE1> a qb:DimensionProperty ;
+    rdfs:label "Gruppencode 1"@de .
+
+<property/GRUPPENCODE2> a qb:DimensionProperty ;
+    rdfs:label "Gruppencode 2"@de .
+
+<property/GRUPPENCODE3> a qb:DimensionProperty ;
+    rdfs:label "Gruppencode 3"@de .
+
+<property/GRUPPENCODE4> a qb:DimensionProperty ;
+    rdfs:label "Gruppencode 4"@de .
+
+<property/GRUPPENCODE5> a qb:DimensionProperty ;
+    rdfs:label "Gruppencode 5"@de .
+
+<property/EINHEIT> a qb:AttributeProperty ;
+    rdfs:label "Einheit"@de .
+
+<property/WERT>  a qb:MeasureProperty ;
+    rdfs:label "Wert"@de;
+    rdfs:range xsd:float .
+
+
+
+
+
