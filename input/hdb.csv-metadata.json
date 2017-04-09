@@ -1,0 +1,158 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "hdb.csv",
+  "tableSchema": {
+    "aboutUrl": "http://data.zuerich.ch/statistics/dataset/{GESAMTCODE}-{REFERENZNUMMER}",
+    "null": "Dummy",
+    "columns": [{
+      "titles": "GESAMTCODE",
+      "suppressOutput": true
+    },{
+      "titles": "ZEIT",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/ZEIT",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{ZEIT}"
+    },{
+      "titles": "TAG",
+      "suppressOutput": true
+    },{
+      "titles": "MONAT",
+      "suppressOutput": true
+    },{
+      "titles": "JAHR",
+      "datatype": "gYear",
+      "suppressOutput": true
+    },{
+      "titles": "RAUM",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/RAUM",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{RAUM}"
+    },{
+      "titles": "KENNZAHL",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/KENNZAHL",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{KENNZAHL}"
+    },{
+      "titles": "GRUPPE1",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODE1",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE1",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE1}"
+    },{
+      "titles": "GRUPPE2",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODE2",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE2",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE2}"
+    },{
+      "titles": "GRUPPE3",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODE3",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE3",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE3}"
+    },{
+      "titles": "GRUPPE4",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODE4",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE4",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE4}"
+    },{
+      "titles": "GRUPPE5",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODE5",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE5",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE5}"
+    },{
+      "titles": "CODE",
+      "suppressOutput": true
+    },{
+      "titles": "WERT",
+      "datatype": "number",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/WERT"
+    },{
+      "titles": "CODENAME",
+      "suppressOutput": true
+    },{
+      "titles": "KENNZAHLNAME",
+      "suppressOutput": true
+    },{
+      "titles": "EINHEIT",
+      "propertyUrl": "http://data.zuerich.ch/statistics/property/EINHEIT",
+      "valueUrl": "http://data.zuerich.ch/statistics/code/{EINHEIT}"
+    },{
+      "titles": "GRUPPENAME1",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODENAME1",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENAME2",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODENAME2",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENAME3",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODENAME3",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENAME4",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODENAME4",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENAME5",
+      "suppressOutput": true
+    },{
+      "titles": "GRUPPENCODENAME5",
+      "suppressOutput": true
+    },{
+      "titles": "RAUMLANG",
+      "suppressOutput": true
+    },{
+      "titles": "REFERENZNUMMER",
+      "suppressOutput": true
+    },{
+      "titles": "REFERENZTITEL",
+      "suppressOutput": true
+    },{
+      "titles": "ORIGINALNUMMER",
+      "datatype": "number",
+      "suppressOutput": true
+    },{
+      "titles": "ORIGINALTITEL",
+      "suppressOutput": true
+    },{
+      "titles": "QUELLE",
+      "suppressOutput": true
+    },{
+      "titles": "ELEMENT",
+      "suppressOutput": true
+    },{
+      "titles": "AUSGABE",
+      "suppressOutput": true
+    },{
+      "titles": "SEITE",
+      "suppressOutput": true
+    },{
+      "titles": "BEMERKUNG",
+      "suppressOutput": true
+    },{
+      "titles": "FUSSNOTE",
+      "suppressOutput": true
+    },{
+      "titles": "31",
+      "suppressOutput": true
+    }, {
+      "virtual": true,
+      "propertyUrl": "rdf:type",
+      "valueUrl": "qb:Observation"
+    }
+  ]
+  }
+}
