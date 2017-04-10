@@ -1,0 +1,32 @@
+{
+  "@context": [ "http://www.w3.org/ns/csvw", {"@language": "de-CH"}],
+  "url": "kennzahlen.csv",
+  "dc:title": "Kennzahlen",
+  "tableSchema": {
+    "aboutUrl": "http://data.zuerich.ch/statistics/code/{KennzahlCode}",
+    "null": "",
+    "columns": [{
+      "titles": "Index",
+      "suppressOutput": true
+    },{
+      "titles": "KennzahlCode",
+      "propertyUrl": "skos:notation"
+    },{
+      "titles": "Kennzahlname",
+      "propertyUrl": "rdfs:label",
+      "lang": "de-CH"
+    },{
+      "titles": "Einheit",
+      "suppressOutput": true
+    },{
+      "titles": "Beschreibung",
+      "propertyUrl": "rdfs:comment",
+      "lang": "de-CH"
+    }, {
+      "virtual": true,
+      "propertyUrl": "rdf:type",
+      "valueUrl": "skos:Concept"
+    }
+  ]
+  }
+}

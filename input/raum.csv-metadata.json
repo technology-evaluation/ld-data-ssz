@@ -1,0 +1,40 @@
+{
+  "@context": [ "http://www.w3.org/ns/csvw", {"@language": "de-CH"}],
+  "url": "raum.csv",
+  "dc:title": "Raum",
+  "tableSchema": {
+    "aboutUrl": "http://data.zuerich.ch/statistics/code/{Raum}",
+    "null": "",
+    "columns": [{
+      "titles": "Raum",
+      "propertyUrl": "skos:notation"
+    },{
+      "titles": "RaumLang",
+      "propertyUrl": "rdfs:label",
+      "lang": "de-CH"
+    },{
+      "titles": "Mapping (kleinste gültige Einheiten)",
+      "suppressOutput": true
+    },{
+      "titles": "Gültigkeitsbereiche (ID)",
+      "suppressOutput": true
+    },{
+      "titles": "QuarCodeAktuell",
+      "suppressOutput": true
+    },{
+      "titles": "KreisCodeAktuell",
+      "suppressOutput": true
+    },{
+      "titles": "StadtCodeAktuell",
+      "suppressOutput": true
+    },{
+      "titles": "RaumCodeAktuell",
+      "suppressOutput": true
+    }, {
+      "virtual": true,
+      "propertyUrl": "rdf:type",
+      "valueUrl": "skos:Concept"
+    }
+  ]
+  }
+}
