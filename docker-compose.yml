@@ -1,0 +1,9 @@
+version: '2'
+services:
+
+  tabular:
+    command: /bin/bash
+    container_name: tabular
+    image: ruby:2.2
+    volumes:
+      - ./input:/root/input
