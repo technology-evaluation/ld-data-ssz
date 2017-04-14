@@ -1,7 +1,11 @@
 PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+# Basic Cube-Abfrage. Kann entsprechend eingeschränkt werden wenn die Dimensionen & Attribute stärker eingeschränkt werden.
+# Aktuell macht es einfach einen Filter auf verschiedene Kategorieren.
 
-SELECT ?zeit ?raumLabel ?kennzahlLabel ?regionLabel ?wert WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+SELECT ?zeit ?raumLabel ?kennzahlLabel ?flaecheLabel ?wert WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
 #SELECT * WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
 
   
@@ -9,7 +13,7 @@ SELECT ?zeit ?raumLabel ?kennzahlLabel ?regionLabel ?wert WHERE { GRAPH <https:/
     <http://data.zuerich.ch/statistics/property/ZEIT> ?zeit ;
     <http://data.zuerich.ch/statistics/property/RAUM> ?raum ;
     <http://data.zuerich.ch/statistics/property/KENNZAHL> ?kennzahl ;
-    <http://data.zuerich.ch/statistics/property/GRUPPENCODE1> ?region ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE1> ?flaeche ;
     <http://data.zuerich.ch/statistics/property/GRUPPENCODE2> ?g2 ;
     <http://data.zuerich.ch/statistics/property/GRUPPENCODE3> ?g3 ;
     <http://data.zuerich.ch/statistics/property/GRUPPENCODE4> ?g4 ;
@@ -20,9 +24,9 @@ SELECT ?zeit ?raumLabel ?kennzahlLabel ?regionLabel ?wert WHERE { GRAPH <https:/
   
   ?raum rdfs:label ?raumLabel .
   ?kennzahl rdfs:label  ?kennzahlLabel .
-  ?region skos:notation  ?regionLabel .
+  ?flaeche skos:notation  ?flaecheLabel .
   
-  FILTER ( ?regionLabel IN( "BBA1100", "BBA1210", "BBA1221", "BBA1222", "BBA1223", "BBA1224", "BBA1310"))
+  FILTER ( ?flaecheLabel IN( "BBA1100", "BBA1210", "BBA1221", "BBA1222", "BBA1223", "BBA1224", "BBA1310"))
 }}
 
 

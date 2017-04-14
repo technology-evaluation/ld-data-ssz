@@ -1,7 +1,11 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Alles, was unter "Landfläche ohne Wald" abgelegt ist
+
 SELECT * WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
 
-  
-  ?s skos:broader* <http://data.zuerich.ch/statistics/code/BBA1000> ;
+  ?s skos:broader+ <http://data.zuerich.ch/statistics/code/BBA1000> ;
      rdfs:label ?label .
   
 }}

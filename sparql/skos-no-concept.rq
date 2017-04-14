@@ -1,6 +1,8 @@
 PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-# Welche Codes haben kein Label, sprich keine Instanz
+# Welche Codes haben kein Label, sprich keine skos:Concept Instanz
 
 SELECT (COUNT(DISTINCT ?concept) AS ?count) WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
 
