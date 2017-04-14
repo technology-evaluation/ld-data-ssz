@@ -1,0 +1,7 @@
+SELECT * WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+
+  
+  ?s skos:broader* <http://data.zuerich.ch/statistics/code/BBA1000> ;
+     rdfs:label ?label .
+  
+}}

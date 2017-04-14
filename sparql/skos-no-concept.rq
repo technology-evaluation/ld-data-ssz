@@ -1,0 +1,16 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+
+# Welche Codes haben kein Label, sprich keine Instanz
+
+SELECT (COUNT(DISTINCT ?concept) AS ?count) WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+
+  ?obs a qb:Observation ;
+    ?property ?concept .
+
+  ?property a qb:DimensionProperty .
+
+  MINUS { ?concept rdfs:label ?comment . }    
+ 
+}}
+
+

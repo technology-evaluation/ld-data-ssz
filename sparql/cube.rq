@@ -1,0 +1,28 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+
+
+SELECT ?zeit ?raumLabel ?kennzahlLabel ?regionLabel ?wert WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+#SELECT * WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+
+  
+  ?obs a qb:Observation ;
+    <http://data.zuerich.ch/statistics/property/ZEIT> ?zeit ;
+    <http://data.zuerich.ch/statistics/property/RAUM> ?raum ;
+    <http://data.zuerich.ch/statistics/property/KENNZAHL> ?kennzahl ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE1> ?region ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE2> ?g2 ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE3> ?g3 ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE4> ?g4 ;
+    <http://data.zuerich.ch/statistics/property/GRUPPENCODE5> ?g5 ;
+    <http://data.zuerich.ch/statistics/property/EINHEIT> ?einheit ;
+    <http://data.zuerich.ch/statistics/property/WERT> ?wert .         
+ 
+  
+  ?raum rdfs:label ?raumLabel .
+  ?kennzahl rdfs:label  ?kennzahlLabel .
+  ?region skos:notation  ?regionLabel .
+  
+  FILTER ( ?regionLabel IN( "BBA1100", "BBA1210", "BBA1221", "BBA1222", "BBA1223", "BBA1224", "BBA1310"))
+}}
+
+
