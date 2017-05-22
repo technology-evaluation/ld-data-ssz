@@ -10,6 +10,8 @@
 
 * Erweitert die CMS/Web Komponenten um Funktionalität, auf das REST API "Statistische Information" zuzugreifen.
 * Unterstützt Domänen SpezialistInnen entsprechend, um die richtigen Visualisierungen/Antworten (OGD Zugang etc.) anzubieten
+* Parametrisierung beschränkt sich auf Dinge, welche in der entsprechenden Visualisierung/Präsentation Sinn machen
+* Weitergehende Änderungen müssen im "Consumer API" parametrisiert werden
 
 ### Statistische Information
 
