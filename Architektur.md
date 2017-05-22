@@ -35,3 +35,7 @@
 * Komplett in RDF wiedergegeben, damit man entsprechend suchen kann
 * Verlinkung auf die entsprechenden Texte, idealerweise ebenfalls in RDF verfügbar (Lucene indexes)
 
+## Datenpipeline
+
+* Erstellt RDF Data Cubes & entsprechende Metadaten aus den Erhebungen
+* Metadaten & Hierarchie sollte wenn möglich an einer anderen Stelle (z.b. im Frontend Statistische Information) gepflegt werden können
