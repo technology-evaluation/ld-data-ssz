@@ -45,3 +45,7 @@
 
 * Erstellt RDF Data Cubes & entsprechende Metadaten aus den Erhebungen
 * Metadaten & Hierarchie sollte wenn möglich an einer anderen Stelle (z.b. im Frontend Statistische Information) gepflegt werden können
+
+## Hydra Beispiel
+
+Ein Beispiel für eine Hydra - Web Component Interaktion wird in einem [separaten Dokument](sparq-hydra-webcomponents-workflow.md) gepflegt.
