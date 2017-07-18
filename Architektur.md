@@ -1,5 +1,32 @@
 # Statistik Zürich - Architektur
 
+```
+
+  + ------ +
+  |  STIP  |
+  + ------ +
+
+
++------------+
+| +--------+ |
+| |WC Graph| |
+| +--------+ |
+|            |
+| WC  Widget |
+|            |
++------------+
+
++------------+
+| SI (Hydra) |
++------------+
+
+
++------------+
+|   SPARQL   |
++------------+
+
+```
+
 ## CMS/Web Komponente (Diagram Web Component)
 
 * SSZVIS wird in generische Webkomponenten gekapselt
@@ -49,3 +76,4 @@
 ## Hydra Beispiel
 
 Ein Beispiel für eine Hydra - Web Component Interaktion wird in einem [separaten Dokument](sparq-hydra-webcomponents-workflow.md) gepflegt.
+
