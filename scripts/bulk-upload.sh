@@ -1,12 +1,19 @@
 #!/bin/bash
 
-ENDPOINT="https://lindasprd.netrics.ch:8443/lindas"
+ENDPOINT="https://lindas-data.ch:8443/lindas"
 GRAPH="https://linked.opendata.swiss/graph/zh/statistics"
-DATAFILE="target/hdb-all.nt" 
+DATAFILE="target/final.nt" 
+
+function sparql-delete {
+  curl -n \
+       -X DELETE \
+       -G $1 \
+       --data-urlencode graph=$2  
+}
 
 function sparql-put {
   curl -n \
-       -X PUT \
+       -X POST \
        -H Content-Type:text/plain \
        -T $1\
        -G $2 \
@@ -17,6 +24,9 @@ function sparql-put {
 
 mkdir $TMPDIR/staging
 split -l 50000 $DATAFILE $TMPDIR/staging/nt-
+
+echo "Deleting current graph..."
+#sparql-delete $ENDPOINT $GRAPH
 
 for file in $TMPDIR/staging/*
 do

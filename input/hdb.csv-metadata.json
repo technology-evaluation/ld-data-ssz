@@ -2,15 +2,15 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "hdb.csv",
   "tableSchema": {
-    "aboutUrl": "http://data.zuerich.ch/statistics/dataset/{GESAMTCODE}-{REFERENZNUMMER}",
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/dataset/{GESAMTCODE}-{REFERENZNUMMER}",
     "null": "Dummy",
     "columns": [{
       "titles": "GESAMTCODE",
       "suppressOutput": true
     },{
       "titles": "ZEIT",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/ZEIT",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{ZEIT}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/ZEIT",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{ZEIT}"
     },{
       "titles": "TAG",
       "suppressOutput": true
@@ -23,54 +23,54 @@
       "suppressOutput": true
     },{
       "titles": "RAUM",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/RAUM",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{RAUM}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/RAUM",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{RAUM}"
     },{
       "titles": "KENNZAHL",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/KENNZAHL",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{KENNZAHL}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/KENNZAHL",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{KENNZAHL}"
     },{
       "titles": "GRUPPE1",
       "suppressOutput": true
     },{
       "titles": "GRUPPENCODE1",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE1",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE1}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE1",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE1}"
     },{
       "titles": "GRUPPE2",
       "suppressOutput": true
     },{
       "titles": "GRUPPENCODE2",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE2",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE2}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE2",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE2}"
     },{
       "titles": "GRUPPE3",
       "suppressOutput": true
     },{
       "titles": "GRUPPENCODE3",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE3",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE3}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE3",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE3}"
     },{
       "titles": "GRUPPE4",
       "suppressOutput": true
     },{
       "titles": "GRUPPENCODE4",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE4",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE4}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE4",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE4}"
     },{
       "titles": "GRUPPE5",
       "suppressOutput": true
     },{
       "titles": "GRUPPENCODE5",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/GRUPPENCODE5",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{GRUPPENCODE5}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE5",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE5}"
     },{
       "titles": "CODE",
       "suppressOutput": true
     },{
       "titles": "WERT",
       "datatype": "number",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/WERT"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/WERT"
     },{
       "titles": "CODENAME",
       "suppressOutput": true
@@ -79,8 +79,8 @@
       "suppressOutput": true
     },{
       "titles": "EINHEIT",
-      "propertyUrl": "http://data.zuerich.ch/statistics/property/EINHEIT",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{EINHEIT}"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/EINHEIT",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{EINHEIT}"
     },{
       "titles": "GRUPPENAME1",
       "suppressOutput": true

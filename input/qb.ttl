@@ -1,4 +1,4 @@
-@base <http://data.zuerich.ch/statistics/> .
+@base <http://ld.stadt-zuerich.ch/statistics/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <htp://purl.org/dc/terms/> .

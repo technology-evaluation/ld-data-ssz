@@ -3,7 +3,7 @@
   "url": "raum.csv",
   "dc:title": "Raum",
   "tableSchema": {
-    "aboutUrl": "http://data.zuerich.ch/statistics/code/{Raum}",
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Raum}",
     "null": "",
     "columns": [{
       "titles": "Raum",

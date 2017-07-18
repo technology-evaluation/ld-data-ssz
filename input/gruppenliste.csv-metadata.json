@@ -3,7 +3,7 @@
   "url": "gruppenliste.csv",
   "dc:title": "Gruppenliste",
   "tableSchema": {
-    "aboutUrl": "http://data.zuerich.ch/statistics/code/{Gruppencode}",
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
     "null": "",
     "columns": [{
       "titles": "Index",
@@ -24,7 +24,7 @@
     },{
       "titles": "Parentcode",
       "propertyUrl": "skos:broader",
-      "valueUrl": "http://data.zuerich.ch/statistics/code/{Parentcode}"
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
     },{
       "titles": "Parentcodename",
       "suppressOutput": true
