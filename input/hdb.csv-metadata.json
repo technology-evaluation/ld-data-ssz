@@ -186,10 +186,6 @@
         "suppressOutput":true
       },
       {
-        "titles":"FUSSNOTE",
-        "suppressOutput":true
-      },
-      {
         "titles":"DATENSTAND",
         "suppressOutput":true
       },
