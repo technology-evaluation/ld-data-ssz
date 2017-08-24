@@ -19,6 +19,9 @@
       "titles": "Einheit",
       "suppressOutput": true
     },{
+      "titles": "Klasse",
+      "suppressOutput": true
+    },{
       "titles": "Beschreibung",
       "propertyUrl": "rdfs:comment",
       "lang": "de-CH"
