@@ -36,14 +36,39 @@ function convertXlsx (filename, sheet, metadata) {
 }
 
 const filenames = [
-  'hdb.csv'
+ // 'hdb.csv'
 ]
 
 const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
+  sheet: 'Raum',
+  metadata: 'raum.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Kennzahlen',
+  metadata: 'kennzahlen.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
   sheet: 'Gruppenliste',
   metadata: 'gruppenliste.csv-metadata.json'
-}]
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Namenliste',
+  metadata: 'namenliste.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Ortliste',
+  metadata: 'ortliste.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Codeliste',
+  metadata: 'codeliste.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Codeliste_Namen',
+  metadata: 'codeliste_namen.csv-metadata.json'
+}
+]
 
 p.run(() => {
   p.shell.mkdir('-p', 'target/')
