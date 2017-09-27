@@ -10,6 +10,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix szh: <http://data.zuerich.ch/statistik/qb/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 
 ## Dataset
 
@@ -36,14 +37,24 @@
 
 ## Dimensions and measures
 
+# TODO: Checkout qb:CodedProperty as well for everything hierarchical.
+#       Should probably be used for Quartiere
+# See https://www.w3.org/TR/vocab-data-cube/#ref_qb_CodedProperty
+#
+# TODO: Checkout RDF Data Cube extensions for spatio-temporal components
+# See https://w3c.github.io/sdw/qb4st/
+
 <property/ZEIT> a qb:DimensionProperty ;
-    rdfs:label "Zeit"@de .
+    rdfs:label "Zeit"@de ;
+    rdfs:range qudt:IntervalScale .
 
 <property/RAUM> a qb:DimensionProperty ;
-    rdfs:label "Raum"@de .
+    rdfs:label "Raum"@de ;
+    rdfs:range qudt:NominalScale .
 
 <property/KENNZAHL> a qb:DimensionProperty ;
-    rdfs:label "Kennzahl"@de .
+    rdfs:label "Kennzahl"@de ;
+    rdfs:range qudt:IntervalScale .
 
 <property/GRUPPENCODE1> a qb:DimensionProperty ;
     rdfs:label "Gruppencode 1"@de .
@@ -66,8 +77,5 @@
 <property/WERT>  a qb:MeasureProperty ;
     rdfs:label "Wert"@de;
     rdfs:range xsd:float .
-
-
-
 
 
