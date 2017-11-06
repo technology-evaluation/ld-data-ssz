@@ -10,8 +10,18 @@
   "dependencies": {
     "barnard59": "git+ssh://git@github.com/zazuko/barnard59.git#master"
   },
+  "devDependencies": {
+    "npm-run-all": "^4.1.1"
+  },
   "scripts": {
-    "build": "node index.js",
-    "clean": "rm -rf target/*"
+    "convert": "node index.js",
+    "clean": "rm -rf target/*",
+    "get-hdb": "curl -n https://webdav.netlabs.org/ssz/HDB.csv -o input/hdb.csv",
+    "get-dimensions": "curl -n https://webdav.netlabs.org/ssz/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
+    "put-void": "./scripts/lindas-put-void.sh",
+    "post-hdb": "./scripts/lindas-post-hdb.sh",
+    "post-dimensions": "./scripts/lindas-post-dimensions.sh",
+    "ssz-lindas": "npm-run-all put-void post-hdb post-dimensions",
+    "build": "npm-run-all clean get-hdb get-dimensions build put-void post-hdb post-dimensions"
   }
 }
