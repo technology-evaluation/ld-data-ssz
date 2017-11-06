@@ -14,14 +14,15 @@
     "npm-run-all": "^4.1.1"
   },
   "scripts": {
-    "convert": "node index.js",
     "clean": "rm -rf target/*",
     "get-hdb": "curl -n https://webdav.netlabs.org/ssz/HDB.csv -o input/hdb.csv",
     "get-dimensions": "curl -n https://webdav.netlabs.org/ssz/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
+    "convert": "node index.js",
+    "cat-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' > target/dimensions.nt",    
     "put-void": "./scripts/lindas-put-void.sh",
     "post-hdb": "./scripts/lindas-post-hdb.sh",
     "post-dimensions": "./scripts/lindas-post-dimensions.sh",
     "ssz-lindas": "npm-run-all put-void post-hdb post-dimensions",
-    "build": "npm-run-all clean get-hdb get-dimensions build put-void post-hdb post-dimensions"
+    "build": "npm-run-all clean get-hdb get-dimensions build cat-dimensions put-void post-hdb post-dimensions"
   }
 }
