@@ -1,3 +1,9 @@
 FROM node:8.5
 
-CMD [ "npm", "build" ]
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+RUN npm install
+
+CMD [ "npm", "build-nopost" ]
