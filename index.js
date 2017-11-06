@@ -36,7 +36,7 @@ function convertXlsx (filename, sheet, metadata) {
 }
 
 const filenames = [
- // 'hdb.csv'
+  'hdb.csv'
 ]
 
 const xlsxSources = [{
