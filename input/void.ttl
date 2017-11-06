@@ -1,0 +1,57 @@
+@base <http://ld.stadt-zuerich.ch/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wv: <http://vocab.org/waiver/terms/norms> .        
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix schema: <http://schema.org/>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix duv: <http://www.w3.org/ns/duv#> .
+
+<datasets> a void:DatasetDescription;
+    dcterms:title "Description of Statistik Stadt Zürich Datasets"@en;
+    dcterms:creator <org/SSZ>;
+    foaf:topic <dataset/SSZ> .
+##
+## Organizations
+##
+
+<org/Zazuko> a foaf:Organization, schema:Corporation;
+    rdfs:label "Zazuko GmbH";
+    foaf:homepage <http://www.zazuko.com/>
+    .
+
+<org/SSZ> a foaf:Organization, schema:GovernmentOrganization;
+    rdfs:label "Statistik Stadt Zürich"@de;
+    foaf:homepage <https://www.stadt-zuerich.ch/prd/de/index/statistik.html>
+#    rdfs:seeAlso <http://www.wikidata.org/entity/Q285453> 
+    .
+
+##
+## Datasets
+##
+
+<dataset/SSZ> a void:Dataset, dcat:Dataset ;
+    foaf:homepage <http://data.admin.ch/>;
+    dcterms:title "Statistische Daten der Stadt Zürich"@de;
+    dcterms:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich im RDF Data Cube Vokabular"@de;
+    dcterms:publisher <org/SSZ>;
+    dcterms:creator <org/SSZ> ;
+    dcterms:contributor <org/Zazuko> ;
+    dcterms:issued "2017-01-01"^^xsd:date; # date of publication of the source
+#    dcterms:created "%%DATECREATED%%"^^xsd:date;
+#    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
+    doap:repository [
+        a doap:GitRepository ;
+        doap:browse <https://github.com/statistikstadtzuerich/ssz-data> ;
+        doap:location <git@github.com:statistikstadtzuerich/ssz-data.git> 
+    ] ;
+    void:sparqlEndpoint <http://stat.stadt-zuerich.ch/query>;
+#    duv:hasUsage <dataset/meta-usage> ;
+.
