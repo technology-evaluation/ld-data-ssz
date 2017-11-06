@@ -1,13 +1,17 @@
 {
-  "name": "swiss-performing-arts",
-  "version": "0.0.1",
+  "name": "ssz-data",
+  "version": "0.9.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/zazuko/swiss-performing-arts.git"
+    "url": "git@github.com:statistikstadtzuerich/ssz-data.git"
   },
   "dependencies": {
     "barnard59": "git+ssh://git@github.com/zazuko/barnard59.git#master"
+  },
+  "scripts": {
+    "build": "node index.js",
+    "clean": "rm -rf target/*"
   }
 }
