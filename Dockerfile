@@ -1,5 +1,3 @@
-FROM ruby:2.2
+FROM node:8.5
 
-RUN gem install tabular
-RUN gem install linkeddata
-
+CMD [ "npm", "build" ]
