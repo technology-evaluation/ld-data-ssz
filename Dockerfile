@@ -8,4 +8,4 @@ COPY config/dot.netrc /root/.netrc
 
 RUN npm install
 
-CMD [ "npm", "build-nopost" ]
+CMD [ "npm", "build-local" ]

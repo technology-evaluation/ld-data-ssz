@@ -25,6 +25,6 @@
     "post-dimensions": "./scripts/lindas-post-dimensions.sh",
     "ssz-lindas": "npm-run-all put-void post-hdb post-dimensions",
     "build": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb put-void post-hdb post-dimensions",
-    "build-nopost": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb" 
+    "build-local": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb" 
   }
 }
