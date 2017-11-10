@@ -1,0 +1,40 @@
+{
+  "@context": [ "http://www.w3.org/ns/csvw", {"@language": "de-CH"}],
+  "url": "gruppenliste.csv",
+  "dc:title": "Gruppenliste",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/property/{Gruppe}",
+    "null": "",
+    "columns": [{
+      "titles": "Index",
+      "suppressOutput": true
+    },{
+      "titles": "Gruppe",
+      "propertyUrl": "skos:notation"
+    },{
+      "titles": "Gruppenname",
+      "propertyUrl": "rdfs:label",
+      "lang": "de-CH"
+    },{
+      "titles": "Gruppencode",
+      "suppressOutput": true
+    },{
+      "titles": "Gruppencodename",
+      "suppressOutput": true
+    },{
+      "titles": "Parentcode",
+      "suppressOutput": true
+    },{
+      "titles": "Parentcodename",
+      "suppressOutput": true
+    },{
+      "titles": "Bemerkung",
+      "suppressOutput": true
+    }, {
+      "virtual": true,
+      "propertyUrl": "rdf:type",
+      "valueUrl": "qb:DimensionProperty"
+    }
+  ]
+  }
+}

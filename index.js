@@ -21,7 +21,7 @@ function convertXlsx (filename, sheet, metadata) {
   const filenameInput = 'input/' + filename
   // const filenameMetadata = filenameInput + '-metadata.json'
   const filenameMetadata = 'input/' + metadata
-  const filenameOutput = 'target/' + path.basename(filename, '.xlsx') + '.' + sheet + '.nt'
+  const filenameOutput = 'target/' + path.basename(filename, '.xlsx') + '.' + path.basename(metadata, '.csv-metadata.json') + '.nt'
 
   return p.rdf.dataset().import(p.file.read(filenameMetadata).pipe(p.jsonld.parse())).then((metadata) => {
     return p.run(p.file.read(filenameInput)
@@ -51,6 +51,10 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Gruppenliste',
   metadata: 'gruppenliste.csv-metadata.json'
+},{
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Gruppenliste',
+  metadata: 'gruppenliste_dimension.csv-metadata.json'
 },{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Namenliste',
