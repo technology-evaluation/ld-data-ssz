@@ -1,0 +1,47 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "example.csv",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
+    "columns": [
+      {
+        "titles": "Index",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Gruppe",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Gruppenname",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Gruppencode",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      },
+      {
+        "titles": "Gruppencodename",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+      },
+      {
+        "titles": "Parentcode",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
+      },
+      {
+        "titles": "Parentcodename",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Bemerkung",
+        "suppressOutput": true
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+      }
+    ]
+  }
+}
