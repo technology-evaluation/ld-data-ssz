@@ -243,8 +243,8 @@
       },
       {
         "virtual":true,
-        "propertyUrl":"rdf:type",
-        "valueUrl":"qb:Observation"
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://purl.org/linked-data/cube#Observation"
       }
     ]
   }

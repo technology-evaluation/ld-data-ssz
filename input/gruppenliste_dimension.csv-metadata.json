@@ -10,10 +10,10 @@
       "suppressOutput": true
     },{
       "titles": "Gruppe",
-      "propertyUrl": "skos:notation"
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#notatio"
     },{
       "titles": "Gruppenname",
-      "propertyUrl": "rdfs:label",
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
       "lang": "de-CH"
     },{
       "titles": "Gruppencode",
@@ -32,8 +32,8 @@
       "suppressOutput": true
     }, {
       "virtual": true,
-      "propertyUrl": "rdf:type",
-      "valueUrl": "qb:DimensionProperty"
+      "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "valueUrl": "http://purl.org/linked-data/cube#DimensionProperty"
     }
   ]
   }

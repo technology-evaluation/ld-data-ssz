@@ -10,10 +10,10 @@
       "suppressOutput": true
     },{
       "titles": "KennzahlCode",
-      "propertyUrl": "skos:notation"
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
     },{
       "titles": "Kennzahlname",
-      "propertyUrl": "rdfs:label",
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
       "lang": "de-CH"
     },{
       "titles": "Einheit",
@@ -23,12 +23,12 @@
       "suppressOutput": true
     },{
       "titles": "Beschreibung",
-      "propertyUrl": "rdfs:comment",
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
       "lang": "de-CH"
     }, {
       "virtual": true,
-      "propertyUrl": "rdf:type",
-      "valueUrl": "skos:Concept"
+      "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
     }
   ]
   }
