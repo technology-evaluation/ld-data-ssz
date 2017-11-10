@@ -39,11 +39,11 @@
       },
       {
         "titles":"GRUPPE1",
-        "suppressOutput":true
+        "name": "group1"
       },
       {
         "titles":"GRUPPENCODE1",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE1",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{group1}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE1}"
       },
       {
