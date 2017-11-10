@@ -1,0 +1,63 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "example.csv",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/table/{Referenztabelle}",    
+    "columns": [
+      {
+        "titles": "Index",
+        "suppressOutput": true
+      },
+      {
+        "titles": "JB_Nr",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Thema",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Referenztabelle",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Subthema",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Dimensionen",
+        "suppressOutput": true
+      },
+      {
+        "titles": "TitelReferenztabelle",,
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
+        "lang": "de-CH"
+      },
+      {
+        "titles": "Status",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Bemerkung",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Speicherart",
+        "suppressOutput": true
+      },
+      {
+        "titles": "ExcelName",
+        "suppressOutput": true
+      },
+      {
+        "titles": "ExcelPfad",
+        "suppressOutput": true
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://purl.org/linked-data/cube#DataSet"
+      }
+    ]
+  }
+}
