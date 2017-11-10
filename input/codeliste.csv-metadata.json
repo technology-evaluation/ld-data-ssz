@@ -21,6 +21,11 @@
         "titles": "Referenztabelle",
         "propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/scheme/{Referenztabelle}"
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
       }
     ]
   }
