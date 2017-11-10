@@ -29,7 +29,7 @@
         "suppressOutput": true
       },
       {
-        "titles": "TitelReferenztabelle",,
+        "titles": "TitelReferenztabelle",
         "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
         "lang": "de-CH"
       },
