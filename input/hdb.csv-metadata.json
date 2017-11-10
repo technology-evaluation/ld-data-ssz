@@ -2,7 +2,7 @@
   "@context":"http://www.w3.org/ns/csvw",
   "url":"hdb.csv",
   "tableSchema":{
-    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/dataset/{GESAMTCODE}-{REFERENZNUMMER}",
+    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/dataset/{REFERENZNUMMER}/{GESAMTCODE}",
     "null":"Dummy",
     "columns":[
       {
@@ -39,11 +39,11 @@
       },
       {
         "titles":"GRUPPE1",
-        "name": "group1"
+        "suppressOutput":true
       },
       {
         "titles":"GRUPPENCODE1",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{group1}",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE1}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE1}"
       },
       {
@@ -52,7 +52,7 @@
       },
       {
         "titles":"GRUPPENCODE2",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE2",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE2}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE2}"
       },
       {
@@ -61,7 +61,7 @@
       },
       {
         "titles":"GRUPPENCODE3",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE3",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE3}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE3}"
       },
       {
@@ -70,7 +70,7 @@
       },
       {
         "titles":"GRUPPENCODE4",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE4",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE4}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE4}"
       },
       {
@@ -79,7 +79,7 @@
       },
       {
         "titles":"GRUPPENCODE5",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GRUPPENCODE5",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE5}",
         "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE5}"
       },
       {
