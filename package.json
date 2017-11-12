@@ -19,7 +19,7 @@
     "get-dimensions": "curl -n https://webdav.netlabs.org/ssz/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
     "convert": "mkdir -p target && node index.js",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' > target/dimensions.nt",
-    "clean-hdb": "cat target/hdb.nt | sed '/_:/d' > target/hdb-cleaned.nt",
+    "clean-hdb": "cat target/hdb.nt | sed '/_:/d' > target/hdb-clean.nt",
     "put-void": "./scripts/lindas-put-void.sh",
     "post-hdb": "./scripts/lindas-post-hdb.sh",
     "post-dimensions": "./scripts/lindas-post-dimensions.sh",
