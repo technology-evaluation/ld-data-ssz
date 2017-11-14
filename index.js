@@ -12,6 +12,18 @@ function convertCsvw (filename) {
         baseIRI: 'file://' + filename,
         metadata: metadata
       }))
+      .pipe(p.filter((quad) => {
+        return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
+      }))
+      .pipe(p.map((quad) => {
+        if (quad.predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
+          const value = quad.object.value.split(' ').join('')
+
+          return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(value, quad.object.datatype))
+        } else {
+          return quad
+        }
+      }))
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
   })
