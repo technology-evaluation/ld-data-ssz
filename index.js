@@ -17,9 +17,21 @@ function convertCsvw (filename) {
       }))
       .pipe(p.map((quad) => {
         if (quad.predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
+          //const value = quad.object.value.split(' ').join('')
           const value = quad.object.value.split(' ').join('')
 
-          return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(value, quad.object.datatype))
+          var valnumber
+
+          // workaround to kick out all non-numbers
+          if(isNaN(parseFloat(value))) {
+            valnumber = 0
+          } else {
+            valnumber = parseFloat(value)
+
+          }
+          
+          //return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(value, quad.object.datatype))          
+          return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(valnumber, quad.object.datatype))
         } else {
           return quad
         }
