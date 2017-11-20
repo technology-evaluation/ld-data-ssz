@@ -64,6 +64,10 @@ const filenames = [
 ]
 
 const xlsxSources = [{
+  filename: "HDB_Listen.xlsx",
+  sheet: 'Referenznummern',
+  metadata: 'referenznummern.csv-metadata.json'
+},{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Raum',
   metadata: 'raum.csv-metadata.json'
