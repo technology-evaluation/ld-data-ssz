@@ -23,7 +23,11 @@
     "put-void": "./scripts/lindas-put-void.sh",
     "post-hdb": "./scripts/lindas-post-hdb.sh",
     "post-dimensions": "./scripts/lindas-post-dimensions.sh",
+    "put-void-prod": "./scripts/lindas-put-void_prod.sh",
+    "post-hdb-prod": "./scripts/lindas-post-hdb_prod.sh",
+    "post-dimensions-prod": "./scripts/lindas-post-dimensions_prod.sh",
     "ssz-lindas": "npm-run-all put-void post-hdb post-dimensions",
+    "ssz-lindas-prod": "npm-run-all put-void-prod post-hdb-prod post-dimensions-prod",    
     "build": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb put-void post-hdb post-dimensions",
     "build-local": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb"
   }
