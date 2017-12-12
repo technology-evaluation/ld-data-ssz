@@ -5,7 +5,12 @@ before_script:
 #services:
 # - postgres:9.5.0
 
-all_tests:
+hdb_complete:
   script:
   - npm install
   - npm run build-local
+  artifacts: 
+    paths: 
+      - target/dimensions.nt
+      - target/hdb-clean.nt
+      expire_in: 1 day
