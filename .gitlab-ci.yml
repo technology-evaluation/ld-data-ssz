@@ -10,7 +10,7 @@ hdb_complete:
   - npm install
   - npm run build-local
   artifacts:
-  paths:
-    - target/dimensions.nt
-    - target/hdb-clean.nt
-  expire_in: 1 day
+    paths:
+      - target/dimensions.nt
+      - target/hdb-clean.nt
+    expire_in: 1 day
