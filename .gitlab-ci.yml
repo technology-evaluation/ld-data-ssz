@@ -5,4 +5,5 @@ image: node:8.9
 
 all_tests:
   script:
-   - npm build-local
+  - npm install
+  - npm build-local
