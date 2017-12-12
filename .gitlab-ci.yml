@@ -1,5 +1,6 @@
 image: node:8.9
-before_script: scripts/bootstrap.sh
+before_script:
+  - scripts/bootstrap.sh
 
 #services:
 # - postgres:9.5.0
