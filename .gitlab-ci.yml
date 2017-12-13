@@ -19,11 +19,19 @@ curl_hdb_job:
   stage: fetch
   script:
     - npm run get-hdb
+  artifacts:
+    paths:
+      - input/hdb.csv
+    expire_in: 30 minutes
 
 curl_dimension_job:
   stage: fetch
   script:
     - npm run get-dimensions
+  artifacts:
+    paths:
+      - input/HDB_Listen.xlsx
+    expire_in: 30 minutes
 
 
 ## TODO split in two in JS
