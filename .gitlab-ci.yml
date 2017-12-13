@@ -1,14 +1,39 @@
 image: node:8.9
 before_script:
   - scripts/bootstrap.sh
+  - npm install
 
 #services:
 # - postgres:9.5.0
 
-hdb_complete:
+
+# stages
+stages:
+- fetch
+- convert
+- post
+
+# jobs
+
+curl_hdb_job:
+  stage: fetch
   script:
-  - npm install
-  - npm run build-local
+    - npm run get-hdb
+
+curl_dimension_job:
+  stage: fetch
+  script:
+    - npm run get-dimensions
+
+
+## TODO split in two in JS
+
+convert_job:
+  stage: convert
+  script:
+    - npm run convert
+    - npm run clean-dimensions
+    - npm run clean-hdb
   artifacts:
     paths:
       - target/dimensions.nt
