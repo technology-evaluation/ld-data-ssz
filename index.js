@@ -16,25 +16,28 @@ function convertCsvw (filename) {
         return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
       }))
       .pipe(p.map((quad) => {
-        if (quad.predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
-          //const value = quad.object.value.split(' ').join('')
-          const value = quad.object.value.split(' ').join('')
+
+        let subject = quad.subject
+        let predicate = quad.predicate
+        let object = quad.object
+
+        const subjectclean = p.rdf.namedNode(subject.value.replace(/\/XXX0000/g, ''))
+
+        if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
+          const value = object.value.split(' ').join('')
 
           var valnumber
 
-          // workaround to kick out all non-numbers
+          // workaround to kick out all non-numbers. TODO issue #33
           if(isNaN(parseFloat(value))) {
             valnumber = 0
           } else {
             valnumber = parseFloat(value)
-
           }
           
-          //return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(value, quad.object.datatype))          
-          return p.rdf.quad(quad.subject, quad.predicate, p.rdf.literal(valnumber, quad.object.datatype))
-        } else {
-          return quad
+          object = p.rdf.literal(valnumber, object.datatype)
         }
+        return p.rdf.quad(subjectclean, predicate, object)
       }))
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
@@ -43,7 +46,6 @@ function convertCsvw (filename) {
 
 function convertXlsx (filename, sheet, metadata) {
   const filenameInput = 'input/' + filename
-  // const filenameMetadata = filenameInput + '-metadata.json'
   const filenameMetadata = 'input/' + metadata
   const filenameOutput = 'target/' + path.basename(filename, '.xlsx') + '.' + path.basename(metadata, '.csv-metadata.json') + '.nt'
 
