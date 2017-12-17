@@ -11,8 +11,7 @@
       },
       {
         "titles":"ZEIT",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{ZEIT}"
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT"
       },
       {
         "titles":"TAG",
