@@ -47,3 +47,10 @@ convert_job:
       - target/dimensions.nt
       - target/hdb-clean.nt
     expire_in: 1 day
+
+post_test_job:
+  stage: post
+  only:
+    - tags
+  script:
+    - npm run ssz-lindas
