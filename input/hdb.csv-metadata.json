@@ -150,8 +150,7 @@
       },
       {
         "titles":"REFERENZNUMMER",
-        "propertyUrl":"http://purl.org/linked-data/cube#dataSet",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/table/{REFERENZNUMMER}"
+        "suppressOutput":true
       },
       {
         "titles":"REFERENZTITEL",
