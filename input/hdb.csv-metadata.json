@@ -10,6 +10,10 @@
         "suppressOutput":true
       },
       {
+        "titles":"GESAMTCODE_RCS",
+        "suppressOutput":true
+      },
+      {
         "titles":"ZEIT",
         "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT"
       },
@@ -238,6 +242,82 @@
       },
       {
         "titles":"UPDATE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"BEZUGSPERIODE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"BEZUGSZEIT",
+        "suppressOutput":true
+      },
+      {
+        "titles":"FREIGABEDATUM",
+        "suppressOutput":true
+      },
+      {
+        "titles":"HIERARCHIE1",
+        "suppressOutput":true
+      },
+      {
+        "titles":"HIERARCHIE2",
+        "suppressOutput":true
+      },
+      {
+        "titles":"HIERARCHIE3",
+        "suppressOutput":true
+      },
+      {
+        "titles":"HIERARCHIE4",
+        "suppressOutput":true
+      },
+      {
+        "titles":"HIERARCHIE5",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODE1",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODE2",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODE3",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODE4",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODE5",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODENAME1",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODENAME2",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODENAME3",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODENAME4",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PARENTCODENAME5",
+        "suppressOutput":true
+      },
+      {
+        "titles":"KEY_INFORMATION_ALL",
         "suppressOutput":true
       },
       {
