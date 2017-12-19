@@ -21,7 +21,9 @@ function convertCsvw (filename) {
         let predicate = quad.predicate
         let object = quad.object
 
-        const subjectclean = p.rdf.namedNode(subject.value.replace(/\/XXX0000/g, ''))
+        if(subject.termType == 'NamedNode') {
+          subject = p.rdf.namedNode(subject.value.replace(/\/XXX0000/g, ''))
+        }
 
         if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
           const value = object.value.split(' ').join('')
@@ -44,7 +46,7 @@ function convertCsvw (filename) {
           const day = 0
         }
 
-        return p.rdf.quad(subjectclean, predicate, object)
+        return p.rdf.quad(subject, predicate, object)
       }))
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
