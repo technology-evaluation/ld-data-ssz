@@ -1,5 +1,6 @@
 image: node:8.9
 before_script:
+  - yarn add unzip
   - scripts/bootstrap.sh
   - npm install
 
