@@ -18,6 +18,8 @@ stages:
 
 curl_hdb_job:
   stage: fetch
+  tags: 
+    - ssz
   script:
     - npm run get-hdb
   artifacts:
@@ -27,6 +29,8 @@ curl_hdb_job:
 
 curl_dimension_job:
   stage: fetch
+  tags: 
+    - ssz
   script:
     - npm run get-dimensions
   artifacts:
@@ -39,6 +43,8 @@ curl_dimension_job:
 
 convert_job:
   stage: convert
+  tags: 
+    - ssz
   script:
     - npm run convert
     - npm run clean-dimensions
@@ -51,6 +57,8 @@ convert_job:
 
 post_test_job:
   stage: post
+  tags: 
+    - ssz
   only:
     - tags
   script:
