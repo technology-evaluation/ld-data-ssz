@@ -37,6 +37,13 @@ function convertCsvw (filename) {
           
           object = p.rdf.literal(valnumber, object.datatype)
         }
+
+        if( predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
+          const year  = 0
+          const month = 0
+          const day = 0
+        }
+
         return p.rdf.quad(subjectclean, predicate, object)
       }))
       .pipe(p.ntriples.serialize())
@@ -62,7 +69,7 @@ function convertXlsx (filename, sheet, metadata) {
 }
 
 const filenames = [
-  'hdb.csv'
+  'HDB.csv'
 ]
 
 const xlsxSources = [{
