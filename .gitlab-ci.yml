@@ -22,7 +22,7 @@ curl_hdb_job:
     - npm run get-hdb
   artifacts:
     paths:
-      - input/HDB.csv
+      - input/hdb.csv
     expire_in: 30 minutes
 
 curl_dimension_job:
