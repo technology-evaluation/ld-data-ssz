@@ -153,7 +153,7 @@
       },
       {
         "titles":"REFERENZNUMMER",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/REFERENZNUMMER"
       },
       {
         "titles":"REFERENZTITEL",
