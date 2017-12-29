@@ -1,5 +1,6 @@
 const p = require('barnard59')
 const path = require('path')
+const program = require('commander')
 
 function convertCsvw (filename) {
   const filenameInput = 'input/' + filename
@@ -113,20 +114,32 @@ const xlsxSources = [{
 }
 ]
 
+program
+  .option('-b, --hdb', 'Convert HDB.csv')
+  .option('-l, --lists', 'Convert Excel lists')
+  .parse(process.argv)
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
+  process.exit(1)
+}
+
+
 p.run(() => {
   p.shell.mkdir('-p', 'target/')
 }).then(() => {
-  return p.Promise.serially(filenames, (filename) => {
-    console.log('convert: ' + filename)
-
-    return convertCsvw(filename)
-  })
-}).then(() => {
-  return p.Promise.serially(xlsxSources, (source) => {
-    console.log('convert: ' + source.filename + ' ' + source.sheet)
-
-    return convertXlsx(source.filename, source.sheet, source.metadata)
-  })
+    if (program.hdb) {
+      return p.Promise.serially(filenames, (filename) => {
+        console.log('convert: ' + filename)
+        return convertCsvw(filename)
+      })
+    }
+    if (program.lists) {
+      return p.Promise.serially(xlsxSources, (source) => {
+        console.log('convert: ' + source.filename + ' ' + source.sheet)
+        return convertXlsx(source.filename, source.sheet, source.metadata)
+      })
+    }
 }).then(() => {
   console.log('done')
 }).catch((err) => {
