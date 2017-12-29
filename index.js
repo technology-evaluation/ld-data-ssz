@@ -22,8 +22,12 @@ function convertCsvw (filename, metadata) {
         let predicate = quad.predicate
         let object = quad.object
 
-        if(subject.termType == 'NamedNode') {
+        if(subject.termType == 'NamedNode' ) {
           subject = p.rdf.namedNode(subject.value.replace(/\/XXX0000/g, ''))
+        } 
+        
+        if(object.termType == 'NamedNode' ) {
+          object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
         }
 
         if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
