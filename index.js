@@ -2,10 +2,10 @@ const p = require('barnard59')
 const path = require('path')
 const program = require('commander')
 
-function convertCsvw (filename) {
+function convertCsvw (filename, metadata) {
   const filenameInput = 'input/' + filename
-  const filenameMetadata = filenameInput + '-metadata.json'
-  const filenameOutput = 'target/' + path.basename(filename, '.csv') + '.nt'
+  const filenameMetadata = 'input/' + metadata
+  const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
 
   return p.rdf.dataset().import(p.file.read(filenameMetadata).pipe(p.jsonld.parse())).then((metadata) => {
     return p.run(p.file.read(filenameInput)
@@ -71,8 +71,13 @@ function convertXlsx (filename, sheet, metadata) {
   })
 }
 
-const filenames = [
-  'hdb.csv'
+const filenames = [{
+  filename: 'hdb.csv',
+  metadata: 'hdb.csv-metadata.json'
+},{
+  filename: 'hdb.csv',
+  metadata: 'hdb_referenznummer.csv-metadata.json'
+}
 ]
 
 const xlsxSources = [{
@@ -129,9 +134,9 @@ p.run(() => {
   p.shell.mkdir('-p', 'target/')
 }).then(() => {
     if (program.hdb) {
-      return p.Promise.serially(filenames, (filename) => {
-        console.log('convert: ' + filename)
-        return convertCsvw(filename)
+      return p.Promise.serially(filenames, (source) => {
+        console.log('convert: ' + source.filename)
+        return convertCsvw(source.filename, source.metadata)
       })
     }
     if (program.lists) {
