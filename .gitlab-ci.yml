@@ -38,21 +38,28 @@ curl_dimension_job:
       - input/HDB_Listen.xlsx
     expire_in: 30 minutes
 
-
-## TODO split in two in JS
-
-convert_job:
+convert_hdb_job:
   stage: convert
   tags: 
     - ssz
   script:
-    - npm run convert
-    - npm run clean-dimensions
+    - npm run convert-hdb
     - npm run clean-hdb
   artifacts:
     paths:
-      - target/dimensions.nt
       - target/hdb-clean.nt
+    expire_in: 1 day
+
+convert_dimensions_job:
+  stage: convert
+  tags: 
+    - ssz
+  script:
+    - npm run convert-dimensions
+    - npm run clean-dimensions
+  artifacts:
+    paths:
+      - target/dimensions.nt
     expire_in: 1 day
 
 post_test_job:
