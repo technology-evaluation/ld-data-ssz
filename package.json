@@ -15,7 +15,7 @@
   },
   "scripts": {
     "clean": "rm -rf target/*",
-    "get-hdb": "curl -k -s -n https://www.ssz-webdav.stadt-zuerich.ch/HDB_Dropzone/HDB.zip -o input/HDB.zip && unzip -o input/HDB.zip HDB.csv && mv HDB.csv input/hdb.csv",
+    "get-hdb": "curl -k -s -n https://www.ssz-webdav.stadt-zuerich.ch/HDB_Dropzone/HDB.zip -o input/HDB.zip && unzip -o input/HDB.zip HDB_PROD.csv && mv HDB_PROD.csv input/hdb.csv",
     "get-dimensions": "curl -s -n https://webdav.netlabs.org/ssz/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
     "convert-hdb": "node index.js --hdb",
     "convert-dimensions": "node index.js --lists",
