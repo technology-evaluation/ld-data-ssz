@@ -7,7 +7,7 @@
     "columns":[
       {
         "titles":"GESAMTCODE",
-        "suppressOutput":true
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GESAMTCODE"
       },
       {
         "titles":"GESAMTCODE_RCS",
