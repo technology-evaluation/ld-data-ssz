@@ -30,7 +30,7 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
         }
 
-        if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
+        if(predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
           const value = object.value.split(' ').join('')
 
           var valnumber
@@ -45,10 +45,18 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.literal(valnumber, object.datatype)
         }
 
-        if( predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
-          const year  = 0
-          const month = 0
-          const day = 0
+        if(predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
+          const year  = object.value.substring(5,9)
+          const month = object.value.substring(3,5)
+          const day = object.value.substring(1,3)
+
+          if((day === 'XX') && (month === 'XX')) {
+            object = p.rdf.literal(year, 'http://www.w3.org/2001/XMLSchema#gYear')
+          }else if (day === 'XX') {
+            object = p.rdf.literal(year + '-' + month, 'http://www.w3.org/2001/XMLSchema#gYearMonth')
+          }else {
+            object = p.rdf.literal(year + '-' + month + '-' + day, 'http://www.w3.org/2001/XMLSchema#date')
+          }
         }
 
         return p.rdf.quad(subject, predicate, object)
