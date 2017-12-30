@@ -7,6 +7,8 @@ function convertCsvw (filename, metadata) {
   const filenameMetadata = 'input/' + metadata
   const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
 
+  let uriSet = new Set();
+
   return p.rdf.dataset().import(p.file.read(filenameMetadata).pipe(p.jsonld.parse())).then((metadata) => {
     return p.run(p.file.read(filenameInput)
       .pipe(p.csvw.parse({
@@ -23,7 +25,9 @@ function convertCsvw (filename, metadata) {
         let object = quad.object
 
         if(subject.termType == 'NamedNode' ) {
-          subject = p.rdf.namedNode(subject.value.replace(/\/XXX0000/g, ''))
+          const newUri = subject.value.replace(/\/XXX0000/g, '')
+          subject = p.rdf.namedNode(newUri)
+          uriSet.add(newUri)
         } 
         
         if(object.termType == 'NamedNode' ) {
