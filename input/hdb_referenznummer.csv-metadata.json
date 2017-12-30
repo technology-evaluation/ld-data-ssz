@@ -84,8 +84,7 @@
       },
       {
         "titles":"WERT",
-        "datatype":"number",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/WERT"
+        "suppressOutput":true
       },
       {
         "titles":"CODENAME",
