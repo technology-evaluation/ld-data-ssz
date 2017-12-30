@@ -52,7 +52,7 @@ function convertCsvw (filename, metadata) {
 
           if((day === 'XX') && (month === 'XX')) {
             object = p.rdf.literal(year, 'http://www.w3.org/2001/XMLSchema#gYear')
-          }else if (day === 'XX') {
+          }else if(day === 'XX') {
             object = p.rdf.literal(year + '-' + month, 'http://www.w3.org/2001/XMLSchema#gYearMonth')
           }else {
             object = p.rdf.literal(year + '-' + month + '-' + day, 'http://www.w3.org/2001/XMLSchema#date')
