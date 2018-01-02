@@ -6,8 +6,10 @@ function convertCsvw (filename, metadata) {
   const filenameInput = 'input/' + filename
   const filenameMetadata = 'input/' + metadata
   const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
+  const filenameOutputDimensions = 'target/dimensions-metadata.nt'
 
   const dimensions = {}
+  const dataset = p.rdf.dataset()
 
   return p.rdf.dataset().import(p.file.read(filenameMetadata).pipe(p.jsonld.parse())).then((metadata) => {
     return p.run(p.file.read(filenameInput)
@@ -75,11 +77,18 @@ function convertCsvw (filename, metadata) {
   }).then(() => {
     Object.keys(dimensions).forEach((dimensionIri) => {
       const dimension = dimensions[dimensionIri]
+
+      const dimensionNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/structure/' + dimensionIri.slice('http://ld.stadt-zuerich.ch/statistics/observation/'.length))
+      const componentNode = p.rdf.blankNode()
       
+      dataset.add(p.rdf.quad(dimensionNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataStructureDefinition')))
+      dataset.add(p.rdf.quad(dimensionNode, p.rdf.namedNode('http://purl.org/linked-data/cube#component'), componentNode))
+
       dimension.forEach((predicate) => {
-        console.log(predicate)
+        dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode(predicate)))
       })
    })
+   p.run(dataset.toStream().pipe(p.file.write(filenameOutputDimensions)))
   }) 
 }
 
