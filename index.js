@@ -7,7 +7,7 @@ function convertCsvw (filename, metadata) {
   const filenameMetadata = 'input/' + metadata
   const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
 
-  let uriSet = new Set();
+  const dimensions = {}
 
   return p.rdf.dataset().import(p.file.read(filenameMetadata).pipe(p.jsonld.parse())).then((metadata) => {
     return p.run(p.file.read(filenameInput)
@@ -26,8 +26,13 @@ function convertCsvw (filename, metadata) {
 
         if(subject.termType == 'NamedNode' ) {
           const newUri = subject.value.replace(/\/XXX0000/g, '')
+          const predUri = predicate.value
           subject = p.rdf.namedNode(newUri)
-          uriSet.add(newUri)
+
+          dimensions[newUri] = dimensions[newUri] || new Set()
+          if(predUri.includes('/property/')) {
+            dimensions[newUri].add(predUri)
+          }
         } 
         
         if(object.termType == 'NamedNode' ) {
@@ -67,7 +72,15 @@ function convertCsvw (filename, metadata) {
       }))
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
-  })
+  }).then(() => {
+    Object.keys(dimensions).forEach((dimensionIri) => {
+      const dimension = dimensions[dimensionIri]
+      
+      dimension.forEach((predicate) => {
+        console.log(predicate)
+      })
+   })
+  }) 
 }
 
 function convertXlsx (filename, sheet, metadata) {
