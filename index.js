@@ -6,7 +6,7 @@ function convertCsvw (filename, metadata) {
   const filenameInput = 'input/' + filename
   const filenameMetadata = 'input/' + metadata
   const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
-  const filenameOutputDimensions = 'target/dimensions-metadata.nt'
+  const filenameOutputDimensions = 'target/' + path.basename(metadata, '.csv-metadata.json') + '-meta.nt'
 
   const dimensions = {}
   const dataset = p.rdf.dataset()
@@ -78,6 +78,15 @@ function convertCsvw (filename, metadata) {
     Object.keys(dimensions).forEach((dimensionIri) => {
       const dimension = dimensions[dimensionIri]
 
+      // TODO
+      // - dimensionIri ist definitiv falscher key... habe eine pro observation
+      // - qb:DataSet, pointer to qb:DataStructureDefinition
+      // - qb:Observation, pointer to qb:DataSet
+
+      if(dimension.length === 0) {
+         return
+      }
+
       const dimensionNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/structure/' + dimensionIri.slice('http://ld.stadt-zuerich.ch/statistics/observation/'.length))
       const componentNode = p.rdf.blankNode()
       
@@ -88,7 +97,7 @@ function convertCsvw (filename, metadata) {
         dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode(predicate)))
       })
    })
-   p.run(dataset.toStream().pipe(p.file.write(filenameOutputDimensions)))
+   p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
   }) 
 }
 
