@@ -2,7 +2,7 @@
   "@context":"http://www.w3.org/ns/csvw",
   "url":"hdb.csv",
   "tableSchema":{
-    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/observation/{ZEIT}/{RAUM}/{KENNZAHL}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
+    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/observation/{KENNZAHl}/{RAUM}/{ZEIT}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
     "null":"Dummy",
     "columns":[
       {
