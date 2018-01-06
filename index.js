@@ -33,8 +33,10 @@ function convertCsvw (filename, metadata) {
 
           dimensions[newUri] = dimensions[newUri] || new Set()
           if(predUri.includes('/property/')) {
+            const uniquedimension = predUri.slice('http://ld.stadt-zuerich.ch/statistics/property/'.length)
             dimensions[newUri].add(predUri)
           }
+
         } 
         
         if(object.termType == 'NamedNode' ) {
@@ -47,7 +49,7 @@ function convertCsvw (filename, metadata) {
           var valnumber
 
           // workaround to kick out all non-numbers. TODO issue #33
-          if(isNaN(parseFloat(value))) {
+          if (isNaN(parseFloat(value))) {
             valnumber = 0
           } else {
             valnumber = parseFloat(value)
@@ -56,16 +58,16 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.literal(valnumber, object.datatype)
         }
 
-        if(predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
+        if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
           const year  = object.value.substring(5,9)
           const month = object.value.substring(3,5)
           const day = object.value.substring(1,3)
 
-          if((day === 'XX') && (month === 'XX')) {
+          if ((day === 'XX') && (month === 'XX')) {
             object = p.rdf.literal(year, 'http://www.w3.org/2001/XMLSchema#gYear')
-          }else if(day === 'XX') {
+          } else if (day === 'XX') {
             object = p.rdf.literal(year + '-' + month, 'http://www.w3.org/2001/XMLSchema#gYearMonth')
-          }else {
+          } else {
             object = p.rdf.literal(year + '-' + month + '-' + day, 'http://www.w3.org/2001/XMLSchema#date')
           }
         }
@@ -75,29 +77,32 @@ function convertCsvw (filename, metadata) {
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
   }).then(() => {
-    Object.keys(dimensions).forEach((dimensionIri) => {
-      const dimension = dimensions[dimensionIri]
 
-      // TODO
-      // - dimensionIri ist definitiv falscher key... habe eine pro observation
-      // - qb:DataSet, pointer to qb:DataStructureDefinition
-      // - qb:Observation, pointer to qb:DataSet
+    uniq(Object.values(dimensions).map(dimension => Array.from(dimension).sort().join(' '))).forEach((dimensionString) => {
+      const dimension = dimensionString.split(' ')
 
-      if(dimension.length === 0) {
-         return
-      }
+      const uripattern = dimension.map(element => {
+          return element.slice('http://ld.stadt-zuerich.ch/statistics/property/'.length)
+        }).sort().join('/')
 
-      const dimensionNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/structure/' + dimensionIri.slice('http://ld.stadt-zuerich.ch/statistics/observation/'.length))
+      const datasetNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + uripattern)
+      const dsdNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/structure/' + uripattern)
       const componentNode = p.rdf.blankNode()
+
       
-      dataset.add(p.rdf.quad(dimensionNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataStructureDefinition')))
-      dataset.add(p.rdf.quad(dimensionNode, p.rdf.namedNode('http://purl.org/linked-data/cube#component'), componentNode))
+      dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
+      dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://purl.org/linked-data/cube#structure'), dsdNode))
+      dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataStructureDefinition')))
+      dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://purl.org/linked-data/cube#component'), componentNode))
 
       dimension.forEach((predicate) => {
         dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode(predicate)))
       })
-   })
-   p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
+
+    })
+
+
+    p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
   }) 
 }
 
@@ -116,6 +121,12 @@ function convertXlsx (filename, sheet, metadata) {
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
   })
+}
+
+var uniq = (arrArg) => {
+  return arrArg.filter((elem, pos, arr) => {
+    return arr.indexOf(elem) == pos;
+  });
 }
 
 const filenames = [{
