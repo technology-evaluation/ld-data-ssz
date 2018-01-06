@@ -21,8 +21,8 @@
     "convert-dimensions": "node index.js --lists",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
     "clean-hdb": "cat target/hdb.nt target/hdb_referenznummer.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
-    "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
-    "tdb-dump": "tdbdump --loc target/tdb_ssz | serdi -o ntriples - > target/everything.nt",
+    "tdb-load": "tdbloader --loc target/tdb_ssz input/void.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
+    "tdb-dump": "tdbdump --loc target/tdb_ssz | serdi -o ntriples - > target/everything.nt",
     "put-void": "./scripts/lindas-put-void.sh",
     "put-everything": "./scripts/lindas-put-everything.sh",
     "post-hdb": "./scripts/lindas-post-hdb.sh",
@@ -34,7 +34,8 @@
     "ssz-lindas-prod": "npm-run-all put-void-prod post-hdb-prod post-dimensions-prod",    
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb put-void post-hdb post-dimensions",
     "build-local": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb",
-    "build-tdb": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb tdb-load tdb-dump put-everything"
+    "build-tdb": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb tdb-load tdb-dump put-everything",
+    "build-tdb-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb tdb-load tdb-dump put-everything"
 
   }
 }
