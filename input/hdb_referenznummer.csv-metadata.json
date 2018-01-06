@@ -2,7 +2,7 @@
   "@context":"http://www.w3.org/ns/csvw",
   "url":"hdb.csv",
   "tableSchema":{
-    "aboutUrl":"http://stat.stadt-zuerich.ch/refno/{REFERENZNUMMER}",
+    "aboutUrl":"http://stat.stadt-zuerich.ch/view/{REFERENZNUMMER}",
     "null":"Dummy",
     "columns":[
       {
@@ -44,7 +44,7 @@
       },
       {
         "titles":"GRUPPENCODE1",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPENCODE1"
       },
       {
         "titles":"GRUPPE2",
@@ -52,7 +52,7 @@
       },
       {
         "titles":"GRUPPENCODE2",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPENCODE2"
       },
       {
         "titles":"GRUPPE3",
@@ -60,7 +60,7 @@
       },
       {
         "titles":"GRUPPENCODE3",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPENCODE3"
       },
       {
         "titles":"GRUPPE4",
@@ -68,7 +68,7 @@
       },
       {
         "titles":"GRUPPENCODE4",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPENCODE4"
       },
       {
         "titles":"GRUPPE5",
@@ -76,7 +76,7 @@
       },
       {
         "titles":"GRUPPENCODE5",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPENCODE5"
       },
       {
         "titles":"CODE",
