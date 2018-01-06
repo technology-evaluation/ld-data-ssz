@@ -321,6 +321,46 @@
         "suppressOutput":true
       },
       {
+        "titles":"GLOSSARID",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT1",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT2",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT3",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT4",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT5",
+        "suppressOutput":true
+      },
+      {
+        "titles":"KENNZAHLKLASSE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMEBENE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMEBENEPARENT",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMSORT",
+        "suppressOutput":true
+      },
+      {
         "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         "valueUrl":"http://purl.org/linked-data/cube#Observation"
