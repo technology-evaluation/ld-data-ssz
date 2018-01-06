@@ -29,7 +29,7 @@
     "post-dimensions-prod": "./scripts/lindas-post-dimensions_prod.sh",
     "ssz-lindas": "npm-run-all put-void post-hdb post-dimensions",
     "ssz-lindas-prod": "npm-run-all put-void-prod post-hdb-prod post-dimensions-prod",    
-    "build": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb put-void post-hdb post-dimensions",
-    "build-local": "npm-run-all clean get-hdb get-dimensions convert clean-dimensions clean-hdb"
+    "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb put-void post-hdb post-dimensions",
+    "build-local": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb"
   }
 }
