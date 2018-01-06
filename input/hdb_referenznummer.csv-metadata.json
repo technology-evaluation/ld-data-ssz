@@ -311,14 +311,49 @@
         "suppressOutput":true
       },
       {
-        "virtual":true,
-        "propertyUrl":"http://www.w3.org/2004/02/skos/core#inScheme",
-        "valueUrl":"http://stat.stadt-zuerich.ch/scheme/Referencenumber"
+        "titles":"GLOSSARID",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT1",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT2",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT3",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT4",
+        "suppressOutput":true
+      },
+      {
+        "titles":"GRUPPENCODESORT5",
+        "suppressOutput":true
+      },
+      {
+        "titles":"KENNZAHLKLASSE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMEBENE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMEBENEPARENT",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMSORT",
+        "suppressOutput":true
       },
       {
         "virtual":true,
-        "propertyUrl":"http://www.w3.org/ns/hydra/core#member",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/observation/{ZEIT}/{RAUM}/{KENNZAHL}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}"
+        "propertyUrl":"http://www.w3.org/2004/02/skos/core#inScheme",
+        "valueUrl":"http://stat.stadt-zuerich.ch/scheme/Referencenumber"
       },
       {
         "virtual":true,
