@@ -44,7 +44,7 @@
     dcterms:creator <org/SSZ> ;
     dcterms:contributor <org/Zazuko> ;
     dcterms:issued "%%DATEISSUED%%"^^xsd:date; # date of publication of the source
-#    dcterms:created "%%DATECREATED%%"^^xsd:date;
+    dcterms:created "%%DATECREATED%%"^^xsd:dateTime;
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
     doap:repository [
         a doap:GitRepository ;
