@@ -18,6 +18,7 @@
 
 # GRUPPENCODE 1 & 3
 view:ViewShapeBEV031 a sh:NodeShape ;
+    rdfs:seeAlso <dataset/EINHEIT/GESAMTCODE/KENNZAHL/NAF/NAM/RAUM/SEX/WERT/ZEIT> ;
 	sh:targetNode view:BEV031 ;
     sh:property [
         sh:path <property/NAF> ;
@@ -30,6 +31,7 @@ view:ViewShapeBEV031 a sh:NodeShape ;
 
 # GRUPPENCODE 1 & 3
 view:ViewShapeBEV032 a sh:NodeShape ;
+    rdfs:seeAlso <dataset/EINHEIT/GESAMTCODE/KENNZAHL/NAF/NAM/RAUM/SEX/WERT/ZEIT> ;
 	sh:targetNode view:BEV032 ;
     sh:property [
         sh:path <property/NAF> ;
