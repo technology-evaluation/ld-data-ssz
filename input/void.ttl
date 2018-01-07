@@ -50,7 +50,7 @@
     doap:repository [
         a doap:GitRepository ;
         doap:browse <https://github.com/statistikstadtzuerich/ssz-data> ;
-        doap:location <git@github.com:statistikstadtzuerich/ssz-data.git> 
+        doap:location "git@github.com:statistikstadtzuerich/ssz-data.git" 
     ] ;
     void:sparqlEndpoint <http://stat.stadt-zuerich.ch/query>;
 #    duv:hasUsage <dataset/meta-usage> ;
