@@ -38,13 +38,12 @@
 ##
 
 <dataset/SSZ> a void:Dataset, dcat:Dataset ;
-    foaf:homepage <http://data.admin.ch/>;
     dcterms:title "Statistische Daten der Stadt Zürich"@de;
     dcterms:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich im RDF Data Cube Vokabular"@de;
     dcterms:publisher <org/SSZ>;
     dcterms:creator <org/SSZ> ;
     dcterms:contributor <org/Zazuko> ;
-    dcterms:issued "2017-01-01"^^xsd:date; # date of publication of the source
+    dcterms:issued "%%DATEISSUED%%"^^xsd:date; # date of publication of the source
 #    dcterms:created "%%DATECREATED%%"^^xsd:date;
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
     doap:repository [
