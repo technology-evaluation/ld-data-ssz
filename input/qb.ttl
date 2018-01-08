@@ -25,6 +25,9 @@ view:ViewShapeBEV031 a sh:NodeShape ;
 		sh:hasValue <code/NAF0001> ;
     ] ;
     sh:property [
+        sh:path <property/NAM> ;
+    ] ;
+    sh:property [
     	sh:path <property/SEX> ;
 		sh:hasValue <code/SEX0001> ;
     ] .
@@ -38,9 +41,16 @@ view:ViewShapeBEV032 a sh:NodeShape ;
 		sh:hasValue <code/NAF0001> ;
     ] ;
     sh:property [
+        sh:path <property/NAM> ;
+    ] ;
+    sh:property [
     	sh:path <property/SEX> ;
-		sh:hasValue <code/SEX0001> ;
+		sh:hasValue <code/SEX0002> ;
     ] .
+
+# TODO Bei den folgenden zwei geht irgendwas noch schief, da kommen mehrere Gruppen zurück für die View.
+# Schauen, ob dies mit dem noch nicht verarbeiten vom Array zusammen hängt?
+# Interessanterweise habe ich ja auch zweimal ein Label mit kaputtem UTF8, einmal z.b. bei BEV031
 
 # GRUPPENCODE 1
 view:ViewShapeKUL002 a sh:NodeShape ;
