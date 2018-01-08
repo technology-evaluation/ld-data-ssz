@@ -30,7 +30,7 @@
     "post-dimensions": "./scripts/lindas-post-dimensions.sh",
     "ssz-lindas-test": "env ENDPOINT=https://test.lindas-data.ch:8443/lindas npm-run-all void-timestamp put-void post-hdb post-dimensions",
     "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas npm-run-all void-timestamp put-void post-hdb post-dimensions",
-    "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com/ssz npm-run-all put-everything",
+    "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz npm-run-all put-everything",
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp put-void post-hdb post-dimensions",
     "build-local": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb",
     "build-tdb": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-dump put-everything",
