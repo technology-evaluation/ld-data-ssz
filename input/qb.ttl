@@ -28,6 +28,12 @@ view:ViewShapeBEV031 a sh:NodeShape ;
         sh:path <property/NAM> ;
     ] ;
     sh:property [
+        sh:path <property/ZEIT> ;
+    ] ;
+    sh:property [
+        sh:path <property/RAUM> ;
+    ] ;
+    sh:property [
     	sh:path <property/SEX> ;
 		sh:hasValue <code/SEX0001> ;
     ] .
@@ -44,6 +50,12 @@ view:ViewShapeBEV032 a sh:NodeShape ;
         sh:path <property/NAM> ;
     ] ;
     sh:property [
+        sh:path <property/ZEIT> ;
+    ] ;
+    sh:property [
+        sh:path <property/RAUM> ;
+    ] ;
+    sh:property [
     	sh:path <property/SEX> ;
 		sh:hasValue <code/SEX0002> ;
     ] .
@@ -56,6 +68,12 @@ view:ViewShapeBEV032 a sh:NodeShape ;
 view:ViewShapeKUL002 a sh:NodeShape ;
 	sh:targetNode view:KUL002 ;
     sh:property [
+        sh:path <property/ZEIT> ;
+    ] ;
+    sh:property [
+        sh:path <property/RAUM> ;
+    ] ;
+    sh:property [
     	sh:path <property/BTA> ;
 		sh:hasValue <code/BTA1901> ;
     ] .
@@ -63,6 +81,12 @@ view:ViewShapeKUL002 a sh:NodeShape ;
 # GRUPPENCODE 2
 view:ViewShapeWIR001 a sh:NodeShape ;
 	sh:targetNode view:WIR001 ;
+    sh:property [
+        sh:path <property/ZEIT> ;
+    ] ;
+    sh:property [
+        sh:path <property/RAUM> ;
+    ] ;
     sh:property [
     	sh:path <property/BTA> ;
 		sh:hasValue <code/BTA5000> ;
