@@ -7,7 +7,7 @@
     "columns":[
       {
         "titles":"GESAMTCODE",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/GESAMTCODE"
+        "propertyUrl":"http://www.w3.org/2004/02/skos/core#notation"
       },
       {
         "titles":"GESAMTCODE_RCS",
