@@ -41,7 +41,7 @@ CONSTRUCT {
 
             FILTER(?dimension != "XXX")
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?dimension)) AS ?dimensionUri )
-            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/shape/", ?viewNotation)) AS ?shapeUri )
+            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/shape/", ?viewNotation)) AS ?shapeUri )
 
         }
     }
@@ -76,6 +76,8 @@ UNION
 
             FILTER(?dimension != "XXX")
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?dimension)) AS ?dimensionUri )
+            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/shape/", ?viewNotation)) AS ?shapeUri )
+
 
         }
     }
