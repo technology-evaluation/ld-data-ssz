@@ -6,6 +6,8 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 
 CONSTRUCT {
 
+?view sh:shapesGraph ?shapeUri . 
+
 ?shapeUri a sh:NodeShape ;
    # rdfs:seeAlso <dataset/EINHEIT/GESAMTCODE/KENNZAHL/NAF/NAM/RAUM/SEX/WERT/ZEIT> ;
 	sh:targetNode ?view ;
@@ -14,16 +16,12 @@ CONSTRUCT {
 		sh:hasValue ?hardcodeUri 
     ] .
 
-}
-
-
- WHERE {
-  
-{ ## BEGIN REPEAT
-    {
+} WHERE {
+{ 
+    { ## BEGIN REPEAT
         SELECT * WHERE {
             {
-                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { 
 
                     ?view skos:inScheme <http://stat.stadt-zuerich.ch/scheme/Referencenumber> ;
                         skos:notation ?viewNotation ;
@@ -32,7 +30,7 @@ CONSTRUCT {
                     FILTER(?codes != "XXX0000")
                     FILTER(?predicate IN( ex:GRUPPENCODE1, ex:GRUPPENCODE2, ex:GRUPPENCODE3, ex:GRUPPENCODE4, ex:GRUPPENCODE5))
 
-                }} GROUP BY ?view ?viewNotation ?predicate
+                } GROUP BY ?view ?viewNotation ?predicate
             }
   
             BIND(URI(REPLACE(STR(?predicate), 'NCODE', '')) AS ?group)
@@ -44,21 +42,21 @@ CONSTRUCT {
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/shape/", ?viewNotation)) AS ?shapeUri )
 
         }
-    }
+    } ## END REPEAT
 
     ?view ?predicate ?hardcode
        
     FILTER( ?count = 1)
     BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/code/", ?hardcode)) AS ?hardcodeUri )
-} ## END REPEAT
+} 
 
 UNION
 
-{ ## BEGIN REPEAT
-    {
+{ 
+    { ## BEGIN REPEAT
         SELECT * WHERE {
             {
-                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { 
 
                     ?view skos:inScheme <http://stat.stadt-zuerich.ch/scheme/Referencenumber> ;
                         skos:notation ?viewNotation ;
@@ -67,7 +65,7 @@ UNION
                     FILTER(?codes != "XXX0000")
                     FILTER(?predicate IN( ex:GRUPPENCODE1, ex:GRUPPENCODE2, ex:GRUPPENCODE3, ex:GRUPPENCODE4, ex:GRUPPENCODE5))
 
-                }} GROUP BY ?view ?viewNotation ?predicate
+                } GROUP BY ?view ?viewNotation ?predicate
             }
   
             BIND(URI(REPLACE(STR(?predicate), 'NCODE', '')) AS ?group)
@@ -78,13 +76,10 @@ UNION
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?dimension)) AS ?dimensionUri )
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/shape/", ?viewNotation)) AS ?shapeUri )
 
-
         }
-    }
+    } ## END REPEAT
      
     FILTER( ?count > 1)
-} ## END REPEAT
-
-
+} 
 
 }
