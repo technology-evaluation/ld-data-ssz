@@ -11,10 +11,30 @@
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix view: <http://stat.stadt-zuerich.ch/view/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ssz-schema: <http://ld.stadt-zuerich.ch/schema/> .
 
 # TODO: Checkout qb:CodedProperty as well for everything hierarchical.
 #       Should probably be used for Quartiere
 # See https://www.w3.org/TR/vocab-data-cube/#ref_qb_CodedProperty
+
+## Classes & Properties
+
+ssz-schema:View a rdfs:Class ;
+    rdfs:label "View"@en .
+
+ssz-schema:Topic a rdfs:Class ;
+    rdfs:label "A topic entity"@en .
+
+ssz-schema:Dimension a rdfs:Class ;
+    rdfs:label "A dimension entity"@en .
+
+ssz-schema:Time a rdfs:Class ;
+    rdfs:label "A time entity"@en .
+
+ssz-schema:Spatial a rdfs:Class ;
+    rdfs:label "A spatial entity"@en .
+
+## TODO this stuff down here will disappear
 
 # Static reverse properties
 
