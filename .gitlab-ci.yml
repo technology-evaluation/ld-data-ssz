@@ -1,12 +1,8 @@
-image: node:8.9
+image: zazukoians/node-java-jena
 before_script:
   - apt-get update && apt-get install -y unzip
   - scripts/bootstrap.sh
   - npm install
-
-#services:
-# - postgres:9.5.0
-
 
 # stages
 stages:
