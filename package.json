@@ -21,7 +21,7 @@
     "convert-dimensions": "node index.js --lists",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
     "clean-hdb": "cat target/hdb.nt target/hdb_referenznummer.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
-    "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/qb.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
+    "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
     "tdb-dump": "tdbdump --loc target/tdb_ssz | serdi -o ntriples - > target/everything.nt",
     "void-timestamp": "./scripts/void-timestamp.sh",
     "put-void": "./scripts/lindas-put-void.sh",
