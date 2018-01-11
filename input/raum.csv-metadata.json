@@ -10,7 +10,7 @@
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
     },{
       "titles": "RaumLang",
-      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#prefLabel",
       "lang": "de-CH"
     },{
       "titles": "Mapping (kleinste gültige Einheiten)",
@@ -30,10 +30,16 @@
     },{
       "titles": "RaumCodeAktuell",
       "suppressOutput": true
-    }, {
+    },
+    {
       "virtual": true,
       "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "virtual": true,
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/scheme/Raum"
     },
     {
       "virtual":true,
