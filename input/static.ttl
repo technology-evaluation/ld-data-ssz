@@ -22,16 +22,16 @@
 ssz-schema:View a rdfs:Class ;
     rdfs:label "View"@en .
 
-ssz-schema:Topic a rdfs:Class ;
+ssz-schema:TopicEntity a rdfs:Class ;
     rdfs:label "A topic entity"@en .
 
-ssz-schema:Dimension a rdfs:Class ;
+ssz-schema:DimensionEntity a rdfs:Class ;
     rdfs:label "A dimension entity"@en .
 
-ssz-schema:Time a rdfs:Class ;
+ssz-schema:TimeEntity a rdfs:Class ;
     rdfs:label "A time entity"@en .
 
-ssz-schema:Spatial a rdfs:Class ;
+ssz-schema:SpatialEntity a rdfs:Class ;
     rdfs:label "A spatial entity"@en .
 
 ## TODO this stuff down here will disappear
