@@ -352,18 +352,13 @@
       },
       {
         "virtual":true,
-        "propertyUrl":"http://www.w3.org/2004/02/skos/core#inScheme",
-        "valueUrl":"http://stat.stadt-zuerich.ch/scheme/Referencenumber"
-      },
-      {
-        "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         "valueUrl":"http://ld.stadt-zuerich.ch/schema/View"
       },
       {
         "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://www.w3.org/2004/02/skos/core#Concept"
+        "valueUrl":"http://purl.org/linked-data/cube#SliceKey"
       }
     ]
   }
