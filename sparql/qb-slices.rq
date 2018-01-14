@@ -10,7 +10,7 @@ PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 INSERT {
 
 ?view qb:componentProperty ?hardcodeUri  ;
-    ssz-schema:WTF ?dsdUri .
+    ssz-schema:viewStructure ?dsdUri .
 
 ?dsdUri a qb:DataStructureDefinition ;
     qb:component 

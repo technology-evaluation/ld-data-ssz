@@ -8,7 +8,7 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 
 CONSTRUCT {
 
-    [] a <http://schema.org/BreadcrumbList> ;
+    [] a schema:ItemList ;
         schema:itemListElement [
             a schema:ListItem ;
             a ?entityType ;
@@ -23,11 +23,10 @@ CONSTRUCT {
   {
   
   ?view a <http://purl.org/linked-data/cube#SliceKey> ;
-  	rdfs:label ?viewLabel ;
-  	ssz-schema:WTF/qb:component/qb:dimension ?dimension.
+  	ssz-schema:viewStructure/qb:component/qb:dimension ?dimension .
   
-  ?dimension a <http://purl.org/linked-data/cube#DimensionProperty>.
-  ?dimension rdfs:label ?label.
+  ?dimension a <http://purl.org/linked-data/cube#DimensionProperty> .
+  ?dimension rdfs:label ?label .
   
   FILTER regex(?label, "Ge*")
   BIND(ssz-schema:DimensionEntity AS ?entityType)

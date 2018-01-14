@@ -23,8 +23,8 @@
 ssz-schema:View a rdfs:Class ;
     rdfs:label "View"@en .
 
-ssz-schema:slice a rdf:Property ;
-    rdfs:label "Slice attached to this view"@en .
+ssz-schema:viewStructure a rdf:Property ;
+    rdfs:label "Structure of the slice attached to this view"@en .
 
 ssz-schema:TopicEntity a rdfs:Class ;
     rdfs:label "A topic entity"@en .
