@@ -5,6 +5,7 @@ PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX ex: <http://example.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
 INSERT {
 
@@ -14,6 +15,10 @@ INSERT {
 ?dsdUri a qb:DataStructureDefinition ;
     qb:component 
         [ qb:dimension ?dimensionUri ] ;
+        [ qb:dimension  ssz-dimension:RAUM ] ;
+        [ qb:dimension  ssz-dimension:ZEIT ] ;
+        [ qb:attribute  ssz-dimension:KENNZAHL ] ;
+        [ qb:measure  ssz-dimension:WERT ] ;
     qb:sliceKey ?view .
 
 ?sliceUri a qb:Slice ;
