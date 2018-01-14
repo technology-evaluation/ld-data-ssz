@@ -59,6 +59,19 @@ convert_dimensions_job:
       - target/dimensions.nt
     expire_in: 1 day
 
+tdb_cleanup_job:
+  stage: convert
+  tags:
+    - ssz
+  script:
+    - npm run tdb-load
+    - npm run tdb-query
+    - npm run tdb-dump
+  artifacts:
+    paths:
+      - target/everything.nt
+    expire_in: 1 day
+
 post_test_job:
   stage: post
   tags: 
