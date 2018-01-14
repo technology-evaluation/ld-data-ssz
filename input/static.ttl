@@ -1,4 +1,5 @@
 @base <http://ld.stadt-zuerich.ch/statistics/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <htp://purl.org/dc/terms/> .
@@ -21,6 +22,9 @@
 
 ssz-schema:View a rdfs:Class ;
     rdfs:label "View"@en .
+
+ssz-schema:slice a rdf:Property ;
+    rdfs:label "Slice attached to this view"@en .
 
 ssz-schema:TopicEntity a rdfs:Class ;
     rdfs:label "A topic entity"@en .
