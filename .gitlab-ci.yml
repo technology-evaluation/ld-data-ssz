@@ -64,7 +64,8 @@ post_test_job:
   tags: 
     - ssz
   only:
-    - develop
+    - tags
+#    - develop
   script:
     - npm run ssz-lindas
 
