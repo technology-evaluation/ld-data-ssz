@@ -64,6 +64,7 @@ tdb_cleanup_job:
   tags:
     - ssz
   script:
+    - npm run void-timestamp
     - npm run tdb-load
     - npm run tdb-query
     - npm run tdb-dump
