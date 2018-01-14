@@ -1,0 +1,1 @@
+tdbupdate --loc=target/tdb_ssz --update=sparql/qb-slices.rq
