@@ -14,11 +14,11 @@ INSERT {
 
 ?dsdUri a qb:DataStructureDefinition ;
     qb:component 
-        [ qb:dimension ?dimensionUri ] ;
-        [ qb:dimension  ssz-dimension:RAUM ] ;
-        [ qb:dimension  ssz-dimension:ZEIT ] ;
-        [ qb:attribute  ssz-dimension:KENNZAHL ] ;
-        [ qb:measure  ssz-dimension:WERT ] ;
+        [ qb:dimension ?dimensionUri ] ,
+        [ qb:dimension ssz-dimension:RAUM ] ,
+        [ qb:dimension ssz-dimension:ZEIT ] ,
+        [ qb:attribute ssz-dimension:KENNZAHL ] ,
+        [ qb:measure ssz-dimension:WERT ] ;
     qb:sliceKey ?view .
 
 ?sliceUri a qb:Slice ;
