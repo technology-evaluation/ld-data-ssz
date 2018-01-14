@@ -8,6 +8,7 @@ before_script:
 stages:
 - fetch
 - convert
+- staging
 - post
 
 # jobs
@@ -59,8 +60,8 @@ convert_dimensions_job:
       - target/dimensions.nt
     expire_in: 1 day
 
-tdb_cleanup_job:
-  stage: convert
+staging_tdb_job:
+  stage: staging
   tags:
     - ssz
   script:
