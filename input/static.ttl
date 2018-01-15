@@ -32,7 +32,7 @@ ssz-schema:TopicEntity a rdfs:Class ;
 ssz-schema:DimensionEntity a rdfs:Class ;
     rdfs:label "A dimension entity"@en .
 
-ssz-schema:TimeEntity a rdfs:Class ;
+ssz-schema:TemporalEntity a rdfs:Class ;
     rdfs:label "A time entity"@en .
 
 ssz-schema:SpatialEntity a rdfs:Class ;

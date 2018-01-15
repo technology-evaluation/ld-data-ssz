@@ -8,14 +8,13 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 
 CONSTRUCT {
 
-    [] a schema:ItemList ;
+    <http://nirvana> a schema:ItemList ;
         schema:itemListElement [
             a schema:ListItem ;
             a ?entityType ;
             schema:item ?view 
             #schema:position> 1 ;
         ] .
-    
     ?view rdfs:label ?label .
 
 } WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
@@ -44,5 +43,4 @@ CONSTRUCT {
   BIND(ssz-schema:TopicEntity AS ?entityType)
 
   }
-}} 
-LIMIT 10
+}}
