@@ -8,17 +8,20 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 
 CONSTRUCT {
 
-    <http://nirvana> a schema:ItemList ;
+    ?root a schema:ItemList ;
         schema:itemListElement [
             a schema:ListItem ;
             a ?entityType ;
-            schema:item ?view 
+            schema:item ?result 
             #schema:position> 1 ;
         ] .
-    ?view rdfs:label ?label .
+    ?result rdfs:label ?label .
 
 } WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
-  
+
+SELECT DISTINCT ?root ?result ?entityType ?label WHERE 
+{
+  BIND(BNODE('9a214cf093ae') AS ?root)
   {
   
   ?view a <http://purl.org/linked-data/cube#SliceKey> ;
@@ -29,6 +32,7 @@ CONSTRUCT {
   
   FILTER regex(?label, "Ge*")
   BIND(ssz-schema:DimensionEntity AS ?entityType)
+  BIND(?dimension as ?result)
 
   }
   
@@ -41,6 +45,8 @@ CONSTRUCT {
   
   FILTER regex(?label, "Ge*")       
   BIND(ssz-schema:TopicEntity AS ?entityType)
+  BIND(?view AS ?result)
 
   }
+}
 }}
