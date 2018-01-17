@@ -23,19 +23,14 @@
     "clean-hdb": "cat target/hdb.nt target/hdb_referenznummer.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
     "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
     "tdb-query": "./scripts/tdb-query.sh",
-    "tdb-dump": "tdbdump --loc target/tdb_ssz | serdi -o ntriples - > target/everything.nt",
+    "tdb-dump": "./scripts/tdb-dump.sh",
+    "validate-riot": "riot --validate target/everything.nt",
     "void-timestamp": "./scripts/void-timestamp.sh",
-    "put-void": "./scripts/lindas-put-void.sh",
     "put-everything": "./scripts/lindas-put-everything.sh",
-    "post-hdb": "./scripts/lindas-post-hdb.sh",
-    "post-dimensions": "./scripts/lindas-post-dimensions.sh",
-    "ssz-lindas-test": "env ENDPOINT=https://test.lindas-data.ch:8443/lindas npm-run-all void-timestamp put-void post-hdb post-dimensions",
-    "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas npm-run-all void-timestamp put-void post-hdb post-dimensions",
-    "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz npm-run-all put-everything",
-    "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp put-void post-hdb post-dimensions",
-    "build-local": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-dump",
-    "build-tdb": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-dump put-everything",
-    "build-tdb-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump"
-
+    "ssz-lindas-test": "env ENDPOINT=https://test.lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
+    "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
+    "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz ./scripts/lindas-put-everything.sh",
+    "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
+    "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump"
   }
 }
