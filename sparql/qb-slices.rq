@@ -7,7 +7,7 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
-CONSTRUCT {
+INSERT {
     ?view qb:componentProperty ?hardcodeUri  ;
     ssz-schema:viewStructure ?dsdUri .
 
