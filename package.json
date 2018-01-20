@@ -25,7 +25,7 @@
     "convert-hdb": "node index.js --hdb",
     "convert-dimensions": "node index.js --lists",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
-    "clean-hdb": "cat target/hdb.nt target/hdb_referenznummer.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
+    "clean-hdb": "cat target/hdb.nt target/hdb_mapping.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
     "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
     "tdb-query": "./scripts/tdb-query.sh",
     "tdb-dump": "./scripts/tdb-dump.sh",

@@ -132,10 +132,11 @@ var uniq = (arrArg) => {
 const filenames = [{
   filename: 'hdb.csv',
   metadata: 'hdb.csv-metadata.json'
-},{
-  filename: 'hdb.csv',
-  metadata: 'hdb_referenznummer.csv-metadata.json'
-},{
+},//{
+ // filename: 'hdb.csv',
+  //metadata: 'hdb_referenznummer.csv-metadata.json'
+//},
+{
   filename: 'hdb_mapping.csv',
   metadata: 'hdb_mapping.csv-metadata.json'
 }

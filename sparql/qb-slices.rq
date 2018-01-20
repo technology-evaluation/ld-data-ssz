@@ -7,100 +7,54 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
-INSERT {
-
-?view qb:componentProperty ?hardcodeUri  ;
+CONSTRUCT {
+    ?view qb:componentProperty ?hardcodeUri  ;
     ssz-schema:viewStructure ?dsdUri .
 
-?dsdUri a qb:DataStructureDefinition ;
-    qb:component 
-        [ qb:dimension ?dimensionUri ] ,
-        [ qb:dimension ssz-dimension:RAUM ] ,
-        [ qb:dimension ssz-dimension:ZEIT ] ,
-        [ qb:attribute ssz-dimension:KENNZAHL ] ,
-        [ qb:measure ssz-dimension:WERT ] ;
+    ?dsdUri a qb:DataStructureDefinition ;
+    qb:component ?componentUri ;
     qb:sliceKey ?view .
 
-?sliceUri a qb:Slice ;
+    ?componentUri qb:dimension ?dimensionUri  ;
+     qb:dimension ssz-dimension:RAUM  ;
+     qb:dimension ssz-dimension:ZEIT  ;
+     qb:attribute ssz-dimension:KENNZAHL  ;
+     qb:measure ssz-dimension:WERT  .
+
+    ?sliceUri a qb:Slice ;
     qb:sliceStructure  ?view ;
     ?dimensionUri ?hardcodeUri .
 
-#?sliceUri a qb:SliceKey ;
-   # rdfs:seeAlso <dataset/EINHEIT/GESAMTCODE/KENNZAHL/NAF/NAM/RAUM/SEX/WERT/ZEIT> ;
-#	sh:targetNode ?view ;
-#    sh:property [
-#        sh:path ?dimensionUri ;
-#		sh:hasValue ?hardcodeUri 
-#    ] .
-
 } WHERE {
-{ 
-    { ## BEGIN REPEAT
-        SELECT * WHERE {
-            {
-                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { 
-
-                    ?view a ssz-schema:View ;
-                        skos:notation ?viewNotation ;
-                        ?predicate ?codes .
-  
-                    FILTER(?codes != "XXX0000")
-                    FILTER(?predicate IN( ex:GRUPPENCODE1, ex:GRUPPENCODE2, ex:GRUPPENCODE3, ex:GRUPPENCODE4, ex:GRUPPENCODE5))
-
-                } GROUP BY ?view ?viewNotation ?predicate
-            }
-  
-            BIND(URI(REPLACE(STR(?predicate), 'NCODE', '')) AS ?group)
-
-            ?view ?group ?dimension ;
-
-            FILTER(?dimension != "XXX")
-            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?dimension)) AS ?dimensionUri )
+    {
+        SELECT DISTINCT ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
+            
+            ?view a ssz-schema:View ;
+                skos:notation ?viewNotation ;
+                <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+                           
+            ?obs a qb:Observation ;
+                <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;    
+                ( ex:GRUPPE1 | ex:GRUPPE2 | ex:GRUPPE3 | ex:GRUPPE4 | ex:GRUPPE5 ) ?gruppe .
+                    
+            FILTER(?gruppe != "XXX")
+            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?gruppe)) AS ?dimensionUri)
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/structure/", ?viewNotation)) AS ?dsdUri )
+                BIND(URI(CONCAT(STR(?dsdUri), "#component")) AS ?componentUri )
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/slice/", ?viewNotation)) AS ?sliceUri )
+                    
+            ?obs ?dimensionUri ?codes .
 
-
-
-        }
-    } ## END REPEAT
-
-    ?view ?predicate ?hardcode
-       
-    FILTER( ?count = 1)
-    BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/code/", ?hardcode)) AS ?hardcodeUri )
-} 
-
-UNION
-
-{ 
-    { ## BEGIN REPEAT
-        SELECT * WHERE {
-            {
-                SELECT ?view ?viewNotation ?predicate (COUNT(DISTINCT ?codes) AS ?count)  WHERE { 
-
-                    ?view a ssz-schema:View ;
-                        skos:notation ?viewNotation ;
-                        ?predicate ?codes .
-  
-                    FILTER(?codes != "XXX0000")
-                    FILTER(?predicate IN( ex:GRUPPENCODE1, ex:GRUPPENCODE2, ex:GRUPPENCODE3, ex:GRUPPENCODE4, ex:GRUPPENCODE5))
-
-                } GROUP BY ?view ?viewNotation ?predicate
-            }
-  
-            BIND(URI(REPLACE(STR(?predicate), 'NCODE', '')) AS ?group)
-
-            ?view ?group ?dimension ;
-
-            FILTER(?dimension != "XXX")
-            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?dimension)) AS ?dimensionUri )
-            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/statistics/structure/", ?viewNotation)) AS ?dsdUri )
-            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/slice/", ?viewNotation)) AS ?sliceUri )
-
-        }
-    } ## END REPEAT
-     
-    FILTER( ?count > 1)
-} 
-
+        } GROUP BY ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri ORDER BY ?view
+    }
+ 
+    ?view a ssz-schema:View ;
+        <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+                            
+        ?obs a qb:Observation ;
+            <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;
+            ?dimensionUri ?somecode .
+                           
+        BIND(IF(?count = 1, ?somecode, '') AS ?hardcodeUri)
+        FILTER(?hardcodeUri != '')
 }

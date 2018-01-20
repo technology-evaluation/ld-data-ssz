@@ -42,7 +42,7 @@
       },
       {
         "titles":"GRUPPE1",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPE1"
       },
       {
         "titles":"GRUPPENCODE1",
@@ -51,7 +51,7 @@
       },
       {
         "titles":"GRUPPE2",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPE2"
       },
       {
         "titles":"GRUPPENCODE2",
@@ -60,7 +60,7 @@
       },
       {
         "titles":"GRUPPE3",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPE3"
       },
       {
         "titles":"GRUPPENCODE3",
@@ -69,7 +69,7 @@
       },
       {
         "titles":"GRUPPE4",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPE4"
       },
       {
         "titles":"GRUPPENCODE4",
@@ -78,7 +78,7 @@
       },
       {
         "titles":"GRUPPE5",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GRUPPE5"
       },
       {
         "titles":"GRUPPENCODE5",
