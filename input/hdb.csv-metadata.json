@@ -11,7 +11,7 @@
       },
       {
         "titles":"GESAMTCODE_RCS",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/GESAMTCODE_RCS"
       },
       {
         "titles":"ZEIT",

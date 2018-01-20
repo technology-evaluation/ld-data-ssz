@@ -1,0 +1,32 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "hdb_mapping.csv",
+  "aboutUrl":"http://stat.stadt-zuerich.ch/view/{REFERENZNUMMER}",
+  "null":"Dummy",
+  "tableSchema": {
+    "columns": [
+      {
+        "titles": "GESAMTCODE_RCS",
+        "propertyUrl":"http://example.org/GESAMTCODE_RCS"
+      },
+      {
+        "titles":"REFERENZNUMMER",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      },
+      {
+        "titles":"TITEL",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://ld.stadt-zuerich.ch/schema/View"
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://purl.org/linked-data/cube#SliceKey"
+      }
+    ]
+  }
+}

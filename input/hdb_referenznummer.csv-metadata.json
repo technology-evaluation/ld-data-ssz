@@ -2,7 +2,7 @@
   "@context":"http://www.w3.org/ns/csvw",
   "url":"hdb.csv",
   "tableSchema":{
-    "aboutUrl":"http://stat.stadt-zuerich.ch/view/{REFERENZNUMMER}",
+    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/observation/{KENNZAHL}/{RAUM}/{ZEIT}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
     "null":"Dummy",
     "columns":[
       {
@@ -144,11 +144,11 @@
       },
       {
         "titles":"REFERENZNUMMER",
-        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+        "suppressOutput":true
       },
       {
         "titles":"REFERENZTITEL",
-        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+        "suppressOutput":true
       },
       {
         "titles":"ORIGINALNUMMER",
@@ -349,16 +349,6 @@
       {
         "titles":"RAUMSORT",
         "suppressOutput":true
-      },
-      {
-        "virtual":true,
-        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://ld.stadt-zuerich.ch/schema/View"
-      },
-      {
-        "virtual":true,
-        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://purl.org/linked-data/cube#SliceKey"
       }
     ]
   }
