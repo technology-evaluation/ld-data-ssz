@@ -22,6 +22,7 @@ curl_hdb_job:
   artifacts:
     paths:
       - input/hdb.csv
+      - input/hdb_mapping.csv
     expire_in: 30 minutes
 
 curl_dimension_job:
