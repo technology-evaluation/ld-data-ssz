@@ -60,6 +60,8 @@ INSERT {
         }
     }
 
-    BIND(IF(?count = 1, ?somecode, '') AS ?hardcodeUri)
-    FILTER(?hardcodeUri != '')       
+    #BIND(IF(?count = 1, ?somecode, '') AS ?hardcodeUri)
+    BIND(IF(?count = 1, ?somecode, URI("http://example.org/dummy")) AS ?hardcodeUri)
+    # TODO if we filter like this we have dimensions missing for some reason!?
+    #FILTER(?hardcodeUri != '')       
 }
