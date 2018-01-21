@@ -91,10 +91,10 @@ post_test_job:
   tags: 
     - ssz
   only:
-    - tags
-#    - develop
+#    - tags
+    - develop
   script:
-    - npm run ssz-lindas-test
+    - npm run ssz-zazuko
 
 post_prod_job:
   stage: post
