@@ -27,7 +27,7 @@ INSERT {
 
 } WHERE {
     {
-        SELECT DISTINCT ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
+        SELECT ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
             
             ?view a ssz-schema:View ;
                 skos:notation ?viewNotation ;
@@ -45,16 +45,21 @@ INSERT {
                     
             ?obs ?dimensionUri ?codes .
 
-        } GROUP BY ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri ORDER BY ?view
+        } GROUP BY ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri
     }
  
-    ?view a ssz-schema:View ;
-        <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+    { SELECT DISTINCT ?view ?dimensionUri ?lockedcode ?somecode {
+
+        ?view a ssz-schema:View ;
+            <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
                             
-        ?obs a qb:Observation ;
-            <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;
-            ?dimensionUri ?somecode .
+            ?obs a qb:Observation ;
+                <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;
+                ?dimensionUri ?somecode .
                            
-        BIND(IF(?count = 1, ?somecode, '') AS ?hardcodeUri)
-        FILTER(?hardcodeUri != '')
+        }
+    }
+
+    BIND(IF(?count = 1, ?somecode, '') AS ?hardcodeUri)
+    FILTER(?hardcodeUri != '')       
 }
