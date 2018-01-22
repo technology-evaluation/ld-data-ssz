@@ -18,4 +18,4 @@ INSERT {
     ?sliceUri a qb:Slice ;
     	qb:sliceStructure  ?view .
 
-} LIMIT 10
+}
