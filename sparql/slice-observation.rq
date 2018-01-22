@@ -1,0 +1,21 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX ex: <http://example.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+
+INSERT {
+
+?sliceUri qb:observation ?obs .
+
+} WHERE {
+    ?view a ssz-schema:View ;
+        <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+                           
+    ?obs a qb:Observation ;
+        <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+           
+    ?sliceUri a qb:Slice ;
+    	qb:sliceStructure  ?view .
+
+} LIMIT 10
