@@ -40,7 +40,7 @@ INSERT {
             FILTER(?gruppe != "XXX")
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?gruppe)) AS ?dimensionUri)
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/structure/", ?viewNotation)) AS ?dsdUri )
-                BIND(URI(CONCAT(STR(?dsdUri), "#component")) AS ?componentUri )
+            BIND(URI(CONCAT(STR(?dsdUri), "#component")) AS ?componentUri )
             BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/slice/", ?viewNotation)) AS ?sliceUri )
                     
             ?obs ?dimensionUri ?codes .
