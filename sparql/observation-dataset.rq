@@ -5,17 +5,18 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
 INSERT {
-
-?sliceUri qb:observation ?obs .
-
-} WHERE {
+    ?obs qb:dataSet ?dataSetUri
+}WHERE {
     ?view a ssz-schema:View ;
         <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
                            
     ?obs a qb:Observation ;
         <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
            
-    ?sliceUri a qb:Slice ;
-    	qb:sliceStructure  ?view .
+    ?dsdUri a qb:DataStructureDefinition ;
+    	qb:sliceKey  ?view .
+  
+    ?dataSetUri a qb:DataSet ;
+       qb:structure ?dsdUri ;
 
 }

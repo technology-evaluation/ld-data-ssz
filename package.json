@@ -27,8 +27,11 @@
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
     "clean-hdb": "cat target/hdb.nt target/hdb_mapping.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
     "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
-    "tdb-query": "./scripts/tdb-query.sh",
+    "tdb-query": "env JVM_ARGS=-Xmx3g ./scripts/tdb-query.sh",
     "tdb-dump": "./scripts/tdb-dump.sh",
+    "stardog-load": "stardog data remove --all ssz-staging && stardog data add ssz-staging target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
+    "stardog-query": "./scripts/stardog-query.sh",
+    "stardog-dump": "./scripts/stardog-dump.sh",
     "validate-riot": "riot --validate target/everything.nt",
     "void-timestamp": "./scripts/void-timestamp.sh",
     "put-everything": "./scripts/lindas-put-everything.sh",
@@ -36,6 +39,7 @@
     "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
     "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz ./scripts/lindas-put-everything.sh",
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump"
+    "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
+    "build-stardog": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp stardog-load stardog-query stardog-dump"
   }
 }
