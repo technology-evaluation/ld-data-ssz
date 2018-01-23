@@ -8,29 +8,37 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
 INSERT {
-    ?view qb:componentProperty ?hardcodeUri  ;
-    ssz-schema:viewStructure ?dsdUri .
+
+    ?dataSetUri a qb:DataSet ;
+        rdfs:label ?viewLabel ;
+        qb:structure ?dsdUri ;
+        qb:slice ?sliceUri .
+
+    # ?view is SliceKey as well, done in CSV mapping
+    ?view qb:componentProperty ?dimensionUri  ;
+        ssz-schema:viewStructure ?dsdUri .
 
     ?dsdUri a qb:DataStructureDefinition ;
-    qb:component ?componentUri ;
-    qb:sliceKey ?view .
+        qb:component ?componentUri ;
+        qb:sliceKey ?view .
 
     ?componentUri qb:dimension ?dimensionUri  ;
-     qb:dimension ssz-dimension:RAUM  ;
-     qb:dimension ssz-dimension:ZEIT  ;
-     qb:attribute ssz-dimension:KENNZAHL  ;
-     qb:measure ssz-dimension:WERT  .
+        qb:dimension ssz-dimension:RAUM  ;
+        qb:dimension ssz-dimension:ZEIT  ;
+        qb:attribute ssz-dimension:KENNZAHL  ;
+        qb:measure ssz-dimension:WERT  .
 
     ?sliceUri a qb:Slice ;
-    qb:sliceStructure  ?view ;
-    ?dimensionUri ?hardcodeUri .
+        qb:sliceStructure  ?view ;
+        ?dimensionUri ?hardcodeUri .
 
 } WHERE {
     {
-        SELECT ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
+        SELECT ?view ?viewLabel ?dataSetUri ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
             
             ?view a ssz-schema:View ;
                 skos:notation ?viewNotation ;
+                rdfs:label ?viewLabel ;
                 <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
                            
             ?obs a qb:Observation ;
@@ -38,14 +46,15 @@ INSERT {
                 ( ex:GRUPPE1 | ex:GRUPPE2 | ex:GRUPPE3 | ex:GRUPPE4 | ex:GRUPPE5 ) ?gruppe .
                     
             FILTER(?gruppe != "XXX")
+            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation)) AS ?dataSetUri)
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?gruppe)) AS ?dimensionUri)
-            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/structure/", ?viewNotation)) AS ?dsdUri )
-            BIND(URI(CONCAT(STR(?dsdUri), "#component")) AS ?componentUri )
-            BIND(URI(CONCAT("http://stat.stadt-zuerich.ch/slice/", ?viewNotation)) AS ?sliceUri )
+            BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "#structure")) AS ?dsdUri )
+            BIND(BNODE(CONCAT('component_', $viewNotation)) AS ?componentUri )
+            BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "/slice")) AS ?sliceUri )
                     
             ?obs ?dimensionUri ?codes .
 
-        } GROUP BY ?view ?dimensionUri ?dsdUri ?sliceUri ?componentUri
+        } GROUP BY ?view ?viewLabel ?dataSetUri ?dimensionUri ?dsdUri ?sliceUri ?componentUri
     }
  
     { SELECT DISTINCT ?view ?dimensionUri ?lockedcode ?somecode {
