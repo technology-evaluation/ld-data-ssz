@@ -25,8 +25,7 @@ INSERT {
     ?componentUri qb:dimension ?dimensionUri  ;
         qb:dimension ssz-dimension:RAUM  ;
         qb:dimension ssz-dimension:ZEIT  ;
-        qb:attribute ssz-dimension:KENNZAHL  ;
-        qb:measure ssz-dimension:WERT  .
+        qb:measure ?measureUri  .
 
     ?sliceUri a qb:Slice ;
         qb:sliceStructure  ?view ;
@@ -34,7 +33,7 @@ INSERT {
 
 } WHERE {
     {
-        SELECT ?view ?viewLabel ?dataSetUri ?dimensionUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
+        SELECT ?view ?viewLabel ?dataSetUri ?dimensionUri ?measureUri ?dsdUri ?sliceUri ?componentUri (COUNT(DISTINCT ?codes) AS ?count) WHERE {
             
             ?view a ssz-schema:View ;
                 skos:notation ?viewNotation ;
@@ -42,19 +41,21 @@ INSERT {
                 <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
                            
             ?obs a qb:Observation ;
-                <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;    
+                <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;
+                <http://example.org/KENNZAHL> ?kennzahl ;
                 ( ex:GRUPPE1 | ex:GRUPPE2 | ex:GRUPPE3 | ex:GRUPPE4 | ex:GRUPPE5 ) ?gruppe .
                     
             FILTER(?gruppe != "XXX")
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation)) AS ?dataSetUri)
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?gruppe)) AS ?dimensionUri)
+            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/measure/", ?kennzahl)) AS ?measureUri)
             BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "#structure")) AS ?dsdUri )
             BIND(BNODE(CONCAT('component_', $viewNotation)) AS ?componentUri )
             BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "/slice")) AS ?sliceUri )
                     
             ?obs ?dimensionUri ?codes .
 
-        } GROUP BY ?view ?viewLabel ?dataSetUri ?dimensionUri ?dsdUri ?sliceUri ?componentUri
+        } GROUP BY ?view ?viewLabel ?dataSetUri ?dimensionUri ?measureUri ?dsdUri ?sliceUri ?componentUri
     }
  
     { SELECT DISTINCT ?view ?dimensionUri ?lockedcode ?somecode {
