@@ -37,8 +37,7 @@
       },
       {
         "titles":"KENNZAHL",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/KENNZAHL",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{KENNZAHL}"
+        "propertyUrl":"http://example.org/KENNZAHL"
       },
       {
         "titles":"GRUPPE1",
@@ -92,7 +91,7 @@
       {
         "titles":"WERT",
         "datatype":"number",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/WERT"
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/measure/{KENNZAHL}"
       },
       {
         "titles":"CODENAME",
