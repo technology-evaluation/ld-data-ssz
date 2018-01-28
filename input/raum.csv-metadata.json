@@ -10,26 +10,37 @@
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
     },{
       "titles": "RaumLang",
-      "propertyUrl": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
       "lang": "de-CH"
     },{
       "titles": "Mapping (kleinste gültige Einheiten)",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/MAPPING"
     },{
       "titles": "Gültigkeitsbereiche (ID)",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/GUELTIGKEIT"
     },{
       "titles": "QuarCodeAktuell",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/QuarCodeAktuell"
     },{
       "titles": "KreisCodeAktuell",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/KreisCodeAktuell"
     },{
       "titles": "StadtCodeAktuell",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/StadtCodeAktuell"
     },{
       "titles": "RaumCodeAktuell",
-      "suppressOutput": true
+      "propertyUrl": "http://example.org/RaumCodeAktuell"
+    },{
+      "titles": "StadtCd",
+      "propertyUrl": "http://example.org/StadtCd"
+    },
+    {
+      "titles": "KreisCd",
+      "propertyUrl": "http://example.org/KreisCd"
+    },
+    {
+      "titles": "QuarCd",
+      "propertyUrl": "http://example.org/QuarCd"
     },
     {
       "virtual": true,
