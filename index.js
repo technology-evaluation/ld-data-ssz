@@ -43,7 +43,8 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
         }
 
-        if(predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/WERT') {
+        if(predicate.value.startsWith('http://ld.stadt-zuerich.ch/statistics/measure/')) {
+
           const value = object.value.split(' ').join('')
 
           var valnumber
