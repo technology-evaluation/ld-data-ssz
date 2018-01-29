@@ -48,7 +48,7 @@ INSERT {
             FILTER(?gruppe != "XXX")
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation)) AS ?dataSetUri)
             BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?gruppe)) AS ?dimensionUri)
-            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/property/", ?kennzahl)) AS ?measureUri)
+            BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/measure/", ?kennzahl)) AS ?measureUri)
             BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "#structure")) AS ?dsdUri )
             BIND(BNODE(CONCAT('component_', $viewNotation)) AS ?componentUri )
             BIND(URI(CONCAT(CONCAT("http://ld.stadt-zuerich.ch/statistics/dataset/", ?viewNotation), "/slice")) AS ?sliceUri )

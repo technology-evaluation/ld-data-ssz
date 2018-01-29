@@ -46,7 +46,7 @@ function convertCsvw (filename, metadata) {
         if(predicate.value.startsWith('http://example.org/measure/')) {
 
           const value = object.value.split(' ').join('')
-          const predicateUri = 'http://ld.stadt-zuerich.ch/statistics/property/' + predicate.value.slice('http://example.org/measure/'.length)
+          const predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
 
           let valnumber
 

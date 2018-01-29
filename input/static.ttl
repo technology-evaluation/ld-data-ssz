@@ -13,6 +13,7 @@
 @prefix view: <http://stat.stadt-zuerich.ch/view/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix ssz-schema: <http://ld.stadt-zuerich.ch/schema/> .
+@prefix ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/> .
 
 # TODO: Checkout qb:CodedProperty as well for everything hierarchical.
 #       Should probably be used for Quartiere
@@ -37,3 +38,13 @@ ssz-schema:TemporalEntity a rdfs:Class ;
 
 ssz-schema:SpatialEntity a rdfs:Class ;
     rdfs:label "A spatial entity"@en .
+
+## Static dimensions
+
+ssz-dimension:ZEIT a qb:DimensionProperty ;
+    skos:notation "ZEIT" ;
+    rdfs:label "Zeit" .
+
+ssz-dimension:RAUM a qb:DimensionProperty ;
+    skos:notation "RAUM" ;
+    rdfs:label "Raum" .
