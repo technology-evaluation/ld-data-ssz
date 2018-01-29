@@ -43,11 +43,12 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
         }
 
-        if(predicate.value.startsWith('http://ld.stadt-zuerich.ch/statistics/measure/')) {
+        if(predicate.value.startsWith('http://example.org/measure/')) {
 
           const value = object.value.split(' ').join('')
+          const predicateUri = 'http://ld.stadt-zuerich.ch/statistics/property/' + predicate.value.slice('http://example.org/measure/'.length)
 
-          var valnumber
+          let valnumber
 
           // workaround to kick out all non-numbers. TODO issue #33
           if (isNaN(parseFloat(value))) {
@@ -56,6 +57,8 @@ function convertCsvw (filename, metadata) {
             valnumber = parseFloat(value)
           }
           
+          predicate = p.rdf.namedNode(predicateUri)
+          // Dataype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
           object = p.rdf.literal(valnumber, object.datatype)
         }
 

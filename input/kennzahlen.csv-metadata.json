@@ -3,7 +3,7 @@
   "url": "kennzahlen.csv",
   "dc:title": "Kennzahlen",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/property/{KennzahlCode}",
     "null": "",
     "columns": [{
       "titles": "Index",
@@ -25,7 +25,11 @@
       "titles": "Beschreibung",
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
       "lang": "de-CH"
-    }, {
+    },{
+      "virtual": true,
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#range",
+      "valueUrl": "http://www.w3.org/2001/XMLSchema#double"
+    },{
       "virtual": true,
       "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "valueUrl": "http://purl.org/linked-data/cube#MeasureProperty"
