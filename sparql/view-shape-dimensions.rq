@@ -34,8 +34,9 @@ WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
         ?dimension ?dimensionValue .
 
     ?dimension skos:notation ?dimensionNotation .
-          
-  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)
+
+  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
+  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?view)
   BIND(BNODE(CONCAT(?viewNotation, ?dimensionNotation)) AS ?b_dimension)
 
 }}
