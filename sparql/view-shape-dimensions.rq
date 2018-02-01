@@ -14,8 +14,8 @@ INSERT {
     # alle Ausprägungen einer Dimension
   	sh:property ?b_dimension .
   
-    ?b_dimension sh:path ?dimension ;
-		sh:in  ?dimensionValue  .
+    ?b_dimension sh:path ( qb:observation ?dimension) ;
+		sh:in ?dimensionValue  .
 
 }
 WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
@@ -35,7 +35,7 @@ WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
 
     ?dimension skos:notation ?dimensionNotation .
           
-  BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/shape/", ?viewNotation)) AS ?shapeUri)
+  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)
   BIND(BNODE(CONCAT(?viewNotation, ?dimensionNotation)) AS ?b_dimension)
 
 }}
