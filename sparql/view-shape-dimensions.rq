@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX ex: <http://example.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+
+INSERT {
+  
+  ?shapeUri a sh:NodeShape ;
+	sh:targetNode ?view ;
+    # alle Ausprägungen einer Dimension
+  	sh:property ?b_dimension .
+  
+    ?b_dimension sh:path ?dimension ;
+		sh:in  ?dimensionValue  .
+
+}
+WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+
+  ?view a ssz-schema:View ;
+    skos:notation ?viewNotation ;
+    qb:componentProperty ?dimensionLock  ;
+    ssz-schema:viewStructure ?dsdUri ;
+    ssz-schema:viewStructure/qb:component/qb:dimension ?dimension .
+  
+    ?dataset a qb:DataSet ;
+    qb:structure ?dsdUri .
+  
+    ?obs a qb:Observation ;
+        qb:dataSet ?dataset ;
+        ?dimension ?dimensionValue .
+
+    ?dimension skos:notation ?dimensionNotation .
+          
+  BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/shape/", ?viewNotation)) AS ?shapeUri)
+  BIND(BNODE(CONCAT(?viewNotation, ?dimensionNotation)) AS ?b_dimension)
+
+}}
