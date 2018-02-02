@@ -34,7 +34,7 @@ INSERT {
 
 {
     # Alle Ausprägungen einer Dimension
-    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE {
         ?view a ssz-schema:View ;
             skos:notation ?viewNotation ;
             ssz-schema:viewStructure ?dsdUri ;
@@ -53,13 +53,13 @@ INSERT {
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
         BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
-    }}
+    }
 
 }
 UNION
 {
     # Dimensionen alleine, für den Pfad
-    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE {
         ?view a ssz-schema:View ;
             skos:notation ?viewNotation ;
             ssz-schema:viewStructure ?dsdUri ;
@@ -72,12 +72,12 @@ UNION
         BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
         BIND(BNODE(CONCAT(?propertyNotation, ?viewNotation)) AS ?b_list)
         BIND(BNODE(CONCAT(CONCAT(?propertyNotation, ?viewNotation), "NIL")) AS ?b_nil)
-    }}
+    }
 }
 UNION
 {
     # Alle Dimensionen mit Literals, nicht URIs
-    SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+    SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
 
       ?view a ssz-schema:View ;
             skos:notation ?viewNotation ;
@@ -98,7 +98,7 @@ UNION
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
         BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
 
-    }} GROUP BY ?shapeUri ?target ?b_property ?property
+    } GROUP BY ?shapeUri ?target ?b_property ?property
 
 }
 
