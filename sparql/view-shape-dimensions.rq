@@ -7,36 +7,37 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
-INSERT {
+CONSTRUCT {
   
   ?shapeUri a sh:NodeShape ;
-	sh:targetNode ?view ;
+	sh:targetNode ?target ;
     # alle Ausprägungen einer Dimension
-  	sh:property ?b_dimension .
+  	sh:property ?b_property .
   
-    ?b_dimension sh:path ( qb:observation ?dimension) ;
-		sh:in ?dimensionValue  .
+    ?b_property sh:in ?propertyValue  .
+
+} WHERE {
+
+    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+        ?view a ssz-schema:View ;
+            skos:notation ?viewNotation ;
+            ssz-schema:viewStructure ?dsdUri ;
+            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
+  
+        ?dataset a qb:DataSet ;
+            qb:structure ?dsdUri .
+  
+        ?obs a qb:Observation ;
+            qb:dataSet ?dataset ;
+            ?property ?propertyValue .
+
+        ?property skos:notation ?propertyNotation .
+
+        FILTER(isIri(?propertyValue))
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
+
+    }}
 
 }
-WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
-
-  ?view a ssz-schema:View ;
-    skos:notation ?viewNotation ;
-    qb:componentProperty ?dimensionLock  ;
-    ssz-schema:viewStructure ?dsdUri ;
-    ssz-schema:viewStructure/qb:component/qb:dimension ?dimension .
-  
-    ?dataset a qb:DataSet ;
-    qb:structure ?dsdUri .
-  
-    ?obs a qb:Observation ;
-        qb:dataSet ?dataset ;
-        ?dimension ?dimensionValue .
-
-    ?dimension skos:notation ?dimensionNotation .
-
-  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
-  BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?view)
-  BIND(BNODE(CONCAT(?viewNotation, ?dimensionNotation)) AS ?b_dimension)
-
-}}
