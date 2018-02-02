@@ -7,7 +7,7 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
-CONSTRUCT {
+INSERT {
   
   ?shapeUri a sh:NodeShape ;
 	sh:targetNode ?target ;
@@ -15,9 +15,25 @@ CONSTRUCT {
   	sh:property ?b_property .
   
     ?b_property sh:in ?propertyValue  .
+ 
+    # min/max von Literals
+
+    ?b_property sh:minInclusive ?min ;
+        sh:maxInclusive ?max .
+
+    # all the list fun
+    ?b_property sh:path ?b_list .
+    
+    ?b_list rdf:first qb:observation ;
+        rdf:rest ?b_nil .
+
+    ?b_nil rdf:first ?property ;
+        rdf:rest rdf:nil .
 
 } WHERE {
 
+{
+    # Alle Ausprägungen einer Dimension
     SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
         ?view a ssz-schema:View ;
             skos:notation ?viewNotation ;
@@ -37,7 +53,53 @@ CONSTRUCT {
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
         BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
-
     }}
+
+}
+UNION
+{
+    # Dimensionen alleine, für den Pfad
+    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+        ?view a ssz-schema:View ;
+            skos:notation ?viewNotation ;
+            ssz-schema:viewStructure ?dsdUri ;
+            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
+  
+        ?property skos:notation ?propertyNotation .
+
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
+        BIND(BNODE(CONCAT(?propertyNotation, ?viewNotation)) AS ?b_list)
+        BIND(BNODE(CONCAT(CONCAT(?propertyNotation, ?viewNotation), "NIL")) AS ?b_nil)
+    }}
+}
+UNION
+{
+    # Alle Dimensionen mit Literals, nicht URIs
+    SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE { GRAPH <https://linked.opendata.swiss/graph/zh/statistics> {
+
+      ?view a ssz-schema:View ;
+            skos:notation ?viewNotation ;
+            ssz-schema:viewStructure ?dsdUri ;
+            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
+  
+        ?dataset a qb:DataSet ;
+            qb:structure ?dsdUri .
+  
+        ?obs a qb:Observation ;
+            qb:dataSet ?dataset ;
+            ?property ?propertyValue .
+
+        ?property skos:notation ?propertyNotation .
+
+        FILTER(isLiteral(?propertyValue))
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
+
+    }} GROUP BY ?shapeUri ?target ?b_property ?property
+
+}
 
 }
