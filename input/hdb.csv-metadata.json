@@ -360,6 +360,11 @@
       },
       {
         "virtual":true,
+        "propertyUrl":"http://example.org/dimension",
+        "valueUrl":"http://example.org/{GRUPPE1}-{GRUPPE2}-{GRUPPE3}-{GRUPPE4}-{GRUPPE5}"
+      },      
+      {
+        "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
         "valueUrl":"http://purl.org/linked-data/cube#Observation"
       }

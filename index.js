@@ -37,7 +37,12 @@ function convertCsvw (filename, metadata) {
             dimensions[newUri].add(predUri)
           }
 
-        } 
+        }
+
+        if(predicate.value == 'http://example.org/dimension') {
+          const dimensions = object.value.slice('http://example.org/'.length).split('-').sort().filter(dimension => dimension !== 'XXX')
+          object = p.rdf.namedNode('http://example.org/dataset/' + dimensions.join('-'))
+        }
         
         if(object.termType == 'NamedNode' ) {
           object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
