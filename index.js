@@ -40,8 +40,10 @@ function convertCsvw (filename, metadata) {
         }
 
         if(predicate.value == 'http://example.org/dimension') {
-          const dimensions = object.value.slice('http://example.org/'.length).split('-').sort().filter(dimension => dimension !== 'XXX')
-          object = p.rdf.namedNode('http://example.org/dataset/' + dimensions.join('-'))
+          const fix = 'http://example.org/'
+          const dimensions = object.value.slice(fix.length + 4).split('-').sort().filter(dimension => dimension !== 'XXX')
+          const kennzahl = object.value.slice(fix.length, fix.length + 4)
+          object = p.rdf.namedNode('http://example.org/dataset/' + kennzahl + dimensions.join('-'))
         }
         
         if(object.termType == 'NamedNode' ) {
