@@ -8,7 +8,6 @@ function convertCsvw (filename, metadata) {
   const filenameOutput = 'target/' + path.basename(metadata, '.csv-metadata.json') + '.nt'
   const filenameOutputDimensions = 'target/' + path.basename(metadata, '.csv-metadata.json') + '-meta.nt'
 
-  const dimensions = {}
   const qbDataSet = new Map()
   const dataset = p.rdf.dataset()
 
@@ -31,12 +30,6 @@ function convertCsvw (filename, metadata) {
           const newUri = subject.value.replace(/\/XXX0000/g, '')
           const predUri = predicate.value
           subject = p.rdf.namedNode(newUri)
-
-          dimensions[newUri] = dimensions[newUri] || new Set()
-          if(predUri.includes('/property/')) {
-            const uniquedimension = predUri.slice('http://ld.stadt-zuerich.ch/statistics/property/'.length)
-            dimensions[newUri].add(predUri)
-          }
 
         }
 
@@ -94,12 +87,10 @@ function convertCsvw (filename, metadata) {
   }).then(() => {
 
     for (var [key, value] of qbDataSet.entries()) {
-    //  console.log(key + " = " + value);
 
       const datasetNode = p.rdf.namedNode(key)
       const dsdNode = p.rdf.namedNode(key + '#structure')
       const componentNode = p.rdf.blankNode()
-
       
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://purl.org/linked-data/cube#structure'), dsdNode))
@@ -113,31 +104,6 @@ function convertCsvw (filename, metadata) {
       })
 
     }
-
-    /*
-    uniq(Object.values(dimensions).map(dimension => Array.from(dimension).sort().join(' '))).forEach((dimensionString) => {
-      const dimension = dimensionString.split(' ')
-
-      const uripattern = dimension.map(element => {
-          return element.slice('http://ld.stadt-zuerich.ch/statistics/property/'.length)
-        }).sort().join('/')
-
-      const datasetNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + uripattern)
-      const dsdNode = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/structure/' + uripattern)
-      const componentNode = p.rdf.blankNode()
-
-      
-      dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
-      dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://purl.org/linked-data/cube#structure'), dsdNode))
-      dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataStructureDefinition')))
-      dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://purl.org/linked-data/cube#component'), componentNode))
-
-      dimension.forEach((predicate) => {
-        dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode(predicate)))
-      })
-
-    })
-    */
 
     p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
   }) 
