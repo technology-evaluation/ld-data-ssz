@@ -39,11 +39,12 @@ function convertCsvw (filename, metadata) {
 
         }
 
-        if(predicate.value == 'http://example.org/dimension') {
+        if(predicate.value == 'http://purl.org/linked-data/cube#dataSet') {
           const fix = 'http://example.org/'
           const dimensions = object.value.slice(fix.length + 4).split('-').sort().filter(dimension => dimension !== 'XXX')
           const kennzahl = object.value.slice(fix.length, fix.length + 4)
-          object = p.rdf.namedNode('http://example.org/dataset/' + kennzahl + dimensions.join('-'))
+          const static = (dimensions.length > 0 ? "RAUM-ZEIT-" : "RAUM-ZEIT")
+          object = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + static + dimensions.join('-'))
         }
         
         if(object.termType == 'NamedNode' ) {
