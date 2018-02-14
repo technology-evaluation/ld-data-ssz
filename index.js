@@ -139,10 +139,10 @@ const filenames = [{
  // filename: 'hdb.csv',
   //metadata: 'hdb_referenznummer.csv-metadata.json'
 //},
-//{
-  //filename: 'hdb_mapping.csv',
-  //metadata: 'hdb_mapping.csv-metadata.json'
-//}
+{
+  filename: 'hdb_mapping.csv',
+  metadata: 'hdb_mapping.csv-metadata.json'
+}
 ]
 
 const xlsxSources = [{
