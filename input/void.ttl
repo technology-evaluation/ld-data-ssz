@@ -14,7 +14,8 @@
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix duv: <http://www.w3.org/ns/duv#> .
 
-<datasets> a void:DatasetDescription;
+
+<.well-known/void> a void:DatasetDescription;
     dcterms:title "Description of Statistik Stadt Zürich Datasets"@en;
     dcterms:creator <org/SSZ>;
     foaf:topic <dataset/SSZ> .
