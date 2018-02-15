@@ -35,13 +35,9 @@ INSERT {
 {
     # Alle Ausprägungen einer Dimension
     SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE {
-        ?view a ssz-schema:View ;
-            skos:notation ?viewNotation ;
-            ssz-schema:viewStructure ?dsdUri ;
-            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
-  
         ?dataset a qb:DataSet ;
-            qb:structure ?dsdUri .
+            skos:notation ?datasetNotation ;
+            qb:structure/qb:component/qb:dimension|qb:measure ?property .
   
         ?obs a qb:Observation ;
             qb:dataSet ?dataset ;
@@ -50,9 +46,9 @@ INSERT {
         ?property skos:notation ?propertyNotation .
 
         FILTER(isIri(?propertyValue))
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
-        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
     }
 
 }
@@ -60,32 +56,26 @@ UNION
 {
     # Dimensionen alleine, für den Pfad
     SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE {
-        ?view a ssz-schema:View ;
-            skos:notation ?viewNotation ;
-            ssz-schema:viewStructure ?dsdUri ;
-            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
+        ?dataset a qb:DataSet ;
+            skos:notation ?datasetNotation ;
+            qb:structure/qb:component/qb:dimension|qb:measure ?property .
   
         ?property skos:notation ?propertyNotation .
 
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
-        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
-        BIND(BNODE(CONCAT(?propertyNotation, ?viewNotation)) AS ?b_list)
-        BIND(BNODE(CONCAT(CONCAT(?propertyNotation, ?viewNotation), "NIL")) AS ?b_nil)
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
+        BIND(BNODE(CONCAT(?propertyNotation, ?datasetNotation)) AS ?b_list)
+        BIND(BNODE(CONCAT(CONCAT(?propertyNotation, ?datasetNotation), "NIL")) AS ?b_nil)
     }
 }
 UNION
 {
     # Alle Dimensionen mit Literals, nicht URIs
     SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
-
-      ?view a ssz-schema:View ;
-            skos:notation ?viewNotation ;
-            ssz-schema:viewStructure ?dsdUri ;
-            ssz-schema:viewStructure/qb:component/qb:dimension|qb:measure ?property .
-  
         ?dataset a qb:DataSet ;
-            qb:structure ?dsdUri .
+            skos:notation ?datasetNotation ;
+            qb:structure/qb:component/qb:dimension|qb:measure ?property .
   
         ?obs a qb:Observation ;
             qb:dataSet ?dataset ;
@@ -94,9 +84,9 @@ UNION
         ?property skos:notation ?propertyNotation .
 
         FILTER(isLiteral(?propertyValue))
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/view/%%VIEW%%/shape", "%%VIEW%%" , ?viewNotation)) AS ?shapeUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%VIEW%%/slice", "%%VIEW%%" , ?viewNotation)) AS ?target)
-        BIND(BNODE(CONCAT(?viewNotation, ?propertyNotation)) AS ?b_property)
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
 
     } GROUP BY ?shapeUri ?target ?b_property ?property
 
