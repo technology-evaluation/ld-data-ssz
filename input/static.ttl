@@ -48,3 +48,18 @@ ssz-dimension:ZEIT a qb:DimensionProperty ;
 ssz-dimension:RAUM a qb:DimensionProperty ;
     skos:notation "RAUM" ;
     rdfs:label "Raum" .
+
+# Stuff that is not necessary in the Excel in Gruppencode
+
+ssz-dimension:HEO a qb:DimensionProperty ;
+    skos:notation "HEO" ;
+    rdfs:label "Heimatort" .
+
+ssz-dimension:NAM a qb:DimensionProperty ;
+    skos:notation "NAM" ;
+    rdfs:label "Namen" .
+
+ssz-dimension:ORT a qb:DimensionProperty ;
+    skos:notation "ORT" ;
+    rdfs:label "Ort/Zuzugsort/Wegzugsort" .
+    
