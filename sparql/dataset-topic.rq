@@ -1,0 +1,18 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+
+INSERT {
+
+    ?view a skos:Collection ;
+        skos:member ?dataSet .
+
+} WHERE {
+    ?view a ssz-schema:Topic ;
+        <http://example.org/GESAMTCODE_RCS> ?gesammtcode .
+                           
+    ?obs a qb:Observation ;
+        <http://example.org/GESAMTCODE_RCS> ?gesammtcode ;
+        qb:dataSet ?dataSet .
+}

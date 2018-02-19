@@ -37,7 +37,7 @@ INSERT {
     SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
-            qb:structure/qb:component/qb:dimension|qb:measure ?property .
+            qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
   
         ?obs a qb:Observation ;
             qb:dataSet ?dataset ;
@@ -58,7 +58,7 @@ UNION
     SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
-            qb:structure/qb:component/qb:dimension|qb:measure ?property .
+            qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
   
         ?property skos:notation ?propertyNotation .
 
@@ -75,7 +75,7 @@ UNION
     SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
-            qb:structure/qb:component/qb:dimension|qb:measure ?property .
+            qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
   
         ?obs a qb:Observation ;
             qb:dataSet ?dataset ;

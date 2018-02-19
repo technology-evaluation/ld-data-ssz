@@ -131,6 +131,9 @@ function convertXlsx (filename, sheet, metadata) {
         metadata: metadata,
         sheet: sheet
       }))
+      .pipe(p.filter((quad) => {
+        return quad.object.value !== 'undefined'
+      }))
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
   })
@@ -183,7 +186,7 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Ortliste',
   metadata: 'ortliste.csv-metadata.json'
-},{
+}/*,{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste',
   metadata: 'codeliste.csv-metadata.json'
@@ -191,7 +194,7 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste_Namen',
   metadata: 'codeliste_namen.csv-metadata.json'
-}
+}*/
 ]
 
 program

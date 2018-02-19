@@ -86,7 +86,7 @@
       },
       {
         "titles":"CODE",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/CODE"
       },
       {
         "titles":"WERT",
@@ -95,7 +95,7 @@
       },
       {
         "titles":"CODENAME",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/CODENAME"
       },
       {
         "titles":"KENNZAHLNAME",

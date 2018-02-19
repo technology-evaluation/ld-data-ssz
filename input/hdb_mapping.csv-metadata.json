@@ -1,7 +1,7 @@
 {
   "@context": "http://www.w3.org/ns/csvw",
   "url": "hdb_mapping.csv",
-  "aboutUrl":"http://stat.stadt-zuerich.ch/view/{REFERENZNUMMER}",
+  "aboutUrl":"http://stat.stadt-zuerich.ch/topic/{REFERENZNUMMER}",
   "null":"Dummy",
   "tableSchema": {
     "columns": [
@@ -16,6 +16,16 @@
       {
         "titles":"TITEL",
         "suppressOutput": true
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
       }
     ]
   }

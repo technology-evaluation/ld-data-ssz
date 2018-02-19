@@ -1,0 +1,3 @@
+DELETE WHERE {
+    ?s ?p <http://ld.stadt-zuerich.ch/statistics/property/XXX> .
+}

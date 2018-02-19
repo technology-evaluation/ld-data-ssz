@@ -21,8 +21,9 @@
 
 ## Classes & Properties
 
-ssz-schema:View a rdfs:Class ;
-    rdfs:label "View"@en .
+ssz-schema:Topic a rdfs:Class ;
+    rdfs:label "Topic"@en ;
+    rdfs:label "Thema"@de .
 
 ssz-schema:viewStructure a rdf:Property ;
     rdfs:label "Structure of the slice attached to this view"@en .
