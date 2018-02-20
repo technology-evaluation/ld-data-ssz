@@ -9,13 +9,13 @@ INSERT {
 
     ?dataSet qb:slice ?slice .
 
-    ?slice qb:sliceStructure ?sliceKey .
+    ?slice qb:sliceStructure ?sliceKey ;
+        rdfs:label ?codename .
 
     # TODO check if we need qb:sliceKey link from DSD to SliceKey
 
     # locked dimension to SliceKey
     ?sliceKey a qb:SliceKey ;
-        rdfs:label ?codename ;
         qb:DataStructureDefinition ?dsd .
     ?sliceKey qb:componentProperty ?dimension1 .
     ?sliceKey qb:componentProperty ?dimension2 .

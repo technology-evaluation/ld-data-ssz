@@ -25,8 +25,8 @@ ssz-schema:Topic a rdfs:Class ;
     rdfs:label "Topic"@en ;
     rdfs:label "Thema"@de .
 
-ssz-schema:DefaultSliceKey a rdfs:Class ;
-    rdfs:label "Default SliceKey of a dataset" .
+ssz-schema:DefaultSlice a rdfs:Class ;
+    rdfs:label "Default Slice of a dataset" .
 
 ssz-schema:viewStructure a rdf:Property ;
     rdfs:label "Structure of the slice attached to this view"@en .
