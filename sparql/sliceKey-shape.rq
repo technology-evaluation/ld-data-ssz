@@ -10,13 +10,15 @@ PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 # Important: This has to be run before qb-slices-code.rq. At least I think so, got way too many triples otherwise
 INSERT {
     ?sliceKey a ssz-schema:DefaultSliceKey ;
+        rdfs:label ?label ;
         sh:shapesGraph ?shape .
 
 }
  WHERE {
 
         ?dataset a qb:DataSet ;
-           skos:notation ?datasetNotation ;
+            rdfs:label ?label ;
+            skos:notation ?datasetNotation ;
             qb:slice/qb:sliceStructure ?sliceKey .
 
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)

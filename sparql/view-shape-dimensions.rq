@@ -10,7 +10,7 @@ PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 INSERT {
   
   ?shapeUri a sh:NodeShape ;
-    owl:sameAs shapeApiUri ;
+    owl:sameAs ?shapeApiUri ;
 	sh:targetNode ?target ;
     # alle Ausprägungen einer Dimension
   	sh:property ?b_property .
