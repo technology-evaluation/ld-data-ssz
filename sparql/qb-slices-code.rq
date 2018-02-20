@@ -1,0 +1,78 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+
+INSERT {
+
+    ?dataSet qb:slice ?slice .
+
+    ?slice qb:sliceStructure ?sliceKey .
+
+    # TODO check if we need qb:sliceKey link from DSD to SliceKey
+
+    # locked dimension to SliceKey
+    ?sliceKey a qb:SliceKey ;
+        rdfs:label ?codename ;
+        qb:DataStructureDefinition ?dsd .
+    ?sliceKey qb:componentProperty ?dimension1 .
+    ?sliceKey qb:componentProperty ?dimension2 .
+    ?sliceKey qb:componentProperty ?dimension3 .
+    ?sliceKey qb:componentProperty ?dimension4 .
+    ?sliceKey qb:componentProperty ?dimension5 .
+
+
+    # Lock itself to Slilce
+    ?slice ?dimension1 ?lock1 .
+    ?slice ?dimension2 ?lock2 .
+    ?slice ?dimension3 ?lock3 .
+    ?slice ?dimension4 ?lock4 .
+    ?slice ?dimension5 ?lock5 .
+
+
+} WHERE {
+
+{
+SELECT DISTINCT ?dataSet ?dsd ?codename ?codeid ?gruppe1 ?gruppencode1 ?gruppe2 ?gruppencode2 ?gruppe3 ?gruppencode3 ?gruppe4 ?gruppencode4 ?gruppe5 ?gruppencode5
+WHERE {      
+  ?obs <http://example.org/CODE> ?code ;
+        <http://example.org/CODENAME> ?codename ;
+        qb:dataSet ?dataSet .
+  
+    ?dataSet a qb:DataSet ;
+        qb:structure ?dsd .
+  
+    BIND(STRBEFORE(?code, 'XXX') AS ?codeid)
+    #BIND(SUBSTR(?code, 1, 3) AS ?kennzahl)
+    BIND(SUBSTR(?code, 4,  7) AS ?gruppencode1)
+    BIND(SUBSTR(?code, 11, 7) AS ?gruppencode2)
+    BIND(SUBSTR(?code, 18, 7) AS ?gruppencode3)
+    BIND(SUBSTR(?code, 25, 7) AS ?gruppencode4)
+    BIND(SUBSTR(?code, 32, 7) AS ?gruppencode5)
+    BIND(SUBSTR(?code, 4,  3) AS ?gruppe1)
+    BIND(SUBSTR(?code, 11, 3) AS ?gruppe2)
+    BIND(SUBSTR(?code, 18, 3) AS ?gruppe3)
+    BIND(SUBSTR(?code, 25, 3) AS ?gruppe4)
+    BIND(SUBSTR(?code, 32, 3) AS ?gruppe5)
+}
+}
+
+BIND('http://ld.stadt-zuerich.ch/statistics/property/' AS ?prefix)
+BIND('http://ld.stadt-zuerich.ch/statistics/code/' AS ?prefixLock)
+BIND(IRI(CONCAT(STR(?dataSet), '/', ?codeid, '/sliceKey')) AS ?sliceKey)
+BIND(IRI(CONCAT(STR(?dataSet), '/', ?codeid, '/slice')) AS ?slice)
+
+BIND(IRI(CONCAT(?prefix, ?gruppe1)) AS ?dimension1)
+BIND(IRI(CONCAT(?prefix, ?gruppe2)) AS ?dimension2)
+BIND(IRI(CONCAT(?prefix, ?gruppe3)) AS ?dimension3)
+BIND(IRI(CONCAT(?prefix, ?gruppe4)) AS ?dimension4)
+BIND(IRI(CONCAT(?prefix, ?gruppe5)) AS ?dimension5)
+BIND(IRI(CONCAT(?prefixLock, ?gruppencode1)) AS ?lock1)
+BIND(IRI(CONCAT(?prefixLock, ?gruppencode2)) AS ?lock2)
+BIND(IRI(CONCAT(?prefixLock, ?gruppencode3)) AS ?lock3)
+BIND(IRI(CONCAT(?prefixLock, ?gruppencode4)) AS ?lock4)
+BIND(IRI(CONCAT(?prefixLock, ?gruppencode5)) AS ?lock5)
+
+}

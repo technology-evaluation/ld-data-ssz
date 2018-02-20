@@ -7,6 +7,7 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
+# Important: This has to be run before qb-slices-code.rq. At least I think so, got way too many triples otherwise
 INSERT {
     ?sliceKey a ssz-schema:DefaultSliceKey ;
         sh:shapesGraph ?shape .
