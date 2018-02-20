@@ -10,6 +10,7 @@ PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 INSERT {
   
   ?shapeUri a sh:NodeShape ;
+    owl:sameAs shapeApiUri ;
 	sh:targetNode ?target ;
     # alle Ausprägungen einer Dimension
   	sh:property ?b_property .
@@ -34,7 +35,7 @@ INSERT {
 
 {
     # Alle Ausprägungen einer Dimension
-    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE {
+    SELECT DISTINCT ?shapeUri ?shapeApiUri ?target ?b_property ?b_list ?b_nil ?property ?propertyValue WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
             qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
@@ -46,7 +47,8 @@ INSERT {
         ?property skos:notation ?propertyNotation .
 
         FILTER(isIri(?propertyValue))
-        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
     }
@@ -55,14 +57,15 @@ INSERT {
 UNION
 {
     # Dimensionen alleine, für den Pfad
-    SELECT DISTINCT ?shapeUri ?target ?b_property ?b_list ?b_nil ?property WHERE {
+    SELECT DISTINCT ?shapeUri ?shapeApiUri ?target ?b_property ?b_list ?b_nil ?property WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
             qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
   
         ?property skos:notation ?propertyNotation .
 
-        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
         BIND(BNODE(CONCAT(?propertyNotation, ?datasetNotation)) AS ?b_list)
@@ -72,7 +75,7 @@ UNION
 UNION
 {
     # Alle Dimensionen mit Literals, nicht URIs
-    SELECT ?shapeUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
+    SELECT ?shapeUri ?shapeApiUri ?target ?b_property ?property (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
         ?dataset a qb:DataSet ;
             skos:notation ?datasetNotation ;
             qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
@@ -84,11 +87,12 @@ UNION
         ?property skos:notation ?propertyNotation .
 
         FILTER(isLiteral(?propertyValue))
-        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)          
+        BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
         BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
 
-    } GROUP BY ?shapeUri ?target ?b_property ?property
+    } GROUP BY ?shapeUri ?shapeApiUri ?target ?b_property ?property
 
 }
 
