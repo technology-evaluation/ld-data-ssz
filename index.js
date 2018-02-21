@@ -94,11 +94,13 @@ function convertCsvw (filename, metadata) {
       const sliceNode = p.rdf.namedNode(key + '/slice')
       const componentNode = p.rdf.blankNode()
       const datasetNotation = key.slice('http://ld.stadt-zuerich.ch/statistics/dataset/'.length)
+      const dataSetApiNode = p.rdf.namedNode('http://stat.stadt-zuerich.ch/api/dataset/' + datasetNotation)
       
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2004/02/skos/core#notation'), p.rdf.literal(datasetNotation)))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2000/01/rdf-schema#label'), p.rdf.literal(datasetNotation)))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://purl.org/linked-data/cube#structure'), dsdNode))
+      dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2002/07/owl#sameAs'), dataSetApiNode))
       dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataStructureDefinition')))
       dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://purl.org/linked-data/cube#component'), componentNode))
       dataset.add(p.rdf.quad(sliceKeyNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#SliceKey')))
