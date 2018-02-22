@@ -45,7 +45,7 @@ WHERE {
     ?dataSet a qb:DataSet ;
         qb:structure ?dsd .
   
-    BIND(STRBEFORE(?code, 'XXX') AS ?codeid)
+    BIND( IF(CONTAINS(?code, 'XXX'), STRBEFORE(?code, 'XXX'), ?code) AS ?codeid)
     #BIND(SUBSTR(?code, 1, 3) AS ?kennzahl)
     BIND(SUBSTR(?code, 4,  7) AS ?gruppencode1)
     BIND(SUBSTR(?code, 11, 7) AS ?gruppencode2)
