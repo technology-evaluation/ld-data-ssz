@@ -9,7 +9,8 @@ INSERT {
 
     ?dataSet qb:slice ?slice .
 
-    ?slice qb:sliceStructure ?sliceKey ;
+    ?slice a qb:Slice ;
+        qb:sliceStructure ?sliceKey ;
         rdfs:label ?codename .
 
     # TODO check if we need qb:sliceKey link from DSD to SliceKey
