@@ -13,4 +13,6 @@ WHERE {
   		FILTER(?mapping != "undefined")
     
     ?otherbase <http://example.org/QuarCodeAktuell> ?mappingSplit .
+
+    FILTER (?otherbase != ?base )
 }
