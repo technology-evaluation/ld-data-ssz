@@ -1,0 +1,16 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+	?base skos:narrower ?otherbase .
+  	?otherbase skos:broader ?base .
+}
+WHERE {
+
+    ?base <http://example.org/MAPPING> ?mapping .
+        ?mappingSplit apf:strSplit (?mapping ",")  .
+  		FILTER(?mapping != "undefined")
+    
+    ?otherbase <http://example.org/QuarCodeAktuell> ?mappingSplit .
+}
