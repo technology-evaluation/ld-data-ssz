@@ -134,12 +134,6 @@ function convertXlsx (filename, sheet, metadata) {
   })
 }
 
-var uniq = (arrArg) => {
-  return arrArg.filter((elem, pos, arr) => {
-    return arr.indexOf(elem) == pos
-  })
-}
-
 const filenames = [{
   filename: 'hdb.csv',
   metadata: 'hdb.csv-metadata.json'
