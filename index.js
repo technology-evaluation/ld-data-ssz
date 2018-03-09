@@ -21,34 +21,30 @@ function convertCsvw (filename, metadata) {
         return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
       }))
       .pipe(p.map((quad) => {
-
         let subject = quad.subject
         let predicate = quad.predicate
         let object = quad.object
 
-        if(subject.termType == 'NamedNode' ) {
+        if (subject.termType === 'NamedNode') {
           const newUri = subject.value.replace(/\/XXX0000/g, '')
-          const predUri = predicate.value
           subject = p.rdf.namedNode(newUri)
-
         }
 
-        if(predicate.value == 'http://purl.org/linked-data/cube#dataSet') {
+        if (predicate.value === 'http://purl.org/linked-data/cube#dataSet') {
           const fix = 'http://example.org/'
           const dimensions = object.value.slice(fix.length + 4).split('-').sort().filter(dimension => dimension !== 'XXX')
           const kennzahl = object.value.slice(fix.length, fix.length + 3)
-          const static = dimensions.length > 0 ? "RAUM-ZEIT-" : "RAUM-ZEIT"
-          object = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + '-' + static + dimensions.join('-'))
+          const staticDimension = dimensions.length > 0 ? 'RAUM-ZEIT-' : 'RAUM-ZEIT'
+          object = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + '-' + staticDimension + dimensions.join('-'))
           dimensions.unshift(kennzahl, 'RAUM', 'ZEIT')
           qbDataSet.set(object.value, dimensions)
         }
-        
-        if(object.termType == 'NamedNode' ) {
+
+        if (object.termType === 'NamedNode') {
           object = p.rdf.namedNode(object.value.replace(/\/XXX0000/g, ''))
         }
 
-        if(predicate.value.startsWith('http://example.org/measure/')) {
-
+        if (predicate.value.startsWith('http://example.org/measure/')) {
           const value = object.value.split(' ').join('')
           const predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
 
@@ -60,16 +56,16 @@ function convertCsvw (filename, metadata) {
           } else {
             valnumber = parseFloat(value)
           }
-          
+
           predicate = p.rdf.namedNode(predicateUri)
           // Dataype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
           object = p.rdf.literal(valnumber, object.datatype)
         }
 
         if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
-          const year  = object.value.substring(5,9)
-          const month = object.value.substring(3,5)
-          const day = object.value.substring(1,3)
+          const year = object.value.substring(5, 9)
+          const month = object.value.substring(3, 5)
+          const day = object.value.substring(1, 3)
 
           if ((day === 'XX') && (month === 'XX')) {
             object = p.rdf.literal(year, 'http://www.w3.org/2001/XMLSchema#gYear')
@@ -85,9 +81,7 @@ function convertCsvw (filename, metadata) {
       .pipe(p.ntriples.serialize())
       .pipe(p.file.write(filenameOutput)))
   }).then(() => {
-
     for (var [key, value] of qbDataSet.entries()) {
-
       const datasetNode = p.rdf.namedNode(key)
       const dsdNode = p.rdf.namedNode(key + '#structure')
       const sliceKeyNode = p.rdf.namedNode(key + '/sliceKey')
@@ -95,7 +89,7 @@ function convertCsvw (filename, metadata) {
       const componentNode = p.rdf.blankNode()
       const datasetNotation = key.slice('http://ld.stadt-zuerich.ch/statistics/dataset/'.length)
       const dataSetApiNode = p.rdf.namedNode('http://stat.stadt-zuerich.ch/api/dataset/' + datasetNotation)
-      
+
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2004/02/skos/core#notation'), p.rdf.literal(datasetNotation)))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2000/01/rdf-schema#label'), p.rdf.literal(datasetNotation)))
@@ -114,11 +108,10 @@ function convertCsvw (filename, metadata) {
       value.forEach((predicate) => {
         dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/property/' + predicate)))
       })
-
     }
 
     p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
-  }) 
+  })
 }
 
 function convertXlsx (filename, sheet, metadata) {
@@ -143,17 +136,17 @@ function convertXlsx (filename, sheet, metadata) {
 
 var uniq = (arrArg) => {
   return arrArg.filter((elem, pos, arr) => {
-    return arr.indexOf(elem) == pos;
-  });
+    return arr.indexOf(elem) == pos
+  })
 }
 
 const filenames = [{
   filename: 'hdb.csv',
   metadata: 'hdb.csv-metadata.json'
-},//{
- // filename: 'hdb.csv',
-  //metadata: 'hdb_referenznummer.csv-metadata.json'
-//},
+}, // {
+  // filename: 'hdb.csv',
+  // metadata: 'hdb_referenznummer.csv-metadata.json'
+// },
 {
   filename: 'hdb_mapping.csv',
   metadata: 'hdb_mapping.csv-metadata.json'
@@ -161,34 +154,39 @@ const filenames = [{
 ]
 
 const xlsxSources = [{
-  filename: "HDB_Listen.xlsx",
+  filename: 'HDB_Listen.xlsx',
   sheet: 'Referenznummern',
   metadata: 'referenznummern.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Raum',
   metadata: 'raum.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Kennzahlen',
   metadata: 'kennzahlen.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Gruppenliste',
   metadata: 'gruppenliste.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Gruppenliste',
   metadata: 'gruppenliste_dimension.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Namenliste',
   metadata: 'namenliste.csv-metadata.json'
-},{
+}, {
   filename: 'HDB_Listen.xlsx',
   sheet: 'Ortliste',
   metadata: 'ortliste.csv-metadata.json'
-}/*,{
+}, {
+  filename: '2018-01-18_Themenbaum_Zuordnung-Views.xlsx',
+  sheet: 'Tabelle1',
+  metadata: 'themenbaum.csv-metadata.json'
+}
+/*,{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste',
   metadata: 'codeliste.csv-metadata.json'
@@ -196,7 +194,7 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste_Namen',
   metadata: 'codeliste_namen.csv-metadata.json'
-}*/
+} */
 ]
 
 program
@@ -209,22 +207,21 @@ if (!process.argv.slice(2).length) {
   process.exit(1)
 }
 
-
 p.run(() => {
   p.shell.mkdir('-p', 'target/')
 }).then(() => {
-    if (program.hdb) {
-      return p.Promise.serially(filenames, (source) => {
-        console.log('convert: ' + source.filename)
-        return convertCsvw(source.filename, source.metadata)
-      })
-    }
-    if (program.lists) {
-      return p.Promise.serially(xlsxSources, (source) => {
-        console.log('convert: ' + source.filename + ' ' + source.sheet)
-        return convertXlsx(source.filename, source.sheet, source.metadata)
-      })
-    }
+  if (program.hdb) {
+    return p.Promise.serially(filenames, (source) => {
+      console.log('convert: ' + source.filename)
+      return convertCsvw(source.filename, source.metadata)
+    })
+  }
+  if (program.lists) {
+    return p.Promise.serially(xlsxSources, (source) => {
+      console.log('convert: ' + source.filename + ' ' + source.sheet)
+      return convertXlsx(source.filename, source.sheet, source.metadata)
+    })
+  }
 }).then(() => {
   console.log('done')
 }).catch((err) => {
