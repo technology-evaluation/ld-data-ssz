@@ -25,6 +25,18 @@ ssz-schema:Topic a rdfs:Class ;
     rdfs:label "Topic"@en ;
     rdfs:label "Thema"@de .
 
+ssz-schema:Category a rdfs:Class ;
+    rdfs:label "Themen Kategorie"@de .
+    
+ssz-schema:Level1 a rdfs:Class ;
+    rdfs:label "Themen Kategorie Stufe 1"@de .
+
+ssz-schema:Level2 a rdfs:Class ;
+    rdfs:label "Themen Kategorie Stufe 2"@de .
+
+ssz-schema:Level3 a rdfs:Class ;
+    rdfs:label "Themen Kategorie Stufe 3"@de .
+
 ssz-schema:DefaultSlice a rdfs:Class ;
     rdfs:label "Default Slice of a dataset" .
 
