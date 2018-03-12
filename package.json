@@ -29,7 +29,7 @@
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
     "clean-hdb": "cat target/hdb.nt target/hdb_mapping.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
     "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
-    "tdb-query": "env JVM_ARGS=-Xmx3g ./scripts/tdb-query.sh",
+    "tdb-query": "env JVM_ARGS=-Xmx7G ./scripts/tdb-query.sh",
     "tdb-dump": "./scripts/tdb-dump.sh",
     "stardog-load": "stardog data remove --all ssz-staging && stardog data add ssz-staging target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
     "stardog-query": "./scripts/stardog-query.sh",
