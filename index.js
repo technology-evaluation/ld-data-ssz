@@ -175,11 +175,11 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Ortliste',
   metadata: 'ortliste.csv-metadata.json'
-}, {
+}/*, {
   filename: '2018-01-18_Themenbaum_Zuordnung-Views.xlsx',
   sheet: 'Tabelle1',
   metadata: 'themenbaum.csv-metadata.json'
-}
+}*/
 /*,{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste',
