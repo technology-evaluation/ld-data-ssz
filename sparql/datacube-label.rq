@@ -1,0 +1,38 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX ex: <http://example.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+
+DELETE {
+    ?dataSet rdfs:label ?label .
+}
+INSERT {
+    ?dataSet rdfs:label ?finallabel .
+}
+WHERE {
+{
+    SELECT ?dataSet ?label ?measureLabel (GROUP_CONCAT(?dimensionLabel ;separator='; ') AS ?text ) WHERE {
+        SELECT ?dataSet ?label ?measureLabel ?dimensionLabel WHERE {
+            ?dataSet a qb:DataSet ;
+            rdfs:label ?label ;
+            skos:notation ?datasetNotation ;
+            qb:structure/qb:component/qb:dimension ?dimension ;
+            qb:structure/qb:component/qb:measure ?measure .
+    
+            FILTER ( ?dimension NOT IN (ssz-dimension:RAUM, ssz-dimension:ZEIT) )
+ 
+            ?measure skos:notation ?measureNotation ;
+                rdfs:label ?measureLabel .
+            ?dimension skos:notation ?dimensionNotation ;
+                rdfs:label ?dimensionLabel .
+        } GROUP BY ?dataSet ?label ?measureLabel ?dimensionNotation ?dimensionLabel ORDER BY ?dataSet ?dimensionNotation
+    } GROUP BY ?dataSet ?label ?measureLabel
+}
+
+BIND(CONCAT( ?measureLabel, ": ", ?text ) AS ?finallabel )
+
+}
