@@ -1,0 +1,55 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "themenbaum.csv",
+  "tableSchema": {
+    "aboutUrl": "http://stat.stadt-zuerich.ch/category/{Thema_URI}",
+    "columns": [
+      {
+        "titles": "Thema",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+      },
+      {
+        "titles": "Thema_URI",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Stufe1",
+        "propertyUrl": "http://example.org/stufe1"
+      },
+      {
+        "titles": "Stufe1_URI",
+        "propertyUrl": "http://example.org/stufe1uri"
+      },
+      {
+        "titles": "Stufe2",
+        "propertyUrl": "http://example.org/stufe2"
+      },
+      {
+        "titles": "Stufe2_URI",
+        "propertyUrl": "http://example.org/stufe2uri"
+      },
+      {
+        "titles": "Stufe3",
+        "propertyUrl": "http://example.org/stufe3"
+      },
+      {
+        "titles": "Stufe3_URI",
+        "propertyUrl": "http://example.org/stufe3uri"
+      },
+      {
+        "titles": "Referenztabellen",
+        "propertyUrl": "http://example.org/referenztabellen"
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://ld.stadt-zuerich.ch/schema/Category"
+      }
+    ]
+  }
+}
