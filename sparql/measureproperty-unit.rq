@@ -3,7 +3,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#>
-PREFIX schema: <http://schema.org/>
+PREFIX qudt: <http://qudt.org/1.1/schema/qudt#>
+
 
 DELETE {
     ?measureProperty skos:scopeNote ?note .
@@ -11,7 +12,7 @@ DELETE {
 INSERT {
     ?dataSet sdmx-attribute:unitMeasure ?unit .
   
-    ?unit a schema:Quantity ;
+    ?unit a qudt:Unit ;
         rdfs:label ?note .
   
 } WHERE
