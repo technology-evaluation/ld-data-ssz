@@ -81,10 +81,10 @@ validate_riot_job:
     - ssz
   script:
     - npm run validate-riot
-  artifacts:
-    paths:
-      - target/everything.nt
-    expire_in: 1 day
+#  artifacts:
+#    paths:
+#      - target/everything.nt
+#    expire_in: 1 day
 
 post_test_job:
   stage: post
