@@ -75,16 +75,16 @@ staging_tdb_job:
       - target/everything.nt
     expire_in: 1 day
 
-#validate_riot_job:
-#  stage: validate
-#  tags:
-#    - ssz
-#  script:
-#    - npm run validate-riot
-#  artifacts:
-#    paths:
-#      - target/everything.nt
-#    expire_in: 1 day
+validate_riot_job:
+ stage: validate
+ tags:
+   - ssz
+ script:
+   - npm run validate-riot
+ artifacts:
+   paths:
+     - target/everything.nt
+   expire_in: 1 day
 
 post_test_job:
   stage: post
@@ -104,3 +104,10 @@ post_prod_job:
     - tags
   script:
     - npm run ssz-lindas-prod
+
+failsafe_job:
+  stage: post
+  tags:
+    - ssz
+  script:
+    - npm run
