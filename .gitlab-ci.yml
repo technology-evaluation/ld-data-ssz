@@ -48,7 +48,9 @@ convert_hdb_job:
       - target/hdb-clean.nt
       - target/hdb-meta.nt
     expire_in: 1 day
-
+  dependencies:
+    - curl_hdb_job
+  
 convert_dimensions_job:
   stage: convert
   tags: 
@@ -60,6 +62,8 @@ convert_dimensions_job:
     paths:
       - target/dimensions.nt
     expire_in: 1 day
+  dependencies:
+    - curl_dimension_job
 
 staging_tdb_job:
   stage: staging
@@ -74,6 +78,9 @@ staging_tdb_job:
     paths:
       - target/everything.nt
     expire_in: 1 day
+  dependencies:
+    - convert_dimensions_job
+    - convert_hdb_job
 
 validate_riot_job:
   stage: validate
@@ -85,6 +92,8 @@ validate_riot_job:
     paths:
       - target/everything.nt
     expire_in: 1 day
+  dependencies:
+    - staging_tdb_job
 
 post_test_job:
   stage: post
@@ -95,6 +104,8 @@ post_test_job:
     - develop
   script:
     - npm run ssz-zazuko
+  dependencies:
+    - validate_riot_job
 
 post_prod_job:
   stage: post
@@ -104,3 +115,5 @@ post_prod_job:
     - tags
   script:
     - npm run ssz-lindas-prod
+  dependencies:
+    - validate_riot_job
