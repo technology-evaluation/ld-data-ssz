@@ -31,6 +31,8 @@ curl_dimension_job:
     - ssz
   script:
     - npm run get-dimensions
+    - npm run get-glossar
+    - npm run get-quellen
   artifacts:
     paths:
       - input/HDB_Listen.xlsx
