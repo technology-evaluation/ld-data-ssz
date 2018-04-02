@@ -1,0 +1,40 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "quellenliste.csv",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/quelle/{CODE}",
+    "columns": [
+      {
+        "titles": "QUELLE",
+        "propertyUrl": "http://purl.org/dc/elements/1.1/source"
+      },
+      {
+        "titles": "CODE",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      },
+      {
+        "titles": "ORGANISATION",
+        "propertyUrl": "http://purl.org/dc/elements/1.1/creator"
+      },
+      {
+        "titles": "LINK",
+        "propertyUrl": "http://schema.org/url"
+      },
+      {
+        "titles": "OWNER"
+      },
+      {
+        "titles": "LICENCE",
+        "propertyUrl": "http://purl.org/dc/terms/license"
+      },
+      {
+        "titles": "LICENCE_TXT",
+        "propertyUrl": "http://purl.org/dc/elements/1.1/rights"
+      },
+      {
+        "titles": "ERHEBUNGSMETHODE",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment"
+      }
+    ]
+  }
+}
