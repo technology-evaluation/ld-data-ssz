@@ -25,12 +25,12 @@
         "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
       },
       {
-        "titles": "IDSynonym",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
+        "titles": "IDVerwandt",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idVerwandt"
       },
       {
-        "titles": "IDSynonym",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
+        "titles": "IDParent",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idParent"
       },
       {
         "titles": "BeschreibungKurz",
