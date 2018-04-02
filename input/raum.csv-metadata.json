@@ -13,6 +13,12 @@
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
       "lang": "de-CH"
     },{
+      "titles": "Raumebene",
+      "propertyUrl": "http://example.org/Raumebene"
+    },{
+      "titles": "RaumebeneParent",
+      "propertyUrl": "http://example.org/RaumebeneParent"
+    },{
       "titles": "Mapping (kleinste gültige Einheiten)",
       "propertyUrl": "http://example.org/MAPPING"
     },{
