@@ -1,0 +1,53 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "kennzahlen.csv",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
+    "columns": [
+      {
+        "titles": "Index",
+        "suppressOutput":true
+      },
+      {
+        "titles": "KennzahlCode",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      },
+      {
+        "titles": "Kennzahlname",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
+        "lang": "de-CH"
+      },
+      {
+        "titles": "Einheit",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote"
+      },
+      {
+        "titles": "Klasse",
+        "suppressOutput":true
+      },
+      {
+        "titles": "Beschreibung",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
+        "lang": "de-CH"
+      },
+      {
+        "titles": "BVS_Name",
+        "suppressOutput":true
+      },
+      {
+        "titles": "BVS_Wert",
+        "suppressOutput":true
+      },
+      {
+        "titles": "Glossar_ID",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/glossar/{Glossar_ID}"
+      },
+      {
+        "virtual": true,
+        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl": "http://purl.org/linked-data/cube#MeasureProperty"
+      }
+    ]
+  }
+}
