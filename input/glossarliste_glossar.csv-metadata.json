@@ -1,0 +1,77 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "glossarliste.csv",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/glossar/{ID}",
+    "columns": [
+      {
+        "titles": "Name",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+      },
+      {
+        "titles": "ID",
+        "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      },
+      {
+        "titles": "IDVorgaenger",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idVorgaenger"
+      },
+      {
+        "titles": "IDNachfolger",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idNachfolger"
+      },
+      {
+        "titles": "IDSynonym",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
+      },
+      {
+        "titles": "IDSynonym",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
+      },
+      {
+        "titles": "IDSynonym",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/idSynonym"
+      },
+      {
+        "titles": "BeschreibungKurz",
+        "propertyUrl": "http://purl.org/dc/terms/description"
+      },
+      {
+        "titles": "BeschreibungLang",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment"
+      },
+      {
+        "titles": "JBKapitel",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/schema/"
+      },
+      {
+        "titles": "Autor",
+        "propertyUrl": "http://purl.org/dc/terms/creator"
+      },
+      {
+        "titles": "AutorZeit",
+        "propertyUrl": "http://purl.org/dc/terms/created"
+      },
+      {
+        "titles": "Review",
+        "propertyUrl": "http://purl.org/dc/elements/1.1/contributor"
+      },
+      {
+        "titles": "ReviewZeit",
+        "propertyUrl": "http://purl.org/dc/terms/modified"
+      },
+      {
+        "titles": "Verknüpfung",
+        "propertyUrl": "http://purl.org/dc/terms/relation"
+      },
+      {
+        "titles": "DatumVon",
+        "propertyUrl": "http://www.w3.org/2006/time#intervalStarts"
+      },
+      {
+        "titles": "DatumBis",
+        "propertyUrl": "http://www.w3.org/2006/time#intervalFinishes"
+      }
+    ]
+  }
+}

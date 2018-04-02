@@ -21,7 +21,8 @@
         "propertyUrl": "http://schema.org/url"
       },
       {
-        "titles": "OWNER"
+        "titles": "OWNER",
+        "suppressOutput":true
       },
       {
         "titles": "LICENCE",
