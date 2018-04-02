@@ -22,6 +22,8 @@
     "clean": "rm -rf target/*",
     "get-hdb": "curl -k -s -n https://www.ssz-webdav.stadt-zuerich.ch/HDB_Dropzone/HDB.zip -o input/HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
     "get-dimensions": "curl -k -s -n https://www.ssz-webdav.stadt-zuerich.ch/HDB_Dropzone/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
+    "get-quellen": "curl -k -s -n --proxy ld.stadt-zuerich.ch:56948 https://ssz-webdav.integ.stadt-zuerich.ch/HDB_Dropzone/Quellenliste.xlsx -o input/Quellenliste.xlsx ",
+    "get-glossar": "curl -k -s -n --proxy ld.stadt-zuerich.ch:56948 https://ssz-webdav.integ.stadt-zuerich.ch/HDB_Dropzone/Glossarliste.xlsx -o input/Glossarliste.xlsx ",
     "get-hdb-integ": "curl -k -s -n --proxy ld.stadt-zuerich.ch:56948 https://ssz-webdav.integ.stadt-zuerich.ch/HDB_Dropzone/HDB.zip -o input/HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
     "get-dimensions-integ": "curl -k -s -n --proxy ld.stadt-zuerich.ch:56948 https://ssz-webdav.integ.stadt-zuerich.ch/HDB_Dropzone/HDB_Listen.xlsx -o input/HDB_Listen.xlsx",
     "convert-hdb": "node index.js --hdb",
