@@ -196,27 +196,27 @@
       },
       {
         "titles":"FUSSNOTEKENNZAHL",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTEKENNZAHL"
       },
       {
         "titles":"FUSSNOTEATTRIBUT",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTEATTRIBUT"
       },
       {
         "titles":"FUSSNOTEKENNZAHLATTRIBUT",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTEKENNZAHLATTRIBUT"
       },
       {
         "titles":"FUSSNOTEZEIT",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTEZEIT"
       },
       {
         "titles":"FUSSNOTERAUM",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTERAUM"
       },
       {
         "titles":"FUSSNOTEZELLE",
-        "suppressOutput":true
+        "propertyUrl":"http://example.org/FUSSNOTEZELLE"
       },
       {
         "titles":"PUBLIKATIONSSTATUS",
