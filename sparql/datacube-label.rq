@@ -7,9 +7,6 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
-DELETE {
-    ?dataSet rdfs:label ?label .
-}
 INSERT {
     ?dataSet rdfs:label ?finallabel .
 }
@@ -18,7 +15,7 @@ WHERE {
     SELECT ?dataSet ?label ?measureLabel (GROUP_CONCAT(?dimensionLabel ;separator=', ') AS ?text ) WHERE {
         SELECT ?dataSet ?label ?measureLabel ?dimensionLabel WHERE {
             ?dataSet a qb:DataSet ;
-            rdfs:label ?label ;
+            #rdfs:label ?label ;
             skos:notation ?datasetNotation ;
             qb:structure/qb:component/qb:dimension ?dimension ;
             qb:structure/qb:component/qb:measure ?measure .
