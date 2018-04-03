@@ -15,7 +15,7 @@ INSERT {
 }
 WHERE {
 {
-    SELECT ?dataSet ?label ?measureLabel (GROUP_CONCAT(?dimensionLabel ;separator='; ') AS ?text ) WHERE {
+    SELECT ?dataSet ?label ?measureLabel (GROUP_CONCAT(?dimensionLabel ;separator=', ') AS ?text ) WHERE {
         SELECT ?dataSet ?label ?measureLabel ?dimensionLabel WHERE {
             ?dataSet a qb:DataSet ;
             rdfs:label ?label ;
@@ -33,6 +33,6 @@ WHERE {
     } GROUP BY ?dataSet ?label ?measureLabel
 }
 
-BIND(CONCAT( ?measureLabel, ": ", ?text ) AS ?finallabel )
+BIND(CONCAT( ?measureLabel, " nach ", ?text ) AS ?finallabel )
 
 }
