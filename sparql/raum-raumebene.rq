@@ -1,0 +1,30 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+
+    ?base skos:broader ?ebene1Uri .
+
+    ?ebene1Uri a skos:Concept ;
+        skos:broader ?ebene2Uri ;
+        rdfs:label ?ebene1 ;
+        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Raum> ;
+        skos:narrower ?base .
+
+    ?ebene2Uri a skos:Concept ;
+        rdfs:label ?ebene2 ;
+        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Raum> ;
+        skos:narrower ?ebene1Uri .
+
+}
+WHERE {
+
+    ?base <http://example.org/Raumebene> ?ebene1 ;
+        <http://example.org/RaumebeneParent> ?ebene2 .
+    
+    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/code/", ENCODE_FOR_URI(?ebene1) )) AS ?ebene1Uri)
+    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/code/", ENCODE_FOR_URI(?ebene2) )) AS ?ebene2Uri)
+
+}
