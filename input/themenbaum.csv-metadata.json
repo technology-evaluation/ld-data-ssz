@@ -2,15 +2,16 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "themenbaum.csv",
   "tableSchema": {
-    "aboutUrl": "http://stat.stadt-zuerich.ch/category/{Thema_URI}",
+    "aboutUrl": "http://example.org/{Thema_URI}/{Stufe1_URI}/{Stufe2_URI}/{Stufe3_URI}",
     "columns": [
       {
         "titles": "Thema",
-        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+        "propertyUrl": "http://example.org/thema"
       },
       {
         "titles": "Thema_URI",
-        "suppressOutput": true
+        "propertyUrl": "http://example.org/themauri",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Thema_URI}"
       },
       {
         "titles": "Stufe1",
@@ -18,7 +19,8 @@
       },
       {
         "titles": "Stufe1_URI",
-        "propertyUrl": "http://example.org/stufe1uri"
+        "propertyUrl": "http://example.org/stufe1uri",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Stufe1_URI}"
       },
       {
         "titles": "Stufe2",
@@ -26,7 +28,8 @@
       },
       {
         "titles": "Stufe2_URI",
-        "propertyUrl": "http://example.org/stufe2uri"
+        "propertyUrl": "http://example.org/stufe2uri",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
       },
       {
         "titles": "Stufe3",
@@ -34,21 +37,12 @@
       },
       {
         "titles": "Stufe3_URI",
-        "propertyUrl": "http://example.org/stufe3uri"
+        "propertyUrl": "http://example.org/stufe3uri",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
       },
       {
         "titles": "Referenztabellen",
         "propertyUrl": "http://example.org/referenztabellen"
-      },
-      {
-        "virtual": true,
-        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
-      },
-      {
-        "virtual": true,
-        "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl": "http://ld.stadt-zuerich.ch/schema/Category"
       }
     ]
   }
