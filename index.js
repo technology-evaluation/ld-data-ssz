@@ -183,13 +183,11 @@ const xlsxSources = [{
   filename: 'Glossarliste.xlsx',
   sheet: 'Glossar',
   metadata: 'glossarliste_glossar.csv-metadata.json'
-}
-
-/*,{
-  filename: '2018-01-18_Themenbaum_Zuordnung-Views.xlsx',
+},{
+  filename: 'Themenbaum_Zuordnung-Views.xlsx',
   sheet: 'Tabelle1',
   metadata: 'themenbaum.csv-metadata.json'
-}*/
+}
 /*,{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Codeliste',
