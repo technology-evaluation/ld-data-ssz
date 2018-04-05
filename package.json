@@ -46,8 +46,8 @@
     "ssz-lindas-test": "env ENDPOINT=https://test.lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
     "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
     "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz ./scripts/lindas-put-everything.sh",
-    "build": "npm-run-all clean get-hdb get-dimensions get-quellen get-glossar convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-integ": "npm-run-all clean get-hdb-integ get-dimensions-integ get-quellen-integ get-glossar-integ convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
+    "build": "npm-run-all clean get-hdb get-dimensions get-quellen get-glossar get-themenbaum convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
+    "build-integ": "npm-run-all clean get-hdb-integ get-dimensions-integ get-quellen-integ get-glossar-integ get-themenbaum-integ convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-stardog": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp stardog-load stardog-query stardog-dump"
   }
