@@ -38,6 +38,7 @@ curl_dimension_job:
       - input/HDB_Listen.xlsx
       - input/Quellenliste.xlsx
       - input/Glossarliste.xlsx
+      - input/Themenbaum_Zuordnung-Views.xlsx
     expire_in: 30 minutes
 
 convert_hdb_job:
