@@ -1,0 +1,42 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+
+   ?themauri a skos:Concept, <http://ld.stadt-zuerich.ch/schema/Category> ;
+       rdfs:label ?thema ;
+       skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+       skos:narrower ?stufe1uri .
+
+    ?stufe1uri a skos:Concept ;
+        rdfs:label ?stufe1 ;
+        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+        skos:narrower ?stufe2uri .
+
+    ?stufe2uri a skos:Concept ;
+        rdfs:label ?stufe2 ;
+        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+        skos:narrower ?topicUri .
+}
+WHERE {
+
+    ?base <http://example.org/thema> ?thema ;
+        <http://example.org/themauri> ?themauri ;
+        <http://example.org/stufe1> ?stufe1 ;
+        <http://example.org/stufe1uri> ?stufe1uri ;
+        <http://example.org/stufe2> ?stufe2 ;
+        <http://example.org/stufe2uri> ?stufe2uri ;
+        <http://example.org/stufe3> ?stufe3 ;
+        <http://example.org/stufe3uri> ?stufe3uri ;
+        <http://example.org/referenztabellen> ?referenztabellen .
+
+    ?referenztabelleSplit apf:strSplit (?referenztabellen ",")  .
+  	FILTER(?stufe2 != "undefined")
+    FILTER(?stufe3 = "undefined")
+    FILTER(?referenztabellen != "undefined")
+
+    BIND( IRI(CONCAT("http://stat.stadt-zuerich.ch/topic/", ?referenztabelleSplit)) AS ?topicUri)
+    
+}
