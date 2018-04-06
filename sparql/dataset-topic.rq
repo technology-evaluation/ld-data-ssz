@@ -5,8 +5,8 @@ PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
 INSERT {
 
-    ?view a skos:Collection ;
-        skos:member ?dataSet .
+    ?view a skos:Concept ;
+        skos:narrower ?dataSet .
 
 } WHERE {
     ?view a ssz-schema:Topic ;
