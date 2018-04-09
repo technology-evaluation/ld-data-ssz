@@ -21,7 +21,7 @@ INSERT {
         skos:notation ?datasetNotation ;
         qb:slice ?slice .
 
-    BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+    BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
 
     ?shape a sh:NodeShape ;
         sh:targetNode ?target .

@@ -49,8 +49,8 @@ INSERT {
 
         FILTER(isIri(?propertyValue))
         BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
     }
 
@@ -66,8 +66,8 @@ UNION
         ?property skos:notation ?propertyNotation .
 
         BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
         BIND(BNODE(CONCAT(?propertyNotation, ?datasetNotation)) AS ?b_list)
         BIND(BNODE(CONCAT(CONCAT(?propertyNotation, ?datasetNotation), "NIL")) AS ?b_nil)
@@ -89,8 +89,8 @@ UNION
 
         FILTER(isLiteral(?propertyValue))
         BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
-        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/api/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
+        BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
         BIND(BNODE(CONCAT(?datasetNotation, ?propertyNotation)) AS ?b_property)
 
     } GROUP BY ?shapeUri ?shapeApiUri ?target ?b_property ?property
