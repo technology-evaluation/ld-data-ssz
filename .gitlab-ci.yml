@@ -32,14 +32,10 @@ curl_dimension_job:
   script:
     - npm run get-dimensions
     - npm run get-glossar
-    - npm run get-quellen
-    - npm run get-themenbaum
   artifacts:
     paths:
       - input/HDB_Listen.xlsx
-      - input/Quellenliste.xlsx
       - input/Glossarliste.xlsx
-      - input/Themenbaum_Zuordnung-Views.xlsx
     expire_in: 30 minutes
 
 convert_hdb_job:
