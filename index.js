@@ -176,7 +176,7 @@ const xlsxSources = [{
   sheet: 'Ortliste',
   metadata: 'ortliste.csv-metadata.json'
 },{
-  filename: 'Quellenliste.xlsx',
+  filename: 'HDB_Listen.xlsx',
   sheet: 'Quellenliste',
   metadata: 'quellenliste.csv-metadata.json'
 },{
@@ -184,8 +184,8 @@ const xlsxSources = [{
   sheet: 'Glossar',
   metadata: 'glossarliste_glossar.csv-metadata.json'
 },{
-  filename: 'Themenbaum_Zuordnung-Views.xlsx',
-  sheet: 'Tabelle1',
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Themenbaum',
   metadata: 'themenbaum.csv-metadata.json'
 }
 /*,{
