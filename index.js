@@ -66,8 +66,10 @@ function convertCsvw (filename, metadata) {
           const year = object.value.substring(5, 9)
           const month = object.value.substring(3, 5)
           const day = object.value.substring(1, 3)
+          const period = object.value.substring(0, 2)
 
-          if ((day === 'XX') && (month === 'XX')) {
+          // TODO the period is a workaround to get rid of this Period-Time
+          if (((day === 'XX') && (month === 'XX')) || (period === 'ZP')) {
             object = p.rdf.literal(year, 'http://www.w3.org/2001/XMLSchema#gYear')
           } else if (day === 'XX') {
             object = p.rdf.literal(year + '-' + month, 'http://www.w3.org/2001/XMLSchema#gYearMonth')
