@@ -3,6 +3,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 
+#
+# Map the Gesammtcode (BAVxyz) to a particular DataSet, based on the mapping table hdb_mapping.csv
+#
+
 INSERT {
 
     ?view a skos:Concept ;
