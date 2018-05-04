@@ -31,11 +31,9 @@ curl_dimension_job:
     - ssz
   script:
     - npm run get-dimensions
-    - npm run get-glossar
   artifacts:
     paths:
       - input/HDB_Listen.xlsx
-      - input/Glossarliste.xlsx
     expire_in: 30 minutes
 
 convert_hdb_job:
@@ -48,7 +46,6 @@ convert_hdb_job:
   artifacts:
     paths:
       - target/hdb-clean.nt
-      - target/hdb-meta.nt
     expire_in: 1 day
   dependencies:
     - curl_hdb_job
