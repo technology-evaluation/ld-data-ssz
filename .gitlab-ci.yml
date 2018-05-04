@@ -46,6 +46,7 @@ convert_hdb_job:
   artifacts:
     paths:
       - target/hdb-clean.nt
+      - target/hdb-meta.nt
     expire_in: 1 day
   dependencies:
     - curl_hdb_job
