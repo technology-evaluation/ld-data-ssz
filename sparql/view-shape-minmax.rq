@@ -1,0 +1,48 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX ex: <http://example.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+# Needs to be run AFTER view-shape-dimensions.rq
+
+INSERT {
+  
+    ?shapeUri sh:property ?b_property .
+
+    # min/max von Literals
+    ?b_property sh:minInclusive ?min ;
+        sh:maxInclusive ?max .
+
+} WHERE {
+
+?dataset a qb:DataSet ;
+    skos:notation ?datasetNotation ;
+    qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
+
+BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+
+# Fetch the bnode defined in the first part of the query
+?shapeUri sh:property/sh:path ?b_property .
+
+#BIND(BNODE() AS ?b_property)
+
+{
+    # Alle Dimensionen mit Literals, nicht URIs
+    SELECT ?property ?dataset (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
+  
+        ?obs a qb:Observation ;
+            qb:dataSet ?dataset ;
+            ?property ?propertyValue .
+
+        FILTER(isLiteral(?propertyValue))
+
+    } GROUP BY ?property ?dataset
+
+}
+
+}

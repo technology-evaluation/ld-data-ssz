@@ -8,6 +8,8 @@ PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
+# Needs to be run BEFORE view-shape-minmax.rq
+
 INSERT {
   
   ?shapeUri a sh:NodeShape ;
@@ -18,11 +20,6 @@ INSERT {
   
     ?b_property sh:in ?propertyValue  .
  
-    # min/max von Literals
-
-    ?b_property sh:minInclusive ?min ;
-        sh:maxInclusive ?max .
-
     # all the list fun
     ?b_property sh:path ?b_list .
     
@@ -60,19 +57,4 @@ BIND(BNODE() AS ?b_nil)
     }
 
 }
-UNION
-{
-    # Alle Dimensionen mit Literals, nicht URIs
-    SELECT ?property ?dataset (MIN(?propertyValue) AS ?min) (MAX(?propertyValue) AS ?max) WHERE {
-  
-        ?obs a qb:Observation ;
-            qb:dataSet ?dataset ;
-            ?property ?propertyValue .
-
-        FILTER(isLiteral(?propertyValue))
-
-    } GROUP BY ?property ?dataset
-
-}
-
 }
