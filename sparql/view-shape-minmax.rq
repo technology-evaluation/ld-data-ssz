@@ -18,6 +18,16 @@ INSERT {
     ?b_property sh:minInclusive ?min ;
         sh:maxInclusive ?max .
 
+    # all the list fun
+    ?b_property sh:path ?b_list .
+    
+    ?b_list rdf:first qb:observation ;
+        rdf:rest ?b_nil .
+
+    ?b_nil rdf:first ?property ;
+        rdf:rest rdf:nil .
+    
+
 } WHERE {
 
 ?dataset a qb:DataSet ;
@@ -26,10 +36,10 @@ INSERT {
 
 BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
 
-# Fetch the bnode defined in the first part of the query
-?shapeUri sh:property/sh:path ?b_property .
-
-#BIND(BNODE() AS ?b_property)
+BIND(BNODE() AS ?b_property)
+# Dimensionen alleine, für den Pfad
+BIND(BNODE() AS ?b_list)
+BIND(BNODE() AS ?b_nil)
 
 {
     # Alle Dimensionen mit Literals, nicht URIs

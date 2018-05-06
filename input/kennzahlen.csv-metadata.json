@@ -17,7 +17,7 @@
       "lang": "de-CH"
     },{
       "titles": "Einheit",
-      "propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote"
+      "propertyUrl": "http://example.org/EINHEIT"
     },{
       "titles": "Klasse",
       "suppressOutput": true
@@ -26,6 +26,11 @@
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
       "lang": "de-CH"
     },{
+      "titles": "Methode",
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote",
+      "lang": "de-CH"
+    },
+    {
       "virtual": true,
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#range",
       "valueUrl": "http://www.w3.org/2001/XMLSchema#double"
