@@ -15,7 +15,8 @@
       },
       {
         "titles":"ZEIT",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT"
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT",
+        "valueUrl": "http://example.org/zeit/{JAHR}-{MONAT}-{TAG}"
       },
       {
         "titles":"TAG",
@@ -27,8 +28,15 @@
       },
       {
         "titles":"JAHR",
-        "datatype":"gYear",
         "suppressOutput":true
+      },
+      {
+        "titles":"BEZUGSZEIT",
+        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+      },
+      {
+        "titles":"BEZUGSPERIODE",
+        "propertyUrl":"http://example.org/BEZUGSPERIODE"
       },
       {
         "titles":"RAUM",
