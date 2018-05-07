@@ -160,6 +160,10 @@ const xlsxSources = [{
   metadata: 'kennzahlen.csv-metadata.json'
 }, {
   filename: 'HDB_Listen.xlsx',
+  sheet: 'Kennzahlen',
+  metadata: 'kennzahlen_einheit.csv-metadata.json'
+}, {
+  filename: 'HDB_Listen.xlsx',
   sheet: 'Gruppenliste',
   metadata: 'gruppenliste.csv-metadata.json'
 }, {

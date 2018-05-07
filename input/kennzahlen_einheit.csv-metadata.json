@@ -1,0 +1,42 @@
+{
+  "@context": [ "http://www.w3.org/ns/csvw", {"@language": "de-CH"}],
+  "url": "kennzahlen.csv",
+  "dc:title": "Einheit",
+  "tableSchema": {
+    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}",
+    "null": "",
+    "columns": [{
+      "titles": "Index",
+      "suppressOutput": true
+    },{
+      "titles": "KennzahlCode",
+      "suppressOutput": true
+    },{
+      "titles": "Kennzahlname",
+      "suppressOutput": true
+    },{
+      "titles": "Einheit",
+      "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
+    },{
+      "titles": "Einheit_Kurz",
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+    },{
+      "titles": "Rundung",
+      "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+    },{
+      "titles": "Klasse",
+      "suppressOutput": true
+    },{
+      "titles": "Beschreibung",
+      "suppressOutput": true
+    },{
+      "titles": "Methode",
+      "suppressOutput": true
+    },{
+      "virtual": true,
+      "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "valueUrl": "hhttp://qudt.org/schema/qudt#Unit"
+    }
+  ]
+  }
+}
