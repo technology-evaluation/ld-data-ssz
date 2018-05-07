@@ -49,6 +49,11 @@
       "propertyUrl": "http://example.org/QuarCd"
     },
     {
+      "titles": "RaumSort",
+      "datatype":"number",
+      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/order"
+    },
+    {
       "titles": "RaumHierarchie",
       "propertyUrl": "http://example.org/RaumHierarchie"
     },
