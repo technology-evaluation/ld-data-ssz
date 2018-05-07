@@ -17,7 +17,17 @@
       "lang": "de-CH"
     },{
       "titles": "Einheit",
-      "propertyUrl": "http://example.org/EINHEIT"
+      "suppressOutput": true
+    },{
+      "titles": "Einheit_Kurz",
+      "suppressOutput": true
+    },{
+      "titles": "Einheit_URI",
+      "propertyUrl": "http://qudt.org/schema/qudt#unit",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
+    },{
+      "titles": "Rundung",
+      "suppressOutput": true
     },{
       "titles": "Klasse",
       "suppressOutput": true
@@ -29,8 +39,7 @@
       "titles": "Methode",
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote",
       "lang": "de-CH"
-    },
-    {
+    },{
       "virtual": true,
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#range",
       "valueUrl": "http://www.w3.org/2001/XMLSchema#double"

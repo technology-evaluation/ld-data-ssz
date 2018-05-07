@@ -21,6 +21,9 @@
       "titles": "Einheit_Kurz",
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
     },{
+      "titles": "Einheit_URI",
+      "suppressOutput": true
+    },{
       "titles": "Rundung",
       "propertyUrl": "http://ld.stadt-zuerich.ch/schema/rounding"
     },{
