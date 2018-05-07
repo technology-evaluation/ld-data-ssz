@@ -59,6 +59,8 @@ ssz-schema:rounding a rdf:Property ;
     rdfs:label "Rounding for the unit"@en ;
     rdfs:label "Rundung der Einheit"@de .
 
+ssz-schema:order a rdf:Property ;
+    rdfs:label "Indicates a priority order for the resoruce with this structure, used to guide presentations - lower order numbers come before higher numbers, un-numbered components come last."@en .
 ## Static dimensions
 
 ssz-dimension:ZEIT a qb:DimensionProperty ;
