@@ -35,7 +35,7 @@
     },{
       "virtual": true,
       "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-      "valueUrl": "hhttp://qudt.org/schema/qudt#Unit"
+      "valueUrl": "http://qudt.org/schema/qudt#Unit"
     }
   ]
   }
