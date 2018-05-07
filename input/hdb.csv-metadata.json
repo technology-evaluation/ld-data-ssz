@@ -368,6 +368,10 @@
         "suppressOutput":true
       },
       {
+        "titles":"ANZ_GRUPPEN",
+        "propertyUrl": "http://example.org/ANZ_GRUPPEN"
+      },
+      {
         "virtual":true,
         "propertyUrl":"http://purl.org/linked-data/cube#dataSet",
         "valueUrl":"http://example.org/{KENNZAHL}-{GRUPPE1}-{GRUPPE2}-{GRUPPE3}-{GRUPPE4}-{GRUPPE5}"
