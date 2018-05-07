@@ -71,6 +71,14 @@ ssz-dimension:RAUM a qb:DimensionProperty ;
     skos:notation "RAUM" ;
     rdfs:label "Raum" .
 
+## Static attributes
+
+ssz-dimension:QUELLE a qb:AttributeProperty ;
+    skos:notation "QUELLE" ;
+    rdfs:label "Quelle" .
+
+
+
 # Stuff that is not necessary in the Excel in Gruppencode
 
 ssz-dimension:HEO a qb:DimensionProperty ;

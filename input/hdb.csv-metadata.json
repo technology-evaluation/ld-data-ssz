@@ -175,8 +175,9 @@
         "suppressOutput":true
       },
       {
-        "titles":"QUELLE",
-        "suppressOutput":true
+        "titles":"QUELLEID",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/QUELLE",
+        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/quelle/{QUELLEID}"
       },
       {
         "titles":"ELEMENT",
