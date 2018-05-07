@@ -1,0 +1,16 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    ?collectionUri a skos:Collection ;
+        rdfs:label ?collectionSplit ;
+        skos:member ?base .
+} {
+    ?base <http://example.org/gruppenliste/Hierarchie> ?collection .
+        ?collectionSplit apf:strSplit (?collection ";")  .
+  		FILTER(?collectionSplit != "undefined")
+
+    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/collection/", REPLACE(?collectionSplit, " ", "" ))) AS ?collectionUri)
+}

@@ -22,6 +22,10 @@
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
       "lang": "de-CH"
     },{
+      "titles":"Gruppencodesort",
+      "datatype":"number",
+      "propertyUrl":"http://ld.stadt-zuerich.ch/schema/order"
+    },{
       "titles": "Parentcode",
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
       "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
@@ -29,10 +33,17 @@
       "titles": "Parentcodename",
       "suppressOutput": true
     },{
-      "titles": "Bemerkung",
+      "titles": "GlossarID",
+      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/glossary",
+      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/glossary/{GlossarID}"
+    },{
+      "titles": "Beschreibung",
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
       "lang": "de-CH"
-    }, {
+    },{
+      "titles": "Hierarchie",
+      "propertyUrl": "http://example.org/gruppenliste/Hierarchie"
+    },{
       "virtual": true,
       "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"

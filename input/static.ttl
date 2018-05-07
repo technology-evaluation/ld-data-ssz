@@ -59,6 +59,10 @@ ssz-schema:rounding a rdf:Property ;
     rdfs:label "Rounding for the unit"@en ;
     rdfs:label "Rundung der Einheit"@de .
 
+ssz-schema:glossary a rdf:Property ;
+    rdfs:label "Glossary entry"@en ;
+    rdfs:label "Glossareintrag"@de .
+
 ssz-schema:order a rdf:Property ;
     rdfs:label "Indicates a priority order for the resoruce with this structure, used to guide presentations - lower order numbers come before higher numbers, un-numbered components come last."@en .
 ## Static dimensions
@@ -76,8 +80,6 @@ ssz-dimension:RAUM a qb:DimensionProperty ;
 ssz-dimension:QUELLE a qb:AttributeProperty ;
     skos:notation "QUELLE" ;
     rdfs:label "Quelle" .
-
-
 
 # Stuff that is not necessary in the Excel in Gruppencode
 
