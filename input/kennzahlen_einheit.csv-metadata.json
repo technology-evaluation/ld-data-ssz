@@ -22,7 +22,7 @@
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
     },{
       "titles": "Rundung",
-      "propertyUrl": "http://www.w3.org/2004/02/skos/core#notation"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/rounding"
     },{
       "titles": "Klasse",
       "suppressOutput": true

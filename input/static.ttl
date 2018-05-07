@@ -55,6 +55,10 @@ ssz-schema:TemporalEntity a rdfs:Class ;
 ssz-schema:SpatialEntity a rdfs:Class ;
     rdfs:label "A spatial entity"@en .
 
+ssz-schema:rounding a rdf:Property ;
+    rdfs:label "Rounding for the unit"@en ;
+    rdfs:label "Rundung der Einheit"@de .
+
 ## Static dimensions
 
 ssz-dimension:ZEIT a qb:DimensionProperty ;
