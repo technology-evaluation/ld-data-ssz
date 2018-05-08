@@ -7,7 +7,7 @@ INSERT {
     ?collectionUri a skos:Collection ;
         rdfs:label ?collectionSplit ;
         skos:member ?base .
-} {
+} WHERE {
     ?base <http://example.org/gruppenliste/Hierarchie> ?collection .
         ?collectionSplit apf:strSplit (?collection ";")  .
   		FILTER(?collectionSplit != "undefined")
