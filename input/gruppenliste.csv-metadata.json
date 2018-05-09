@@ -23,7 +23,6 @@
       "lang": "de-CH"
     },{
       "titles":"Gruppencodesort",
-      "datatype":"number",
       "propertyUrl":"http://ld.stadt-zuerich.ch/schema/order"
     },{
       "titles": "Parentcode",
