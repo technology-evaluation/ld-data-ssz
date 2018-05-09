@@ -3,25 +3,16 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#>
-PREFIX qudt: <http://qudt.org/1.1/schema/qudt#>
+PREFIX qudt: <http://qudt.org/schema/qudt#>
 
-
-DELETE {
-    ?measureProperty skos:scopeNote ?note .
-}
 INSERT {
     ?dataSet sdmx-attribute:unitMeasure ?unit .
-  
-    ?unit a qudt:Unit ;
-        rdfs:label ?note .
   
 } WHERE
 {
     ?measureProperty a <http://purl.org/linked-data/cube#MeasureProperty> ;
-        skos:scopeNote ?note .
+        qudt:unit ?unit .
   
     ?dataSet a qb:DataSet ;
-        qb:structure/qb:component/qb:measure ?measureProperty .
-  
-    BIND(URI(CONCAT( "http://ld.stadt-zuerich.ch/statistics/unit/", ENCODE_FOR_URI(?note))) AS ?unit)
+        qb:structure/qb:component/qb:measure ?measureProperty .  
 } 
