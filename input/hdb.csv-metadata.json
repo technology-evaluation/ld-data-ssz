@@ -324,23 +324,23 @@
       },
       {
         "titles":"GRUPPENCODESORT1",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GRUPPENCODESORT1"
       },
       {
         "titles":"GRUPPENCODESORT2",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GRUPPENCODESORT2"
       },
       {
         "titles":"GRUPPENCODESORT3",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GRUPPENCODESORT3"
       },
       {
         "titles":"GRUPPENCODESORT4",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GRUPPENCODESORT4"
       },
       {
         "titles":"GRUPPENCODESORT5",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GRUPPENCODESORT5"
       },
       {
         "titles":"KENNZAHLKLASSE",
