@@ -176,8 +176,7 @@
       },
       {
         "titles":"QUELLEID",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/property/QUELLE",
-        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/quelle/{QUELLEID}"
+        "propertyUrl": "http://example.org/QUELLE"
       },
       {
         "titles":"ELEMENT",
@@ -193,10 +192,6 @@
       },
       {
         "titles":"BEMERKUNG",
-        "suppressOutput":true
-      },
-      {
-        "titles":"DATENSTAND",
         "suppressOutput":true
       },
       {
@@ -245,10 +240,6 @@
       },
       {
         "titles":"THEMA",
-        "suppressOutput":true
-      },
-      {
-        "titles":"UPDATE",
         "suppressOutput":true
       },
       {
@@ -329,7 +320,7 @@
       },
       {
         "titles":"GLOSSARID",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/GLOSSARID"
       },
       {
         "titles":"GRUPPENCODESORT1",
@@ -370,6 +361,27 @@
       {
         "titles":"ANZ_GRUPPEN",
         "propertyUrl": "http://example.org/ANZ_GRUPPEN"
+      },
+      {
+        "titles": "ERWARTETE_AKTUALISIERUNG",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG",
+        "datatype": {
+          "base": "date",
+          "format": "yyyy-MM-dd"
+        }
+      },
+      {
+        "titles": "DATENSTAND",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND",
+        "datatype": {
+          "base": "date",
+          "format": "yyyy-MM-dd"
+        }
+      },
+      {
+        "titles": "UPDATE",
+        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/UPDATE",
+        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{UPDATE}"
       },
       {
         "virtual":true,
