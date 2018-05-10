@@ -1,3 +1,8 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 DELETE WHERE {
     ?s ?p "undefined" .
+};
+DELETE WHERE {
+    ?s ?p "undefined"^^xsd:double
 }
