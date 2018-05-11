@@ -14,6 +14,8 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix ssz-schema: <http://ld.stadt-zuerich.ch/schema/> .
 @prefix ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/> .
+@prefix ssz-attribute: <http://ld.stadt-zuerich.ch/statistics/attribute/> .
+
 
 # TODO: Checkout qb:CodedProperty as well for everything hierarchical.
 #       Should probably be used for Quartiere
@@ -77,9 +79,35 @@ ssz-dimension:RAUM a qb:DimensionProperty ;
 
 ## Static attributes
 
-ssz-dimension:QUELLE a qb:AttributeProperty ;
+ssz-attribute:QUELLE a qb:AttributeProperty ;
     skos:notation "QUELLE" ;
     rdfs:label "Quelle" .
+
+ssz-attribute:GLOSSAR a qb:AttributeProperty ;
+    skos:notation "GLOSSAR" ;
+    rdfs:label "Glossar" .
+
+ssz-attribute:FUSSNOTE a qb:AttributeProperty ;
+    skos:notation "FUSSNOTE" ;
+    rdfs:label "Fussnote" .
+
+ssz-attribute:DATENSTAND a qb:AttributeProperty ;
+    skos:notation "DATENSTAND" ;
+    rdfs:label "Datenstand" ;
+    rdfs:comment "Letzte aktualisierung" .
+
+ssz-attribute:ERWARTETE_AKTUALISIERUNG a qb:AttributeProperty ;
+    skos:notation "ERWARTETE_AKTUALISIERUNG" ;
+    rdfs:label "Erwartete Aktualisierung" .
+
+ssz-attribute:DATENSTAND a qb:AttributeProperty ;
+    skos:notation "DATENSTAND" ;
+    rdfs:label "Datenstand" ;
+    rdfs:comment "Letzte Aktualisierung" .
+
+ssz-attribute:UPDATE a qb:AttributeProperty ;
+    skos:notation "UPDATE" ;
+    rdfs:label "Update" .
 
 # Stuff that is not necessary in the Excel in Gruppencode
 
