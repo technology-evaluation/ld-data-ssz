@@ -1,0 +1,15 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    ?base <http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR> ?glossarUri
+} 
+WHERE {
+
+    ?base <http://example.org/GLOSSARID> ?glossar .
+        ?glossarSplit apf:strSplit (?glossar ";")  .
+    
+    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/glossary/", ENCODE_FOR_URI(REPLACE(?glossarSplit, " ", "" )))) AS ?glossarUri)
+}
