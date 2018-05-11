@@ -380,8 +380,7 @@
       },
       {
         "titles": "UPDATE",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/UPDATE",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{UPDATE}"
+        "propertyUrl": "http://example.org/UPDATE"
       },
       {
         "virtual":true,
