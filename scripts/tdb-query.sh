@@ -9,9 +9,9 @@ tdbupdate --loc=target/tdb_ssz --update=sparql/gruppenliste-hierarchie.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/qb-slicelock.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/dataset-topic.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/datacube-label.rq
-tdbupdate --loc=target/tdb_ssz --update=sparql/quelle.rq
-tdbupdate --loc=target/tdb_ssz --update=sparql/glossar.rq
-tdbupdate --loc=target/tdb_ssz --update=sparql/update.rq
+# tdbupdate --loc=target/tdb_ssz --update=sparql/quelle.rq
+# tdbupdate --loc=target/tdb_ssz --update=sparql/glossar.rq
+# tdbupdate --loc=target/tdb_ssz --update=sparql/update.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-dimensions.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-minmax.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/slice-shape.rq

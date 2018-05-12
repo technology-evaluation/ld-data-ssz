@@ -103,14 +103,13 @@ function convertCsvw (filename, metadata) {
       dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://purl.org/linked-data/cube#sliceKey'), sliceKeyNode))
 
       dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#measure'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/measure/' + value.shift())))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#measure'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/measure/' + value.shift())))
       // add static attributes
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/UPDATE')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
+      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/UPDATE')))
 
       value.forEach((predicate) => {
         dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/property/' + predicate)))
