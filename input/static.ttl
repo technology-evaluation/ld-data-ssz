@@ -65,8 +65,8 @@ ssz-schema:glossary a rdf:Property ;
     rdfs:label "Glossary entry"@en ;
     rdfs:label "Glossareintrag"@de .
 
-ssz-schema:order a rdf:Property ;
-    rdfs:label "Indicates a priority order for the resoruce with this structure, used to guide presentations - lower order numbers come before higher numbers, un-numbered components come last."@en .
+ssz-schema:score a rdf:Property ;
+    rdfs:label "Indicates a priority order for the resource with this structure, used to guide presentations - lower order numbers come before higher numbers, un-numbered components come last."@en .
 ## Static dimensions
 
 ssz-dimension:ZEIT a qb:DimensionProperty ;
