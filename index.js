@@ -62,6 +62,18 @@ function convertCsvw (filename, metadata) {
           object = p.rdf.literal(valnumber, object.datatype)
         }
 
+        if (predicate.value === 'http://example.org/UPDATE') {
+          const conditions = ['QUE', 'KZE', 'WRT'];
+          var included = conditions.some(el => object.value.includes(el));
+          predicate = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')
+
+          if (included) {
+            object = p.rdf.literal('true', 'http://www.w3.org/2001/XMLSchema#boolean')
+          } else {
+            object = p.rdf.literal('false', 'http://www.w3.org/2001/XMLSchema#boolean')
+          }
+        }
+
         if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
           const year = object.value.substring(24, 28)
           const month = object.value.substring(29, 31)
