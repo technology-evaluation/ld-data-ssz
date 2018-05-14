@@ -22,8 +22,8 @@
     "clean": "rm -rf target/*",
     "get-hdb": "./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
     "get-dimensions": "./scripts/curl-ssz.sh HDB_Listen.xlsx",
-    "get-hdb-integ": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
-    "get-dimensions-integ": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB_Listen.xlsx",
+    "get-hdb-prod": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
+    "get-dimensions-prod": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB_Listen.xlsx",
     "convert-hdb": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --hdb",
     "convert-dimensions": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --lists",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' > target/dimensions.nt",
@@ -42,7 +42,7 @@
     "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
     "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com:5820/ssz ./scripts/lindas-put-everything.sh",
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-integ": "npm-run-all clean get-hdb-integ get-dimensions-integ convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
+    "build-prod": "npm-run-all clean get-hdb-prod get-dimensions-prod convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-stardog": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp stardog-load stardog-query stardog-dump"
   }
