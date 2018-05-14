@@ -109,6 +109,10 @@ ssz-attribute:UPDATE a qb:AttributeProperty ;
     skos:notation "UPDATE" ;
     rdfs:label "Update" .
 
+ssz-attribute:KORREKTUR a qb:AttributeProperty ;
+    skos:notation "KORREKTUR" ;
+    rdfs:label "Korrektur" .
+
 # Stuff that is not necessary in the Excel in Gruppencode
 
 ssz-dimension:HEO a qb:DimensionProperty ;
