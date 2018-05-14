@@ -36,7 +36,7 @@ INSERT {
     qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
 
 BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
-BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
+BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
 BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
 
 
