@@ -13,6 +13,7 @@ tdbupdate --loc=target/tdb_ssz --update=sparql/quelle.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/glossar.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/fussnote.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-dimensions.rq
+tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-attributes.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-minmax.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/slice-shape.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/qb-slices-code.rq
