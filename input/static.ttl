@@ -67,6 +67,7 @@ ssz-schema:glossary a rdf:Property ;
 
 ssz-schema:score a rdf:Property ;
     rdfs:label "Indicates a priority order for the resource with this structure, used to guide presentations - lower order numbers come before higher numbers, un-numbered components come last."@en .
+
 ## Static dimensions
 
 ssz-dimension:ZEIT a qb:DimensionProperty ;
@@ -112,6 +113,12 @@ ssz-attribute:UPDATE a qb:AttributeProperty ;
 ssz-attribute:KORREKTUR a qb:AttributeProperty ;
     skos:notation "KORREKTUR" ;
     rdfs:label "Korrektur" .
+
+ssz-schema:lastUpdate a qb:AttributeProperty ;
+    rdfs:label "Letzte Aktuallisierung" .
+
+ssz-schema:nextUpdate a qb:AttributeProperty ;
+    rdfs:label "Nächste Aktuallisierung" .
 
 # Stuff that is not necessary in the Excel in Gruppencode
 
