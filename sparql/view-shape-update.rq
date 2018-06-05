@@ -6,7 +6,7 @@ PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
 
-CONSTRUCT {
+INSERT {
     ?shapeUri ssz-schema:nextUpdate ?nextupdate
 
 } WHERE {
