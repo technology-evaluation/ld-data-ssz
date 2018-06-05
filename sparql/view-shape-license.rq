@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+
+INSERT {
+
+    ?shapeUri <http://purl.org/dc/terms/license> "CCBY" .
+
+}
+WHERE {
+    
+    ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelle ;
+       qb:dataSet ?dataSet .
+        
+    ?quelle <http://purl.org/dc/terms/license> "CCBY" .
+
+    ?dataSet skos:notation ?datasetNotation .
+
+    BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+}
