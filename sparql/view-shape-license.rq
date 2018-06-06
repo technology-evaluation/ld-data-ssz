@@ -6,7 +6,7 @@ PREFIX qb: <http://purl.org/linked-data/cube#>
 
 INSERT {
 
-    ?shapeUri <http://purl.org/dc/terms/license> "CCBY" .
+    ?dataSet <http://purl.org/dc/terms/license> "CCBY" .
 
 }
 WHERE {
@@ -15,8 +15,4 @@ WHERE {
        qb:dataSet ?dataSet .
         
     ?quelle <http://purl.org/dc/terms/license> "CCBY" .
-
-    ?dataSet skos:notation ?datasetNotation .
-
-    BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
 }
