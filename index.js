@@ -20,6 +20,10 @@ function convertCsvw (filename, metadata) {
       .pipe(p.filter((quad) => {
         return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
       }))
+      .pipe(p.filter((quad) => {
+        // does not do anything for some reason
+        return quad.object.value && quad.object.value.toString().trim()
+      }))
       .pipe(p.map((quad) => {
         let subject = quad.subject
         let predicate = quad.predicate
