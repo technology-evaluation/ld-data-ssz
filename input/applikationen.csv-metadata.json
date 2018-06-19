@@ -2,8 +2,12 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "example.csv",
   "tableSchema": {
-    "aboutUrl": "http://stat.stadt-zuerich.ch/application/{URI}",    
+    "aboutUrl": "http://stat.stadt-zuerich.ch/application/{Titel_URI}",    
     "columns": [
+      {
+        "titles": "Titel_URI",
+        "suppressOutput": true
+      },
       {
         "titles": "Titel",
         "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
