@@ -212,6 +212,10 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Themenbaum',
   metadata: 'themenbaum.csv-metadata.json'
+}, {
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Applikationen',
+  metadata: 'applikationen.csv-metadata.json'
 }
 /*,{
   filename: 'HDB_Listen.xlsx',

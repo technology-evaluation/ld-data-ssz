@@ -23,6 +23,10 @@
 
 ## Classes & Properties
 
+ssz-schema:Application a rdfs:Class ;
+    rdfs:label "Application"@en ;
+    rdfs:label "Applikation"@de .
+
 ssz-schema:Topic a rdfs:Class ;
     rdfs:label "Topic"@en ;
     rdfs:label "Thema"@de .
