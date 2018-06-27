@@ -6,7 +6,7 @@
     "columns": [
       {
         "titles": "QUELLE",
-        "propertyUrl": "http://purl.org/dc/elements/1.1/source"
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label"
       },
       {
         "titles": "QUELLEID",
