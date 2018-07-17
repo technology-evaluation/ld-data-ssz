@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+
+# needs to be run after sparql/view-shape-license-ccby.rq
+INSERT {
+
+    ?dataSet <http://purl.org/dc/terms/license> "CC0" .
+
+}
+WHERE {
+    
+    ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelle ;
+       qb:dataSet ?dataSet .
+        
+    ?quelle <http://purl.org/dc/terms/license> "CC0" .
+
+    # We only want to expose the more restrictive license of the data on the dataset itself
+    MINUS { ?dataSet <http://purl.org/dc/terms/license> "CCBY" .  }
+}

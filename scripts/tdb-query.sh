@@ -17,7 +17,8 @@ tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-attributes.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-minmax.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-datenstand.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-update.rq
-tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-license.rq
+tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-license-ccby.rq
+tdbupdate --loc=target/tdb_ssz --update=sparql/view-shape-license-cc0.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/slice-shape.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/qb-slices-code.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/measureproperty-unit.rq
