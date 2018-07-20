@@ -20,6 +20,10 @@ function convertCsvw (filename, metadata) {
       .pipe(p.filter((quad) => {
         return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
       }))
+      .pipe(p.filter((quad) => {
+        // does not do anything for some reason
+        return quad.object.value && quad.object.value.toString().trim()
+      }))
       .pipe(p.map((quad) => {
         let subject = quad.subject
         let predicate = quad.predicate
@@ -60,6 +64,18 @@ function convertCsvw (filename, metadata) {
           predicate = p.rdf.namedNode(predicateUri)
           // Dataype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
           object = p.rdf.literal(valnumber, object.datatype)
+        }
+
+        if (predicate.value === 'http://example.org/UPDATE') {
+          const conditions = ['QUE', 'KZE', 'WRT'];
+          var included = conditions.some(el => object.value.includes(el));
+          predicate = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')
+
+          if (included) {
+            object = p.rdf.literal('true', 'http://www.w3.org/2001/XMLSchema#boolean')
+          } else {
+            object = p.rdf.literal('false', 'http://www.w3.org/2001/XMLSchema#boolean')
+          }
         }
 
         if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
@@ -104,12 +120,12 @@ function convertCsvw (filename, metadata) {
 
       dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#measure'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/measure/' + value.shift())))
       // add static attributes
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
-      // dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/UPDATE')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')))
 
       value.forEach((predicate) => {
         dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/property/' + predicate)))
@@ -196,6 +212,10 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Themenbaum',
   metadata: 'themenbaum.csv-metadata.json'
+}, {
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Applikationen',
+  metadata: 'applikationen.csv-metadata.json'
 }
 /*,{
   filename: 'HDB_Listen.xlsx',

@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+    ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE> ?footnoteUri .
+
+    ?footnoteUri a skos:Concept ;
+        rdfs:label ?note ;
+        skos:inScheme  <http://ld.stadt-zuerich.ch/statistics/scheme/Footnote> .
+
+} WHERE {
+    VALUES ?footnotes { <http://example.org/FUSSNOTEKENNZAHL> 
+                        <http://example.org/FUSSNOTEATTRIBUT>
+                        <http://example.org/FUSSNOTEKENNZAHLATTRIBUT>
+                        <http://example.org/FUSSNOTEZEIT>
+                        <http://example.org/FUSSNOTERAUM>
+                        <http://example.org/FUSSNOTEZELLE> }
+
+    ?obs ?footnotes ?note .
+
+    BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/footnote/", SHA1(?note))) AS ?footnoteUri)
+}

@@ -11,13 +11,10 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 # Needs to be run BEFORE view-shape-minmax.rq
 
 INSERT {
-  
-  ?shapeUri a sh:NodeShape ;
-    owl:sameAs ?shapeApiUri ;
-	sh:targetNode ?target ;
+
     # alle Ausprägungen einer Dimension
-  	sh:property ?b_property .
-  
+    ?shapeUri sh:property ?b_property .
+
     ?b_property sh:in ?propertyValue  .
  
     # all the list fun
@@ -33,7 +30,7 @@ INSERT {
 
 ?dataset a qb:DataSet ;
     skos:notation ?datasetNotation ;
-    qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
+    qb:structure/qb:component/qb:attribute ?property .
 
 BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
 BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%", "%%DATASET%%" , ?datasetNotation)) AS ?shapeApiUri)          
@@ -41,17 +38,17 @@ BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DA
 
 
 BIND(BNODE() AS ?b_property)
-# Dimensionen alleine, für den Pfad
 BIND(BNODE() AS ?b_list)
 BIND(BNODE() AS ?b_nil)
 
 {
-    # Alle Ausprägungen einer Dimension
+    # Alle Ausprägungen eines Attributs
     SELECT DISTINCT ?dataset ?property ?propertyValue WHERE {
   
         ?obs a qb:Observation ;
             qb:dataSet ?dataset ;
-            ?property ?propertyValue .
+        
+        OPTIONAL { ?obs ?property ?propertyValue . }
 
         FILTER(isIri(?propertyValue))
     }

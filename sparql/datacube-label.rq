@@ -20,7 +20,7 @@ WHERE {
             qb:structure/qb:component/qb:dimension ?dimension ;
             qb:structure/qb:component/qb:measure ?measure .
     
-            FILTER ( ?dimension NOT IN (ssz-dimension:RAUM, ssz-dimension:ZEIT) )
+            #FILTER ( ?dimension NOT IN (ssz-dimension:RAUM, ssz-dimension:ZEIT) )
  
             ?measure skos:notation ?measureNotation ;
                 rdfs:label ?measureLabel .

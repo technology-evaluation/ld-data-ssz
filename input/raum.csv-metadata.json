@@ -51,11 +51,16 @@
     {
       "titles": "RaumSort",
       "datatype":"number",
-      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/order"
+      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/score"
     },
     {
       "titles": "RaumHierarchie",
       "propertyUrl": "http://example.org/RaumHierarchie"
+    },
+    {
+      "titles": "WikidataURI",
+      "propertyUrl": "http://www.w3.org/2002/07/owl#sameAs",
+      "valueUrl": "{+WikidataURI}"
     },
     {
       "virtual": true,

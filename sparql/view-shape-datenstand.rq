@@ -1,0 +1,25 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+
+INSERT {
+    ?shapeUri ssz-schema:lastUpdate ?lastupdate
+
+} WHERE {
+{
+    SELECT ?dataSet (MAX(?update) AS ?lastupdate) WHERE {
+
+        ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND> ?update ;
+            qb:dataSet ?dataSet .
+
+    } GROUP BY ?dataSet
+}
+
+?dataSet skos:notation ?datasetNotation .
+
+BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+}

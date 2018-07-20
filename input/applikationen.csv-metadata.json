@@ -1,0 +1,78 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "example.csv",
+  "tableSchema": {
+    "aboutUrl": "http://stat.stadt-zuerich.ch/application/{Titel_URI}",    
+    "columns": [
+      {
+        "titles": "Titel_URI",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Titel",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#label",
+        "lang": "de-CH"
+      },
+      {
+        "titles": "Beschreibung",
+        "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",
+        "lang": "de-CH"
+      },
+      {
+        "titles": "URL",
+        "propertyUrl": "https://schema.org/url",
+        "valueUrl": "{+URL}"
+      },
+      {
+        "titles": "URL-image",
+        "propertyUrl": "https://schema.org/thumbnailUrl",
+        "valueUrl": "{+URL}"
+      },
+      {
+        "titles": "Thema",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Thema_URI",
+        "propertyUrl": "http://example.org/themauri",
+        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
+      },
+      {
+        "titles": "Einordnung Themenbaum Stufe1_URI",
+        "propertyUrl": "http://example.org/stufe1"
+      },
+      {
+        "titles": "Einordnung Themenbaum Stufe2_URI",
+        "propertyUrl": "http://example.org/stufe2uri",
+        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
+      },
+      {
+        "titles": "Einordnung Themenbaum Stufe3_URI",
+        "propertyUrl": "http://example.org/stufe3uri",
+        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
+      },
+      {
+        "titles": "Einordnung_Kennzahlen",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Einordnung_Gruppen",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Einordnung_Referenztabellen",
+        "suppressOutput": true
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://ld.stadt-zuerich.ch/schema/Application"
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"https://schema.org/WebSite"
+      }
+    ]
+  }
+}
