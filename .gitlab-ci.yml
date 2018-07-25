@@ -114,6 +114,6 @@ post_prod_job:
   only:
     - tags
   script:
-    - npm run ssz-lindas-prod
+    - npm run ssz-lindas-prod-s3
   dependencies:
     - validate_riot_job
