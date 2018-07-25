@@ -90,7 +90,7 @@ validate_riot_job:
     - npm run validate-riot
   artifacts:
     paths:
-      - target/everything.nt
+      - target/everything.nt.gz
     expire_in: 1 day
   dependencies:
     - staging_tdb_job
