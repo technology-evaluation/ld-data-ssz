@@ -216,16 +216,15 @@ const xlsxSources = [{
   filename: 'HDB_Listen.xlsx',
   sheet: 'Applikationen',
   metadata: 'applikationen.csv-metadata.json'
+}, {
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Kuration',
+  metadata: 'kuration.csv-metadata.json'
+}, {
+  filename: 'HDB_Listen.xlsx',
+  sheet: 'Synonyme',
+  metadata: 'synonyme.csv-metadata.json'
 }
-/*,{
-  filename: 'HDB_Listen.xlsx',
-  sheet: 'Codeliste',
-  metadata: 'codeliste.csv-metadata.json'
-},{
-  filename: 'HDB_Listen.xlsx',
-  sheet: 'Codeliste_Namen',
-  metadata: 'codeliste_namen.csv-metadata.json'
-} */
 ]
 
 program
