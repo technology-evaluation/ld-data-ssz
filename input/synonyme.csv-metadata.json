@@ -6,19 +6,19 @@
     "columns": [
       {
         "titles": "Gruppencode_KennzahlCode",
-        "suppressOutput": true
+        "propertyUrl": "http://example.org/gruppencode_KennzahlCode"
       },
       {
         "titles": "Codetyp",
-        "suppressOutput": true
+        "propertyUrl": "http://example.org/codetyp"
       },
       {
         "titles": "Begriff",
-        "suppressOutput": true
+        "propertyUrl": "http://example.org/begriff"
       },
       {
         "titles": "Synonyme",
-        "suppressOutput": true
+        "propertyUrl": "http://example.org/synonyme"
       },
       {
         "virtual":true,
