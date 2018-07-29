@@ -1,0 +1,58 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "example.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/kuration/{DatasetID}",    
+    "columns": [
+      {
+        "titles": "DatasetID",
+        "suppressOutput": true
+      },
+      {
+        "titles": "SliceKey",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Von",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Bis",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Aussondern",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Reihenfolge",
+        "suppressOutput": true
+      },
+      {
+        "titles": "StandardVon",
+        "suppressOutput": true
+      },
+      {
+        "titles": "StandardBis",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Order",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Bemerkung",
+        "suppressOutput": true
+      },
+      {
+        "titles": "IgnoreEmptyRecords",
+        "suppressOutput": true
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://ld.stadt-zuerich.ch/schema/Kuration"
+      }
+    ]
+  }
+}

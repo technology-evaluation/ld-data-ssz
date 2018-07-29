@@ -1,0 +1,30 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "example.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/synonyme/{Gruppencode_KennzahlCode}",    
+    "columns": [
+      {
+        "titles": "Gruppencode_KennzahlCode",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Codetyp",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Begriff",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Synonyme",
+        "suppressOutput": true
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        "valueUrl":"http://ld.stadt-zuerich.ch/schema/Synonym"
+      }
+    ]
+  }
+}
