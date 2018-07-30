@@ -62,7 +62,7 @@ function convertCsvw (filename, metadata) {
           }
 
           predicate = p.rdf.namedNode(predicateUri)
-          // Dataype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
+          // Datatype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
           object = p.rdf.literal(valnumber, object.datatype)
         }
 
