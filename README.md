@@ -8,7 +8,7 @@
 * `sparql` - SPARQL Abfragen als Beispiele
 
 
-## CSV on the Web
+## CSV on the Web
 
 Die Transformation basiert auf dem neuen CSV on the Web Standard vom W3C. Folgende Dokumente dienten als Grundlage für die Konfiguration:
 
@@ -35,5 +35,3 @@ Danach kann mit `npm run` angezeigt werden, was ausgeführt werden soll. Bitte z
 Im Verzeichnis SPARQL sind einige Abfragen enthalten, die gegenüber dem LINDAS SPARQL-Endpunkt getestet werden können.
 
 Aktueller Endpunkt zum Testen: https://test.lindas-data.ch/sparql-ui/
-
-
