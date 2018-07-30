@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+
 curl -n \
      -X POST \
      -H Content-Type:application/n-triples \

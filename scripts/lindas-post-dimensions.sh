@@ -1,5 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -eo pipefail
+
+set +u
 ENDPOINT=${ENDPOINT:=http://localhost:5820/ssz}
+set -u
+
 echo "Posting to endpoint: $ENDPOINT"
 curl -n \
      -X POST \

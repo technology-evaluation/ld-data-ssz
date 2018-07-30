@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+
 tdbupdate --loc=target/tdb_ssz --update=sparql/raum-tree.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/raum-collection.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/raum-raumebene.rq
