@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+
 gzip target/everything.nt
 scp target/everything.nt.gz swiss.resc.info:~/docker/ssz-data/target
 ssh swiss.resc.info "rm ~/docker/ssz-data/target/everything.nt"
