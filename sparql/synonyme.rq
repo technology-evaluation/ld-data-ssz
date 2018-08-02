@@ -1,0 +1,19 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    ?someConcept skos:altLabel ?synonmSplit .
+} 
+WHERE {
+
+    ?synonymUri a <http://ld.stadt-zuerich.ch/schema/Synonym> ;
+        <http://example.org/gruppencode_KennzahlCode> ?code ;
+        <http://example.org/begriff> ?begriff ;
+        <http://example.org/synonyme> ?synonm .
+        ?synonmSplit apf:strSplit (?synonm ";")  .
+    
+    ?someConcept skos:notation ?code .
+
+}
