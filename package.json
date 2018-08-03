@@ -8,8 +8,7 @@
     "url": "git@github.com:statistikstadtzuerich/ssz-data.git"
   },
   "dependencies": {
-    "barnard59": "git+https://github.com/zazuko/barnard59.git#master",
-    "json": "^9.0.6"
+    "barnard59": "git+https://github.com/zazuko/barnard59.git#master"
   },
   "devDependencies": {
     "eslint-config-standard": "^11.0.0",
@@ -22,15 +21,15 @@
   "scripts": {
     "clean": "rm -rf target/*",
     "get-hdb": "./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
+    "get-hdb-prod": "SSZ_ENV=prod npm run get-hdb",
     "get-dimensions": "./scripts/curl-ssz.sh HDB_Listen.xlsx",
-    "get-hdb-prod": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
-    "get-dimensions-prod": "env CI_COMMIT_TAG=bla ./scripts/curl-ssz.sh HDB_Listen.xlsx",
+    "get-dimensions-prod": "SSZ_ENV=prod npm run get-dimensions",
     "convert-hdb": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --hdb",
     "convert-dimensions": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --lists",
     "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' | sed '/<>/d' > target/dimensions.nt",
     "clean-hdb": "cat target/hdb.nt target/hdb_mapping.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
     "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
-    "tdb-query": "env JVM_ARGS=-Xmx28G ./scripts/tdb-query.sh",
+    "tdb-query": "JVM_ARGS=-Xmx28G ./scripts/tdb-query.sh",
     "tdb-dump": "./scripts/tdb-dump.sh",
     "stardog-load": "stardog data remove --all ssz-staging && stardog data add ssz-staging target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
     "stardog-query": "./scripts/stardog-query.sh",
@@ -39,10 +38,10 @@
     "void-timestamp": "./scripts/void-timestamp.sh",
     "put-everything": "./scripts/lindas-put-everything.sh",
     "put-localhost": "stardog data remove --all ssz && stardog data add ssz --named-graph https://linked.opendata.swiss/graph/zh/statistics target/everything.nt",
-    "ssz-lindas-test": "env ENDPOINT=https://test.lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
-    "ssz-lindas-prod": "env ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
-    "ssz-lindas-prod-s3": "./scripts/store-s3.sh",
-    "ssz-zazuko": "env ENDPOINT=http://data.zazuko.com/ssz ./scripts/lindas-put-everything.sh",
+    "ssz-lindas-integ": "ENDPOINT=http://data.zazuko.com/ssz ./scripts/lindas-put-everything.sh",
+    "ssz-lindas-prod": "ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
+    "ssz-lindas-integ-s3": "ENDPOINT=http://data.zazuko.com/ssz ./scripts/store-s3.sh",
+    "ssz-lindas-prod-s3": "ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/store-s3.sh",
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-prod": "npm-run-all clean get-hdb-prod get-dimensions-prod convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",

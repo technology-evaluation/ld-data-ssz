@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
+
 #stardog query ssz-staging sparql/raum-tree.rq
 #stardog query ssz-staging sparql/raum-collection.rq
 stardog query ssz-staging sparql/dataset-topic.rq
