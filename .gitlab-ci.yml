@@ -103,7 +103,7 @@ post_test_job:
 #    - tags
     - develop
   script:
-    - npm run ssz-zazuko
+    - npm run ssz-lindas-integ-s3
   dependencies:
     - validate_riot_job
 
