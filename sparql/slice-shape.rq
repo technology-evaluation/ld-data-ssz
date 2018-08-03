@@ -21,6 +21,9 @@ INSERT {
         skos:notation ?datasetNotation ;
         qb:slice ?slice .
 
+    # no slice for these dataset(s)
+    FILTER ( ?notation != "GEB-RAUM-ZEIT-NAF-NAM-SEX" )
+
     BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
 
     ?shape a sh:NodeShape ;

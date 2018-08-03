@@ -16,12 +16,16 @@ INSERT {
 {
     SELECT ?dataSet ?dimension ?sliceKey ?slice (COUNT(DISTINCT ?dimensionCode) AS ?count)  WHERE {
         ?dataSet a qb:DataSet ;
+        skos:notation ?notation ;
         qb:structure/qb:component/qb:dimension ?dimension ;
           qb:structure/qb:sliceKey ?sliceKey ;
-          qb:slice ?slice .         
+          qb:slice ?slice . 
   
-    ?obs qb:dataSet ?dataSet ;
-        ?dimension ?dimensionCode . 
+        # no slice for these dataset(s)
+        FILTER ( ?notation != "GEB-RAUM-ZEIT-NAF-NAM-SEX" )
+
+        ?obs qb:dataSet ?dataSet ;
+            ?dimension ?dimensionCode . 
       
 
     } GROUP BY ?dataSet ?dimension ?sliceKey ?slice  ORDER BY ?dataSet ?dimension
