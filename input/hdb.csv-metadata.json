@@ -344,7 +344,7 @@
       },
       {
         "titles":"KENNZAHLKLASSE",
-        "suppressOutput":true
+        "propertyUrl": "http://example.org/KENNZAHLKLASSE"
       },
       {
         "titles":"RAUMEBENE",
