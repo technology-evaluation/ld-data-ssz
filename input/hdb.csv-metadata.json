@@ -98,7 +98,6 @@
       },
       {
         "titles":"WERT",
-        "datatype":"number",
         "propertyUrl":"http://example.org/measure/{KENNZAHL}"
       },
       {

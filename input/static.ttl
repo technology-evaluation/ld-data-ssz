@@ -15,6 +15,7 @@
 @prefix ssz-schema: <http://ld.stadt-zuerich.ch/schema/> .
 @prefix ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/> .
 @prefix ssz-attribute: <http://ld.stadt-zuerich.ch/statistics/attribute/> .
+@prefix ssz-measure: <http://ld.stadt-zuerich.ch/statistics/measure/> .
 
 
 # TODO: Checkout qb:CodedProperty as well for everything hierarchical.
@@ -123,6 +124,12 @@ ssz-schema:lastUpdate a qb:AttributeProperty ;
 
 ssz-schema:nextUpdate a qb:AttributeProperty ;
     rdfs:label "Nächste Aktuallisierung" .
+
+## Static measure
+
+ssz-measure:KENNWERT a qb:MeasureProperty ;
+    rdfs:label "Kennwert" ;
+    rdfs:label "Kennwert ist ein spezielles Attribut für Kennzahlen, die keine Zahl sind." .
 
 # Stuff that is not necessary in the Excel in Gruppencode
 

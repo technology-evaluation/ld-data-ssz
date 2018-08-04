@@ -49,21 +49,21 @@ function convertCsvw (filename, metadata) {
         }
 
         if (predicate.value.startsWith('http://example.org/measure/')) {
-          const value = object.value.split(' ').join('')
-          const predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
+          const value = object.value.split(' ').join('') // fixes numbers with spaces in it, ideally this should not happen anymore in the data
+          let predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
 
           let valnumber
 
-          // workaround to kick out all non-numbers. TODO issue #33
           if (isNaN(parseFloat(value))) {
-            valnumber = 0
+            // In case we do not get a parsable number we create a string out of it (on a special qb:MeasureProperty)
+            predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/KENNWERT'
           } else {
             valnumber = parseFloat(value)
+            object = p.rdf.literal(valnumber, 'http://www.w3.org/2001/XMLSchema#double')
           }
 
           predicate = p.rdf.namedNode(predicateUri)
-          // Datatype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
-          object = p.rdf.literal(valnumber, object.datatype)
+
         }
 
         if (predicate.value === 'http://example.org/UPDATE') {
