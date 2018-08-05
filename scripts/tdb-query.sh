@@ -25,6 +25,7 @@ tdbupdate --loc=target/tdb_ssz --update=sparql/slice-shape.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/qb-slices-code.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/measureproperty-unit.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/synonyme.rq
+tdbupdate --loc=target/tdb_ssz --update=sparql/kennwert-kennzahl.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-undefined.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-xxx-object.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-xxx-predicate.rq
