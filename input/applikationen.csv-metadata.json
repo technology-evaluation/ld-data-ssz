@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "example.csv",
   "tableSchema": {
-    "aboutUrl": "http://stat.stadt-zuerich.ch/application/{Titel_URI}",    
+    "aboutUrl": "https://stat.stadt-zuerich.ch/application/{Titel_URI}",    
     "columns": [
       {
         "titles": "Titel_URI",
@@ -35,7 +35,7 @@
       {
         "titles": "Thema_URI",
         "propertyUrl": "http://example.org/themauri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
       },
       {
         "titles": "Einordnung Themenbaum Stufe1_URI",
@@ -44,12 +44,12 @@
       {
         "titles": "Einordnung Themenbaum Stufe2_URI",
         "propertyUrl": "http://example.org/stufe2uri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
       },
       {
         "titles": "Einordnung Themenbaum Stufe3_URI",
         "propertyUrl": "http://example.org/stufe3uri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
       },
       {
         "titles": "Einordnung_Kennzahlen",
@@ -66,7 +66,7 @@
       {
         "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://ld.stadt-zuerich.ch/schema/Application"
+        "valueUrl":"https://ld.stadt-zuerich.ch/schema/Application"
       },
       {
         "virtual":true,

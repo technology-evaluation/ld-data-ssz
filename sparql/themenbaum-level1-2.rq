@@ -5,19 +5,19 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT {
 
-   ?themauri a skos:Concept, <http://ld.stadt-zuerich.ch/schema/Category> ;
+   ?themauri a skos:Concept, <https://ld.stadt-zuerich.ch/schema/Category> ;
        rdfs:label ?thema ;
-       skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+       skos:inScheme <https://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
        skos:narrower ?stufe1uri .
 
     ?stufe1uri a skos:Concept ;
         rdfs:label ?stufe1 ;
-        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+        skos:inScheme <https://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
         skos:narrower ?stufe2uri .
 
     ?stufe2uri a skos:Concept ;
         rdfs:label ?stufe2 ;
-        skos:inScheme <http://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
+        skos:inScheme <https://ld.stadt-zuerich.ch/statistics/scheme/Category> ;
         skos:narrower ?topicUri .
 }
 WHERE {
@@ -37,6 +37,6 @@ WHERE {
     FILTER(?stufe3 = "undefined")
     FILTER(?referenztabellen != "undefined")
 
-    BIND( IRI(CONCAT("http://stat.stadt-zuerich.ch/topic/", ?referenztabelleSplit)) AS ?topicUri)
+    BIND( IRI(CONCAT("https://stat.stadt-zuerich.ch/topic/", ?referenztabelleSplit)) AS ?topicUri)
     
 }

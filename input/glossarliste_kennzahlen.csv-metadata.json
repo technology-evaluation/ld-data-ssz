@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "kennzahlen.csv",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
     "columns": [
       {
         "titles": "Index",
@@ -41,7 +41,7 @@
       {
         "titles": "Glossar_ID",
         "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/glossar/{Glossar_ID}"
+        "valueUrl": "https://ld.stadt-zuerich.ch/statistics/glossar/{Glossar_ID}"
       },
       {
         "virtual": true,

@@ -11,7 +11,7 @@
       {
         "titles": "Thema_URI",
         "propertyUrl": "http://example.org/themauri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
       },
       {
         "titles": "Stufe1",
@@ -20,7 +20,7 @@
       {
         "titles": "Stufe1_URI",
         "propertyUrl": "http://example.org/stufe1uri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe1_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe1_URI}"
       },
       {
         "titles": "Stufe2",
@@ -29,7 +29,7 @@
       {
         "titles": "Stufe2_URI",
         "propertyUrl": "http://example.org/stufe2uri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
       },
       {
         "titles": "Stufe3",
@@ -38,7 +38,7 @@
       {
         "titles": "Stufe3_URI",
         "propertyUrl": "http://example.org/stufe3uri",
-        "valueUrl": "http://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
       },
       {
         "titles": "Referenztabellen",

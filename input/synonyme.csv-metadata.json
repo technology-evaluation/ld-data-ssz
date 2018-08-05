@@ -23,7 +23,7 @@
       {
         "virtual":true,
         "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://ld.stadt-zuerich.ch/schema/Synonym"
+        "valueUrl":"https://ld.stadt-zuerich.ch/schema/Synonym"
       }
     ]
   }

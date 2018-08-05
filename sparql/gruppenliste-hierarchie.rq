@@ -12,5 +12,5 @@ INSERT {
         ?collectionSplit apf:strSplit (?collection ";")  .
   		FILTER(?collectionSplit != "undefined")
 
-    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/collection/", ENCODE_FOR_URI(REPLACE(?collectionSplit, " ", "" )))) AS ?collectionUri)
+    BIND( IRI(CONCAT("https://ld.stadt-zuerich.ch/statistics/collection/", ENCODE_FOR_URI(REPLACE(?collectionSplit, " ", "" )))) AS ?collectionUri)
 }

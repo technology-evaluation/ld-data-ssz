@@ -4,7 +4,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-schema: <https://ld.stadt-zuerich.ch/schema/>
 
 INSERT {
     ?shapeUri ssz-schema:lastUpdate ?lastupdate
@@ -13,7 +13,7 @@ INSERT {
 {
     SELECT ?dataSet (MAX(?update) AS ?lastupdate) WHERE {
 
-        ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND> ?update ;
+        ?obs <https://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND> ?update ;
             qb:dataSet ?dataSet .
 
     } GROUP BY ?dataSet
@@ -21,5 +21,5 @@ INSERT {
 
 ?dataSet skos:notation ?datasetNotation .
 
-BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+BIND(URI(REPLACE("https://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
 }

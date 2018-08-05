@@ -9,6 +9,6 @@ INSERT {
 } WHERE {
     ?obs a qb:Observation ;
          qb:dataSet/qb:structure/qb:component/qb:measure ?measure ;
-    	<http://ld.stadt-zuerich.ch/statistics/measure/KENNWERT> ?kennwert .
+    	<https://ld.stadt-zuerich.ch/statistics/measure/KENNWERT> ?kennwert .
    
 }

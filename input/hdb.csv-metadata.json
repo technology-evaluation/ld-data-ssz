@@ -2,7 +2,7 @@
   "@context":"http://www.w3.org/ns/csvw",
   "url":"hdb.csv",
   "tableSchema":{
-    "aboutUrl":"http://ld.stadt-zuerich.ch/statistics/observation/{KENNZAHL}/{RAUM}/{ZEIT}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
+    "aboutUrl":"https://ld.stadt-zuerich.ch/statistics/observation/{KENNZAHL}/{RAUM}/{ZEIT}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
     "null":"Dummy",
     "columns":[
       {
@@ -15,7 +15,7 @@
       },
       {
         "titles":"ZEIT",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/ZEIT",
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/ZEIT",
         "valueUrl": "http://example.org/zeit/{JAHR}-{MONAT}-{TAG}"
       },
       {
@@ -32,7 +32,7 @@
       },
       {
         "titles":"BEZUGSZEIT",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
       },
       {
         "titles":"BEZUGSPERIODE",
@@ -40,8 +40,8 @@
       },
       {
         "titles":"RAUM",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/RAUM",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{RAUM}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/RAUM",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{RAUM}"
       },
       {
         "titles":"KENNZAHL",
@@ -53,8 +53,8 @@
       },
       {
         "titles":"GRUPPENCODE1",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE1}",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE1}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/{GRUPPE1}",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE1}"
       },
       {
         "titles":"GRUPPE2",
@@ -62,8 +62,8 @@
       },
       {
         "titles":"GRUPPENCODE2",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE2}",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE2}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/{GRUPPE2}",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE2}"
       },
       {
         "titles":"GRUPPE3",
@@ -71,8 +71,8 @@
       },
       {
         "titles":"GRUPPENCODE3",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE3}",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE3}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/{GRUPPE3}",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE3}"
       },
       {
         "titles":"GRUPPE4",
@@ -80,8 +80,8 @@
       },
       {
         "titles":"GRUPPENCODE4",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE4}",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE4}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/{GRUPPE4}",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE4}"
       },
       {
         "titles":"GRUPPE5",
@@ -89,8 +89,8 @@
       },
       {
         "titles":"GRUPPENCODE5",
-        "propertyUrl":"http://ld.stadt-zuerich.ch/statistics/property/{GRUPPE5}",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE5}"
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/{GRUPPE5}",
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{GRUPPENCODE5}"
       },
       {
         "titles":"CODE",
@@ -363,7 +363,7 @@
       },
       {
         "titles": "ERWARTETE_AKTUALISIERUNG",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG",
+        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"
@@ -371,7 +371,7 @@
       },
       {
         "titles": "DATENSTAND",
-        "propertyUrl": "http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND",
+        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"

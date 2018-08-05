@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "example.csv",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
     "columns": [
       {
         "titles": "Index"
@@ -10,7 +10,7 @@
       {
         "titles": "Gruppe",
         "propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
-        "valueUrl":"http://ld.stadt-zuerich.ch/statistics/scheme/{Gruppe}"
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/scheme/{Gruppe}"
       },
       {
         "titles": "Gruppenname",

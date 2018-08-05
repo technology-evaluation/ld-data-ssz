@@ -2,8 +2,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
-PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
-PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX ssz-schema: <https://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/>
 
 INSERT {
 
@@ -64,8 +64,8 @@ WHERE {
 }
 }
 
-BIND('http://ld.stadt-zuerich.ch/statistics/property/' AS ?prefix)
-BIND('http://ld.stadt-zuerich.ch/statistics/code/' AS ?prefixLock)
+BIND('https://ld.stadt-zuerich.ch/statistics/property/' AS ?prefix)
+BIND('https://ld.stadt-zuerich.ch/statistics/code/' AS ?prefixLock)
 BIND(IRI(CONCAT(STR(?dataSet), '/', ?codeid, '/sliceKey')) AS ?sliceKey)
 BIND(IRI(CONCAT(STR(?dataSet), '/', ?codeid, '/slice')) AS ?slice)
 

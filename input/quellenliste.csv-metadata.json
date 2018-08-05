@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "quellenliste.csv",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/quelle/{QUELLEID}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/quelle/{QUELLEID}",
     "columns": [
       {
         "titles": "QUELLE",

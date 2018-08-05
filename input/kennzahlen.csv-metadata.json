@@ -3,7 +3,7 @@
   "url": "kennzahlen.csv",
   "dc:title": "Kennzahlen",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
     "null": "",
     "columns": [{
       "titles": "Index",
@@ -24,7 +24,7 @@
     },{
       "titles": "Einheit_URI",
       "propertyUrl": "http://qudt.org/schema/qudt#unit",
-      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
+      "valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
     },{
       "titles": "Rundung",
       "suppressOutput": true

@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "example.csv",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
     "columns": [
       {
         "titles": "Index",
@@ -27,7 +27,7 @@
       {
         "titles": "Parentcode",
         "propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
-        "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
+        "valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
       },
       {
         "titles": "Parentcodename",

@@ -3,7 +3,7 @@
   "url": "gruppenliste.csv",
   "dc:title": "Gruppenliste",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
     "null": "",
     "columns": [{
       "titles": "Index",
@@ -23,18 +23,18 @@
       "lang": "de-CH"
     },{
       "titles":"Gruppencodesort",
-      "propertyUrl":"http://ld.stadt-zuerich.ch/schema/score"
+      "propertyUrl":"https://ld.stadt-zuerich.ch/schema/score"
     },{
       "titles": "Parentcode",
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
-      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
+      "valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
     },{
       "titles": "Parentcodename",
       "suppressOutput": true
     },{
       "titles": "GlossarID",
-      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/glossary",
-      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/glossary/{GlossarID}"
+      "propertyUrl": "https://ld.stadt-zuerich.ch/schema/glossary",
+      "valueUrl": "https://ld.stadt-zuerich.ch/statistics/glossary/{GlossarID}"
     },{
       "titles": "Beschreibung",
       "propertyUrl": "http://www.w3.org/2000/01/rdf-schema#comment",

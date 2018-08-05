@@ -3,7 +3,7 @@
   "url": "kennzahlen.csv",
   "dc:title": "Einheit",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}",
     "null": "",
     "columns": [{
       "titles": "Index",
@@ -25,7 +25,7 @@
       "suppressOutput": true
     },{
       "titles": "Rundung",
-      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/rounding"
+      "propertyUrl": "https://ld.stadt-zuerich.ch/schema/rounding"
     },{
       "titles": "Klasse",
       "suppressOutput": true

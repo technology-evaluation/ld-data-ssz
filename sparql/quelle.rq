@@ -4,12 +4,12 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT {
-    ?base <http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelleUri
+    ?base <https://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelleUri
 } 
 WHERE {
 
     ?base <http://example.org/QUELLE> ?quelle .
         ?quelleSplit apf:strSplit (?quelle ";")  .
     
-    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/quelle/", ENCODE_FOR_URI(REPLACE(?quelleSplit, " ", "" )))) AS ?quelleUri)
+    BIND( IRI(CONCAT("https://ld.stadt-zuerich.ch/statistics/quelle/", ENCODE_FOR_URI(REPLACE(?quelleSplit, " ", "" )))) AS ?quelleUri)
 }

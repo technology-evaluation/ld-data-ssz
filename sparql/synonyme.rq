@@ -8,7 +8,7 @@ INSERT {
 } 
 WHERE {
 
-    ?synonymUri a <http://ld.stadt-zuerich.ch/schema/Synonym> ;
+    ?synonymUri a <https://ld.stadt-zuerich.ch/schema/Synonym> ;
         <http://example.org/gruppencode_KennzahlCode> ?code ;
         <http://example.org/begriff> ?begriff ;
         <http://example.org/synonyme> ?synonm .

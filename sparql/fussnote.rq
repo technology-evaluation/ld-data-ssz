@@ -3,11 +3,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT {
-    ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE> ?footnoteUri .
+    ?obs <https://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE> ?footnoteUri .
 
     ?footnoteUri a skos:Concept ;
         rdfs:label ?note ;
-        skos:inScheme  <http://ld.stadt-zuerich.ch/statistics/scheme/Footnote> .
+        skos:inScheme  <https://ld.stadt-zuerich.ch/statistics/scheme/Footnote> .
 
 } WHERE {
     VALUES ?footnotes { <http://example.org/FUSSNOTEKENNZAHL> 
@@ -19,5 +19,5 @@ INSERT {
 
     ?obs ?footnotes ?note .
 
-    BIND(URI(CONCAT("http://ld.stadt-zuerich.ch/statistics/footnote/", SHA1(?note))) AS ?footnoteUri)
+    BIND(URI(CONCAT("https://ld.stadt-zuerich.ch/statistics/footnote/", SHA1(?note))) AS ?footnoteUri)
 }

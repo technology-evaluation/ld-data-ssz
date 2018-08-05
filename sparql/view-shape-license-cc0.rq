@@ -12,7 +12,7 @@ INSERT {
 }
 WHERE {
     
-    ?obs <http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelle ;
+    ?obs <https://ld.stadt-zuerich.ch/statistics/attribute/QUELLE> ?quelle ;
        qb:dataSet ?dataSet .
         
     ?quelle <http://purl.org/dc/terms/license> "CC0" .

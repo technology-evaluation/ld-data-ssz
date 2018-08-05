@@ -13,5 +13,5 @@ WHERE {
     ?base <http://example.org/RaumHierarchie> ?collection .
         ?collectionSplit apf:strSplit (?collection ";")  .
     
-    BIND( IRI(CONCAT("http://ld.stadt-zuerich.ch/statistics/collection/", ENCODE_FOR_URI(REPLACE(?collectionSplit, " ", "" )))) AS ?collectionUri)
+    BIND( IRI(CONCAT("https://ld.stadt-zuerich.ch/statistics/collection/", ENCODE_FOR_URI(REPLACE(?collectionSplit, " ", "" )))) AS ?collectionUri)
 }

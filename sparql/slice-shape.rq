@@ -4,8 +4,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX ex: <http://example.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
-PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
-PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX ssz-schema: <https://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/>
 
 # Important: This has to be run before qb-slices-code.rq. At least I think so, got way too many triples otherwise
 INSERT {
@@ -24,7 +24,7 @@ INSERT {
     # no slice for these dataset(s)
     FILTER ( ?notation != "GEB-RAUM-ZEIT-NAF-NAM-SEX" )
 
-    BIND(URI(REPLACE("http://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
+    BIND(URI(REPLACE("https://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
 
     ?shape a sh:NodeShape ;
         sh:targetNode ?target .

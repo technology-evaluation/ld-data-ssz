@@ -3,7 +3,7 @@
   "url": "raum.csv",
   "dc:title": "Raum",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/code/{Raum}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Raum}",
     "null": "",
     "columns": [{
       "titles": "Raum",
@@ -51,7 +51,7 @@
     {
       "titles": "RaumSort",
       "datatype":"number",
-      "propertyUrl": "http://ld.stadt-zuerich.ch/schema/score"
+      "propertyUrl": "https://ld.stadt-zuerich.ch/schema/score"
     },
     {
       "titles": "RaumHierarchie",
@@ -70,7 +70,7 @@
     {
       "virtual": true,
       "propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
-      "valueUrl": "http://ld.stadt-zuerich.ch/statistics/scheme/Raum"
+      "valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/Raum"
     },
     {
       "virtual":true,

@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "example.csv",
   "tableSchema": {
-    "aboutUrl": "http://stat.stadt-zuerich.ch/topic/{Referenztabelle}",    
+    "aboutUrl": "https://stat.stadt-zuerich.ch/topic/{Referenztabelle}",    
     "columns": [
       {
         "titles": "Index",
@@ -15,7 +15,7 @@
       {
         "titles": "Thema",
         "propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
-        "valueUrl": "http://stat.stadt-zuerich.ch/topic/{Thema}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/topic/{Thema}"
       },
       {
         "titles": "Referenztabelle",
@@ -62,7 +62,7 @@
       {
         "virtual": true,
         "propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl": "http://ld.stadt-zuerich.ch/schema/Topic"
+        "valueUrl": "https://ld.stadt-zuerich.ch/schema/Topic"
       }
     ]
   }

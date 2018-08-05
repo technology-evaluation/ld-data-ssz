@@ -4,8 +4,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX ex: <http://example.org/>
 PREFIX sh: <http://www.w3.org/ns/shacl#>
-PREFIX ssz-schema: <http://ld.stadt-zuerich.ch/schema/>
-PREFIX ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX ssz-schema: <https://ld.stadt-zuerich.ch/schema/>
+PREFIX ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 # Needs to be run AFTER view-shape-dimensions.rq
@@ -34,7 +34,7 @@ INSERT {
     skos:notation ?datasetNotation ;
     qb:structure/qb:component/(qb:dimension|qb:measure) ?property .
 
-BIND(URI(REPLACE("http://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
+BIND(URI(REPLACE("https://ld.stadt-zuerich.ch/statistics/dataset/%%DATASET%%/shape", "%%DATASET%%" , ?datasetNotation)) AS ?shapeUri)
 
 BIND(BNODE() AS ?b_property)
 # Dimensionen alleine, für den Pfad

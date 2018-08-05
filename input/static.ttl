@@ -1,4 +1,4 @@
-@base <http://ld.stadt-zuerich.ch/statistics/> .
+@base <https://ld.stadt-zuerich.ch/statistics/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -10,12 +10,12 @@
 @prefix szh: <http://data.zuerich.ch/statistik/qb/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
-@prefix view: <http://stat.stadt-zuerich.ch/view/> .
+@prefix view: <https://stat.stadt-zuerich.ch/view/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix ssz-schema: <http://ld.stadt-zuerich.ch/schema/> .
-@prefix ssz-dimension: <http://ld.stadt-zuerich.ch/statistics/property/> .
-@prefix ssz-attribute: <http://ld.stadt-zuerich.ch/statistics/attribute/> .
-@prefix ssz-measure: <http://ld.stadt-zuerich.ch/statistics/measure/> .
+@prefix ssz-schema: <https://ld.stadt-zuerich.ch/schema/> .
+@prefix ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/> .
+@prefix ssz-attribute: <https://ld.stadt-zuerich.ch/statistics/attribute/> .
+@prefix ssz-measure: <https://ld.stadt-zuerich.ch/statistics/measure/> .
 
 
 # TODO: Checkout qb:CodedProperty as well for everything hierarchical.

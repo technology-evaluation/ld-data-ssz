@@ -2,7 +2,7 @@
   "@context": "http://www.w3.org/ns/csvw",
   "url": "glossarliste.csv",
   "tableSchema": {
-    "aboutUrl": "http://ld.stadt-zuerich.ch/statistics/glossary/{GLOSSARID}",
+    "aboutUrl": "https://ld.stadt-zuerich.ch/statistics/glossary/{GLOSSARID}",
     "columns": [
       {
         "titles": "Name",
