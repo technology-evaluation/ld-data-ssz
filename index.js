@@ -18,7 +18,7 @@ function convertCsvw (filename, metadata) {
         metadata: metadata
       }))
       .pipe(p.filter((quad) => {
-        return quad.predicate.value !== 'http://ld.stadt-zuerich.ch/statistics/property/XXX'
+        return quad.predicate.value !== 'https://ld.stadt-zuerich.ch/statistics/property/XXX'
       }))
       .pipe(p.filter((quad) => {
         // does not do anything for some reason
@@ -39,7 +39,7 @@ function convertCsvw (filename, metadata) {
           const dimensions = object.value.slice(fix.length + 4).split('-').sort().filter(dimension => dimension !== 'XXX')
           const kennzahl = object.value.slice(fix.length, fix.length + 3)
           const staticDimension = dimensions.length > 0 ? 'RAUM-ZEIT-' : 'RAUM-ZEIT'
-          object = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + '-' + staticDimension + dimensions.join('-'))
+          object = p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + '-' + staticDimension + dimensions.join('-'))
           dimensions.unshift(kennzahl, 'RAUM', 'ZEIT')
           qbDataSet.set(object.value, dimensions)
         }
@@ -50,13 +50,13 @@ function convertCsvw (filename, metadata) {
 
         if (predicate.value.startsWith('http://example.org/measure/')) {
           const value = object.value.split(' ').join('') // fixes numbers with spaces in it, ideally this should not happen anymore in the data
-          let predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
+          let predicateUri = 'https://ld.stadt-zuerich.ch/statistics/measure/' + predicate.value.slice('http://example.org/measure/'.length)
 
           let valnumber
 
           if (isNaN(parseFloat(value))) {
             // In case we do not get a parsable number we create a string out of it (on a special qb:MeasureProperty)
-            predicateUri = 'http://ld.stadt-zuerich.ch/statistics/measure/KENNWERT'
+            predicateUri = 'https://ld.stadt-zuerich.ch/statistics/measure/KENNWERT'
           } else {
             valnumber = parseFloat(value)
             object = p.rdf.literal(valnumber, 'http://www.w3.org/2001/XMLSchema#double')
@@ -69,7 +69,7 @@ function convertCsvw (filename, metadata) {
         if (predicate.value === 'http://example.org/UPDATE') {
           const conditions = ['QUE', 'KZE', 'WRT'];
           var included = conditions.some(el => object.value.includes(el));
-          predicate = p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')
+          predicate = p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')
 
           if (included) {
             object = p.rdf.literal('true', 'http://www.w3.org/2001/XMLSchema#boolean')
@@ -78,7 +78,7 @@ function convertCsvw (filename, metadata) {
           }
         }
 
-        if (predicate.value === 'http://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
+        if (predicate.value === 'https://ld.stadt-zuerich.ch/statistics/property/ZEIT') {
           const year = object.value.substring(24, 28)
           const month = object.value.substring(29, 31)
           const day = object.value.substring(32, 34)
@@ -103,8 +103,8 @@ function convertCsvw (filename, metadata) {
       const sliceKeyNode = p.rdf.namedNode(key + '/sliceKey')
       const sliceNode = p.rdf.namedNode(key + '/slice')
       const componentNode = p.rdf.blankNode()
-      const datasetNotation = key.slice('http://ld.stadt-zuerich.ch/statistics/dataset/'.length)
-      const dataSetApiNode = p.rdf.namedNode('http://stat.stadt-zuerich.ch/dataset/' + datasetNotation)
+      const datasetNotation = key.slice('https://ld.stadt-zuerich.ch/statistics/dataset/'.length)
+      const dataSetApiNode = p.rdf.namedNode('https://stat.stadt-zuerich.ch/dataset/' + datasetNotation)
 
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), p.rdf.namedNode('http://purl.org/linked-data/cube#DataSet')))
       dataset.add(p.rdf.quad(datasetNode, p.rdf.namedNode('http://www.w3.org/2004/02/skos/core#notation'), p.rdf.literal(datasetNotation)))
@@ -118,17 +118,17 @@ function convertCsvw (filename, metadata) {
       dataset.add(p.rdf.quad(sliceNode, p.rdf.namedNode('http://purl.org/linked-data/cube#sliceStructure'), sliceKeyNode))
       dataset.add(p.rdf.quad(dsdNode, p.rdf.namedNode('http://purl.org/linked-data/cube#sliceKey'), sliceKeyNode))
 
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#measure'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/measure/' + value.shift())))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#measure'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/measure/' + value.shift())))
       // add static attributes
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
-      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/QUELLE')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/GLOSSAR')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/FUSSNOTE')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG')))
+      dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#attribute'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')))
 
       value.forEach((predicate) => {
-        dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode('http://ld.stadt-zuerich.ch/statistics/property/' + predicate)))
+        dataset.add(p.rdf.quad(componentNode, p.rdf.namedNode('http://purl.org/linked-data/cube#dimension'), p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/property/' + predicate)))
       })
     }
     p.run(dataset.toStream().pipe(p.ntriples.serialize()).pipe(p.file.write(filenameOutputDimensions)))
