@@ -35,7 +35,7 @@
       {
         "titles": "Thema_URI",
         "propertyUrl": "http://example.org/themauri",
-        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Thema_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/code/{Thema_URI}"
       },
       {
         "titles": "Einordnung Themenbaum Stufe1_URI",
@@ -44,12 +44,12 @@
       {
         "titles": "Einordnung Themenbaum Stufe2_URI",
         "propertyUrl": "http://example.org/stufe2uri",
-        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe2_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/code/{Stufe2_URI}"
       },
       {
         "titles": "Einordnung Themenbaum Stufe3_URI",
         "propertyUrl": "http://example.org/stufe3uri",
-        "valueUrl": "https://stat.stadt-zuerich.ch/statistics/code/{Stufe3_URI}"
+        "valueUrl": "https://stat.stadt-zuerich.ch/code/{Stufe3_URI}"
       },
       {
         "titles": "Einordnung_Kennzahlen",
