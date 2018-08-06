@@ -49,8 +49,8 @@
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
     doap:repository [
         a doap:GitRepository ;
-        doap:browse <https://github.com/statistikstadtzuerich/ssz-data> ;
-        doap:location "git@github.com:statistikstadtzuerich/ssz-data.git" 
+        doap:browse <https://github.com/statistikstadtzuerich/ld-data> ;
+        doap:location "git@github.com:statistikstadtzuerich/ld-data.git" 
     ] ;
     void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
 #    duv:hasUsage <dataset/meta-usage> ;
