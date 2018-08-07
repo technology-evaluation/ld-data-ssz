@@ -22,7 +22,7 @@ INSERT {
         qb:slice ?slice .
 
     # no slice for these dataset(s)
-    #FILTER ( ?notation != "GEB-RAUM-ZEIT-NAF-NAM-SEX" )
+    FILTER ( ?datasetNotation != "GEB-RAUM-ZEIT-NAF-NAM-SEX" )
 
     BIND(URI(REPLACE("https://stat.stadt-zuerich.ch/dataset/%%DATASET%%/slice", "%%DATASET%%" , ?datasetNotation)) AS ?target)
 
