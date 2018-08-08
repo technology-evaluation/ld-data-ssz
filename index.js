@@ -41,7 +41,6 @@ function convertCsvw (filename, metadata) {
           const staticDimension = dimensions.length > 0 ? 'RAUM-ZEIT-' : 'RAUM-ZEIT'
           object = p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/dataset/' + kennzahl + '-' + staticDimension + dimensions.join('-'))
           dimensions.unshift(kennzahl, 'RAUM', 'ZEIT')
-          console.log(dimensions)
           qbDataSet.set(object.value, dimensions)
         }
 
