@@ -64,11 +64,6 @@ function convertCsvw (filename, metadata) {
           }
 
           predicate = p.rdf.namedNode(predicateUri)
-<<<<<<< HEAD
-=======
-          // Datatype needs to be more flexible, see issue #33. Needs to be adjusted in kennzahlen.csv-metadata.json as well, hard coded to xsd:double right now
-          object = p.rdf.literal(valnumber, object.datatype)
->>>>>>> 958e4853a1fd218c6119d0b26ca998d10bbbefa2
         }
 
         if (predicate.value === 'http://example.org/UPDATE') {
