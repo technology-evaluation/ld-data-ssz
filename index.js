@@ -64,12 +64,11 @@ function convertCsvw (filename, metadata) {
           }
 
           predicate = p.rdf.namedNode(predicateUri)
-
         }
 
         if (predicate.value === 'http://example.org/UPDATE') {
-          const conditions = ['QUE', 'KZE', 'WRT'];
-          var included = conditions.some(el => object.value.includes(el));
+          const conditions = ['QUE', 'KZE', 'WRT']
+          var included = conditions.some(el => object.value.includes(el))
           predicate = p.rdf.namedNode('https://ld.stadt-zuerich.ch/statistics/attribute/KORREKTUR')
 
           if (included) {
