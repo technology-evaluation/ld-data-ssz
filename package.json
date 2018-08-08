@@ -40,8 +40,13 @@
     "put-localhost": "stardog data remove --all ssz && stardog data add ssz --named-graph https://linked.opendata.swiss/graph/zh/statistics target/everything.nt",
     "ssz-lindas-integ": "ENDPOINT=http://data.zazuko.com/ssz ./scripts/lindas-put-everything.sh",
     "ssz-lindas-prod": "ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
+<<<<<<< HEAD
     "ssz-lindas-integ-s3": "ENDPOINT=http://data.zazuko.com/ssz STORE_USER=$STORE_USER_INTEG STORE_PASSWORD=$STORE_PASSWORD_INTEG ./scripts/store-s3.sh",
     "ssz-lindas-prod-s3": "ENDPOINT=https://lindas-data.ch:8443/lindas STORE_USER=$STORE_USER_PROD STORE_PASSWORD=$STORE_PASSWORD_PROD ./scripts/store-s3.sh",
+=======
+    "ssz-lindas-integ-s3": "ENDPOINT=http://data.zazuko.com/ssz ./scripts/store-s3.sh",
+    "ssz-lindas-prod-s3": "ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/store-s3.sh",
+>>>>>>> 958e4853a1fd218c6119d0b26ca998d10bbbefa2
     "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-prod": "npm-run-all clean get-hdb-prod get-dimensions-prod convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
     "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
