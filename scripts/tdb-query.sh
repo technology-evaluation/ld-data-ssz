@@ -29,3 +29,4 @@ tdbupdate --loc=target/tdb_ssz --update=sparql/kennwert-kennzahl.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-undefined.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-xxx-object.rq
 tdbupdate --loc=target/tdb_ssz --update=sparql/delete-xxx-predicate.rq
+tdbupdate --loc=target/tdb_ssz --update=sparql/delete-broken-broader.rq
