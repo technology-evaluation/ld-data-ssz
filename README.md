@@ -1,11 +1,13 @@
-# Statistik Zürich Data Cube Beispiel
+# Statistik Stadt Zürich: RDF Data Cube Pipeline
 
 ## Struktur
 
-* `input` - Enthält die CSV on the Web JSON-Konfiguration. Die Daten selber werden über WebDAV bezogen und sind nicht im Github Repository gepflegt.
+* `input` - Enthält die CSV on the Web JSON-Konfiguration. Die Daten selber werden über WebDAV bezogen und werden nicht im Github Repository gepflegt.
+* `config` - Enthält Templates von config-Dateien für die benötigten Tools
 * `scripts` - Enthält diverse Shell-Scripte, um die Generierung möglichst vollständig zu automatisieren. Bedingt ein Unix-System, geschrieben und getestet auf macOS.
-* `target` - Wird erstellt durch die Scripte und enthält das Resultat in [N-Triples](https://en.wikipedia.org/wiki/N-Triples) Serialisierung
-* `sparql` - SPARQL Abfragen als Beispiele
+* `target` - Wird erstellt durch die Scripte und enthält die zwischen- und Endresultate in [N-Triples](https://en.wikipedia.org/wiki/N-Triples) Serialisierung. Die finale Datei heisst `everything.nt.gz` und ist mit gzip komprimiert.
+* `sparql` - Enthält SPARQL Abfragen, welche in der Pipeline ausgeführt werden. Diese werden benötigt, um den vollständigen Graphen automatisiert zu bauen.
+* `package.json` - Stellt die eigentliche Pipeline zur Verfügung.
 
 
 ## CSV on the Web
@@ -20,18 +22,23 @@ Für die Transformation wird eine von Zazuko in JavaScript (Node.js) geschrieben
 
 ## Daten Pipeline
 
-Die Daten werden durch verschiedene Scripte im Verzeichnis `scripts` generiert. Dafür wird unter anderem Docker verwendet.
+Die Daten werden durch verschiedene Scripte generiert. Die produktive Pipeline wird automatisiert in einer Gitlab-Umgebung ausgeführt. Die Daten werden dabei in das [RDF Data Cube](https://www.w3.org/TR/vocab-data-cube/) Vokabular überführt.
 
-Die Daten werden in das [RDF Data Cube](https://www.w3.org/TR/vocab-data-cube/) Vokabular überführt.
+### Anforderungen
+
+* [Apache Jena](https://jena.apache.org/download/index.cgi) (bedingt Java Umgebung). Die Kommanozeilen-Werkzeuge müssen im PATH sein
+* [Serd](https://drobilla.net/software/serd), ebenfalls im PATH
+* [Node.js](https://nodejs.org/)
+* Unix Umgebung wie MacOS, FreeBSD oder Linux
+  * curl
+  * sh
+  * Sed
+
+Alternativ kann das folgende Docker-Image verwendet werden: [zazukoians/node-java-jena](https://hub.docker.com/r/zazukoians/node-java-jena/). Dieses Docker-Image wird von der Pipeline selber verwendet und über Gitlab automatisiert ausgeführt. Details können der [Gitlab YAML Datei](.gitlab-ci.yml) entnommen werden.
 
 ### Ausführung
 
 Die Konvertierung kann von Hand gestartet werden. Dazu muss initial folgendes ausgeführt werden: `npm install`
 
-Danach kann mit `npm run` angezeigt werden, was ausgeführt werden soll. Bitte zum Testen ausschliesslich `npm run build-local` ausführen!
+Danach kann mit `npm run` angezeigt werden, was ausgeführt werden soll. Bitte zum Testen ausschliesslich `npm run build` ausführen!
 
-## SPARQL Beispiele
-
-Im Verzeichnis SPARQL sind einige Abfragen enthalten, die gegenüber dem LINDAS SPARQL-Endpunkt getestet werden können.
-
-Aktueller Endpunkt zum Testen: https://test.lindas-data.ch/sparql-ui/
