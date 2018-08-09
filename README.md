@@ -26,13 +26,13 @@ Die Daten werden durch verschiedene Scripte generiert. Die produktive Pipeline w
 
 ### Anforderungen
 
-* [Apache Jena](https://jena.apache.org/download/index.cgi) (bedingt Java Umgebung). Die Kommanozeilen-Werkzeuge müssen im PATH sein
-* [Serd](https://drobilla.net/software/serd), ebenfalls im PATH
+* [Apache Jena](https://jena.apache.org/download/index.cgi) (bedingt Java Umgebung). Die Kommanozeilen-Werkzeuge müssen im `PATH` sein
+* [Serd](https://drobilla.net/software/serd), ebenfalls im `PATH`
 * [Node.js](https://nodejs.org/)
 * Unix Umgebung wie MacOS, FreeBSD oder Linux
   * curl
   * sh
-  * Sed
+  * sed
 
 Alternativ kann das folgende Docker-Image verwendet werden: [zazukoians/node-java-jena](https://hub.docker.com/r/zazukoians/node-java-jena/). Dieses Docker-Image wird von der Pipeline selber verwendet und über Gitlab automatisiert ausgeführt. Details können der [Gitlab YAML Datei](.gitlab-ci.yml) entnommen werden.
 
