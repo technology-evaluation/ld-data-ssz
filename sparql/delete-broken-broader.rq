@@ -3,4 +3,13 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE WHERE {
     ?s skos:broader <https://ld.stadt-zuerich.ch/statistics/code/> .
+};
+DELETE WHERE {
+    <https://ld.stadt-zuerich.ch/statistics/code/XXX0000> ?p1 ?o1 .
+};
+DELETE WHERE {
+    ?s2 ?p2 <https://ld.stadt-zuerich.ch/statistics/code/XXX0000> .
+};
+DELETE WHERE {
+    ?s3 ?p3 <https://ld.stadt-zuerich.ch/statistics/code/Dummy> .
 }
