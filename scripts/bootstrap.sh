@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cp config/dot.netrc /root/.netrc
+cat config/dot.netrc| sed "s/%%PWD%%/${SSZ_DAV_PASSWORD}/g" > /root/.netrc
