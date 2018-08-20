@@ -1,4 +1,6 @@
 # Statistik Stadt Zürich: RDF Data Cube Pipeline
+This program obtains the data files in HDB format from Statistik Stadt Zürich and feeds them into the RDF data cube. 
+The HDB format consists of two CSV and one Excel. The Excel contains all basic data and meta data. The others contain all the statistical observations and relations.
 
 ## Struktur
 
