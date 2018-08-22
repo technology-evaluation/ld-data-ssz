@@ -10,6 +10,14 @@ const files = [{
   input: 'statistische_quartiere.json',
   output: 'statistische_quartiere.nt',
   subject: 'http://ld.stadt-zuerich.ch/geo/quartier/${qnr}'
+}, {
+  input: 'schulkreis.json',
+  output: 'schulkreis.nt',
+  subject: 'http://ld.stadt-zuerich.ch/geo/schulkreis/${qnr}'
+ }, {
+  input: 'wahlkreis.json',
+  output: 'wahlkreis.nt',
+  subject: 'http://ld.stadt-zuerich.ch/geo/wahlkreis/${qnr}'
 }]
 
 Promise.all(files.map(file => {
