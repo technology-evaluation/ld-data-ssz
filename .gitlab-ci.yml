@@ -84,7 +84,8 @@ convert_geojson_job:
     - npm run convert-geojson
   artifacts:
     paths:
-      - target/geo_*.nt
+      - target/geo_stadtkreise.nt
+      - target/geo_statistische_quartiere.nt
     expire_in: 1 day
   dependencies:
     - curl_geojson_job
@@ -105,6 +106,7 @@ staging_tdb_job:
   dependencies:
     - convert_dimensions_job
     - convert_hdb_job
+    - convert_geojson_job
 
 validate_riot_job:
   stage: validate
