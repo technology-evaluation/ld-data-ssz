@@ -36,6 +36,17 @@ curl_dimension_job:
       - input/HDB_Listen.xlsx
     expire_in: 30 minutes
 
+curl_geojson_job:
+  stage: fetch
+  tags: 
+    - ssz
+  script:
+    - npm run get-geojson
+  artifacts:
+    paths:
+      - tmp/*.json
+    expire_in: 30 minutes
+
 convert_hdb_job:
   stage: convert
   tags: 
@@ -64,6 +75,19 @@ convert_dimensions_job:
     expire_in: 1 day
   dependencies:
     - curl_dimension_job
+
+convert_geojson_job:
+  stage: convert
+  tags: 
+    - ssz
+  script:
+    - npm run convert-geojson
+  artifacts:
+    paths:
+      - target/geo_*.nt
+    expire_in: 1 day
+  dependencies:
+    - curl_geojson_job
 
 staging_tdb_job:
   stage: staging
