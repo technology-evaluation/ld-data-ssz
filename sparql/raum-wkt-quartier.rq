@@ -1,0 +1,19 @@
+PREFIX schema: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+INSERT {
+	?base geo:hasGeometry ?geoUri .
+
+    ?geoUri a geo:Geometry .
+}
+WHERE {
+
+    ?base <http://example.org/QuarCodeAktuell> ?mapping .
+        ?mappingSplit apf:strSplit (?mapping ",")  .
+  		FILTER(?mapping != "undefined")
+
+    BIND(URI(REPLACE("https://ld.stadt-zuerich.ch/geo/geometry/quartier/%%ID%%", "%%ID%%" , ?mappingSplit)) AS ?geoUri)
+
+}
