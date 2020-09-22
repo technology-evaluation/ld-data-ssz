@@ -77,8 +77,7 @@ _:save
 
 <#TransformCsv>
     a      :Pipeline, :ReadableObjectMode ;
-    #:steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> ) ] .
-    :steps [ :stepList ( <#loadCsvStep> <#parse>  ) ] .
+    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#toDataset> <#toObservation> <#flatten>) ] .
 
 <#LoadCsv>
     a      :Pipeline, :ReadableObjectMode ;
@@ -124,3 +123,43 @@ _:openCsvFromFilesystem
                          code:link <node:barnard59-base#filter> ] ;
     code:arguments     ( [ code:link <file:../lib/output-filter#removeCsvwTriples> ;
                            a         code:EcmaScript ] ) .
+
+<#toDataset> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:rdf-stream-to-dataset-stream/bySubject.js>
+  ].
+
+<#toObservation> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-rdf/cube.js#toObservation>
+  ];
+  code:arguments [
+    code:name "observations";
+    code:value """({ dataset }) => {
+      const rdf = require('rdf-ext')
+      const quad = [...dataset][0]
+      const parts = quad.subject.value.split('/')
+      const baseIri = parts.slice(0, -3).join('/')
+      const cubeId = parts.slice(-3, -2)[0].split('-').filter(s => s !== 'XXX0000').join('-')
+      const observationsPath = parts.slice(-2)[0]
+      const observationsIri = [baseIri, cubeId, observationsPath].join('/') + '/'
+
+      return rdf.namedNode(observationsIri)
+    }"""^^code:EcmaScript
+  ], [
+    code:name "observation";
+    code:value """({ dataset, observations }) => {
+      const rdf = require('rdf-ext')
+      const quad = [...dataset][0]
+      const parts = quad.subject.value.split('/')
+      const observationId = parts.slice(-1)[0]
+      const observationIri = observations.value + observationId
+
+      return rdf.namedNode(observationIri)
+    }"""^^code:EcmaScript
+  ].
+
+<#flatten> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#flatten>;
+  ].
