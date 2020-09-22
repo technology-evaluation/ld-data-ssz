@@ -1,0 +1,2 @@
+template zeitIri "http://example.org/zeit/{0}-{1}-{2}"
+template raumIri "https://ld.stadt-zuerich.ch/statistics/code/{0}"
