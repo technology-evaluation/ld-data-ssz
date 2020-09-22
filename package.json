@@ -1,53 +1,27 @@
 {
   "name": "ssz-data",
-  "version": "0.10.0",
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:statistikstadtzuerich/ssz-data.git"
+  "version": ".99.0",
+  "private": true,
+  "description": "Barnard pipeline with sensible defaults",
+  "scripts": {
+    "postinstall": "mkdirp output",
+    "start": "dotenv ./start.sh --"
   },
   "dependencies": {
-    "barnard59": "git+https://github.com/zazuko/barnard59-legacy.git#master",
-    "wellknown": "^0.5.0"
+    "@tpluscode/rdf-ns-builders": "^0.3.6",
+    "barnard59": "^0.1.0",
+    "barnard59-base": "^0.0.4",
+    "barnard59-formats": "^0.0.6",
+    "barnard59-graph-store": "^0.0.6",
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.1.0",
+    "rdf-ext": "^1.3.0",
+    "readable-stream": "^3.6.0"
   },
   "devDependencies": {
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "npm-run-all": "^4.1.3"
+    "mkdirp": "^1.0.4",
+    "standard": "^12.0.1"
   },
-  "scripts": {
-    "clean": "rm -rf target/*",
-    "get-hdb": "./scripts/curl-ssz.sh HDB.zip && unzip -o input/HDB.zip HDB.csv HDB_MAPPING.csv && mv HDB.csv input/hdb.csv && mv HDB_MAPPING.csv input/hdb_mapping.csv",
-    "get-hdb-prod": "SSZ_ENV=prod npm run get-hdb",
-    "get-dimensions": "./scripts/curl-ssz.sh HDB_Listen.xlsx",
-    "get-dimensions-prod": "SSZ_ENV=prod npm run get-dimensions",
-    "get-geojson": "mkdir -p tmp && cd tmp && cat ../input/geojson.in | while read -r a; do curl -O $a; done",
-    "convert-hdb": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --hdb",
-    "convert-dimensions": "NODE_OPTIONS=--max_old_space_size=8192 node index.js --lists",
-    "convert-geojson": "node geojson.js",
-    "clean-dimensions": "cat target/HDB_Listen.*.nt | sed '/_:/d' | sed '/<file/d' | sed '/<>/d' > target/dimensions.nt",
-    "clean-hdb": "cat target/hdb.nt target/hdb_mapping.nt | sed '/_:/d' | sed '/<file/d' > target/hdb-clean.nt",
-    "tdb-load": "tdbloader --loc target/tdb_ssz target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt target/geo_*.nt",
-    "tdb-query": "JVM_ARGS=-Xmx28G ./scripts/tdb-query.sh",
-    "tdb-dump": "./scripts/tdb-dump.sh",
-    "stardog-load": "stardog data remove --all ssz-staging && stardog data add ssz-staging target/void.ttl input/static.ttl target/hdb-clean.nt target/hdb-meta.nt target/dimensions.nt",
-    "stardog-query": "./scripts/stardog-query.sh",
-    "stardog-dump": "./scripts/stardog-dump.sh",
-    "validate-riot": "riot --validate target/everything.nt.gz",
-    "void-timestamp": "./scripts/void-timestamp.sh",
-    "put-everything": "./scripts/lindas-put-everything.sh",
-    "put-localhost": "stardog data remove --all ssz && stardog data add ssz --named-graph https://linked.opendata.swiss/graph/zh/statistics target/everything.nt",
-    "ssz-lindas-integ": "ENDPOINT=http://data.zazuko.com/ssz ./scripts/lindas-put-everything.sh",
-    "ssz-lindas-prod": "ENDPOINT=https://lindas-data.ch:8443/lindas ./scripts/lindas-put-everything.sh",
-    "ssz-lindas-integ-s3": "ENDPOINT=http://data.zazuko.com/ssz STORE_USER=$STORE_USER_INTEG STORE_PASSWORD=$STORE_PASSWORD_INTEG ./scripts/store-s3.sh",
-    "ssz-lindas-prod-s3": "ENDPOINT=https://lindas-data.ch:8443/lindas STORE_USER=$STORE_USER_PROD STORE_PASSWORD=$STORE_PASSWORD_PROD ./scripts/store-s3.sh",
-    "build": "npm-run-all clean get-hdb get-dimensions convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-prod": "npm-run-all clean get-hdb-prod get-dimensions-prod convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-cache": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp tdb-load tdb-query tdb-dump",
-    "build-stardog": "npm-run-all clean convert-hdb convert-dimensions clean-dimensions clean-hdb void-timestamp stardog-load stardog-query stardog-dump"
-  }
+  "author": "Zazuko GmbH",
+  "license": "MIT"
 }
