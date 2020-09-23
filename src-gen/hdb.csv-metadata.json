@@ -380,6 +380,30 @@
       {
         "titles": "UPDATE",
         "propertyUrl": "http://example.org/UPDATE"
+      },
+      {
+        "titles":"STICHTAGDATUM",
+        "suppressOutput":true
+      },
+      {
+        "titles":"WIKIDATAURI",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMSORT",
+        "suppressOutput":true
+      },
+      {
+        "titles":"SSZQUELLE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"DATENSTATUS",
+        "suppressOutput":true
+      },
+      {
+        "titles":"i",
+        "suppressOutput":true
       }
     ]
   }
