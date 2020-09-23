@@ -77,7 +77,7 @@ _:save
 
 <#TransformCsv>
     a      :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#toDataset> <#toObservation> <#flatten>) ] .
+    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#filterNullValues>  <#toDataset> <#toObservation> <#flatten>) ] .
 
 <#LoadCsv>
     a      :Pipeline, :ReadableObjectMode ;
@@ -121,8 +121,16 @@ _:openCsvFromFilesystem
     a                  :Step ;
     code:implementedBy [ a         code:EcmaScript ;
                          code:link <node:barnard59-base#filter> ] ;
-    code:arguments     ( [ code:link <file:../lib/output-filter#removeCsvwTriples> ;
+    code:arguments     ( [ code:link <file:../lib/steps-filter#removeCsvwTriples> ;
                            a         code:EcmaScript ] ) .
+
+<#filterNullValues> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#filter>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-filter#removeNullValues>
+                  ] ).
 
 <#toDataset> a :Step;
   code:implementedBy [ a code:EcmaScript;
