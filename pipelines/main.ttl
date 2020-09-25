@@ -77,7 +77,7 @@ _:save
 
 <#TransformCsv>
     a      :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#filterNullValues> <#mapToNumber> <#toDataset> <#toObservation> <#flatten>) ] .
+    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#filterNullValues> <#mapToNumber> <#mapToBoolean> <#mapToISODate> <#toDataset> <#toObservation> <#flatten>) ] .
 
 <#LoadCsv>
     a      :Pipeline, :ReadableObjectMode ;
@@ -138,6 +138,22 @@ _:openCsvFromFilesystem
  ];
  code:arguments ( [ a code:EcmaScript ;
                     code:link <file:../lib/steps-map#toNumber>
+                  ] ).
+
+<#mapToBoolean> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#toBoolean>
+                  ] ).
+
+<#mapToISODate> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#toISODate>
                   ] ).
 
 <#toDataset> a :Step;
