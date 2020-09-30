@@ -77,7 +77,18 @@ _:save
 
 <#TransformCsv>
     a      :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadCsvStep> <#parse> <#filterNotCsvw> <#filterNullValues> <#mapToNumber> <#mapToBoolean> <#mapToISODate> <#toDataset> <#toObservation> <#flatten>) ] .
+    :steps [
+      :stepList (
+        <#loadCsvStep>
+        <#parse>
+        <#filterAll>
+        <#mapAll>
+        <#toDataset>
+        <#toObservation>
+        <#toCubeShape>
+        <#flatten>
+      )
+    ] .
 
 <#LoadCsv>
     a      :Pipeline, :ReadableObjectMode ;
@@ -117,43 +128,19 @@ _:openCsvFromFilesystem
                          a         code:EcmaScript ] ;
     code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
 
-<#filterNotCsvw>
+<#filterAll>
     a                  :Step ;
     code:implementedBy [ a         code:EcmaScript ;
                          code:link <node:barnard59-base#filter> ] ;
-    code:arguments     ( [ code:link <file:../lib/steps-filter#removeCsvwTriples> ;
+    code:arguments     ( [ code:link <file:../lib/steps-filter#all> ;
                            a         code:EcmaScript ] ) .
 
-<#filterNullValues> a :Step;
-  code:implementedBy [ a code:EcmaScript;
-    code:link <node:barnard59-base#filter>
- ];
- code:arguments ( [ a code:EcmaScript ;
-                    code:link <file:../lib/steps-filter#removeNullValues>
-                  ] ).
-
-<#mapToNumber> a :Step;
+<#mapAll> a :Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#map>
  ];
  code:arguments ( [ a code:EcmaScript ;
-                    code:link <file:../lib/steps-map#toNumber>
-                  ] ).
-
-<#mapToBoolean> a :Step;
-  code:implementedBy [ a code:EcmaScript;
-    code:link <node:barnard59-base#map>
- ];
- code:arguments ( [ a code:EcmaScript ;
-                    code:link <file:../lib/steps-map#toBoolean>
-                  ] ).
-
-<#mapToISODate> a :Step;
-  code:implementedBy [ a code:EcmaScript;
-    code:link <node:barnard59-base#map>
- ];
- code:arguments ( [ a code:EcmaScript ;
-                    code:link <file:../lib/steps-map#toISODate>
+                    code:link <file:../lib/steps-map#all>
                   ] ).
 
 <#toDataset> a :Step;
@@ -166,6 +153,9 @@ _:openCsvFromFilesystem
     code:link <node:barnard59-rdf/cube.js#toObservation>
   ];
   code:arguments [
+    code:name "observer";
+    code:value "https://ld.stadt-zuerich.ch/"
+  ], [
     code:name "observations";
     code:value """({ dataset }) => {
       const rdf = require('rdf-ext')
@@ -189,6 +179,19 @@ _:openCsvFromFilesystem
 
       return rdf.namedNode(observationIri)
     }"""^^code:EcmaScript
+  ].
+
+<#toCubeShape> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <file:../lib/toCubeShape>
+  ];
+  code:arguments [
+    code:name "excludeValuesOf";
+    code:value (
+      "http://www.w3.org/2004/02/skos/core#notation"
+      "https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+      "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG"
+    )
   ].
 
 <#flatten> a :Step;
