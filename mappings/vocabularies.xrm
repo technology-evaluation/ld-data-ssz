@@ -1,0 +1,75 @@
+vocabulary xsd {
+	prefix "xsd" "http://www.w3.org/2001/XMLSchema#"
+
+	datatypes
+		float
+		gYear
+}
+
+vocabulary cube {
+	prefix "cube" "http://ns.bergnet.org/cube/"
+
+	classes
+		Cube
+		Constraint
+		ObservationSet
+		Observation
+
+	properties
+		observationSet
+		observationShape
+		observation
+		observedBy
+}
+
+vocabulary dimension {
+	prefix "dimension" "https://ld.stadt-zuerich.ch/statistics/dimension/"
+
+	properties
+		ZEIT
+		BEZUGZEIT
+		RAUM
+		ERWARTETE_AKTUALISIERUNG
+		DATENSTAND
+}
+
+vocabulary skos {
+	prefix "skos" "http://www.w3.org/2004/02/skos/core#"
+	
+	properties
+		notation
+}
+
+vocabulary example {
+	prefix "ex" "http://example.org/"
+
+	properties
+		ANZ_GRUPPEN
+		GLOSSARID
+		GRUPPENCODESORT1
+		GRUPPENCODESORT2
+		GRUPPENCODESORT3
+		GRUPPENCODESORT4
+		GRUPPENCODESORT5
+		KENNZAHLKLASSE
+		QUELLE
+		UPDATE
+		BEZUGSPERIODE
+		CODE
+		CODENAME
+		FUSSNOTEATTRIBUT
+		FUSSNOTEKENNZAHL
+		FUSSNOTEKENNZAHLATTRIBUT
+		FUSSNOTERAUM
+		FUSSNOTEZEIT
+		FUSSNOTEZELLE
+		GESAMTCODE_RCS
+		GRUPPE1
+		GRUPPE2
+		GRUPPE3
+		GRUPPE4
+		GRUPPE5
+		KENNZAHL
+		REFERENZNUMMER
+}
+

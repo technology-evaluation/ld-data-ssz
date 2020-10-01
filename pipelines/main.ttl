@@ -1,0 +1,200 @@
+@base         <urn:pipeline:xrm> .
+@prefix :     <https://pipeline.described.at/> .
+@prefix code: <https://code.described.at/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+_:variables :variable
+    [ a :Variable; :name "mappings"; :value "src-gen/*.json" ] ,
+    [ a :Variable; :name "inputDir"; :value "input" ] ,
+    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+.
+
+<#Main>
+    a      :Pipeline ;
+    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+    :variables _:variables .
+
+<#mergeInputs>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-base#concat.object> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( <#TransformFiles> ) .
+
+<#StreamOutput>
+    a :Pipeline, :WritableObjectMode .
+
+<#streamOutputStep>
+    a                  :Step ;
+    code:implementedBy [ code:link <file:../lib/pipeline#asStep> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( <#StreamOutput> ) .
+
+<#StreamOutput>
+    :steps     [ :stepList ( _:serialize _:save ) ] .
+
+_:serialize
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-formats#ntriples.serialize> ;
+                         a         code:EcmaScript ] .
+
+_:save
+    a                  :Step ;
+    code:implementedBy [ code:link <node:fs#createWriteStream> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( "targetFile"^^:VariableName ) .
+
+# ------------------------------
+#
+# Transform pipeline
+#
+# One-by-one parses and transforms the source csv files to RDF
+#
+# ------------------------------
+
+<#TransformFiles>
+    a      :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( <#loadMappings> <#doTransform> ) ] .
+
+<#loadMappings>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-base#glob> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     [ code:name  "pattern" ;
+                         code:value "mappings"^^:VariableName ] .
+
+<#doTransform>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-core#forEach> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( <#TransformCsv>
+                         "(p, fileName) => { p.variables.set('csvw', fileName) }"^^code:EcmaScript ) .
+
+# ------------------------------
+#
+# Transforms individual files
+#
+# ------------------------------
+
+<#TransformCsv>
+    a      :Pipeline, :ReadableObjectMode ;
+    :steps [
+      :stepList (
+        <#loadCsvStep>
+        <#parse>
+        <#filterAll>
+        <#mapAll>
+        <#toDataset>
+        <#toObservation>
+        <#toCubeShape>
+        <#flatten>
+      )
+    ] .
+
+<#LoadCsv>
+    a      :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( _:openCsvFromFilesystem ) ] .
+
+_:openCsvFromFilesystem
+    a                  :Step ;
+    code:implementedBy [ code:link <file:../lib/csv#openFromCsvw> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
+
+
+<#loadCsvStep>
+    a                  :Step ;
+    code:implementedBy [ code:link <file:../lib/pipeline#asStep> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( <#LoadCsv> ) .
+
+<#parse>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-formats#csvw.parse> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( <#parseMetadata> ) .
+
+<#parseMetadata>
+    a      :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( <#readMetadata> <#parseMetadataStep> ) ] .
+
+<#parseMetadataStep>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:barnard59-formats#jsonld.parse> ;
+                         a         code:EcmaScript ] .
+
+<#readMetadata>
+    a                  :Step ;
+    code:implementedBy [ code:link <node:fs#createReadStream> ;
+                         a         code:EcmaScript ] ;
+    code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
+
+<#filterAll>
+    a                  :Step ;
+    code:implementedBy [ a         code:EcmaScript ;
+                         code:link <node:barnard59-base#filter> ] ;
+    code:arguments     ( [ code:link <file:../lib/steps-filter#all> ;
+                           a         code:EcmaScript ] ) .
+
+<#mapAll> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#all>
+                  ] ).
+
+<#toDataset> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:rdf-stream-to-dataset-stream/bySubject.js>
+  ].
+
+<#toObservation> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-rdf/cube.js#toObservation>
+  ];
+  code:arguments [
+    code:name "observer";
+    code:value "https://ld.stadt-zuerich.ch/"
+  ], [
+    code:name "observations";
+    code:value """({ dataset }) => {
+      const rdf = require('rdf-ext')
+      const quad = [...dataset][0]
+      const parts = quad.subject.value.split('/')
+      const baseIri = parts.slice(0, -3).join('/')
+      const cubeId = parts.slice(-3, -2)[0].split('-').filter(s => s !== 'XXX0000').join('-')
+      const observationsPath = parts.slice(-2)[0]
+      const observationsIri = [baseIri, cubeId, observationsPath].join('/') + '/'
+
+      return rdf.namedNode(observationsIri)
+    }"""^^code:EcmaScript
+  ], [
+    code:name "observation";
+    code:value """({ dataset, observations }) => {
+      const rdf = require('rdf-ext')
+      const quad = [...dataset][0]
+      const parts = quad.subject.value.split('/')
+      const observationId = parts.slice(-1)[0]
+      const observationIri = observations.value + observationId
+
+      return rdf.namedNode(observationIri)
+    }"""^^code:EcmaScript
+  ].
+
+<#toCubeShape> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <file:../lib/toCubeShape>
+  ];
+  code:arguments [
+    code:name "excludeValuesOf";
+    code:value (
+      "http://www.w3.org/2004/02/skos/core#notation"
+      "https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+      "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG"
+    )
+  ].
+
+<#flatten> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#flatten>;
+  ].
