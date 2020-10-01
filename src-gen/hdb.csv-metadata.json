@@ -404,6 +404,14 @@
       {
         "titles":"i",
         "suppressOutput":true
+      },
+      {
+        "titles":"PERIODEENDE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PERIODESTART",
+        "suppressOutput":true
       }
     ]
   }
