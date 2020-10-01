@@ -32,7 +32,7 @@
       },
       {
         "titles":"BEZUGSZEIT",
-        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+        "propertyUrl":"http://example.org/BEZUGSZEIT"
       },
       {
         "titles":"BEZUGSPERIODE",
@@ -363,7 +363,7 @@
       },
       {
         "titles": "ERWARTETE_AKTUALISIERUNG",
-        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG",
+        "propertyUrl": "http://example.org/ERWARTETE_AKTUALISIERUNG",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"
@@ -371,7 +371,7 @@
       },
       {
         "titles": "DATENSTAND",
-        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND",
+        "propertyUrl": "http://example.org/DATENSTAND",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"
