@@ -15,5 +15,5 @@ node  ./node_modules/.bin/barnard59 \
   run -v \
   --format text/turtle \
   "${variables[@]}" \
- --pipeline=urn:pipeline:xrm#MainFile \
+ --pipeline=urn:pipeline:xrm#$1 \
  pipelines/main.ttl
