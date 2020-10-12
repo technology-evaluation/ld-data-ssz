@@ -81,8 +81,8 @@ _:save
       :stepList (
         <#loadCsvStep>
         <#parse>
-        <#filterAll>
         <#mapAll>
+        <#filterAll>
         <#toDataset>
         <#toObservation>
         <#toCubeShape>
