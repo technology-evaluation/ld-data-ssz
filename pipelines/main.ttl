@@ -162,7 +162,7 @@ _:openCsvFromFilesystem
       const quad = [...dataset][0]
       const parts = quad.subject.value.split('/')
       const baseIri = parts.slice(0, -3).join('/')
-      const cubeId = parts.slice(-3, -2)[0].split('-').filter(s => s !== 'XXX0000').join('-')
+      const cubeId = parts.slice(-3, -2)[0].split('-').filter(s => s !== 'XXX').join('-')
       const observationsPath = parts.slice(-2)[0]
       const observationsIri = [baseIri, cubeId, observationsPath].join('/') + '/'
 
@@ -174,7 +174,10 @@ _:openCsvFromFilesystem
       const rdf = require('rdf-ext')
       const quad = [...dataset][0]
       const parts = quad.subject.value.split('/')
-      const observationId = parts.slice(-1)[0]
+      const groupId = parts.slice(-1)[0].split('-').slice(0, -2).filter(s => s !== 'XXX0000').join('-')
+      const raumZeitId = parts.slice(-1)[0].split('-').slice(-2).join('-')
+      const observationId = [groupId, raumZeitId].filter(Boolean).join('-')
+
       const observationIri = observations.value + observationId
 
       return rdf.namedNode(observationIri)
