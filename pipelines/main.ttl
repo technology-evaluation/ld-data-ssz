@@ -3,16 +3,20 @@
 @prefix code: <https://code.described.at/> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-_:variables :variable
-    [ a :Variable; :name "mappings"; :value "src-gen/*.json" ] ,
-    [ a :Variable; :name "inputDir"; :value "input" ] ,
-    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
-.
+#_:variables :variable
+#    [ a :Variable; :name "mappingsDir"; :value "src-gen/*.json" ] ,
+#    [ a :Variable; :name "inputDir"; :value "input" ] ,
+#    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+#.
 
-<#Main>
+<#MainFile>
     a      :Pipeline ;
     :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
     :variables _:variables .
+
+<#MainStore>
+    a      :Pipeline ;
+    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
 
 <#mergeInputs>
     a                  :Step ;
@@ -20,16 +24,13 @@ _:variables :variable
                          a         code:EcmaScript ] ;
     code:arguments     ( <#TransformFiles> ) .
 
-<#StreamOutput>
-    a :Pipeline, :WritableObjectMode .
-
 <#streamOutputStep>
     a                  :Step ;
     code:implementedBy [ code:link <file:../lib/pipeline#asStep> ;
                          a         code:EcmaScript ] ;
-    code:arguments     ( <#StreamOutput> ) .
+    code:arguments     ( <#StreamOutputFile> ) .
 
-<#StreamOutput>
+<#StreamOutputFile>  a :Pipeline, :WritableObjectMode ;
     :steps     [ :stepList ( _:serialize _:save ) ] .
 
 _:serialize
@@ -42,6 +43,9 @@ _:save
     code:implementedBy [ code:link <node:fs#createWriteStream> ;
                          a         code:EcmaScript ] ;
     code:arguments     ( "targetFile"^^:VariableName ) .
+
+<#StreamOutputStore>
+    :steps     [ :stepList ( <#setGraph> <#upload> ) ] .
 
 # ------------------------------
 #
@@ -60,7 +64,7 @@ _:save
     code:implementedBy [ code:link <node:barnard59-base#glob> ;
                          a         code:EcmaScript ] ;
     code:arguments     [ code:name  "pattern" ;
-                         code:value "mappings"^^:VariableName ] .
+                         code:value "mappingsDir"^^:VariableName ] .
 
 <#doTransform>
     a                  :Step ;
@@ -197,4 +201,25 @@ _:openCsvFromFilesystem
 <#flatten> a :Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#flatten>;
+  ].
+
+<#setGraph> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#setGraph>
+  ];
+  code:arguments ( "graph"^^:VariableName ).
+
+<#upload> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-graph-store#put>
+  ];
+  code:arguments [
+    code:name "endpoint";
+    code:value "endpoint"^^:VariableName
+  ], [
+    code:name "user";
+    code:value "user"^^:VariableName
+  ], [
+    code:name "password";
+    code:value "password"^^:VariableName
   ].
