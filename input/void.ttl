@@ -1,37 +1,43 @@
-@base <https://ld.stadt-zuerich.ch/> .
-@prefix void: <http://rdfs.org/ns/void#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix wv: <http://vocab.org/waiver/terms/norms> .        
-@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix schema: <http://schema.org/>.
-@prefix time: <http://www.w3.org/2006/time#>.
-@prefix doap: <http://usefulinc.com/ns/doap#> .
-@prefix duv: <http://www.w3.org/ns/duv#> .
+BASE <https://ld.stadt-zuerich.ch/> 
+PREFIX qudt:    <http://qudt.org/schema/qudt#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX wv: <http://vocab.org/waiver/terms/norms>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX schema: <http://schema.org/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+PREFIX duv: <http://www.w3.org/ns/duv#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX cube: <http://ns.bergnet.org/cube/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 
 <.well-known/void> a void:DatasetDescription;
-    dcterms:title "Description of Statistik Stadt Zürich Datasets"@en;
-    dcterms:creator <org/SSZ>;
-    foaf:topic <dataset/SSZ> .
+    schema:name "Datasets of City of Zurich"@en ;
+    schema:name "Datensätze der Stadt Zürich"@de ;
+    dcterms:creator <org/SSZ> ;
+    schema:dataset <dataset/SSZ> .
 ##
 ## Organizations
 ##
 
-<org/Zazuko> a foaf:Organization, schema:Corporation;
-    rdfs:label "Zazuko GmbH";
-    foaf:homepage <http://www.zazuko.com/>
+<org/zazuko> a schema:Corporation ;
+    schema:name "Zazuko GmbH" ;
+    rdfs:seeAlso wd:Q93230157 ;
+    schema:url <https://zazuko.com/>
     .
 
 <org/SSZ> a foaf:Organization, schema:GovernmentOrganization;
-    rdfs:label "Statistik Stadt Zürich"@de;
+    schema:name "Statistik Stadt Zürich"@de;
+    rdfs:seeAlso wd:Q53630447 ;
     foaf:homepage <https://www.stadt-zuerich.ch/prd/de/index/statistik.html>
-#    rdfs:seeAlso <http://www.wikidata.org/entity/Q285453> 
     .
 
 ##
@@ -39,13 +45,14 @@
 ##
 
 <dataset/SSZ> a void:Dataset, dcat:Dataset ;
-    dcterms:title "Statistische Daten der Stadt Zürich"@de;
-    dcterms:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich im RDF Data Cube Vokabular"@de;
-    dcterms:publisher <org/SSZ>;
-    dcterms:creator <org/SSZ> ;
-    dcterms:contributor <org/Zazuko> ;
-    dcterms:issued "%%DATEISSUED%%"^^xsd:date; # date of publication of the source
-    dcterms:created "%%DATECREATED%%"^^xsd:dateTime;
+    schema:name "Statistische Daten der Stadt Zürich"@de;
+    schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich im RDF Data Cube Vokabular"@de;
+    schema:publisher <org/SSZ>;
+    schema:contactPoint <org/SSZ> ;
+    schema:contributor <org/Zazuko> ;
+    schema:hasPart <ssz/cube-view/GES-SEX-TOU> ;
+    schema:dateCreated "2020-10-20"^^xsd:date;
+    schema:dateModified "2020-10-20"^^xsd:date;
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
     doap:repository [
         a doap:GitRepository ;
@@ -55,3 +62,6 @@
     void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
 #    duv:hasUsage <dataset/meta-usage> ;
 .
+
+<ssz/cube-view/GES-SEX-TOU> a cube:Cube ;
+  schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
