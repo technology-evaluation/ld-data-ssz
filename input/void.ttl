@@ -50,7 +50,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     schema:publisher <org/SSZ>;
     schema:contactPoint <org/SSZ> ;
     schema:contributor <org/Zazuko> ;
-    schema:hasPart <ssz/cube-view/GES-SEX-TOU> ;
+    schema:hasPart <ssz/cube/GES-SEX-TOU> ;
+    dcat:distribution <ssz/cube-view/GES-SEX-TOU/CSV> ;
     schema:dateCreated "2020-10-20"^^xsd:date;
     schema:dateModified "2020-10-20"^^xsd:date;
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
@@ -63,5 +64,16 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 #    duv:hasUsage <dataset/meta-usage> ;
 .
 
-<ssz/cube-view/GES-SEX-TOU> a cube:Cube ;
+<ssz/cube/GES-SEX-TOU> a cube:Cube ;
+  dcterms:rights <ssz/rights> ;
+  schema:license <http://creativecommons.org/licenses/by/3.0/> ;
   schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
+
+<ssz/cube-view/GES-SEX-TOU/CSV> a dcat:Distribution ;
+    schema:dateCreated "2020-10-20"^^xsd:date;
+    schema:publisher <org/SSZ>;
+    dcat:keyword "Sterbefälle", "Geschlecht", "Todesursachen" ;
+    dcat:downloadURL  <http://example.org/export/GES-SEX-TOU> .
+
+<ssz/rights> a dcterms:RightsStatement ;
+  schema:name "Stadtratsbeschluss DGA" .
