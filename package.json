@@ -14,7 +14,7 @@
     "@tpluscode/rdf-ns-builders": "^0.3.6",
     "barnard59": "^0.1.0",
     "barnard59-base": "^0.0.4",
-    "barnard59-formats": "^0.0.6",
+    "barnard59-formats": "^0.0.7",
     "barnard59-graph-store": "^0.0.6",
     "barnard59-rdf": "git://github.com/zazuko/barnard59-rdf.git#cube-to-observation",
     "clownface": "^1.0.0",
