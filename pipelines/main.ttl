@@ -3,17 +3,30 @@
 @prefix code: <https://code.described.at/> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-#_:variables :variable
-#    [ a :Variable; :name "mappingsDir"; :value "src-gen/*.json" ] ,
-#    [ a :Variable; :name "inputDir"; :value "input" ] ,
-#    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
-#.
+_:variablesObservation :variable
+    [ a :Variable; :name "mappingsDir"; :value "observation/*.json" ] ,
+    [ a :Variable; :name "inputDir"; :value "input" ] ,
+    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+.
+
+_:variablesDefault :variable
+    [ a :Variable; :name "mappingsDir"; :value "src-gen/*.json" ] ,
+    [ a :Variable; :name "inputDir"; :value "input" ] ,
+    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+.
+
 
 <#MainFile>
     a      :Pipeline ;
     :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
-    :variables _:variables .
+    :variables _:variablesDefault .
 
+<#MainFileObservation>
+    a      :Pipeline ;
+    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+    :variables _:variablesObservation .
+
+#<#MainStoreHdb>
 <#MainStore>
     a      :Pipeline ;
     :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
@@ -79,7 +92,15 @@ _:save
 #
 # ------------------------------
 
+
+#<#TransformCsv>
+#    a      :Pipeline, :ReadableObjectMode ;
+#    :steps [ :stepList ( <#loadCsvStep> <#parse> ) ] .
+
+
+#<#TransformCsvObservation>
 <#TransformCsv>
+
     a      :Pipeline, :ReadableObjectMode ;
     :steps [
       :stepList (
