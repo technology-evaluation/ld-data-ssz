@@ -39,13 +39,13 @@ _:variablesDefault :variable
     code:arguments     ( <#StreamOutputFile> ) .
 
 <#StreamOutputFile> a :Pipeline, :WritableObjectMode ;
-    :steps     [ :stepList ( _:serialize _:save ) ] .
+    :steps     [ :stepList ( <#serialize> <#save> ) ] .
 
-_:serialize a :Step ;
+<#serialize> a :Step ;
     code:implementedBy [  a code:EcmaScript ;
       code:link <node:barnard59-formats#ntriples.serialize> ] .
 
-_:save a :Step ;
+<#save> a :Step ;
     code:implementedBy [ a code:EcmaScript ; 
       code:link <node:fs#createWriteStream> ] ;
     code:arguments     ( "targetFile"^^:VariableName ) .
@@ -107,9 +107,9 @@ _:save a :Step ;
 
 <#LoadCsv>
     a      :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( _:openCsvFromFilesystem ) ] .
+    :steps [ :stepList ( <#openCsvFromFilesystem> ) ] .
 
-_:openCsvFromFilesystem
+<#openCsvFromFilesystem>
     a                  :Step ;
     code:implementedBy [ code:link <file:../lib/csv#openFromCsvw> ;
                          a         code:EcmaScript ] ;
