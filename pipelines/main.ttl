@@ -1,5 +1,5 @@
 @base         <urn:pipeline:xrm> .
-@prefix :     <https://pipeline.described.at/> .
+@prefix p:     <https://pipeline.described.at/> .
 @prefix code: <https://code.described.at/> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -7,18 +7,18 @@
 ## Variables
 ##
 
-_:variablesObservation :variable
-    [ a :Variable; :name "mappingsDir"; :value "observation/*.json" ] ,
-    [ a :Variable; :name "inputDir"; :value "input" ]
+_:variablesObservation p:variable
+    [ a p:Variable; p:name "mappingsDir"; p:value "observation/*.json" ] ,
+    [ a p:Variable; p:name "inputDir"; p:value "input" ]
 .
 
-_:variablesDefault :variable
-    [ a :Variable; :name "mappingsDir"; :value "src-gen/*.json" ] ,
-    [ a :Variable; :name "inputDir"; :value "input" ]
+_:variablesDefault p:variable
+    [ a p:Variable; p:name "mappingsDir"; p:value "src-gen/*.json" ] ,
+    [ a p:Variable; p:name "inputDir"; p:value "input" ]
 .
 
-_:variablesOutput :variable
-    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+_:variablesOutput p:variable
+    [ a p:Variable; p:name "targetFile"; p:value "output/transformed.nt" ]
 .
 
 
@@ -26,41 +26,41 @@ _:variablesOutput :variable
 ## Pipelines
 ##
 
-<#MainFile> a :Pipeline ;
-    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
-    :variables _:variablesOutput .
+<#MainFile> a p:Pipeline ;
+    p:steps [ p:stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+    p:variables _:variablesOutput .
 
-<#MainStore> a :Pipeline ;
-    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
+<#MainStore> a p:Pipeline ;
+    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
 
 ##
 ## Steps
 ##
 
-<#mergeInputs> a :Step ;
+<#mergeInputs> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
     code:link <node:barnard59-base#concat.object> ] ;
     code:arguments     ( <#TransformDimensions> <#TransformObservations> ) .
 
-<#streamOutputStep> a :Step ;
+<#streamOutputStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <file:../lib/pipeline#asStep> ] ;
     code:arguments     ( <#StreamOutputFile> ) .
 
-<#StreamOutputFile> a :Pipeline, :WritableObjectMode ;
-    :steps     [ :stepList ( <#serialize> <#save> ) ] .
+<#StreamOutputFile> a p:Pipeline, p:WritableObjectMode ;
+    p:steps     [ p:stepList ( <#serialize> <#save> ) ] .
 
-<#serialize> a :Step ;
+<#serialize> a p:Step ;
     code:implementedBy [  a code:EcmaScript ;
       code:link <node:barnard59-formats#ntriples.serialize> ] .
 
-<#save> a :Step ;
+<#save> a p:Step ;
     code:implementedBy [ a code:EcmaScript ; 
       code:link <node:fs#createWriteStream> ] ;
-    code:arguments     ( "targetFile"^^:VariableName ) .
+    code:arguments     ( "targetFile"^^p:VariableName ) .
 
-<#StreamOutputStore> a :Step ;
-    :steps     [ :stepList ( <#setGraph> <#upload> ) ] .
+<#StreamOutputStore> a p:Step ;
+    p:steps     [ p:stepList ( <#setGraph> <#upload> ) ] .
 
 # ------------------------------
 #
@@ -70,27 +70,27 @@ _:variablesOutput :variable
 #
 # ------------------------------
 
-<#TransformDimensions> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadMappings> <#doTransformDimensions> ) ] ;
-    :variables _:variablesDefault .
+<#TransformDimensions> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [ p:stepList ( <#loadMappings> <#doTransformDimensions> ) ] ;
+    p:variables _:variablesDefault .
 
-<#TransformObservations> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadMappings> <#doTransformObservations> ) ] ;
-    :variables _:variablesObservation .
+<#TransformObservations> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [ p:stepList ( <#loadMappings> <#doTransformObservations> ) ] ;
+    p:variables _:variablesObservation .
 
-<#loadMappings> a :Step ;
+<#loadMappings> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-base#glob> ] ;
     code:arguments     [ code:name  "pattern" ;
-                         code:value "mappingsDir"^^:VariableName ] .
+                         code:value "mappingsDir"^^p:VariableName ] .
 
-<#doTransformDimensions> a :Step ;
+<#doTransformDimensions> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-core#forEach> ] ;
     code:arguments     ( <#TransformCsvDimensions>
                          "(p, fileName) => { p.variables.set('csvw', fileName) }"^^code:EcmaScript ) .
 
-<#doTransformObservations> a :Step ;
+<#doTransformObservations> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-core#forEach> ] ;
     code:arguments     ( <#TransformCsvObservations>
@@ -102,17 +102,17 @@ _:variablesOutput :variable
 #
 # ------------------------------
 
-<#TransformCsvDimensions> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList (
+<#TransformCsvDimensions> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [ p:stepList (
         <#loadCsvStep>
         <#parse>
         <#filterAll>
       )
     ] .
 
-<#TransformCsvObservations> a :Pipeline, :ReadableObjectMode ;
-    :steps [
-      :stepList (
+<#TransformCsvObservations> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [
+      p:stepList (
         <#loadCsvStep>
         <#parse>
         <#mapAll>
@@ -124,44 +124,44 @@ _:variablesOutput :variable
       )
     ] .
 
-<#LoadCsv> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#openCsvFromFilesystem> ) ] .
+<#LoadCsv> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [ p:stepList ( <#openCsvFromFilesystem> ) ] .
 
-<#openCsvFromFilesystem> a :Step ;
+<#openCsvFromFilesystem> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <file:../lib/csv#openFromCsvw> ] ;
     code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
 
 
-<#loadCsvStep> a :Step ;
+<#loadCsvStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <file:../lib/pipeline#asStep>  ] ;
     code:arguments     ( <#LoadCsv> ) .
 
-<#parse> a :Step ;
+<#parse> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-formats#csvw.parse> ] ;
     code:arguments     ( <#parseMetadata> ) .
 
-<#parseMetadata> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#readMetadata> <#parseMetadataStep> ) ] .
+<#parseMetadata> a p:Pipeline, p:ReadableObjectMode ;
+    p:steps [ p:stepList ( <#readMetadata> <#parseMetadataStep> ) ] .
 
-<#parseMetadataStep> a :Step ;
+<#parseMetadataStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-formats#jsonld.parse> ] .
 
-<#readMetadata> a :Step ;
+<#readMetadata> a p:Step ;
     code:implementedBy [ a code:EcmaScript ; 
       code:link <node:fs#createReadStream> ] ;
     code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
 
-<#filterAll> a :Step ;
+<#filterAll> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
                          code:link <node:barnard59-base#filter> ] ;
     code:arguments     ( [ a code:EcmaScript;
       code:link <file:../lib/steps-filter#all> ] ) .
 
-<#mapAll> a :Step;
+<#mapAll> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#map>
  ];
@@ -169,12 +169,12 @@ _:variablesOutput :variable
                     code:link <file:../lib/steps-map#all>
                   ] ).
 
-<#toDataset> a :Step;
+<#toDataset> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:rdf-stream-to-dataset-stream/bySubject.js>
   ].
 
-<#toObservation> a :Step;
+<#toObservation> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-rdf/cube.js#toObservation>
   ];
@@ -210,7 +210,7 @@ _:variablesOutput :variable
     }"""^^code:EcmaScript
   ].
 
-<#toCubeShape> a :Step;
+<#toCubeShape> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <file:../lib/toCubeShape>
   ];
@@ -223,28 +223,28 @@ _:variablesOutput :variable
     )
   ].
 
-<#flatten> a :Step;
+<#flatten> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#flatten>;
   ].
 
-<#setGraph> a :Step;
+<#setGraph> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#setGraph>
   ];
-  code:arguments ( "graph"^^:VariableName ).
+  code:arguments ( "graph"^^p:VariableName ).
 
-<#upload> a :Step;
+<#upload> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-graph-store#put>
   ];
   code:arguments [
     code:name "endpoint";
-    code:value "endpoint"^^:VariableName
+    code:value "endpoint"^^p:VariableName
   ], [
     code:name "user";
-    code:value "user"^^:VariableName
+    code:value "user"^^p:VariableName
   ], [
     code:name "password";
-    code:value "password"^^:VariableName
+    code:value "password"^^p:VariableName
   ].
