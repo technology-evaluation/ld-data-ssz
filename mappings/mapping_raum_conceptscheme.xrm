@@ -1,0 +1,9 @@
+output csvw
+
+map RAUM_Collection from HDB_RAUM {
+	subject template schemeIri with Raumebene ;
+	
+	types
+		skos.ConceptScheme
+	
+}

@@ -1,0 +1,11 @@
+output csvw
+
+map RAUM_Collection from HDB_RAUM {
+	subject template collectionIri with RaumHierarchie ;
+	
+	types
+		skos.Collection
+	
+	properties
+		skos.member template codeIri with Raum;
+}

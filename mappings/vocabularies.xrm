@@ -1,9 +1,17 @@
+language-tags {
+	de
+	en
+	fr
+	it
+}
+
 vocabulary xsd {
 	prefix "xsd" "http://www.w3.org/2001/XMLSchema#"
 
 	datatypes
 		float
 		gYear
+		int
 }
 
 vocabulary cube {
@@ -38,6 +46,7 @@ vocabulary skos {
 
 	classes
 		Concept
+		ConceptScheme
 		Collection
 
 	properties
@@ -45,6 +54,11 @@ vocabulary skos {
 		prefLabel
 		altLabel
 		hiddenLabel
+		member
+		broader
+		narrower
+		inScheme
+		scopeNote
 }
 
 vocabulary example {
@@ -93,6 +107,7 @@ vocabulary schema {
 		CreativeWork
 		DefinedTerm
 		DefinedTermSet
+		Place
 
 	properties
 		name
@@ -102,5 +117,30 @@ vocabulary schema {
 		hasDefinedTerm
 		description
 		sameAs
+		position
+}
+
+vocabulary rdf {
+	prefix "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	
+	classes
+		Property
+}
+
+vocabulary qudt {
+	prefix "qudt" "http://qudt.org/vocab/unit#"
+	
+	classes
+		Unit
+	
+	properties
+		unit
+}
+
+vocabulary ssz {
+	prefix "ssz" "https://ld.stadt-zuerich.ch/schema/"
+	
+	properties
+		rounding
 }
 
