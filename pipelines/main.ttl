@@ -12,7 +12,7 @@ _:variablesObservation p:variable
     [ a p:Variable; p:name "inputDir"; p:value "input" ]
 .
 
-_:variablesDefault p:variable
+_:variablesDimension  p:variable
     [ a p:Variable; p:name "mappingsDir"; p:value "src-gen/*.json" ] ,
     [ a p:Variable; p:name "inputDir"; p:value "input" ]
 .
@@ -72,7 +72,7 @@ _:variablesOutput p:variable
 
 <#TransformDimensions> a p:Pipeline, p:ReadableObjectMode ;
     p:steps [ p:stepList ( <#loadMappings> <#doTransformDimensions> ) ] ;
-    p:variables _:variablesDefault .
+    p:variables _:variablesDimension  .
 
 <#TransformObservations> a p:Pipeline, p:ReadableObjectMode ;
     p:steps [ p:stepList ( <#loadMappings> <#doTransformObservations> ) ] ;
