@@ -103,7 +103,12 @@ _:variablesOutput :variable
 # ------------------------------
 
 <#TransformCsvDimensions> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadCsvStep> <#parse> ) ] .
+    :steps [ :stepList (
+        <#loadCsvStep>
+        <#parse>
+        <#filterAll>
+      )
+    ] .
 
 <#TransformCsvObservations> a :Pipeline, :ReadableObjectMode ;
     :steps [
@@ -154,7 +159,7 @@ _:variablesOutput :variable
     code:implementedBy [ a code:EcmaScript ;
                          code:link <node:barnard59-base#filter> ] ;
     code:arguments     ( [ a code:EcmaScript;
-     code:link <file:../lib/steps-filter#all> ] ) .
+      code:link <file:../lib/steps-filter#all> ] ) .
 
 <#mapAll> a :Step;
   code:implementedBy [ a code:EcmaScript;
