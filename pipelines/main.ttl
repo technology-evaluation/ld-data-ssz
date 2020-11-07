@@ -3,35 +3,56 @@
 @prefix code: <https://code.described.at/> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
+##
+## Variables
+##
+
 _:variablesObservation :variable
     [ a :Variable; :name "mappingsDir"; :value "observation/*.json" ] ,
-    [ a :Variable; :name "inputDir"; :value "input" ] ,
-    [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
+    [ a :Variable; :name "inputDir"; :value "input" ]
 .
 
 _:variablesDefault :variable
     [ a :Variable; :name "mappingsDir"; :value "src-gen/*.json" ] ,
-    [ a :Variable; :name "inputDir"; :value "input" ] ,
+    [ a :Variable; :name "inputDir"; :value "input" ]
+.
+
+_:variablesOutput :variable
     [ a :Variable; :name "targetFile"; :value "output/transformed.nt" ]
 .
 
 
+##
+## Pipelines
+##
+
 <#MainFile> a :Pipeline ;
     :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+    :variables _:variablesOutput .
+
+#<#MainFileObservation> a :Pipeline ;
+#    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+#    :variables _:variablesObservation .
+
+<#MainStore> a :Pipeline ;
+    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
     :variables _:variablesDefault .
 
-<#MainFileObservation> a :Pipeline ;
-    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
-    :variables _:variablesObservation .
+#<#MainStoreObservation> a :Pipeline ;
+#    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
+#    :variables _:variablesObservation .
 
-#<#MainStoreHdb>
-<#MainStore> a :Pipeline ;
-    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
+##
+## Steps
+##
 
 <#mergeInputs> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-base#concat.object> ] ;
-    code:arguments     ( <#TransformFiles> ) .
+#    code:arguments     ( <#TransformObservations> ) .
+    code:arguments     ( <#TransformDimensions> <#TransformObservations> ) .
+#    code:arguments     ( <#TransformDimensions> ) .
+
 
 <#streamOutputStep> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
@@ -61,8 +82,15 @@ _:variablesDefault :variable
 #
 # ------------------------------
 
-<#TransformFiles> a :Pipeline, :ReadableObjectMode ;
-    :steps [ :stepList ( <#loadMappings> <#doTransform> ) ] .
+<#TransformDimensions> a :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( <#loadMappings> <#doTransformDimensions> ) ] ;
+    :variables _:variablesDefault .
+
+
+<#TransformObservations> a :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( <#loadMappings> <#doTransformObservations> ) ] ;
+    :variables _:variablesObservation .
+
 
 <#loadMappings> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
@@ -70,10 +98,16 @@ _:variablesDefault :variable
     code:arguments     [ code:name  "pattern" ;
                          code:value "mappingsDir"^^:VariableName ] .
 
-<#doTransform> a :Step ;
+<#doTransformDimensions> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <node:barnard59-core#forEach> ] ;
-    code:arguments     ( <#TransformCsv>
+    code:arguments     ( <#TransformCsvDimensions>
+                         "(p, fileName) => { p.variables.set('csvw', fileName) }"^^code:EcmaScript ) .
+
+<#doTransformObservations> a :Step ;
+    code:implementedBy [ a code:EcmaScript ;
+      code:link <node:barnard59-core#forEach> ] ;
+    code:arguments     ( <#TransformCsvObservations>
                          "(p, fileName) => { p.variables.set('csvw', fileName) }"^^code:EcmaScript ) .
 
 # ------------------------------
@@ -83,15 +117,11 @@ _:variablesDefault :variable
 # ------------------------------
 
 
-#<#TransformCsv>
-#    a      :Pipeline, :ReadableObjectMode ;
-#    :steps [ :stepList ( <#loadCsvStep> <#parse> ) ] .
+<#TransformCsvDimensions> a :Pipeline, :ReadableObjectMode ;
+    :steps [ :stepList ( <#loadCsvStep> <#parse> ) ] .
 
 
-#<#TransformCsvObservation>
-<#TransformCsv>
-
-    a      :Pipeline, :ReadableObjectMode ;
+<#TransformCsvObservations> a :Pipeline, :ReadableObjectMode ;
     :steps [
       :stepList (
         <#loadCsvStep>
@@ -105,14 +135,12 @@ _:variablesDefault :variable
       )
     ] .
 
-<#LoadCsv>
-    a      :Pipeline, :ReadableObjectMode ;
+<#LoadCsv> a :Pipeline, :ReadableObjectMode ;
     :steps [ :stepList ( <#openCsvFromFilesystem> ) ] .
 
-<#openCsvFromFilesystem>
-    a                  :Step ;
-    code:implementedBy [ code:link <file:../lib/csv#openFromCsvw> ;
-                         a         code:EcmaScript ] ;
+<#openCsvFromFilesystem> a :Step ;
+    code:implementedBy [ a code:EcmaScript ;
+      code:link <file:../lib/csv#openFromCsvw> ] ;
     code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) .
 
 
