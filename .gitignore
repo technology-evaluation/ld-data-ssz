@@ -1,5 +1,5 @@
 .DS_Store
-target
+output
 tmp
 node_modules
 *.csv
