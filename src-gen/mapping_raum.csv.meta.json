@@ -35,7 +35,7 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/position",
-				"datatype": "int",
+				"datatype": "integer",
 				"titles": "RaumSort"
 			},
 			{

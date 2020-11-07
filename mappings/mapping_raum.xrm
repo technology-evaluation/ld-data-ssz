@@ -10,7 +10,7 @@ map RAUM from HDB_RAUM {
 		schema.name from RaumLang ;
 		skos.prefLabel from RaumLang with language-tag de ;
 		skos.inScheme template schemeIri with Raumebene ;
-		schema.position from RaumSort with datatype xsd.int ;
+		schema.position from RaumSort with datatype xsd.integer ;
 		schema.description from Beschreibung ;
 		schema.sameAs from WikidataURI ;
 		schema.identifier from Raum ;
