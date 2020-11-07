@@ -30,17 +30,8 @@ _:variablesOutput :variable
     :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
     :variables _:variablesOutput .
 
-#<#MainFileObservation> a :Pipeline ;
-#    :steps [ :stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
-#    :variables _:variablesObservation .
-
 <#MainStore> a :Pipeline ;
-    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
-    :variables _:variablesDefault .
-
-#<#MainStoreObservation> a :Pipeline ;
-#    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
-#    :variables _:variablesObservation .
+    :steps [ :stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
 
 ##
 ## Steps
@@ -48,11 +39,8 @@ _:variablesOutput :variable
 
 <#mergeInputs> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
-      code:link <node:barnard59-base#concat.object> ] ;
-#    code:arguments     ( <#TransformObservations> ) .
+    code:link <node:barnard59-base#concat.object> ] ;
     code:arguments     ( <#TransformDimensions> <#TransformObservations> ) .
-#    code:arguments     ( <#TransformDimensions> ) .
-
 
 <#streamOutputStep> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
@@ -86,11 +74,9 @@ _:variablesOutput :variable
     :steps [ :stepList ( <#loadMappings> <#doTransformDimensions> ) ] ;
     :variables _:variablesDefault .
 
-
 <#TransformObservations> a :Pipeline, :ReadableObjectMode ;
     :steps [ :stepList ( <#loadMappings> <#doTransformObservations> ) ] ;
     :variables _:variablesObservation .
-
 
 <#loadMappings> a :Step ;
     code:implementedBy [ a code:EcmaScript ;
@@ -116,10 +102,8 @@ _:variablesOutput :variable
 #
 # ------------------------------
 
-
 <#TransformCsvDimensions> a :Pipeline, :ReadableObjectMode ;
     :steps [ :stepList ( <#loadCsvStep> <#parse> ) ] .
-
 
 <#TransformCsvObservations> a :Pipeline, :ReadableObjectMode ;
     :steps [
