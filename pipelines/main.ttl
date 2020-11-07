@@ -59,7 +59,7 @@ _:variablesOutput :variable
       code:link <node:fs#createWriteStream> ] ;
     code:arguments     ( "targetFile"^^:VariableName ) .
 
-<#StreamOutputStore> # TODO should be a step?
+<#StreamOutputStore> a :Step ;
     :steps     [ :stepList ( <#setGraph> <#upload> ) ] .
 
 # ------------------------------
