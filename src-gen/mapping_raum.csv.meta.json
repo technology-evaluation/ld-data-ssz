@@ -1,0 +1,136 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": "../input/HDB_RAUM.csv",
+	"dialect": {
+		"delimiter": ","
+		,"doubleQuote": true
+	},
+	"tableSchema": {
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Raum}",
+		"columns": [
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+			},
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://schema.org/Place"
+			}
+			,
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "RaumLang"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#prefLabel",
+				"lang": "de",
+				"titles": "RaumLang"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
+				"titles": "Raumebene",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{Raumebene}"
+			},
+			{
+				"propertyUrl": "http://schema.org/position",
+				"datatype": "int",
+				"titles": "RaumSort"
+			},
+			{
+				"propertyUrl": "http://schema.org/description",
+				"titles": "Beschreibung"
+			},
+			{
+				"propertyUrl": "http://schema.org/sameAs",
+				"titles": "WikidataURI"
+			},
+			{
+				"propertyUrl": "http://schema.org/identifier",
+				"titles": "Raum"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"titles": "Raum"
+			}
+			,
+			{
+				"suppressOutput": true,
+				"titles": "Raumebene"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumebeneParent"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumHierarchie"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Mapping"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GueltigkeitsbereicheID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "QuarCodeAktuell"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KreisCodeAktuell"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StadtCodeAktuell"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumCodeAktuell"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StadtCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KreisCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "QuarCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StatZoneCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KirchGmdeRefCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KirchGmdeKathCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KtCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GmdeCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StaatCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "AggloCd"
+			}
+		] 
+	}
+}
