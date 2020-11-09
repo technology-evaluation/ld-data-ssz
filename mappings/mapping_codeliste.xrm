@@ -1,0 +1,14 @@
+output csvw
+
+map CODELISTE from HDB_CODELISTE {
+	subject template codeIri with Code ;
+	
+	types
+		skos.Concept
+		
+	properties
+		schema.name from Codename ;
+		skos.notation from Code ;
+		skos.inScheme template schemeIri with Referenztabelle ;
+		// TODO check that ConceptScheme exists
+}
