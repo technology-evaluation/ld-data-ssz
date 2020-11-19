@@ -12,7 +12,8 @@ map RAUM from HDB_RAUM {
 		skos.inScheme template schemeIri with Raumebene ;
 		schema.position from RaumSort with datatype xsd.integer ;
 		schema.description from Beschreibung ;
-		schema.sameAs from WikidataURI ;
+//		schema.sameAs from WikidataURI as IRI ; // need to see how CSVW does it
+    schema.sameAs from WikidataURI ;
 		schema.identifier from Raum ;
 		skos.notation from Raum ;
 		//example.RaumebeneParent from RaumebeneParent ;
