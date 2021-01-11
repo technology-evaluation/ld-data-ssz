@@ -118,6 +118,8 @@ vocabulary schema {
 		description
 		sameAs
 		position
+		validFrom
+		validThrough
 }
 
 vocabulary rdf {
@@ -137,10 +139,27 @@ vocabulary qudt {
 		unit
 }
 
+vocabulary time {
+	prefix "time" "http://www.w3.org/2006/time#"
+	
+	classes
+		TemporalEntity
+		
+	properties
+		hasBeginning
+		hasEnd
+		inXSDDate
+}
+
 vocabulary ssz {
 	prefix "ssz" "https://ld.stadt-zuerich.ch/schema/"
 	
 	properties
 		rounding
+		referenceTime
+		hasBeginning
+		hasEnd
+		
 }
+
 

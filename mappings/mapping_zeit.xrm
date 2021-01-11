@@ -1,0 +1,15 @@
+output csvw
+
+map RAUM from HDB_ZEIT {
+	subject template codeIri with ZEIT ;
+	
+	types
+		time.TemporalEntity skos.Concept
+	
+	properties
+		schema.name from ZEIT ;
+		ssz.hasEnd from STICHTAGDATUM ; 
+		ssz.hasEnd from PERIODEENDE ;
+		ssz.hasBeginning from PERIODESTART ;
+		ssz.referenceTime from BEZUGSZEIT ;
+}
