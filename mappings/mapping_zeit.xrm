@@ -8,8 +8,8 @@ map RAUM from HDB_ZEIT {
 	
 	properties
 		schema.name from ZEIT ;
-		ssz.hasEnd from STICHTAGDATUM ; 
-		ssz.hasEnd from PERIODEENDE ;
-		ssz.hasBeginning from PERIODESTART ;
+		ssz.hasEnd from STICHTAGDATUM with datatype xsd.date ; 
+		ssz.hasEnd from PERIODEENDE with datatype xsd.date ;
+		ssz.hasBeginning from PERIODESTART with datatype xsd.date ;
 		ssz.referenceTime from BEZUGSZEIT ;
 }

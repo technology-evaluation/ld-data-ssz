@@ -25,14 +25,17 @@
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/hasEnd",
+				"datatype": "date",
 				"titles": "STICHTAGDATUM"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/hasEnd",
+				"datatype": "date",
 				"titles": "PERIODEENDE"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/hasBeginning",
+				"datatype": "date",
 				"titles": "PERIODESTART"
 			},
 			{
