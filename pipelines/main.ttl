@@ -107,6 +107,8 @@ _:variablesOutput p:variable
         <#loadCsvStep>
         <#parse>
         <#filterAll>
+        <#referenceTimeToIri>
+        <#flatten> 
       )
     ] .
 
@@ -167,6 +169,14 @@ _:variablesOutput p:variable
  ];
  code:arguments ( [ a code:EcmaScript ;
                     code:link <file:../lib/steps-map#all>
+                  ] ).
+
+<#referenceTimeToIri> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#referenceTimeToIri>
                   ] ).
 
 <#toDataset> a p:Step;
