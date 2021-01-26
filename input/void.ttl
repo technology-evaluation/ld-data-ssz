@@ -50,8 +50,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     schema:publisher <org/SSZ>;
     schema:contactPoint <org/SSZ> ;
     schema:contributor <org/Zazuko> ;
-    schema:hasPart <ssz/cube/GES-SEX-TOU> ;
-    dcat:distribution <ssz/cube-view/GES-SEX-TOU/CSV> ;
+    #schema:hasPart <ssz/cube/GES-SEX-TOU> ; # das wären Links zu allen raw cubes
+    dcat:distribution <https://stat.stadt-zuerich.ch/views/V000001>, <https://stat.stadt-zuerich.ch/views/V000002>, <https://stat.stadt-zuerich.ch/views/V000003>; # das sind die Views
     schema:dateCreated "2020-10-20"^^xsd:date;
     schema:dateModified "2020-10-20"^^xsd:date;
 #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
@@ -69,11 +69,36 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   schema:license <http://creativecommons.org/licenses/by/3.0/> ;
   schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
 
-<ssz/cube-view/GES-SEX-TOU/CSV> a dcat:Distribution ;
-    schema:dateCreated "2020-10-20"^^xsd:date;
-    schema:publisher <org/SSZ>;
-    dcat:keyword "Sterbefälle", "Geschlecht", "Todesursachen" ;
-    dcat:downloadURL  <http://example.org/export/GES-SEX-TOU> .
+<ssz/rights1> a dcterms:RightsStatement ;
+  schema:name "Statistikgesetz (StatG)"@de ;
+  schema:description "Zur Auskunft oder Mitwirkung verpflichtete öffentliche Organe oder Private erteilen wahrheitsgetreue Informationen."@de ;
+  skos:scopeNote "431.1 § 13." .
 
-<ssz/rights> a dcterms:RightsStatement ;
-  schema:name "Stadtratsbeschluss DGA" .
+<ssz/rights2> a dcterms:RightsStatement ;
+  schema:name "Stadtratsbeschluss über die Departementsgliederung und -aufgaben (StRB DGA)"@de ;
+  schema:description "Art. 7 Statistik Stadt Zürich erfüllt insbesondere folgende Aufgaben: a Vorbereitung, Durchführung und Analyse der von Stadt, Kanton und Bund angeordneten Erhebungen ..."@de ;
+  skos:scopeNote "172.110 § 7." .
+
+<https://stat.stadt-zuerich.ch/views/V000001> a dcat:Distribution ;
+    schema:dateCreated "2021-01-26"^^xsd:date;
+    schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
+    schema:publisher <org/SSZ>;
+    dcterms:rights <ssz/rights1> ;
+    dcat:keyword "Bevölkerung", "Stadtquartier" ;
+    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
+
+<https://stat.stadt-zuerich.ch/views/V000002> a dcat:Distribution ;
+    schema:dateCreated "2021-01-26"^^xsd:date;
+    schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
+    schema:publisher <org/SSZ>;
+    dcterms:rights <ssz/rights1> ;
+    dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
+    dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/> .
+
+<https://stat.stadt-zuerich.ch/views/V000003> a dcat:Distribution ;
+    schema:dateCreated "2021-01-26"^^xsd:date;
+    schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
+    schema:publisher <org/SSZ>;
+    dcterms:rights <ssz/rights2> ;
+    dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
+    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/> .
