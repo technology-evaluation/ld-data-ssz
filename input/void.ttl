@@ -23,7 +23,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     schema:name "Datasets of City of Zurich"@en ;
     schema:name "Datensätze der Stadt Zürich"@de ;
     dcterms:creator <org/SSZ> ;
-    schema:dataset <dataset/SSZ> .
+    schema:hasPart <catalog/SSZ/cube>, <catalog/SSZ/view> .
+
 ##
 ## Organizations
 ##
@@ -41,33 +42,104 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     .
 
 ##
-## Datasets
-##
+## Catalog
+## 
 
-<dataset/SSZ> a void:Dataset, dcat:Dataset ;
-    schema:name "Statistische Daten der Stadt Zürich"@de;
-    schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich im RDF Data Cube Vokabular"@de;
-    schema:publisher <org/SSZ>;
-    schema:contactPoint <org/SSZ> ;
-    schema:contributor <org/Zazuko> ;
-    #schema:hasPart <ssz/cube/GES-SEX-TOU> ; # das wären Links zu allen raw cubes
-    dcat:distribution <https://stat.stadt-zuerich.ch/views/V000001>, <https://stat.stadt-zuerich.ch/views/V000002>, <https://stat.stadt-zuerich.ch/views/V000003>; # das sind die Views
-    schema:dateCreated "2020-10-20"^^xsd:date;
-    schema:dateModified "2020-10-20"^^xsd:date;
-#    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
-    doap:repository [
-        a doap:GitRepository ;
-        doap:browse <https://github.com/statistikstadtzuerich/ld-data> ;
-        doap:location "git@github.com:statistikstadtzuerich/ld-data.git" 
-    ] ;
-    void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
-#    duv:hasUsage <dataset/meta-usage> ;
-.
+<catalog/SSZ/cube> a dcat:Catalog, schema:DataCatalog  ;
+  schema:name "Statistische Daten der Stadt Zürich"@de;
+  schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich als OLAP Cubes im RDF Cube Vokabular"@de;
+  dcterms:publisher <org/SSZ> ;
+  schema:dataset <ssz/cube/GES-SEX-TOU> ; # das wären Links zu allen raw cubes, range ist cube:Cube
+  doap:repository [
+      a doap:GitRepository ;
+      doap:browse <https://github.com/statistikstadtzuerich/ld-data> ;
+      doap:location "git@github.com:statistikstadtzuerich/ld-data.git" 
+  ] ;
+  void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
+  .
+
+<catalog/SSZ/view> a dcat:Catalog, schema:DataCatalog  ;
+  schema:name "Statistische Daten der Stadt Zürich"@de;
+  schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich als aufbereitete Datensätze in CSV und RDF Format"@de;
+  dcterms:publisher <org/SSZ> ;
+  schema:dataset <views/V000001>, <views/V000002>, <views/V000003> ;
+  void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
+  .
+
+##
+## Cube Beispiel
+##
 
 <ssz/cube/GES-SEX-TOU> a cube:Cube ;
   dcterms:rights <ssz/rights> ;
   schema:license <http://creativecommons.org/licenses/by/3.0/> ;
   schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
+
+##
+## Datasets
+##
+
+<views/V000001> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+    dcterms:identifier "V000001" ;
+    schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
+    dcat:keyword "Bevölkerung", "Stadtquartier" ;
+    schema:publisher <org/SSZ>;
+    schema:contactPoint <org/SSZ> ;
+    schema:contributor <org/Zazuko> ;
+    dcat:distribution <views/V000001/csv>, <views/V000001/rdf>  ;
+    schema:dateCreated "2020-10-20"^^xsd:date;
+    schema:dateModified "2020-10-20"^^xsd:date;
+#    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
+#    duv:hasUsage <dataset/meta-usage> ;
+.
+
+<views/V000002> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+    dcterms:identifier "V000002" ;
+    schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
+    dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
+    dcterms:rights <ssz/rights1> ;
+    schema:publisher <org/SSZ>;
+    schema:contactPoint <org/SSZ> ;
+    schema:contributor <org/Zazuko> ;
+    dcat:distribution <views/V000002/csv> ;
+    schema:dateCreated "2020-10-20"^^xsd:date;
+    schema:dateModified "2020-10-20"^^xsd:date
+.
+
+<views/V000003> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+    dcterms:identifier "V000003" ;
+    schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
+    dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
+    dcterms:rights <ssz/rights1> ;
+    schema:publisher <org/SSZ>;
+    schema:contactPoint <org/SSZ> ;
+    schema:contributor <org/Zazuko> ;
+    dcat:distribution <views/V000003/csv> ;
+    schema:dateCreated "2020-10-20"^^xsd:date;
+    schema:dateModified "2020-10-20"^^xsd:date;
+.
+
+<views/V000001/csv> a dcat:Distribution ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
+    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/&format=csv> .
+
+<views/V000001/rdf> a dcat:Distribution ;
+    dcterms:format "RDF" ;
+    dcat:mediaType "application/n-triples" ;
+    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
+
+<views/V000002/csv> a dcat:Distribution ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
+    dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/&format=csv> .
+
+<views/V000003/csv> a dcat:Distribution ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
+    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/&format=csv> .
+
+## rights
 
 <ssz/rights1> a dcterms:RightsStatement ;
   schema:name "Statistikgesetz (StatG)"@de ;
@@ -78,36 +150,3 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   schema:name "Stadtratsbeschluss über die Departementsgliederung und -aufgaben (StRB DGA)"@de ;
   schema:description "Art. 7 Statistik Stadt Zürich erfüllt insbesondere folgende Aufgaben: a Vorbereitung, Durchführung und Analyse der von Stadt, Kanton und Bund angeordneten Erhebungen ..."@de ;
   skos:scopeNote "172.110 § 7." .
-
-<https://stat.stadt-zuerich.ch/views/V000001> a dcat:Distribution ;
-    schema:dateCreated "2021-01-26"^^xsd:date;
-    dcterms:identifier "V000001" ;
-    schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
-    schema:publisher <org/SSZ>;
-    dcterms:rights <ssz/rights1> ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:keyword "Bevölkerung", "Stadtquartier" ;
-    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
-
-<https://stat.stadt-zuerich.ch/views/V000002> a dcat:Distribution ;
-    schema:dateCreated "2021-01-26"^^xsd:date;
-    dcterms:identifier "V000002";
-    schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
-    schema:publisher <org/SSZ>;
-    dcterms:rights <ssz/rights1> ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
-    dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/> .
-
-<https://stat.stadt-zuerich.ch/views/V000003> a dcat:Distribution ;
-    schema:dateCreated "2021-01-26"^^xsd:date;
-    dcterms:identifier "V000003";
-    schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
-    schema:publisher <org/SSZ>;
-    dcterms:rights <ssz/rights2> ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
-    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/> .
