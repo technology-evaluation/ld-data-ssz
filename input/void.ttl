@@ -81,24 +81,33 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 <https://stat.stadt-zuerich.ch/views/V000001> a dcat:Distribution ;
     schema:dateCreated "2021-01-26"^^xsd:date;
+    dcterms:identifier "V000001" ;
     schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
     schema:publisher <org/SSZ>;
     dcterms:rights <ssz/rights1> ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
     dcat:keyword "Bevölkerung", "Stadtquartier" ;
     dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
 
 <https://stat.stadt-zuerich.ch/views/V000002> a dcat:Distribution ;
     schema:dateCreated "2021-01-26"^^xsd:date;
+    dcterms:identifier "V000002";
     schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
     schema:publisher <org/SSZ>;
     dcterms:rights <ssz/rights1> ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
     dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
     dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/> .
 
 <https://stat.stadt-zuerich.ch/views/V000003> a dcat:Distribution ;
     schema:dateCreated "2021-01-26"^^xsd:date;
+    dcterms:identifier "V000003";
     schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
     schema:publisher <org/SSZ>;
     dcterms:rights <ssz/rights2> ;
+    dcterms:format "CSV" ;
+    dcat:mediaType "text/csv" ;
     dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
     dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/> .
