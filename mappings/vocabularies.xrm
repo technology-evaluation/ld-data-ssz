@@ -16,7 +16,7 @@ vocabulary xsd {
 }
 
 vocabulary cube {
-	prefix "cube" "http://ns.bergnet.org/cube/"
+	prefix "cube" "https://cube.link/"
 
 	classes
 		Cube

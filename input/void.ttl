@@ -15,7 +15,7 @@ PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX doap: <http://usefulinc.com/ns/doap#>
 PREFIX duv: <http://www.w3.org/ns/duv#>
 PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX cube: <http://ns.bergnet.org/cube/>
+PREFIX cube: <https://cube.link/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 
