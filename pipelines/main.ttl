@@ -132,8 +132,7 @@ _:variablesOutput p:variable
 <#openCsvFromFilesystem> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
       code:link <file:../lib/csv#openFromCsvw> ] ;
-    code:arguments ( "csvw"^^code:VariableName )  .
-
+     code:arguments     ( "${csvw}"^^code:EcmaScriptTemplateLiteral ) . 
 
 <#loadCsvStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
