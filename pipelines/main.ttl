@@ -21,6 +21,10 @@ _:variablesOutput p:variable
     [ a p:Variable; p:name "targetFile"; p:value "output/transformed.nt" ]
 .
 
+_:voidData a p:Variable;
+  p:name "inputFile";
+  p:value "input/void.ttl".
+
 
 ##
 ## Pipelines
@@ -40,7 +44,7 @@ _:variablesOutput p:variable
 <#mergeInputs> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
     code:link <node:barnard59-base#concat.object> ] ;
-    code:arguments     ( <#TransformDimensions> <#TransformObservations> ) .
+    code:arguments     ( <#addVoid> <#TransformDimensions> <#TransformObservations> ) .
 
 <#streamOutputStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;
@@ -256,4 +260,26 @@ _:variablesOutput p:variable
   ], [
     code:name "password";
     code:value "password"^^p:VariableName
+  ].
+
+  ### Custom
+
+<#parseTurtle> a p:Step ;
+  code:implementedBy [
+    code:link <node:barnard59-formats#n3.parse> ;
+    a code:EcmaScript
+  ] .
+
+<#readFile> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:fs#createReadStream>
+  ];
+  code:arguments ("inputFile"^^p:VariableName).
+
+<#addVoid> a p:Pipeline, p:ReadableObjectMode;
+  p:variables [
+    p:variable _:voidData
+  ];
+  p:steps [
+    p:stepList (<#readFile> <#parseTurtle> )
   ].
