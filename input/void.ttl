@@ -62,7 +62,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   schema:name "Statistische Daten der Stadt Zürich"@de;
   schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich als aufbereitete Datensätze in CSV und RDF Format"@de;
   dcterms:publisher <org/SSZ> ;
-  schema:dataset <views/V000001>, <views/V000002>, <views/V000003> ;
+#  schema:dataset <views/V000001>, <views/V000002>, <views/V000003> ;
   void:sparqlEndpoint <https://stat.stadt-zuerich.ch/query>;
   .
 
@@ -79,65 +79,65 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 ## Datasets
 ##
 
-<views/V000001> a void:Dataset, dcat:Dataset, schema:Dataset  ;
-    dcterms:identifier "V000001" ;
-    schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
-    dcat:keyword "Bevölkerung", "Stadtquartier" ;
-    schema:publisher <org/SSZ>;
-    schema:contactPoint <org/SSZ> ;
-    schema:contributor <org/Zazuko> ;
-    dcat:distribution <views/V000001/csv>, <views/V000001/rdf>  ;
-    schema:dateCreated "2020-10-20"^^xsd:date;
-    schema:dateModified "2020-10-20"^^xsd:date;
-#    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
-#    duv:hasUsage <dataset/meta-usage> ;
-.
+# <views/V000001> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+#     dcterms:identifier "V000001" ;
+#     schema:name "Bevölkerung nach Stadtquartier, seit 1934"@de ;
+#     dcat:keyword "Bevölkerung", "Stadtquartier" ;
+#     schema:publisher <org/SSZ>;
+#     schema:contactPoint <org/SSZ> ;
+#     schema:contributor <org/Zazuko> ;
+#     dcat:distribution <views/V000001/csv>, <views/V000001/rdf>  ;
+#     schema:dateCreated "2020-10-20"^^xsd:date;
+#     schema:dateModified "2020-10-20"^^xsd:date;
+# #    dcterms:modified "%%DATEMODIFIED%%"^^xsd:date;
+# #    duv:hasUsage <dataset/meta-usage> ;
+# .
 
-<views/V000002> a void:Dataset, dcat:Dataset, schema:Dataset  ;
-    dcterms:identifier "V000002" ;
-    schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
-    dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
-    dcterms:rights <ssz/rights1> ;
-    schema:publisher <org/SSZ>;
-    schema:contactPoint <org/SSZ> ;
-    schema:contributor <org/Zazuko> ;
-    dcat:distribution <views/V000002/csv> ;
-    schema:dateCreated "2020-10-20"^^xsd:date;
-    schema:dateModified "2020-10-20"^^xsd:date
-.
+# <views/V000002> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+#     dcterms:identifier "V000002" ;
+#     schema:name "Wirtschaftliche Bevölkerung der Stadt Zürich seit 1934 nach Herkunft, Geschlecht und Stadtquartier"@de ;
+#     dcat:keyword "Bevölkerung", "Geschlecht", "Herkunft", "Stadtquartier" ;
+#     dcterms:rights <ssz/rights1> ;
+#     schema:publisher <org/SSZ>;
+#     schema:contactPoint <org/SSZ> ;
+#     schema:contributor <org/Zazuko> ;
+#     dcat:distribution <views/V000002/csv> ;
+#     schema:dateCreated "2020-10-20"^^xsd:date;
+#     schema:dateModified "2020-10-20"^^xsd:date
+# .
 
-<views/V000003> a void:Dataset, dcat:Dataset, schema:Dataset  ;
-    dcterms:identifier "V000003" ;
-    schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
-    dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
-    dcterms:rights <ssz/rights1> ;
-    schema:publisher <org/SSZ>;
-    schema:contactPoint <org/SSZ> ;
-    schema:contributor <org/Zazuko> ;
-    dcat:distribution <views/V000003/csv> ;
-    schema:dateCreated "2020-10-20"^^xsd:date;
-    schema:dateModified "2020-10-20"^^xsd:date;
-.
+# <views/V000003> a void:Dataset, dcat:Dataset, schema:Dataset  ;
+#     dcterms:identifier "V000003" ;
+#     schema:name "Bevölkerung nach 5-Jahresaltersklasse und statistischer Zone ab 1911"@de ;
+#     dcat:keyword "Bevölkerung", "Altersklassen", "Statistische Zone" ;
+#     dcterms:rights <ssz/rights1> ;
+#     schema:publisher <org/SSZ>;
+#     schema:contactPoint <org/SSZ> ;
+#     schema:contributor <org/Zazuko> ;
+#     dcat:distribution <views/V000003/csv> ;
+#     schema:dateCreated "2020-10-20"^^xsd:date;
+#     schema:dateModified "2020-10-20"^^xsd:date;
+# .
 
-<views/V000001/csv> a dcat:Distribution ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/&format=csv> .
+# <views/V000001/csv> a dcat:Distribution ;
+#     dcterms:format "CSV" ;
+#     dcat:mediaType "text/csv" ;
+#     dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/&format=csv> .
 
-<views/V000001/rdf> a dcat:Distribution ;
-    dcterms:format "RDF" ;
-    dcat:mediaType "application/n-triples" ;
-    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
+# <views/V000001/rdf> a dcat:Distribution ;
+#     dcterms:format "RDF" ;
+#     dcat:mediaType "application/n-triples" ;
+#     dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000001/observation/> .
 
-<views/V000002/csv> a dcat:Distribution ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/&format=csv> .
+# <views/V000002/csv> a dcat:Distribution ;
+#     dcterms:format "CSV" ;
+#     dcat:mediaType "text/csv" ;
+#     dcat:downloadURL  <hhttps://stat.stadt-zuerich.ch/views/V000002/observation/&format=csv> .
 
-<views/V000003/csv> a dcat:Distribution ;
-    dcterms:format "CSV" ;
-    dcat:mediaType "text/csv" ;
-    dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/&format=csv> .
+# <views/V000003/csv> a dcat:Distribution ;
+#     dcterms:format "CSV" ;
+#     dcat:mediaType "text/csv" ;
+#     dcat:downloadURL  <https://stat.stadt-zuerich.ch/views/V000003/observation/&format=csv> .
 
 ## rights
 
