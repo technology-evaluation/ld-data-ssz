@@ -22,7 +22,8 @@ _:variablesSource p:variable
 .
 
 _:variablesOutput p:variable
-    [ a p:Variable; p:name "targetFile"; p:value "output/transformed.nt" ]
+    [ a p:Variable; p:name "targetFile"; p:value "output/transformed.nt" ],
+    [ a p:Variable; p:name "sourceDir"; p:value "input" ]
 .
 
 _:voidData a p:Variable;
@@ -39,7 +40,8 @@ _:voidData a p:Variable;
     p:variables _:variablesOutput .
 
 <#MainStore> a p:Pipeline ;
-    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
+    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
+    p:variables _:variablesSource .
 
 <#Bla> a p:Pipeline , p:Readable ;
   p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
@@ -292,6 +294,8 @@ _:voidData a p:Variable;
   ], [
     code:name "filename";
     code:value "/upload/integ/HDB.zip"
+#    code:value "/upload/integ/bla.zip"
+
   ], [
     code:name "privateKey";
     code:value "${process.env.SSH_PRIVATE_KEY}"^^code:EcmaScriptTemplateLiteral
