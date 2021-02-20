@@ -5,6 +5,8 @@ cache:
     - node_modules/
 
 pipeline:
+  environment: # defines the environment used for variables
+    name: INT
   script:
     - npm install --unsafe-perm
     - npm run output:file
