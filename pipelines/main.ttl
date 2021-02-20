@@ -17,6 +17,10 @@ _:variablesDimension  p:variable
     [ a p:Variable; p:name "inputDir"; p:value "input" ]
 .
 
+_:variablesSource p:variable
+  [ a p:Variable; p:name "sourceDir"; p:value "input" ]
+.
+
 _:variablesOutput p:variable
     [ a p:Variable; p:name "targetFile"; p:value "output/transformed.nt" ]
 .
@@ -31,11 +35,15 @@ _:voidData a p:Variable;
 ##
 
 <#MainFile> a p:Pipeline ;
-    p:steps [ p:stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
+    p:steps [ p:stepList ( <#downloadSftp> <#extract> <#mergeInputs> <#streamOutputStep> ) ] ;
     p:variables _:variablesOutput .
 
 <#MainStore> a p:Pipeline ;
     p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] .
+
+<#Bla> a p:Pipeline , p:Readable ;
+  p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
+  p:variables _:variablesSource .
 
 ##
 ## Steps
@@ -262,7 +270,48 @@ _:voidData a p:Variable;
     code:value "password"^^p:VariableName
   ].
 
-  ### Custom
+##
+## sftp
+##
+
+<#downloadSftp> a p:Step ;
+  code:implementedBy
+    [
+      code:link <node:barnard59-ftp#read> ;
+      a code:EcmaScript
+    ] ;
+  code:arguments [
+    code:name "protocol";
+    code:value "sftp"
+  ], [
+    code:name "user";
+    code:value "statistikstadtzuerich"
+  ], [
+    code:name "host";
+    code:value "sftp.zazukoians.org"
+  ], [
+    code:name "filename";
+    code:value "/upload/integ/HDB.zip"
+  ], [
+    code:name "privateKey";
+    code:value "${process.env.SSH_PRIVATE_KEY}"^^code:EcmaScriptTemplateLiteral
+    #code:value "privateKey"^^:VariableName
+  ].
+
+<#extract> a p:Step ;
+  code:implementedBy
+    [
+      code:link <file:../lib/zip#extract> ;
+      a code:EcmaScript
+    ] ;
+  code:arguments (
+    "sourceDir"^^p:VariableName
+  ).
+
+
+##
+## Metadata
+##
 
 <#parseTurtle> a p:Step ;
   code:implementedBy [
