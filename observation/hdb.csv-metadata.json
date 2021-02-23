@@ -1,6 +1,6 @@
 {
   "@context":"http://www.w3.org/ns/csvw",
-  "url":"../input/HDB_full.csv",
+  "url":"../input/HDB_Full.csv",
   "tableSchema":{
     "aboutUrl":"https://ld.stadt-zuerich.ch/statistics/{KENNZAHL}-{GRUPPE1}-{GRUPPE2}-{GRUPPE3}-{GRUPPE4}-{GRUPPE5}/observation/{GRUPPENCODE1}-{GRUPPENCODE2}-{GRUPPENCODE3}-{GRUPPENCODE4}-{GRUPPENCODE5}-{RAUM}-{ZEIT}",
     "null":"Dummy",
