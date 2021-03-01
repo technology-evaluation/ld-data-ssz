@@ -9,6 +9,7 @@ pipeline:
     name: INT
   script:
     - npm install --unsafe-perm
+    - npm run fetch
     - npm run output:file
   artifacts:
     paths:

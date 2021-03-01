@@ -5,6 +5,7 @@
   "description": "Barnard pipeline with sensible defaults",
   "scripts": {
     "postinstall": "mkdirp output input",
+    "fetch": "dotenv -e .env.defaults -e .env -- ./start.sh Fetch",
     "output:file": "dotenv -e .env.defaults -e .env -- ./start.sh MainFile",
     "output:store": "dotenv -e .env.defaults -e .env -- ./start.sh MainStore"
   },

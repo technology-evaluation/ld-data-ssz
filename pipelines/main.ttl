@@ -36,14 +36,14 @@ _:voidData a p:Variable;
 ##
 
 <#MainFile> a p:Pipeline ;
-    p:steps [ p:stepList ( <#downloadSftp> <#extract> <#mergeInputs> <#streamOutputStep> ) ] ;
+    p:steps [ p:stepList ( <#mergeInputs> <#streamOutputStep> ) ] ;
     p:variables _:variablesOutput .
 
 <#MainStore> a p:Pipeline ;
     p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
     p:variables _:variablesSource .
 
-<#Bla> a p:Pipeline , p:Readable ;
+<#Fetch> a p:Pipeline , p:Readable ;
   p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
   p:variables _:variablesSource .
 
