@@ -1,0 +1,80 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": "../input/HDB_DIMENSIONEN.csv",
+	"dialect": {
+		"delimiter": ","
+		,"doubleQuote": true
+	},
+	"tableSchema": {
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppe}",
+		"columns": [
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+			}
+			,
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "Gruppenname"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"titles": "Gruppe"
+			}
+			,
+			{
+				"suppressOutput": true,
+				"titles": "Index"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Gruppencode"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Gruppencodename"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Gruppencodesort"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Parentcode"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Parentcodename"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GlossarID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Link"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Beschreibung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Bemerkung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Hierarchie"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Name"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Code"
+			}
+		] 
+	}
+}

@@ -1,0 +1,13 @@
+output csvw
+
+map DIMENSIONEN from HDB_DIMENSIONEN {
+	subject template codeIri with Gruppe ;
+	
+	types
+		rdf.Property
+		
+	properties
+		schema.name from Gruppenname ;
+		skos.notation from Gruppe ;
+		// TODO checkout what to do with the relations in this one, there seems to be kind of a hiearchy
+}

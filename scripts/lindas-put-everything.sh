@@ -9,6 +9,6 @@ echo "Posting to endpoint: $ENDPOINT"
 curl -n \
      -X PUT \
      -H Content-Type:application/n-triples \
-     -T target/everything.nt \
+     -T output/transformed.nt \
      -G $ENDPOINT \
-     --data-urlencode graph=https://linked.opendata.swiss/graph/zh/statistics
+     --data-urlencode graph=https://lindas.admin.ch/stadtzuerich/stat

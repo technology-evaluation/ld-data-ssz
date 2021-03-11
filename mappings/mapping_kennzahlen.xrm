@@ -1,0 +1,15 @@
+output csvw
+
+map KENNZAHLEN from HDB_KENZAHLEN {
+	subject template codeIri with KennzahlCode ;
+	
+	types
+		rdf.Property
+		
+	properties
+		schema.name from Kennzahlname ;
+		skos.notation from KennzahlCode ;
+		qudt.unit template unitIri with Einheit_URI ;
+		schema.description from Beschreibung ;
+		skos.scopeNote from Methode ;
+}

@@ -1,0 +1,81 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": "../input/HDB_KENZAHLEN.csv",
+	"dialect": {
+		"delimiter": ","
+		,"doubleQuote": true
+	},
+	"tableSchema": {
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}",
+		"columns": [
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://qudt.org/vocab/unit#Unit"
+			}
+			,
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "Einheit"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"titles": "Einheit_Kurz"
+			},
+			{
+				"propertyUrl": "http://qudt.org/vocab/unit#unit",
+				"titles": "Einheit_URI",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
+			},
+			{
+				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/rounding",
+				"titles": "Rundung"
+			}
+			,
+			{
+				"suppressOutput": true,
+				"titles": "Index"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "KennzahlCode"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Kennzahlname"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Einheit_URI"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Klasse"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GlossarID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Beschreibung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Methode"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Name"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Wert"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Bemerkung"
+			}
+		] 
+	}
+}

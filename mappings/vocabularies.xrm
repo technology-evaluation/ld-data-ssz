@@ -1,0 +1,166 @@
+language-tags {
+	de
+	en
+	fr
+	it
+}
+
+vocabulary xsd {
+	prefix "xsd" "http://www.w3.org/2001/XMLSchema#"
+
+	datatypes
+		date
+		float
+		gYear
+		integer
+}
+
+vocabulary cube {
+	prefix "cube" "https://cube.link/"
+
+	classes
+		Cube
+		Constraint
+		ObservationSet
+		Observation
+
+	properties
+		observationSet
+		observationShape
+		observation
+		observedBy
+}
+
+vocabulary dimension {
+	prefix "dimension" "https://ld.stadt-zuerich.ch/statistics/dimension/"
+
+	properties
+		ZEIT
+		BEZUGZEIT
+		RAUM
+		ERWARTETE_AKTUALISIERUNG
+		DATENSTAND
+}
+
+vocabulary skos {
+	prefix "skos" "http://www.w3.org/2004/02/skos/core#"
+
+	classes
+		Concept
+		ConceptScheme
+		Collection
+
+	properties
+		notation
+		prefLabel
+		altLabel
+		hiddenLabel
+		member
+		broader
+		narrower
+		inScheme
+		scopeNote
+}
+
+vocabulary example {
+	prefix "ex" "http://example.org/"
+
+	properties
+		ANZ_GRUPPEN
+		GLOSSARID
+		GRUPPENCODESORT1
+		GRUPPENCODESORT2
+		GRUPPENCODESORT3
+		GRUPPENCODESORT4
+		GRUPPENCODESORT5
+		KENNZAHLKLASSE
+		QUELLE
+		UPDATE
+		BEZUGSPERIODE
+		CODE
+		CODENAME
+		FUSSNOTEATTRIBUT
+		FUSSNOTEKENNZAHL
+		FUSSNOTEKENNZAHLATTRIBUT
+		FUSSNOTERAUM
+		FUSSNOTEZEIT
+		FUSSNOTEZELLE
+		GESAMTCODE_RCS
+		GRUPPE1
+		GRUPPE2
+		GRUPPE3
+		GRUPPE4
+		GRUPPE5
+		KENNZAHL
+		REFERENZNUMMER
+		// RAUM
+		Raumebene
+		RaumebeneParent
+		
+}
+
+vocabulary schema {
+	prefix "schema" "http://schema.org/"
+
+	classes
+		Organization
+		PostalAdress
+		CreativeWork
+		DefinedTerm
+		DefinedTermSet
+		Place
+
+	properties
+		name
+		identifier
+		inDefinedTermSet
+		termCode
+		hasDefinedTerm
+		description
+		sameAs
+		position
+		validFrom
+		validThrough
+}
+
+vocabulary rdf {
+	prefix "rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	
+	classes
+		Property
+}
+
+vocabulary qudt {
+	prefix "qudt" "http://qudt.org/vocab/unit#"
+	
+	classes
+		Unit
+	
+	properties
+		unit
+}
+
+vocabulary time {
+	prefix "time" "http://www.w3.org/2006/time#"
+	
+	classes
+		TemporalEntity
+		
+	properties
+		hasBeginning
+		hasEnd
+		inXSDDate
+}
+
+vocabulary ssz {
+	prefix "ssz" "https://ld.stadt-zuerich.ch/schema/"
+	
+	properties
+		rounding
+		referenceTime
+		hasBeginning
+		hasEnd
+		
+}
+
+
