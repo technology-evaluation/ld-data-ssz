@@ -296,9 +296,7 @@ _:voidData a p:Variable;
     code:value "sftp.zazukoians.org"
   ], [
     code:name "filename";
-    code:value "/upload/integ/HDB.zip"
-#    code:value "/upload/integ/bla.zip"
-
+    code:value "/upload/integ/HDB_Full.zip"
   ], [
     code:name "privateKey";
     code:value "${process.env.SSH_PRIVATE_KEY}"^^code:EcmaScriptTemplateLiteral
