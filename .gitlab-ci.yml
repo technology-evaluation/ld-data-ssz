@@ -9,7 +9,6 @@ pipeline:
     name: PROD
   script:
     - npm install --unsafe-perm
-    - env
     - npm run fetch
     - npm run output:store
 #  artifacts:
