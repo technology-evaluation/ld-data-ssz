@@ -3,7 +3,6 @@
 variables=()
 
 [[ -n "$ENDPOINT" ]] && variables+=(--variable="endpoint=$ENDPOINT")
-[[ -n "$SSH_PRIVATE_KEY" ]] && variables+=(--variable="endpoint=$SSH_PRIVATE_KEY")
 [[ -n "$INPUT_DIR" ]] && variables+=(--variable="inputDir=$INPUT_DIR")
 [[ -n "$OUTPUT" ]] && variables+=(--variable="targetFile=$OUTPUT")
 [[ -n "$MAPPINGS_DIR" ]] && variables+=(--variable="mappingsDir=$MAPPINGS_DIR")
