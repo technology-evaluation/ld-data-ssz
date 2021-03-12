@@ -6,7 +6,7 @@ cache:
 
 pipeline:
   environment: # defines the environment used for variables
-    name: INT
+    name: PROD
   script:
     - npm install --unsafe-perm
     - npm run fetch
