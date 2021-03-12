@@ -10,7 +10,7 @@ pipeline:
   script:
     - npm install --unsafe-perm
     - npm run fetch
-    - npm run output:file
-  artifacts:
-    paths:
-      - output/transformed.nt
+    - npm run output:store
+#  artifacts:
+#    paths:
+#      - output/transformed.nt
