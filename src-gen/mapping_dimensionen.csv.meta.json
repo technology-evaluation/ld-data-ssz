@@ -6,7 +6,7 @@
 		,"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppe}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Gruppencode}",
 		"columns": [
 			{
 				"virtual": true,
@@ -16,11 +16,26 @@
 			,
 			{
 				"propertyUrl": "http://schema.org/name",
-				"titles": "Gruppenname"
+				"titles": "Gruppencodename"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
-				"titles": "Gruppe"
+				"propertyUrl": "http://schema.org/identifier",
+				"titles": "Gruppencode"
+			},
+			{
+				"propertyUrl": "http://schema.org/position",
+				"datatype": "integer",
+				"titles": "Gruppencodesort"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
+				"titles": "Parentcode",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
+			},
+			{
+				"propertyUrl": "http://schema.org/isPartOf",
+				"titles": "Gruppe",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/collection/{Gruppe}"
 			}
 			,
 			{
@@ -29,15 +44,11 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Gruppencode"
+				"titles": "Gruppe"
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Gruppencodename"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Gruppencodesort"
+				"titles": "Gruppenname"
 			},
 			{
 				"suppressOutput": true,

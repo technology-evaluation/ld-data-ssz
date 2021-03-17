@@ -8,7 +8,7 @@ map DIMENSIONEN from HDB_DIMENSIONEN {
 
 	properties
 		schema.name from Gruppencodename;
-		skos.notation from Gruppencode;
+		schema.identifier from Gruppencode;
 		schema.position from Gruppencodesort with datatype xsd.integer;
 		// TODO broader vs member. Is parent correct like this? Is isPartOf correct for Gruppe?
 		skos.broader template codeIri with Parentcode;

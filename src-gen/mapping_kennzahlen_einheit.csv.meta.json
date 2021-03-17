@@ -19,7 +19,7 @@
 				"titles": "Einheit"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"propertyUrl": "http://schema.org/identifier",
 				"titles": "Einheit_Kurz"
 			},
 			{

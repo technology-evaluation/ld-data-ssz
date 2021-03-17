@@ -8,7 +8,7 @@ map KENNZAHLEN from HDB_KENZAHLEN {
 
 	properties
 		schema.name from Einheit;
-		skos.notation from Einheit_Kurz;
+		schema.identifier from Einheit_Kurz;
 		qudt.unit template unitIri with Einheit_URI;
 		ssz.rounding from Rundung;
 }
