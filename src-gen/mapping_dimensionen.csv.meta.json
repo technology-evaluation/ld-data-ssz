@@ -24,7 +24,6 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/position",
-				"datatype": "integer",
 				"titles": "Gruppencodesort"
 			},
 			{
