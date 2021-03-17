@@ -275,6 +275,24 @@ _:voidData a p:Variable;
     code:value "500000000"
   ].
 
+<#append> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-graph-store#post>
+  ];
+  code:arguments [
+    code:name "endpoint";
+    code:value "endpoint"^^p:VariableName
+  ], [
+    code:name "user";
+    code:value "user"^^p:VariableName
+  ], [
+    code:name "password";
+    code:value "password"^^p:VariableName
+  ], [
+    code:name "maxQuadsPerRequest";
+    code:value "500000000"
+  ].
+
 ##
 ## sftp
 ##
