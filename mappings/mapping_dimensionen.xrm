@@ -1,13 +1,16 @@
 output csvw
 
 map DIMENSIONEN from HDB_DIMENSIONEN {
-	subject template codeIri with Gruppe ;
-	
+	subject template codeIri with Gruppencode;
+
 	types
 		rdf.Property
-		
+
 	properties
-		schema.name from Gruppenname ;
-		skos.notation from Gruppe ;
-		// TODO checkout what to do with the relations in this one, there seems to be kind of a hiearchy
+		schema.name from Gruppencodename;
+		skos.notation from Gruppencode;
+		schema.position from Gruppencodesort with datatype xsd.integer;
+		// TODO broader vs member. Is parent correct like this? Is isPartOf correct for Gruppe?
+		skos.broader template codeIri with Parentcode;
+		schema.isPartOf template collectionIri with Gruppe;
 }

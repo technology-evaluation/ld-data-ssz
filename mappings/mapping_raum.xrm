@@ -1,22 +1,21 @@
 output csvw
 
 map RAUM from HDB_RAUM {
-	subject template codeIri with Raum ;
-	
+	subject template codeIri with Raum;
+
 	types
-		skos.Concept schema.Place
-	
+		skos.Concept
+		schema.Place
+
 	properties
-		schema.name from RaumLang ;
-		skos.prefLabel from RaumLang with language-tag de ;
-		skos.inScheme template schemeIri with Raumebene ;
-		schema.position from RaumSort with datatype xsd.integer ;
-		schema.description from Beschreibung ;
+		schema.name from RaumLang with language-tag de;
+		skos.inScheme template schemeIri with Raumebene;
+		schema.position from RaumSort with datatype xsd.integer;
+		schema.description from Beschreibung;
 //		schema.sameAs from WikidataURI as IRI ; // need to see how CSVW does it
-    schema.sameAs from WikidataURI ;
-		schema.identifier from Raum ;
-		skos.notation from Raum ;
-		//example.RaumebeneParent from RaumebeneParent ;
-		// TODO: Hierarchie
-				
+		schema.sameAs from WikidataURI;
+		schema.identifier from Raum;
+		// schema.hasPart from RaumebeneParent ;
+// example.RaumebeneParent from RaumebeneParent ;
+// TODO: Hierarchie
 }

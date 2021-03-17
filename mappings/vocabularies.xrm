@@ -116,6 +116,8 @@ vocabulary schema {
 		inDefinedTermSet
 		termCode
 		hasDefinedTerm
+		isPartOf
+		hasPart
 		description
 		sameAs
 		position
@@ -152,6 +154,13 @@ vocabulary time {
 		inXSDDate
 }
 
+vocabulary qudt {
+	prefix "qudt" "http://qudt.org/schema/qudt/"
+	
+	properties
+		order
+}
+
 vocabulary ssz {
 	prefix "ssz" "https://ld.stadt-zuerich.ch/schema/"
 	
@@ -162,5 +171,6 @@ vocabulary ssz {
 		hasEnd
 		
 }
+
 
 

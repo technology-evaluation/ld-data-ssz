@@ -12,6 +12,11 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+			},
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://schema.org/DefinedTerm"
 			}
 			,
 			{
@@ -19,7 +24,7 @@
 				"titles": "Codename"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"propertyUrl": "http://schema.org/identifier",
 				"titles": "Code"
 			},
 			{

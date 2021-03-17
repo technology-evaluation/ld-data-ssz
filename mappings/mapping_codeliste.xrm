@@ -1,14 +1,15 @@
 output csvw
 
 map CODELISTE from HDB_CODELISTE {
-	subject template codeIri with Code ;
-	
+	subject template codeIri with Code;
+
 	types
 		skos.Concept
-		
+		schema.DefinedTerm
+
 	properties
-		schema.name from Codename ;
-		skos.notation from Code ;
-		skos.inScheme template schemeIri with Referenztabelle ;
-		// TODO check that ConceptScheme exists
+		schema.name from Codename;
+		schema.identifier from Code;
+		skos.inScheme template schemeIri with Referenztabelle;
+		// TODO check that ConceptScheme exists but what exactly is Referenztabelle?
 }
