@@ -137,6 +137,7 @@ _:voidData a p:Variable;
         <#loadCsvStep>
         <#parse>
         <#filterAll>
+        <#removeXxx>
         <#referenceTimeToIri>
         <#flatten> 
       )
@@ -206,6 +207,14 @@ _:voidData a p:Variable;
  ];
  code:arguments ( [ a code:EcmaScript ;
                     code:link <file:../lib/steps-map#referenceTimeToIri>
+                  ] ).
+
+<#removeXxx> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#removeXxx>
                   ] ).
 
 <#toDataset> a p:Step;
