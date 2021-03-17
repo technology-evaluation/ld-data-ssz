@@ -7,6 +7,15 @@
 ## Variables
 ##
 
+
+<sourceFullVar> a p:Variable;
+  p:name "filename";
+  p:value "/upload/integ/HDB_Full.zip".
+
+<sourceDiffVar> a p:Variable;
+  p:name "filename";
+  p:value "/upload/integ/HDB_Diff.zip".
+
 _:variablesObservation p:variable
     [ a p:Variable; p:name "mappingsDir"; p:value "observation/*.json" ] ,
     [ a p:Variable; p:name "inputDir"; p:value "input" ]
@@ -14,11 +23,10 @@ _:variablesObservation p:variable
 
 _:variablesDimension  p:variable
     [ a p:Variable; p:name "mappingsDir"; p:value "src-gen/*.json" ] ,
-    [ a p:Variable; p:name "inputDir"; p:value "input" ]
-.
+    [ a p:Variable; p:name "inputDir"; p:value "input" ] .
 
 _:variablesSource p:variable
-  [ a p:Variable; p:name "sourceDir"; p:value "input" ]
+  [ a p:Variable; p:name "sourceDir"; p:value "input" ] 
 .
 
 _:variablesOutput p:variable
@@ -43,9 +51,17 @@ _:voidData a p:Variable;
     p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
     p:variables _:variablesSource .
 
+<#MainStoreDiff> a p:Pipeline ;
+    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#append> ) ] ;
+    p:variables _:variablesSource .
+
 <#Fetch> a p:Pipeline , p:Readable ;
   p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
-  p:variables _:variablesSource .
+  p:variables _:variablesSource, [ p:variable <sourceFullVar> ] .
+
+<#FetchDiff> a p:Pipeline , p:Readable ;
+  p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
+  p:variables _:variablesSource, [ p:variable <sourceDiffVar> ] .
 
 ##
 ## Steps
@@ -314,7 +330,7 @@ _:voidData a p:Variable;
     code:value "sftp.zazukoians.org"
   ], [
     code:name "filename";
-    code:value "/upload/integ/HDB_Full.zip"
+    code:value "filename"^^p:VariableName
   ], [
     code:name "privateKey";
     code:value "${process.env.SSH_PRIVATE_KEY}"^^code:EcmaScriptTemplateLiteral
