@@ -4,7 +4,7 @@ cache:
   paths:
     - node_modules/
 
-pipeline:
+pipeline_prod:
   only:
     - master
   environment:
@@ -14,7 +14,7 @@ pipeline:
     - npm run fetch
     - npm run output:store
 
-pipeline:
+pipeline_int:
   only:
     - develop
   environment:
@@ -24,7 +24,7 @@ pipeline:
     - npm run fetch
     - npm run output:store
 
-pipeline:
+pipeline_test:
   only:
     - develop
   environment:
