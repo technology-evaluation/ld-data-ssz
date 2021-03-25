@@ -5,12 +5,21 @@ cache:
     - node_modules/
 
 pipeline:
-  environment: # defines the environment used for variables
+  only:
+    - master
+  environment:
     name: PROD
   script:
     - npm install --unsafe-perm
     - npm run fetch
     - npm run output:store
-#  artifacts:
-#    paths:
-#      - output/transformed.nt
+
+pipeline:
+  only:
+    - develop
+  environment:
+    name: INT
+  script:
+    - npm install --unsafe-perm
+    - npm run fetch
+    - npm run output:store
