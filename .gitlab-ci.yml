@@ -23,3 +23,13 @@ pipeline:
     - npm install --unsafe-perm
     - npm run fetch
     - npm run output:store
+
+pipeline:
+  only:
+    - develop
+  environment:
+    name: TEST
+  script:
+    - npm install --unsafe-perm
+    - npm run fetch
+    - npm run output:store
