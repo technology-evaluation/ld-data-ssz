@@ -70,10 +70,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 ## Cube Beispiel
 ##
 
-<ssz/cube/GES-SEX-TOU> a cube:Cube ;
-  dcterms:rights <ssz/rights> ;
-  schema:license <http://creativecommons.org/licenses/by/3.0/> ;
-  schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
+#<ssz/cube/GES-SEX-TOU> a cube:Cube ;
+#  dcterms:rights <ssz/rights> ;
+#  schema:license <http://creativecommons.org/licenses/by/3.0/> ;
+#  schema:name "Sterbefälle nach Geschlecht & Todesursache"@de .
 
 ##
 ## Datasets
