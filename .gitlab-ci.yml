@@ -26,7 +26,8 @@ pipeline_int:
 
 pipeline_test:
   only:
-    - develop
+    variables:
+      - $RELEASE == "zazuko"
   environment:
     name: TEST
   script:
