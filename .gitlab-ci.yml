@@ -17,6 +17,9 @@ pipeline_prod:
 pipeline_int:
   only:
     - develop
+  except:
+    variables:
+      - $RELEASE == "zazuko"
   environment:
     name: INT
   script:
