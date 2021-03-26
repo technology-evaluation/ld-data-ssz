@@ -1,5 +1,9 @@
 image: node:latest
 
+before_script:
+  - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
+  - npm install --unsafe-perm
+
 cache:
   paths:
     - node_modules/
@@ -10,7 +14,6 @@ pipeline_prod:
   environment:
     name: PROD
   script:
-    - npm install --unsafe-perm
     - npm run fetch
     - npm run output:store
 
@@ -23,7 +26,6 @@ pipeline_int:
   environment:
     name: INT
   script:
-    - npm install --unsafe-perm
     - npm run fetch
     - npm run output:store
 
@@ -34,6 +36,5 @@ pipeline_test:
   environment:
     name: TEST
   script:
-    - npm install --unsafe-perm
     - npm run fetch
     - npm run output:store

@@ -8,6 +8,14 @@
 ##
 
 
+<graphFullVar> a p:Variable;
+  p:name "graph";
+  p:value "https://lindas.admin.ch/stadtzuerich/stat".
+
+<graphDiffVar> a p:Variable;
+  p:name "graph";
+  p:value "https://lindas.admin.ch/stadtzuerich/stat-staging".
+
 <sourceFullVar> a p:Variable;
   p:name "filename";
   p:value "/upload/integ/HDB_Full.zip".
@@ -49,11 +57,11 @@ _:voidData a p:Variable;
 
 <#MainStore> a p:Pipeline ;
     p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
-    p:variables _:variablesSource .
+    p:variables _:variablesSource, [ p:variable <graphFullVar> ] .
 
 <#MainStoreDiff> a p:Pipeline ;
-    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#append> ) ] ;
-    p:variables _:variablesSource .
+    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
+    p:variables _:variablesSource, [ p:variable <graphDiffVar> ] .
 
 <#Fetch> a p:Pipeline , p:Readable ;
   p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
