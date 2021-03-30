@@ -2,7 +2,7 @@
 set -eo pipefail
 
 set +u
-ENDPOINT=${ENDPOINT:=http://localhost:5820/ssz}
+ENDPOINT=${ENDPOINT:=http://localhost:5820/lindas}
 set -u
 
 echo "Posting to endpoint: $ENDPOINT"
