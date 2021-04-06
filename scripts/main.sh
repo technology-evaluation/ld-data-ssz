@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-echo "df /upload/integ/HDB_Full.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
+set -u
+echo "Working in environment: $SFTPENV"
+echo "df /upload/$SFTPENV/HDB_Full.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
 if [ $? -eq 0 ]
 then
     echo "File HDB_Full.zip exists, running main pipeline..."
@@ -10,7 +12,7 @@ then
 else
     echo "File HDB_Full.zip does not exist, checking for diff delivery..."
 
-    echo "df /upload/integ/HDB_Diff.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
+    echo "df /upload/$SFTPENV/HDB_Diff.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
     if [ $? -eq 0 ]
     then
       echo "File HDB_Diff.zip exists, running diff pipeline"
