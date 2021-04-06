@@ -26,8 +26,9 @@ pipeline_int:
   environment:
     name: INT
   script:
-    - npm run fetch
-    - npm run output:store
+    - ./scripts/main.sh
+  #  - npm run fetch
+  #  - npm run output:store
 
 pipeline_test:
   only:
