@@ -8,7 +8,7 @@ then
     echo "File HDB_Full.zip exists, running main pipeline..."
     npm run fetch
     npm run output:file
-    # TODO generate views
+    ./scripts/ssz-views.sh
     # TODO mv file
     set +eo pipefail
 else
