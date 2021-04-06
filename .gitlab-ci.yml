@@ -1,8 +1,8 @@
 image: node:latest
 
 before_script:
-#  - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
-  - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
+#  - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
   - mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
   - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
   - npm install --unsafe-perm
