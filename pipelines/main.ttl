@@ -12,7 +12,7 @@
   p:name "graph";
   p:value "https://lindas.admin.ch/stadtzuerich/stat".
 
-<graphDiffVar> a p:Variable;
+<graphStagingVar> a p:Variable;
   p:name "graph";
   p:value "https://lindas.admin.ch/stadtzuerich/stat-staging".
 
@@ -59,9 +59,23 @@ _:voidData a p:Variable;
     p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
     p:variables _:variablesSource, [ p:variable <graphFullVar> ] .
 
-<#MainStoreDiff> a p:Pipeline ;
-    p:steps [ p:stepList ( <#mergeInputs> <#setGraph> <#upload> ) ] ;
-    p:variables _:variablesSource, [ p:variable <graphDiffVar> ] .
+# Add diff dimensions to original graph
+<#DimensionsStore> a p:Pipeline ;
+    p:steps [ p:stepList ( <#TransformDimensionsStep> <#setGraph> <#append> ) ] ;
+    p:variables _:variablesSource, [ p:variable <graphFullVar> ] .
+
+<#DimensionsFile> a p:Pipeline ;
+    p:steps [ p:stepList ( <#TransformDimensionsStep> <#streamOutputStep> ) ] ;
+    p:variables _:variablesOutput .
+
+# Add diff observations to staging graph
+<#ObservationsStore> a p:Pipeline ;
+    p:steps [ p:stepList ( <#TransformObservationsStep> <#setGraph> <#upload> ) ] ;
+    p:variables _:variablesSource, [ p:variable <graphStagingVar> ] .
+
+<#ObservationsFile> a p:Pipeline ;
+    p:steps [ p:stepList ( <#TransformObservationsStep> <#streamOutputStep> ) ] ;
+    p:variables _:variablesOutput .
 
 <#Fetch> a p:Pipeline , p:Readable ;
   p:steps [ p:stepList (<#downloadSftp> <#extract>  )] ;
@@ -79,6 +93,16 @@ _:voidData a p:Variable;
     code:implementedBy [ a code:EcmaScript ;
     code:link <node:barnard59-base#concat.object> ] ;
     code:arguments     ( <#addVoid> <#TransformDimensions> <#TransformObservations> ) .
+
+<#TransformObservationsStep> a p:Step ;
+    code:implementedBy [ a code:EcmaScript ;
+    code:link <node:barnard59-base#concat.object> ] ;
+    code:arguments     ( <#TransformObservations>  ) .
+
+<#TransformDimensionsStep> a p:Step ;
+    code:implementedBy [ a code:EcmaScript ;
+    code:link <node:barnard59-base#concat.object> ] ;
+    code:arguments     ( <#TransformDimensions>  ) .
 
 <#streamOutputStep> a p:Step ;
     code:implementedBy [ a code:EcmaScript ;

@@ -9,7 +9,8 @@
     "fetchDiff": "dotenv -e .env.defaults -e .env -- ./start.sh FetchDiff",
     "output:file": "dotenv -e .env.defaults -e .env -- ./start.sh MainFile",
     "output:store": "dotenv -e .env.defaults -e .env -- ./start.sh MainStore",
-    "output:storeDiff": "dotenv -e .env.defaults -e .env -- ./start.sh MainStoreDiff"
+    "output:dimensions:store": "dotenv -e .env.defaults -e .env -- ./start.sh DimensionsStore",
+    "output:observations:store": "dotenv -e .env.defaults -e .env -- ./start.sh ObservationsStore"
   },
   "dependencies": {
     "@rdfjs/data-model": "^1.2.0",
