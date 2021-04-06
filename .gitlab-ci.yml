@@ -6,7 +6,7 @@ before_script:
   - mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
   - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
   - npm install --unsafe-perm
-  - git clone https://github.com/zazuko/ssz-views.git && cd ssz-views.git && npm install && pwd
+  - git clone https://github.com/zazuko/ssz-views.git && cd ssz-views && npm install && pwd
 
 cache:
   paths:
