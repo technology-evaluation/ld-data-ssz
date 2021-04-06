@@ -7,9 +7,9 @@ then
     set -eo pipefail
     echo "File HDB_Full.zip exists, running main pipeline..."
     npm run fetch
-    npm run output:file
+    npm run output:store
     ./scripts/ssz-views.sh
-    # TODO mv file
+    # echo "rename /upload/$SFTPENV/HDB_Full.zip /upload/$SFTPENV/done/HDB_Full.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
     set +eo pipefail
 else
     echo "File HDB_Full.zip does not exist, checking for diff delivery..."
