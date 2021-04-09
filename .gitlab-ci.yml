@@ -25,6 +25,8 @@ pipeline_prod:
 pipeline_int:
   only:
     - develop
+  tags:
+    - medium
   except:
     variables:
       - $RELEASE == "zazuko"
