@@ -7,7 +7,7 @@
     "columns":[
       {
         "titles":"GESAMTCODE",
-        "propertyUrl":"http://www.w3.org/2004/02/skos/core#notation"
+        "propertyUrl":"http://schema.org/identifier"
       },
       {
         "titles":"GESAMTCODE_RCS",
