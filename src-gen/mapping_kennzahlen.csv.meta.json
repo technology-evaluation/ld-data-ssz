@@ -6,7 +6,7 @@
 		,"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{KennzahlCode}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
 		"columns": [
 			{
 				"virtual": true,
@@ -19,7 +19,7 @@
 				"titles": "Kennzahlname"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#notation",
+				"propertyUrl": "http://schema.org/identifier",
 				"titles": "KennzahlCode"
 			},
 			{

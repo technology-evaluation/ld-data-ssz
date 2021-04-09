@@ -12,6 +12,21 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+			},
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://schema.org/DefinedTermSet"
+			}
+			,
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "Raumebene"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
+				"titles": "RaumebeneParent",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{RaumebeneParent}"
 			}
 			,
 			{
@@ -21,10 +36,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "RaumLang"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Raumebene"
 			},
 			{
 				"suppressOutput": true,
