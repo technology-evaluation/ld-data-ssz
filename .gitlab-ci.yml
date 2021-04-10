@@ -16,6 +16,8 @@ cache:
 pipeline_prod:
   only:
     - master
+  tags:
+    - medium
   environment:
     name: PROD
   script:
@@ -41,6 +43,8 @@ pipeline_test:
   only:
     variables:
       - $RELEASE == "zazuko"
+  tags:
+    - medium
   environment:
     name: TEST
   script:
