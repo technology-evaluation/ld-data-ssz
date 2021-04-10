@@ -1,7 +1,7 @@
 output csvw
 
 map DIMENSIONEN from HDB_DIMENSIONEN {
-	subject template propertyIri with Gruppencode;
+	subject template propertyIri with Gruppe;
 
 	types
 		rdf.Property
