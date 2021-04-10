@@ -11,10 +11,10 @@ PREFIX stardog: <tag:stardog:api:>
 # This query generates the description & identifier for each cube
 #
 
-INSERT {
+INSERT { GRAPH <https://lindas.admin.ch/stadtzuerich/stat> {
     ?cube schema:name ?finallabel ;
           schema:identifier ?identifier .
-}
+}}
 WHERE {
 {
     {
