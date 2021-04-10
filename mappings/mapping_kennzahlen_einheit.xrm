@@ -1,0 +1,14 @@
+output csvw
+
+map KENNZAHLEN from HDB_KENZAHLEN {
+	subject template unitIri with Einheit_URI;
+
+	types
+		qudt.Unit
+
+	properties
+		schema.name from Einheit;
+		schema.identifier from Einheit_Kurz;
+		qudt.unit template unitIri with Einheit_URI;
+		ssz.rounding from Rundung;
+}

@@ -1,0 +1,81 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": "../input/HDB_KENZAHLEN.csv",
+	"dialect": {
+		"delimiter": ","
+		,"doubleQuote": true
+	},
+	"tableSchema": {
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
+		"columns": [
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+			}
+			,
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "Kennzahlname"
+			},
+			{
+				"propertyUrl": "http://schema.org/identifier",
+				"titles": "KennzahlCode"
+			},
+			{
+				"propertyUrl": "http://qudt.org/vocab/unit#unit",
+				"titles": "Einheit_URI",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
+			},
+			{
+				"propertyUrl": "http://schema.org/description",
+				"titles": "Beschreibung"
+			},
+			{
+				"propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote",
+				"titles": "Methode"
+			}
+			,
+			{
+				"suppressOutput": true,
+				"titles": "Index"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Einheit"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Einheit_Kurz"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Einheit_URI"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Rundung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Klasse"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GlossarID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Name"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DWH_Wert"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Bemerkung"
+			}
+		] 
+	}
+}

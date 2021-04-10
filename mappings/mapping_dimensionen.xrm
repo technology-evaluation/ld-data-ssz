@@ -1,0 +1,12 @@
+output csvw
+
+map DIMENSIONEN from HDB_DIMENSIONEN {
+	subject template propertyIri with Gruppe;
+
+	types
+		rdf.Property
+
+	properties
+		schema.name from Gruppenname;
+		schema.identifier from Gruppe;
+}

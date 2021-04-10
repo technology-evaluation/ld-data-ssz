@@ -1,145 +1,52 @@
-image: zazukoians/node-java-jena
+image: node:latest
+
 before_script:
-  - scripts/bootstrap.sh
-  - npm install
+  - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
+#  - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
+  - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+  - npm install --unsafe-perm
+  - git clone https://github.com/zazuko/ssz-views.git && cd ssz-views && npm install
+  - cd $CI_PROJECT_DIR
 
-# stages
-stages:
-- fetch
-- convert
-- staging
-- validate
-- post
+cache:
+  paths:
+    - node_modules/
 
-# jobs
-
-curl_hdb_job:
-  stage: fetch
-  tags: 
-    - ssz
-  script:
-    - npm run get-hdb
-  artifacts:
-    paths:
-      - input/hdb.csv
-      - input/hdb_mapping.csv
-    expire_in: 30 minutes
-
-curl_dimension_job:
-  stage: fetch
-  tags: 
-    - ssz
-  script:
-    - npm run get-dimensions
-  artifacts:
-    paths:
-      - input/HDB_Listen.xlsx
-    expire_in: 30 minutes
-
-curl_geojson_job:
-  stage: fetch
-  tags: 
-    - ssz
-  script:
-    - npm run get-geojson
-  artifacts:
-    paths:
-      - tmp/*.json
-    expire_in: 30 minutes
-
-convert_hdb_job:
-  stage: convert
-  tags: 
-    - ssz
-  script:
-    - npm run convert-hdb
-    - npm run clean-hdb
-  artifacts:
-    paths:
-      - target/hdb-clean.nt
-      - target/hdb-meta.nt
-    expire_in: 1 day
-  dependencies:
-    - curl_hdb_job
-  
-convert_dimensions_job:
-  stage: convert
-  tags: 
-    - ssz
-  script:
-    - npm run convert-dimensions
-    - npm run clean-dimensions
-  artifacts:
-    paths:
-      - target/dimensions.nt
-    expire_in: 1 day
-  dependencies:
-    - curl_dimension_job
-
-convert_geojson_job:
-  stage: convert
-  tags: 
-    - ssz
-  script:
-    - npm run convert-geojson
-  artifacts:
-    paths:
-      - target/geo_stadtkreise.nt
-      - target/geo_statistische_quartiere.nt
-    expire_in: 1 day
-  dependencies:
-    - curl_geojson_job
-
-staging_tdb_job:
-  stage: staging
-  tags:
-    - ssz
-  script:
-    - npm run void-timestamp
-    - npm run tdb-load
-    - npm run tdb-query
-    - npm run tdb-dump
-  artifacts:
-    paths:
-      - target/everything.nt.gz
-    expire_in: 1 day
-  dependencies:
-    - convert_dimensions_job
-    - convert_hdb_job
-    - convert_geojson_job
-
-validate_riot_job:
-  stage: validate
-  tags:
-    - ssz
-  script:
-    - npm run validate-riot
-  artifacts:
-    paths:
-      - target/everything.nt.gz
-    expire_in: 1 day
-  dependencies:
-    - staging_tdb_job
-
-post_test_job:
-  stage: post
-  tags: 
-    - ssz
+pipeline_prod:
   only:
-#    - tags
+    - master
+  tags:
+    - medium
+  environment:
+    name: PROD
+  script:
+    - npm run fetch
+    - npm run output:store
+
+pipeline_int:
+  only:
     - develop
+  tags:
+    - medium
+  except:
+    variables:
+      - $RELEASE == "zazuko"
+  environment:
+    name: INT
   script:
-    - npm run ssz-lindas-integ-s3
-  dependencies:
-    - validate_riot_job
+    - ./scripts/main.sh
+  #  - npm run fetch
+  #  - npm run output:store
 
-post_prod_job:
-  stage: post
-  tags: 
-    - ssz
+pipeline_test:
   only:
-    - tags
+    variables:
+      - $RELEASE == "zazuko"
+  tags:
+    - medium
+  environment:
+    name: TEST
   script:
-    - npm run ssz-lindas-prod-s3
-  dependencies:
-    - validate_riot_job
+    - npm run fetch
+    - npm run output:store

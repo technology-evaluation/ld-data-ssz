@@ -1,13 +1,13 @@
 {
   "@context":"http://www.w3.org/ns/csvw",
-  "url":"hdb.csv",
+  "url":"../input/HDB.csv",
   "tableSchema":{
-    "aboutUrl":"https://ld.stadt-zuerich.ch/statistics/observation/{KENNZAHL}/{RAUM}/{ZEIT}/{GRUPPENCODE1}/{GRUPPENCODE2}/{GRUPPENCODE3}/{GRUPPENCODE4}/{GRUPPENCODE5}",
+    "aboutUrl":"https://ld.stadt-zuerich.ch/statistics/{KENNZAHL}-{GRUPPE1}-{GRUPPE2}-{GRUPPE3}-{GRUPPE4}-{GRUPPE5}/observation/{GRUPPENCODE1}-{GRUPPENCODE2}-{GRUPPENCODE3}-{GRUPPENCODE4}-{GRUPPENCODE5}-{RAUM}-{ZEIT}",
     "null":"Dummy",
     "columns":[
       {
         "titles":"GESAMTCODE",
-        "propertyUrl":"http://www.w3.org/2004/02/skos/core#notation"
+        "propertyUrl":"http://schema.org/identifier"
       },
       {
         "titles":"GESAMTCODE_RCS",
@@ -16,7 +16,7 @@
       {
         "titles":"ZEIT",
         "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/ZEIT",
-        "valueUrl": "http://example.org/zeit/{JAHR}-{MONAT}-{TAG}"
+        "valueUrl":"https://ld.stadt-zuerich.ch/statistics/code/{ZEIT}"
       },
       {
         "titles":"TAG",
@@ -28,11 +28,12 @@
       },
       {
         "titles":"JAHR",
-        "suppressOutput":true
+        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/property/TIME",
+        "valueUrl": "http://example.org/zeit/{JAHR}-{MONAT}-{TAG}"
       },
       {
         "titles":"BEZUGSZEIT",
-        "propertyUrl":"https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
+        "propertyUrl":"http://example.org/BEZUGSZEIT"
       },
       {
         "titles":"BEZUGSPERIODE",
@@ -363,7 +364,7 @@
       },
       {
         "titles": "ERWARTETE_AKTUALISIERUNG",
-        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG",
+        "propertyUrl": "http://example.org/ERWARTETE_AKTUALISIERUNG",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"
@@ -371,7 +372,7 @@
       },
       {
         "titles": "DATENSTAND",
-        "propertyUrl": "https://ld.stadt-zuerich.ch/statistics/attribute/DATENSTAND",
+        "propertyUrl": "http://example.org/DATENSTAND",
         "datatype": {
           "base": "date",
           "format": "yyyy-MM-dd"
@@ -382,14 +383,36 @@
         "propertyUrl": "http://example.org/UPDATE"
       },
       {
-        "virtual":true,
-        "propertyUrl":"http://purl.org/linked-data/cube#dataSet",
-        "valueUrl":"http://example.org/{KENNZAHL}-{GRUPPE1}-{GRUPPE2}-{GRUPPE3}-{GRUPPE4}-{GRUPPE5}"
-      },      
+        "titles":"STICHTAGDATUM",
+        "suppressOutput":true
+      },
       {
-        "virtual":true,
-        "propertyUrl":"http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "valueUrl":"http://purl.org/linked-data/cube#Observation"
+        "titles":"WIKIDATAURI",
+        "suppressOutput":true
+      },
+      {
+        "titles":"RAUMSORT",
+        "suppressOutput":true
+      },
+      {
+        "titles":"SSZQUELLE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"DATENSTATUS",
+        "suppressOutput":true
+      },
+      {
+        "titles":"i",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PERIODEENDE",
+        "suppressOutput":true
+      },
+      {
+        "titles":"PERIODESTART",
+        "suppressOutput":true
       }
     ]
   }
