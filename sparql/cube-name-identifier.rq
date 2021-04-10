@@ -11,7 +11,7 @@ PREFIX stardog: <tag:stardog:api:>
 # This query generates the description & identifier for each cube
 #
 
-CONSTRUCT {
+INSERT {
     ?cube schema:name ?finallabel ;
           schema:identifier ?identifier .
 }
