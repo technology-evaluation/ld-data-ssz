@@ -17,7 +17,7 @@ PREFIX duv: <http://www.w3.org/ns/duv#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX cube: <https://cube.link/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-
+PREFIX ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/>
 
 <.well-known/void> a void:DatasetDescription;
     schema:name "Datasets of City of Zurich"@en ;
@@ -49,7 +49,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   schema:name "Statistische Daten der Stadt Zürich"@de;
   schema:description "Dieser Datensatz enthält statistische Daten der Stadt Zürich als OLAP Cubes im RDF Cube Vokabular"@de;
   dcterms:publisher <org/SSZ> ;
-  schema:dataset <ssz/cube/GES-SEX-TOU> ; # das wären Links zu allen raw cubes, range ist cube:Cube
+  #schema:dataset <ssz/cube/GES-SEX-TOU> ; # das wären Links zu allen raw cubes, range ist cube:Cube
   doap:repository [
       a doap:GitRepository ;
       doap:browse <https://github.com/statistikstadtzuerich/ld-data> ;
@@ -150,3 +150,19 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   schema:name "Stadtratsbeschluss über die Departementsgliederung und -aufgaben (StRB DGA)"@de ;
   schema:description "Art. 7 Statistik Stadt Zürich erfüllt insbesondere folgende Aufgaben: a Vorbereitung, Durchführung und Analyse der von Stadt, Kanton und Bund angeordneten Erhebungen ..."@de ;
   skos:scopeNote "172.110 § 7." .
+
+## Static dimensions
+
+ssz-dimension:ZEIT a rdf:Property ;
+    schema:identifier "ZEIT" ;
+    schema:name "Zeit" ;
+    schema:description "Repräsentation der Zeit als Konzept, repräsentiert die vollständige Komplexität." .
+
+ssz-dimension:TIME a rdf:Property ;
+    schema:identifier "TIME" ;
+    schema:name "Zeit" ;
+    schema:description "Repräsentation der Zeit als ISO 8601 Datum (vereinfacht)." .
+
+ssz-dimension:RAUM a rdf:Property ;
+    schema:identifier "RAUM" ;
+    schema:name "Raum" .
