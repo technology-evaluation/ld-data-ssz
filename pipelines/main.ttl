@@ -297,7 +297,7 @@ _:voidData a p:Variable;
   code:arguments [
     code:name "excludeValuesOf";
     code:value (
-      "http://www.w3.org/2004/02/skos/core#notation"
+      "http://schema.org/identifier"
       "https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
       "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG"
     )
