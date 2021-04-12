@@ -18,6 +18,7 @@ PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX cube: <https://cube.link/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX ssz-dimension: <https://ld.stadt-zuerich.ch/statistics/property/>
+PREFIX ssz-schema: <https://ld.stadt-zuerich.ch/schema/>
 
 <.well-known/void> a void:DatasetDescription;
     schema:name "Datasets of City of Zurich"@en ;
@@ -166,3 +167,13 @@ ssz-dimension:TIME a rdf:Property ;
 ssz-dimension:RAUM a rdf:Property ;
     schema:identifier "RAUM" ;
     schema:name "Raum" .
+
+## schema
+
+ssz-schema:referenceTime a rdf:Property ;
+    schema:name "Referenzzeit" .
+
+ssz-schema:hasEnd a rdf:Property ;
+    schema:name "Ende der Periode"@de ;
+    schema:description "Ende einer zeitlichen Einheit"@de ;
+    schema:description "End of a temporal entity."@en .
