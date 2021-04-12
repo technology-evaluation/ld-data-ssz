@@ -15,14 +15,14 @@ cache:
 
 pipeline_prod:
   only:
-    - master
+#    - master
+   - develop
   tags:
     - medium
   environment:
     name: PROD
   script:
-    - npm run fetch
-    - npm run output:store
+    - ./scripts/main.sh
 
 pipeline_int:
   only:
@@ -36,8 +36,6 @@ pipeline_int:
     name: INT
   script:
     - ./scripts/main.sh
-  #  - npm run fetch
-  #  - npm run output:store
 
 pipeline_test:
   only:
