@@ -176,4 +176,5 @@ ssz-schema:referenceTime a rdf:Property ;
 ssz-schema:hasEnd a rdf:Property ;
     schema:name "Ende der Periode"@de ;
     schema:description "Ende einer zeitlichen Einheit"@de ;
-    schema:description "End of a temporal entity."@en .
+    schema:description "End of a temporal entity."@en ;
+    schema:identifier "hasEnd" .
