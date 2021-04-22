@@ -40,6 +40,10 @@
 				"propertyUrl": "http://schema.org/isPartOf",
 				"titles": "Gruppe",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/collection/{Gruppe}"
+			},
+			{
+				"propertyUrl": "http://example.org/hierarchie",
+				"titles": "Hierarchie"
 			}
 			,
 			{
@@ -77,10 +81,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "Bemerkung"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Hierarchie"
 			},
 			{
 				"suppressOutput": true,
