@@ -168,6 +168,8 @@ _:voidData a p:Variable;
     p:steps [ p:stepList (
         <#loadCsvStep>
         <#parse>
+        <#createHierarchie>
+        <#flatten>
         <#filterAll>
         <#removeXxx>
         <#referenceTimeToIri>
@@ -247,6 +249,14 @@ _:voidData a p:Variable;
  ];
  code:arguments ( [ a code:EcmaScript ;
                     code:link <file:../lib/steps-map#removeXxx>
+                  ] ).
+
+<#createHierarchie> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#createHierarchie>
                   ] ).
 
 <#toDataset> a p:Step;
