@@ -26,7 +26,7 @@ pipeline_prod:
 
 pipeline_int:
   only:
-    - develop-DISABLE
+    - develop
   tags:
     - medium
   except:
@@ -39,9 +39,9 @@ pipeline_int:
 
 pipeline_test:
   only:
-    - develop
-#    variables:
-#      - $RELEASE == "zazuko"
+#    - develop
+    variables:
+      - $RELEASE == "zazuko"
   tags:
     - medium
   environment:
