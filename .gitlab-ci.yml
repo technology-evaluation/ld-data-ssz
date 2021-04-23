@@ -15,8 +15,8 @@ cache:
 
 pipeline_prod:
   only:
-#    - master
-   - develop
+    - master
+#   - develop
   tags:
     - medium
   environment:
@@ -26,7 +26,7 @@ pipeline_prod:
 
 pipeline_int:
   only:
-    - develop
+    - develop-DISABLE
   tags:
     - medium
   except:
@@ -39,12 +39,12 @@ pipeline_int:
 
 pipeline_test:
   only:
-    variables:
-      - $RELEASE == "zazuko"
+    - develop
+#    variables:
+#      - $RELEASE == "zazuko"
   tags:
     - medium
   environment:
     name: TEST
   script:
-    - npm run fetch
-    - npm run output:store
+      - ./scripts/main.sh
