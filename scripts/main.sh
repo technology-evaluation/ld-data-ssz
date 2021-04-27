@@ -26,8 +26,7 @@ else
       curl -u $GRAPHSTORE_USERNAME:$GRAPHSTORE_PASSWORD  --data-urlencode "query@sparql/diff-delivery-update-active-graph.rq" $ENDPOINT/update
       curl -u $GRAPHSTORE_USERNAME:$GRAPHSTORE_PASSWORD  --data-urlencode "query@sparql/cube-name-identifier.rq" $ENDPOINT/update
       ./scripts/ssz-views.sh
-      # TODO mv file
-      #  echo "rename /upload/$SFTPENV/HDB_Diff.zip /upload/$SFTPENV/done/HDB_Diff.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
+      echo "rename /upload/$SFTPENV/HDB_Diff.zip /upload/$SFTPENV/done/HDB_Diff.zip" | sftp -b - statistikstadtzuerich@sftp.zazukoians.org
       set +eo pipefail
     else
       echo "File HDB_Diff.zip does not exist either, aborting..."
