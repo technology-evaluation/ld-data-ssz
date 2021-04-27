@@ -1,0 +1,43 @@
+## TRANSACTIONAL QUERY
+## This is for DIFF-Delivery of SSZ Pipeline
+
+PREFIX cube: <https://cube.link/>
+
+## Part 1
+#   Delete all existing observations in the active graph
+#   that are delivered in the diff
+
+DELETE { 
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat> {
+    ?subNew ?predOld ?oldObj 
+
+  }
+}
+WHERE {
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat-staging> {
+    ?subNew a cube:Observation ;
+  }
+
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat> {
+    ?subNew ?predOld ?oldObj 
+  }
+};
+
+## Part 2
+#   Copy all observations in the temporary graph to the active graph
+INSERT { 
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat> {
+    ?subNew ?pred ?obj 
+
+  }
+}
+ WHERE {
+  GRAPH <https://lindas.admin.ch/stadtzuerich/stat-staging> {
+    ?subNew a cube:Observation ;
+      ?pred ?obj .
+  }
+};
+
+## Part 3
+# Delete the staging graph
+DROP GRAPH <https://lindas.admin.ch/stadtzuerich/stat-staging>
