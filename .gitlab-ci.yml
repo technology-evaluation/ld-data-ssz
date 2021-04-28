@@ -1,4 +1,4 @@
-image: node:14-buster
+image: node:15-buster
 
 before_script:
   - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
