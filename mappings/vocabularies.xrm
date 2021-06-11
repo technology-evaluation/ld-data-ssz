@@ -93,6 +93,7 @@ vocabulary example {
 		GRUPPE5
 		KENNZAHL
 		REFERENZNUMMER
+		hierarchie
 		// RAUM
 		Raumebene
 		RaumebeneParent

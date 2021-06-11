@@ -1,4 +1,4 @@
-image: node:latest
+image: node:15-buster
 
 before_script:
   - mkdir -p ~/.ssh && echo -e "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa && chmod og-rwx ~/.ssh/id_rsa
@@ -16,13 +16,13 @@ cache:
 pipeline_prod:
   only:
     - master
+#   - develop
   tags:
     - medium
   environment:
     name: PROD
   script:
-    - npm run fetch
-    - npm run output:store
+    - ./scripts/main.sh
 
 pipeline_int:
   only:
@@ -36,11 +36,10 @@ pipeline_int:
     name: INT
   script:
     - ./scripts/main.sh
-  #  - npm run fetch
-  #  - npm run output:store
 
 pipeline_test:
   only:
+#    - develop
     variables:
       - $RELEASE == "zazuko"
   tags:
@@ -48,5 +47,4 @@ pipeline_test:
   environment:
     name: TEST
   script:
-    - npm run fetch
-    - npm run output:store
+      - ./scripts/main.sh
