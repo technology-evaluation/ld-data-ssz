@@ -44,12 +44,12 @@ Once install is finished you can run:
 * `npm run fetch` to get the data from the sftp server.
 * `npm run output:file` to convert all observations and dimensions.
 
-As a result, a file is written to the `output` directory on your local filesystem.
+As a result, a file is written to the `output` directory on your local filesystem.
 
 
 # License
 This program is licensed under [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause):
-Copyright 2018 Statistik Stadt Zürich
+Copyright 2018-2021 Statistik Stadt Zürich
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
