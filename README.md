@@ -16,6 +16,7 @@ If you have questions about the pipeline or the data set, create a new issue in 
 * `observatios` - Contains the mapping for the observations itself. This is the single source of truth for the mapping of the main observation. For historical reasons this is still maintained in a plain JSON file (CSVW standard) instead of XRM. 
 * `pipelines` - Contains the [barnard59](https://github.com/zazuko/barnard59) pipelines that run the conversion itself. Barnard59 is a declarative way to run RDF conversion pipelines.
 * `scripts` - Contains the shell scripts needed to run the pipeline.
+* `sparql` - Contains SPARQL queries that are run in the pipeline.
 * `output` - In case the pipeline is run locally, this directory contains the resulting N-Triples file.
 * `src-gen` - Generated CSV on the Web mapping files. This folder is generated from the content in the `mappings` directory. Do *not* do any mapping updates in there, it will be overwritten.
 * `package.json` - Dependencies & pipeline definitions.
