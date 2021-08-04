@@ -1,48 +1,50 @@
-# Statistik Stadt Zürich: RDF Data Cube Pipeline
-This program obtains the data files in HDB format from Statistik Stadt Zürich and feeds them into the RDF data cube. 
-The HDB format consists of two CSV and one Excel. The Excel contains all basic data and meta data. The others contain all the statistical observations and relations.
+# Statistik Stadt Zürich: RDF Cube Pipeline
 
-## Struktur
+This repository contains the pipeline to convert HDB data as CSV to RDF. As representation, [RDF Cube Schema](https://github.com/zazuko/rdf-cube-schema) is used. 
 
-* `input` - Enthält die CSV on the Web JSON-Konfiguration. Die Daten selber werden über WebDAV bezogen und werden nicht im Github Repository gepflegt.
-* `config` - Enthält Templates von config-Dateien für die benötigten Tools
-* `scripts` - Enthält diverse Shell-Scripte, um die Generierung möglichst vollständig zu automatisieren. Bedingt ein Unix-System, geschrieben und getestet auf macOS.
-* `target` - Wird erstellt durch die Scripte und enthält die zwischen- und Endresultate in [N-Triples](https://en.wikipedia.org/wiki/N-Triples) Serialisierung. Die finale Datei heisst `everything.nt.gz` und ist mit gzip komprimiert.
-* `sparql` - Enthält SPARQL Abfragen, welche in der Pipeline ausgeführt werden. Diese werden benötigt, um den vollständigen Graphen automatisiert zu bauen.
-* `package.json` - Stellt die eigentliche Pipeline zur Verfügung.
+The pipeline is run in a private Gitlab instance, the result is published on https://ld.stadt-zuerich.ch/sparql/. The SPARQL query endpoint is available at `https://ld.stadt-zuerich.ch/query`
+
+We provide a [.well-known/void](https://ld.stadt-zuerich.ch/.well-known/void) structure that points to relevant metadata.
+
+If you have questions about the pipeline or the data set, create a new issue in this repository.
+
+## Structure
+
+* `input` - Contains static metadata that is read in the pipeline.
+* `lib` - Contains custom code used in the RDF production pipeline. 
+* `mappings` - Contains all the [XRM](https://github.com/zazuko/expressive-rdf-mapper) mapping files needed to map the data to RDF. This is the single source of truth for the mapping of all the dimensions.
+* `observatios` - Contains the mapping for the observations itself. This is the single source of truth for the mapping of the main observation. For historical reasons this is still maintained in a plain JSON file (CSVW standard) instead of XRM. 
+* `pipelines` - Contains the [barnard59](https://github.com/zazuko/barnard59) pipelines that run the conversion itself. Barnard59 is a declarative way to run RDF conversion pipelines.
+* `scripts` - Contains the shell scripts needed to run the pipeline.
+* `output` - In case the pipeline is run locally, this directory contains the resulting N-Triples file.
+* `src-gen` - Generated CSV on the Web mapping files. This folder is generated from the content in the `mappings` directory. Do *not* do any mapping updates in there, it will be overwritten.
+* `package.json` - Dependencies & pipeline definitions.
 
 
 ## CSV on the Web
 
-Die Transformation basiert auf dem neuen CSV on the Web Standard vom W3C. Folgende Dokumente dienten als Grundlage für die Konfiguration:
+The transformation is based on the CSV on the Web mapping standard by W3C:
 
 * [Model for Tabular Data and Metadata on the Web](https://www.w3.org/TR/tabular-data-model/)
 * [Metadata Vocabulary for Tabular Data](https://www.w3.org/TR/tabular-metadata/)
 * [CSV on the Web: A Primer](https://www.w3.org/TR/tabular-data-primer/)
 
-Für die Transformation wird eine von Zazuko in JavaScript (Node.js) geschriebene Implementation von CSV on the Web verwendet: [A CSV on the Web parser with RDFJS Stream interface](https://github.com/rdf-ext/rdf-parser-csvw). Der Parser implementiert aktuell nicht den vollständigen Standard, ist aber massiv performanter als die anderen uns bekannten Implementationen.
+Our barnard59 mapping pipeline [provides a module](https://github.com/rdf-ext/rdf-parser-csvw) to process these CSV on the Web mapping files.
 
-## Daten Pipeline
+## Data Pipeline
 
-Die Daten werden durch verschiedene Scripte generiert. Die produktive Pipeline wird automatisiert in einer Gitlab-Umgebung ausgeführt. Die Daten werden dabei in das [RDF Data Cube](https://www.w3.org/TR/vocab-data-cube/) Vokabular überführt.
+The pipeline is run in a CI-Job on GitLab. It is using the standard node.js docker file to execute the RDF pipeline. Details for the configuration and the execution of the scripts can be found in the [Gitlab YAML](.gitlab-ci.yml) file.
 
-### Anforderungen
+### Usage
 
-* [Apache Jena](https://jena.apache.org/download/index.cgi) (bedingt Java Umgebung). Die Kommanozeilen-Werkzeuge müssen im `PATH` sein
-* [Serd](https://drobilla.net/software/serd), ebenfalls im `PATH`
-* [Node.js](https://nodejs.org/)
-* Unix Umgebung wie MacOS, FreeBSD oder Linux
-  * curl
-  * sh
-  * sed
+You can run the pipeline manually given that you have a valid SSH key to get the input data from the sftp server. We also need a unix-like environment like MacOS or Linux and node.js to execute the pipeline. To install all dependencies run `npm install` in the root of this repository.
 
-Alternativ kann das folgende Docker-Image verwendet werden: [zazukoians/node-java-jena](https://hub.docker.com/r/zazukoians/node-java-jena/). Dieses Docker-Image wird von der Pipeline selber verwendet und über Gitlab automatisiert ausgeführt. Details können der [Gitlab YAML Datei](.gitlab-ci.yml) entnommen werden.
+Once install is finished you can run:
 
-### Ausführung
+* `npm run fetch` to get the data from the sftp server.
+* `npm run output:file` to convert all observations and dimensions.
 
-Die Konvertierung kann von Hand gestartet werden. Dazu muss initial folgendes ausgeführt werden: `npm install`
-
-Danach kann mit `npm run` angezeigt werden, was ausgeführt werden soll. Bitte zum Testen ausschliesslich `npm run build` ausführen!
+As a result, a file is written to the `output` directory on your local filesystem.
 
 
 # License
