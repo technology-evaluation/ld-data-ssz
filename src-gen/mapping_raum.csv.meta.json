@@ -45,6 +45,10 @@
 			{
 				"propertyUrl": "http://schema.org/identifier",
 				"titles": "Raum"
+			},
+			{
+				"propertyUrl": "http://example.org/hierarchie",
+				"titles": "RaumHierarchie"
 			}
 			,
 			{
@@ -54,10 +58,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "RaumebeneParent"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "RaumHierarchie"
 			},
 			{
 				"suppressOutput": true,

@@ -26,10 +26,6 @@
 				"propertyUrl": "http://qudt.org/vocab/unit#unit",
 				"titles": "Einheit_URI",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
-			},
-			{
-				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/rounding",
-				"titles": "Rundung"
 			}
 			,
 			{
@@ -47,6 +43,10 @@
 			{
 				"suppressOutput": true,
 				"titles": "Einheit_URI"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Rundung"
 			},
 			{
 				"suppressOutput": true,

@@ -168,6 +168,8 @@ _:voidData a p:Variable;
     p:steps [ p:stepList (
         <#loadCsvStep>
         <#parse>
+        <#createHierarchie>
+        <#flatten>
         <#filterAll>
         <#removeXxx>
         <#referenceTimeToIri>
@@ -249,6 +251,14 @@ _:voidData a p:Variable;
                     code:link <file:../lib/steps-map#removeXxx>
                   ] ).
 
+<#createHierarchie> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#map>
+ ];
+ code:arguments ( [ a code:EcmaScript ;
+                    code:link <file:../lib/steps-map#createHierarchie>
+                  ] ).
+
 <#toDataset> a p:Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:rdf-stream-to-dataset-stream/bySubject.js>
@@ -297,7 +307,7 @@ _:voidData a p:Variable;
   code:arguments [
     code:name "excludeValuesOf";
     code:value (
-      "http://www.w3.org/2004/02/skos/core#notation"
+      "http://schema.org/identifier"
       "https://ld.stadt-zuerich.ch/statistics/attribute/BEZUGSZEIT"
       "https://ld.stadt-zuerich.ch/statistics/attribute/ERWARTETE_AKTUALISIERUNG"
     )

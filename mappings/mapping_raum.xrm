@@ -17,5 +17,5 @@ map RAUM from HDB_RAUM {
 		schema.identifier from Raum;
 		// schema.hasPart from RaumebeneParent ;
 // example.RaumebeneParent from RaumebeneParent ;
-// TODO: Hierarchie
+		example.hierarchie from RaumHierarchie;
 }
