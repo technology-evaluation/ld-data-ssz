@@ -2,8 +2,8 @@
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": "../input/HDB_KENZAHLEN.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}",
@@ -11,9 +11,8 @@
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://qudt.org/vocab/unit#Unit"
-			}
-			,
+				"valueUrl": "http://qudt.org/schema/qudt/Unit"
+			},
 			{
 				"propertyUrl": "http://schema.org/name",
 				"titles": "Einheit"
@@ -23,11 +22,10 @@
 				"titles": "Einheit_Kurz"
 			},
 			{
-				"propertyUrl": "http://qudt.org/vocab/unit#unit",
+				"propertyUrl": "http://qudt.org/schema/qudt/unit",
 				"titles": "Einheit_URI",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
@@ -76,6 +74,6 @@
 				"suppressOutput": true,
 				"titles": "Bemerkung"
 			}
-		] 
+		]
 	}
 }

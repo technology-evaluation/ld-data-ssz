@@ -2,8 +2,8 @@
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": "../input/HDB_DIMENSIONEN.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/property/{Gruppe}",
@@ -12,8 +12,7 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-			}
-			,
+			},
 			{
 				"propertyUrl": "http://schema.org/name",
 				"titles": "Gruppenname"
@@ -21,8 +20,7 @@
 			{
 				"propertyUrl": "http://schema.org/identifier",
 				"titles": "Gruppe"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
@@ -75,6 +73,6 @@
 				"suppressOutput": true,
 				"titles": "DWH_Code"
 			}
-		] 
+		]
 	}
 }

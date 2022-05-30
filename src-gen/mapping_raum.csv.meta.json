@@ -2,8 +2,8 @@
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": "../input/HDB_RAUM.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Raum}",
@@ -17,8 +17,7 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://schema.org/Place"
-			}
-			,
+			},
 			{
 				"propertyUrl": "http://schema.org/name",
 				"lang": "de",
@@ -49,8 +48,7 @@
 			{
 				"propertyUrl": "http://example.org/hierarchie",
 				"titles": "RaumHierarchie"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Raumebene"
@@ -123,6 +121,6 @@
 				"suppressOutput": true,
 				"titles": "AggloCd"
 			}
-		] 
+		]
 	}
 }

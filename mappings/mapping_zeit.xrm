@@ -1,6 +1,6 @@
 output csvw
 
-map RAUM from HDB_ZEIT {
+map ZEIT from HDB_ZEIT {
 	subject template codeIri with ZEIT;
 
 	types

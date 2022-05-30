@@ -2,8 +2,8 @@
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": "../input/HDB_KENZAHLEN.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/measure/{KennzahlCode}",
@@ -12,8 +12,7 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-			}
-			,
+			},
 			{
 				"propertyUrl": "http://schema.org/name",
 				"titles": "Kennzahlname"
@@ -23,7 +22,7 @@
 				"titles": "KennzahlCode"
 			},
 			{
-				"propertyUrl": "http://qudt.org/vocab/unit#unit",
+				"propertyUrl": "http://qudt.org/schema/qudt/unit",
 				"titles": "Einheit_URI",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
 			},
@@ -34,8 +33,7 @@
 			{
 				"propertyUrl": "http://www.w3.org/2004/02/skos/core#scopeNote",
 				"titles": "Methode"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
@@ -76,6 +74,6 @@
 				"suppressOutput": true,
 				"titles": "Bemerkung"
 			}
-		] 
+		]
 	}
 }

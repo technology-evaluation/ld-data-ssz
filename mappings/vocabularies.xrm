@@ -134,13 +134,15 @@ vocabulary rdf {
 }
 
 vocabulary qudt {
-	prefix "qudt" "http://qudt.org/vocab/unit#"
+	prefix "qudt" "http://qudt.org/schema/qudt/"
 	
 	classes
 		Unit
 	
 	properties
 		unit
+		order
+		
 }
 
 vocabulary time {
@@ -153,13 +155,6 @@ vocabulary time {
 		hasBeginning
 		hasEnd
 		inXSDDate
-}
-
-vocabulary qudt {
-	prefix "qudt" "http://qudt.org/schema/qudt/"
-	
-	properties
-		order
 }
 
 vocabulary ssz {

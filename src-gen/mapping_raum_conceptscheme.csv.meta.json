@@ -2,8 +2,8 @@
 	"@context": "http://www.w3.org/ns/csvw",
 	"url": "../input/HDB_RAUM.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{Raumebene}",
@@ -17,8 +17,7 @@
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://schema.org/DefinedTermSet"
-			}
-			,
+			},
 			{
 				"propertyUrl": "http://schema.org/name",
 				"titles": "Raumebene"
@@ -27,8 +26,7 @@
 				"propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
 				"titles": "RaumebeneParent",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{RaumebeneParent}"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Raum"
@@ -121,6 +119,6 @@
 				"suppressOutput": true,
 				"titles": "AggloCd"
 			}
-		] 
+		]
 	}
 }
