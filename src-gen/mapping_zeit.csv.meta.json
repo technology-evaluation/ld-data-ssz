@@ -1,6 +1,6 @@
 {
 	"@context": "http://www.w3.org/ns/csvw",
-	"url": "../input/HDB_ZEIT.csv",
+	"url": "file:input/HDB_ZEIT.csv",
 	"dialect": {
 		"delimiter": ",",
 		"doubleQuote": true

@@ -1,6 +1,6 @@
 {
 	"@context": "http://www.w3.org/ns/csvw",
-	"url": "../input/HDB_CODELISTE.csv",
+	"url": "file:input/HDB_CODELISTE.csv",
 	"dialect": {
 		"delimiter": ",",
 		"doubleQuote": true

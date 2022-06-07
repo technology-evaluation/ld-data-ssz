@@ -5,7 +5,7 @@ dialect SSZ {
 
 logical-source HDB {
 	type csv
-	source "../input/HDB.csv"
+	source "file:input/HDB.csv"
 	dialect SSZ
 
 	referenceables
@@ -73,7 +73,7 @@ logical-source HDB {
 
 logical-source HDB_CODELISTE {
 	type csv
-	source "../input/HDB_CODELISTE.csv"
+	source "file:input/HDB_CODELISTE.csv"
 	dialect SSZ
 
 	referenceables
@@ -85,7 +85,7 @@ logical-source HDB_CODELISTE {
 
 logical-source HDB_DIMENSIONEN {
 	type csv
-	source "../input/HDB_DIMENSIONEN.csv"
+	source "file:input/HDB_DIMENSIONEN.csv"
 	dialect SSZ
 
 	referenceables
@@ -108,7 +108,7 @@ logical-source HDB_DIMENSIONEN {
 
 logical-source HDB_GLOSSAR {
 	type csv
-	source "../input/HDB_GLOSSAR.csv"
+	source "file:input/HDB_GLOSSAR.csv"
 	dialect SSZ
 
 	referenceables
@@ -126,7 +126,7 @@ logical-source HDB_GLOSSAR {
 
 logical-source HDB_KENZAHLEN {
 	type csv
-	source "../input/HDB_KENZAHLEN.csv"
+	source "file:input/HDB_KENZAHLEN.csv"
 	dialect SSZ
 
 	referenceables
@@ -148,7 +148,7 @@ logical-source HDB_KENZAHLEN {
 
 logical-source HDB_MAPPING {
 	type csv
-	source "../input/HDB_MAPPING.csv"
+	source "file:input/HDB_MAPPING.csv"
 	dialect SSZ
 
 	referenceables
@@ -159,7 +159,7 @@ logical-source HDB_MAPPING {
 
 logical-source HDB_QUELLE {
 	type csv
-	source "../input/HDB_QUELLE.csv"
+	source "file:input/HDB_QUELLE.csv"
 	dialect SSZ
 
 	referenceables
@@ -174,7 +174,7 @@ logical-source HDB_QUELLE {
 
 logical-source HDB_RAUM {
 	type csv
-	source "../input/HDB_RAUM.csv"
+	source "file:input/HDB_RAUM.csv"
 	dialect SSZ
 
 	referenceables
@@ -206,7 +206,7 @@ logical-source HDB_RAUM {
 
 logical-source HDB_ZEIT {
 	type csv
-	source "../input/HDB_ZEIT.csv"
+	source "file:input/HDB_ZEIT.csv"
 	dialect SSZ
 
 	referenceables
