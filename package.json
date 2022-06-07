@@ -10,30 +10,34 @@
     "output:file": "dotenv -e .env.defaults -e .env -- ./start.sh MainFile",
     "output:store": "dotenv -e .env.defaults -e .env -- ./start.sh MainStore",
     "output:dimensions:store": "dotenv -e .env.defaults -e .env -- ./start.sh DimensionsStore",
-    "output:observations:store": "dotenv -e .env.defaults -e .env -- ./start.sh ObservationsStore"
+    "output:observations:store": "dotenv -e .env.defaults -e .env -- ./start.sh ObservationsStore",
+    "output:dimensions:file": "mkdir -p output && barnard59 run -v --pipeline=urn:pipeline:xrm#DimensionsFile pipelines/main.ttl",
+    "cubes-to-file": "barnard59 run -v --pipeline=http://ssz.lindas.ch/pipeline/cubesToFile pipelines/main.ttl",
+    "dimensions-to-file": "barnard59 run -v --pipeline=http://ssz.lindas.ch/pipeline/dimensionsToFile pipelines/main.ttl"
   },
   "dependencies": {
-    "@rdfjs/data-model": "^1.3.4",
-    "@rdfjs/term-map": "^1.1.0",
-    "@tpluscode/rdf-ns-builders": "^0.4.5",
-    "barnard59": "^0.1.2",
-    "barnard59-base": "^0.1.1",
-    "barnard59-formats": "^0.1.2",
-    "barnard59-ftp": "^0.1.1",
-    "barnard59-graph-store": "^0.1.2",
-    "barnard59-rdf": "^0.2.4",
+    "@rdfjs/data-model": "^2.0.1",
+    "@rdfjs/term-map": "^2.0.0",
+    "@tpluscode/rdf-ns-builders": "^1.1.0",
+    "barnard59": "^1.1.1",
+    "barnard59-base": "^1.1.0",
+    "barnard59-csvw": "^1.0.0",
+    "barnard59-formats": "^1.2.0",
+    "barnard59-ftp": "^1.0.1",
+    "barnard59-graph-store": "^1.0.1",
+    "barnard59-rdf": "^1.3.0",
     "clownface": "^1.5.1",
-    "dotenv": "^8.6.0",
-    "dotenv-cli": "^4.1.1",
+    "dotenv": "^16.0.1",
+    "dotenv-cli": "^5.1.0",
     "esm": "^3.2.25",
-    "rdf-ext": "^1.3.5",
+    "rdf-ext": "^2.0.1",
     "rdf-stream-to-dataset-stream": "^1.0.0",
     "readable-stream": "^3.6.0",
     "unzipper": "^0.10.11"
   },
   "devDependencies": {
     "mkdirp": "^1.0.4",
-    "standard": "^16.0.4"
+    "standard": "^17.0.0"
   },
   "author": "Zazuko GmbH",
   "license": "MIT"
