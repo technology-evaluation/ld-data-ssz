@@ -144,7 +144,7 @@
     p:stepList (
       <readCsv>
       <parseCsv>
-      #<removeCsvwTriples>
+      <removeCsvwTriples>
       <toDataset>
       <toObservation>
       <buildCubeShape>
@@ -201,7 +201,7 @@
     p:stepList (
       <readCsv>
       <parseCsv>
-      #<removeCsvwTriples>
+      <removeCsvwTriples>
     )
   ].
 
@@ -350,3 +350,67 @@
     code:name "maxQuadsPerRequest";
     code:value 10000000
   ].
+
+  #
+  # Statistik Stadt Zürich related steps
+  #
+
+<filterAll> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#filter> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-filter#all> ;
+		]
+	) .
+
+<mapAll> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map#all> ;
+		]
+	) .
+
+<referenceTimeToIri> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map#referenceTimeToIri> ;
+		]
+	) .
+
+<removeXxx> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map#removeXxx> ;
+		]
+	) .
+
+<createHierarchie> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map#createHierarchie> ;
+		]
+	) .
