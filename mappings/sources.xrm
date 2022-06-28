@@ -1,223 +1,223 @@
 dialect SSZ {
-	delimiter ","
-	doubleQuote true
+  delimiter ","
+  doubleQuote true
 }
 
 logical-source HDB {
-	type csv
-	source "file:input/HDB.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB.csv"
+  dialect SSZ
 
-	referenceables
-		FREIGABEDATUM
-		PUBLIKATIONSDATUM
-		ERWARTETE_AKTUALISIERUNG
-		DATENSTAND
-		STICHTAGDATUM
-		PERIDODESTART
-		PERIODEENDE
-		GESAMTCODE
-		ZEIT
-		TAG
-		MONAT
-		JAHR
-		BEZUGSZEIT
-		PERIODESTART
-		RAUM
-		KENNZAHL
-		CODE
-		WERT
-		KENNZAHLNAME
-		GRUPPE1
-		GRUPPENCODE1
-		GRUPPE2
-		GRUPPENCODE2
-		GRUPPE3
-		GRUPPENCODE3
-		GRUPPE4
-		GRUPPENCODE4
-		GRUPPE5
-		GRUPPENCODE5
-		RAUMLANG
-		RAUMBESCHREIBUNG
-		WIKIDATAURI
-		REFERENZNUMMER
-		REFERENZTITEL
-		ORIGINALNUMMER
-		ORIGINALTITEL
-		QUELLEID
-		SSZQUELLE
-		ELEMENT
-		ANZ_GRUPPEN
-		AUSGABE
-		SEITE
-		BEMERKUNG
-		FUSSNOTEKENNZAHL
-		FUSSNOTEATTRIBUT
-		FUSSNOTEKENNZAHLATTRIBUT
-		FUSSNOTEZEIT
-		FUSSNOTERAUM
-		FUSSNOTEZELLE
-		GLOSSARID
-		DATENQUALITAET
-		DATENSTATUS
-		RECORDSTATUS
-		PUBLIKATIONSSTATUS
-		FREIGABE
-		UPDATE
-		KEY_INFORMATION_ALL
-		GESAMTCODE_RCS
-		i
-		Text
+  referenceables
+    FREIGABEDATUM
+    PUBLIKATIONSDATUM
+    ERWARTETE_AKTUALISIERUNG
+    DATENSTAND
+    STICHTAGDATUM
+    PERIDODESTART
+    PERIODEENDE
+    GESAMTCODE
+    ZEIT
+    TAG
+    MONAT
+    JAHR
+    BEZUGSZEIT
+    PERIODESTART
+    RAUM
+    KENNZAHL
+    CODE
+    WERT
+    KENNZAHLNAME
+    GRUPPE1
+    GRUPPENCODE1
+    GRUPPE2
+    GRUPPENCODE2
+    GRUPPE3
+    GRUPPENCODE3
+    GRUPPE4
+    GRUPPENCODE4
+    GRUPPE5
+    GRUPPENCODE5
+    RAUMLANG
+    RAUMBESCHREIBUNG
+    WIKIDATAURI
+    REFERENZNUMMER
+    REFERENZTITEL
+    ORIGINALNUMMER
+    ORIGINALTITEL
+    QUELLEID
+    SSZQUELLE
+    ELEMENT
+    ANZ_GRUPPEN
+    AUSGABE
+    SEITE
+    BEMERKUNG
+    FUSSNOTEKENNZAHL
+    FUSSNOTEATTRIBUT
+    FUSSNOTEKENNZAHLATTRIBUT
+    FUSSNOTEZEIT
+    FUSSNOTERAUM
+    FUSSNOTEZELLE
+    GLOSSARID
+    DATENQUALITAET
+    DATENSTATUS
+    RECORDSTATUS
+    PUBLIKATIONSSTATUS
+    FREIGABE
+    UPDATE
+    KEY_INFORMATION_ALL
+    GESAMTCODE_RCS
+    i
+    Text
 }
 
 logical-source HDB_CODELISTE {
-	type csv
-	source "file:input/HDB_CODELISTE.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_CODELISTE.csv"
+  dialect SSZ
 
-	referenceables
-		Index
-		Code
-		Codename
-		Referenztabelle
+  referenceables
+    Index
+    Code
+    Codename
+    Referenztabelle
 }
 
 logical-source HDB_DIMENSIONEN {
-	type csv
-	source "file:input/HDB_DIMENSIONEN.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_DIMENSIONEN.csv"
+  dialect SSZ
 
-	referenceables
-		Index
-		Gruppe
-		Gruppenname
-		Gruppencode
-		Gruppencodename
-		Gruppencodesort
-		Parentcode
-		Parentcodename
-		GlossarID
-		Link
-		Beschreibung
-		Bemerkung
-		Hierarchie
-		DWH_Name
-		DWH_Code
+  referenceables
+    Index
+    Gruppe
+    Gruppenname
+    Gruppencode
+    Gruppencodename
+    Gruppencodesort
+    Parentcode
+    Parentcodename
+    GlossarID
+    Link
+    Beschreibung
+    Bemerkung
+    Hierarchie
+    DWH_Name
+    DWH_Code
 }
 
 logical-source HDB_GLOSSAR {
-	type csv
-	source "file:input/HDB_GLOSSAR.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_GLOSSAR.csv"
+  dialect SSZ
 
-	referenceables
-		GLOSSARID
-		Name
-		BeschreibungKurz
-		BeschreibungLang
-		Quelle_Text
-		Links
-		Autor
-		AutorZeit
-		Review
-		ReviewZeit
+  referenceables
+    GLOSSARID
+    Name
+    BeschreibungKurz
+    BeschreibungLang
+    Quelle_Text
+    Links
+    Autor
+    AutorZeit
+    Review
+    ReviewZeit
 }
 
 logical-source HDB_KENZAHLEN {
-	type csv
-	source "file:input/HDB_KENZAHLEN.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_KENZAHLEN.csv"
+  dialect SSZ
 
-	referenceables
-		Index
-		KennzahlCode
-		Kennzahlname
-		Einheit
-		Einheit_Kurz
-		Einheit_URI
-		Rundung
-		Klasse
-		GlossarID
-		Beschreibung
-		Methode
-		DWH_Name
-		DWH_Wert
-		Bemerkung
+  referenceables
+    Index
+    KennzahlCode
+    Kennzahlname
+    Einheit
+    Einheit_Kurz
+    Einheit_URI
+    Rundung
+    Klasse
+    GlossarID
+    Beschreibung
+    Methode
+    DWH_Name
+    DWH_Wert
+    Bemerkung
 }
 
 logical-source HDB_MAPPING {
-	type csv
-	source "file:input/HDB_MAPPING.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_MAPPING.csv"
+  dialect SSZ
 
-	referenceables
-		GESAMTCODE_RCS
-		REFERENZNUMMER
-		TITEL
+  referenceables
+    GESAMTCODE_RCS
+    REFERENZNUMMER
+    TITEL
 }
 
 logical-source HDB_QUELLE {
-	type csv
-	source "file:input/HDB_QUELLE.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_QUELLE.csv"
+  dialect SSZ
 
-	referenceables
-		QUELLEID
-		QUELLE
-		ORGANISATION
-		LINK
-		OWNER
-		LICENCE
-		LICENCE_TXT
+  referenceables
+    QUELLEID
+    QUELLE
+    ORGANISATION
+    LINK
+    OWNER
+    LICENCE
+    LICENCE_TXT
 }
 
 logical-source HDB_RAUM {
-	type csv
-	source "file:input/HDB_RAUM.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_RAUM.csv"
+  dialect SSZ
 
-	referenceables
-		Raum
-		RaumLang
-		Raumebene
-		RaumebeneParent
-		RaumSort
-		RaumHierarchie
-		WikidataURI
-		Beschreibung
-		Mapping
-		GueltigkeitsbereicheID
-		QuarCodeAktuell
-		KreisCodeAktuell
-		StadtCodeAktuell
-		RaumCodeAktuell
-		StadtCd
-		KreisCd
-		QuarCd
-		StatZoneCd
-		KirchGmdeRefCd
-		KirchGmdeKathCd
-		KtCd
-		GmdeCd
-		StaatCd
-		AggloCd
+  referenceables
+    Raum
+    RaumLang
+    Raumebene
+    RaumebeneParent
+    RaumSort
+    RaumHierarchie
+    WikidataURI
+    Beschreibung
+    Mapping
+    GueltigkeitsbereicheID
+    QuarCodeAktuell
+    KreisCodeAktuell
+    StadtCodeAktuell
+    RaumCodeAktuell
+    StadtCd
+    KreisCd
+    QuarCd
+    StatZoneCd
+    KirchGmdeRefCd
+    KirchGmdeKathCd
+    KtCd
+    GmdeCd
+    StaatCd
+    AggloCd
 }
 
 logical-source HDB_ZEIT {
-	type csv
-	source "file:input/HDB_ZEIT.csv"
-	dialect SSZ
+  type csv
+  source "file:input/HDB_ZEIT.csv"
+  dialect SSZ
 
-	referenceables
-		ZEIT
-		JAHR
-		MONAT
-		TAG
-		BEZUGSZEIT
-		STICHTAGDATUM
-		PERIODESTART
-		PERIODEENDE
+  referenceables
+    ZEIT
+    JAHR
+    MONAT
+    TAG
+    BEZUGSZEIT
+    STICHTAGDATUM
+    PERIODESTART
+    PERIODEENDE
 }
 
 
