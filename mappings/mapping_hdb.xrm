@@ -1,0 +1,47 @@
+output csvw
+
+map HDBMapping from HDB {
+  subject template "https://ld.stadt-zuerich.ch/statistics/{0}-{1}-{2}-{3}-{4}-{5}/observation/{6}-{7}-{8}-{9}-{10}-{11}-{12}" with KENNZAHL GRUPPE1 GRUPPE2 GRUPPE3 GRUPPE4 GRUPPE5 GRUPPENCODE1 GRUPPENCODE2 GRUPPENCODE3 GRUPPENCODE4 GRUPPENCODE5 RAUM ZEIT ;
+
+	types
+		cube.Observation
+
+	properties
+    schema.identifier from GESAMTCODE ;
+  	example.GESAMTCODE_RCS from GESAMTCODE_RCS ;
+    property.ZEIT template codeIri with ZEIT ;
+    property.TIME template zeitIri with JAHR MONAT TAG ;
+    example.BEZUGSZEIT from BEZUGSZEIT ;
+	  //example.BEZUGSPERIODE from BEZUGSPERIODE ; // TODO no longer there?
+    property.RAUM template codeIri with RAUM ;
+    example.KENNZAHL from KENNZAHL ;
+    example.DIMENSION1 from DIMENSION1 ;
+    example.DIMENSION2 from DIMENSION2 ;
+    example.DIMENSION3 from DIMENSION3 ;
+    example.DIMENSION4 from DIMENSION4 ;
+    example.DIMENSION5 from DIMENSION5 ;
+    property.REPLACE from DIMENSIONCODE1 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}
+    property.REPLACE from DIMENSIONCODE2 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION2}
+    property.REPLACE from DIMENSIONCODE3 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION3}
+    property.REPLACE from DIMENSIONCODE4 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION4}
+    property.REPLACE from DIMENSIONCODE5 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION5}
+    example.CODE from CODE ;
+    example.KENNZAHL_REPLACE from WERT ; // http://example.org/measure/{KENNZAHL}
+    //example.CODENAME from CODENAME ; // TODO no longer there
+    example.REFERENZNUMMER from REFERENZNUMMER ;
+    example.QUELLE from QUELLEID ;
+    example.FUSSNOTEKENNZAHL from FUSSNOTEKENNZAHL ;
+    example.FUSSNOTEATTRIBUT from FUSSNOTEATTRIBUT ;
+    example.FUSSNOTEKENNZAHLATTRIBUT from FUSSNOTEKENNZAHLATTRIBUT ;
+    example.FUSSNOTEZEIT from FUSSNOTEZEIT ;
+    example.FUSSNOTERAUM from FUSSNOTERAUM ;
+    example.FUSSNOTEZELLE from FUSSNOTEZELLE ;
+    example.GLOSSARID from GLOSSARID ;
+    // all the GRUPPENCODESORT1 do not exist anymore in HDB.csv
+    // no more KENNZAHLKLASSE
+    example.ANZ_GRUPPEN from ANZ_GRUPPEN ;
+    example.ERWARTETE_AKTUALISIERUNG from ERWARTETE_AKTUALISIERUNG with datatype xsd.date ;
+    example.DATENSTAND from DATENSTAND with datatype xsd.date ;
+    example.UPDATE from UPDATE ; // TODO no datatype?	
+	
+}
