@@ -1,7 +1,7 @@
 output csvw
 
 map HDBMapping from HDB {
-  subject template "https://ld.stadt-zuerich.ch/statistics/{0}-{1}-{2}-{3}-{4}-{5}/observation/{6}-{7}-{8}-{9}-{10}-{11}-{12}" with KENNZAHL GRUPPE1 GRUPPE2 GRUPPE3 GRUPPE4 GRUPPE5 GRUPPENCODE1 GRUPPENCODE2 GRUPPENCODE3 GRUPPENCODE4 GRUPPENCODE5 RAUM ZEIT ;
+  subject template "https://ld.stadt-zuerich.ch/statistics/{0}-{1}-{2}-{3}-{4}-{5}/observation/{6}-{7}-{8}-{9}-{10}-{11}-{12}" with KENNZAHL DIMENSION1 DIMENSION2 DIMENSION3 DIMENSION4 DIMENSION5 DIMENSIONCODE1 DIMENSIONCODE2 DIMENSIONCODE3 DIMENSIONCODE4 DIMENSIONCODE5 RAUM ZEIT ;
 
 	types
 		cube.Observation

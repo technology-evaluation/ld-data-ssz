@@ -42,6 +42,16 @@ vocabulary dimension {
 		DATENSTAND
 }
 
+vocabulary property {
+  prefix "property" "https://ld.stadt-zuerich.ch/statistics/property/"
+
+  properties
+    ZEIT
+    TIME
+    RAUM
+    REPLACE
+}
+
 vocabulary skos {
 	prefix "skos" "http://www.w3.org/2004/02/skos/core#"
 
@@ -77,6 +87,7 @@ vocabulary example {
 		QUELLE
 		UPDATE
 		BEZUGSPERIODE
+    BEZUGSZEIT
 		CODE
 		CODENAME
 		FUSSNOTEATTRIBUT
@@ -86,17 +97,20 @@ vocabulary example {
 		FUSSNOTEZEIT
 		FUSSNOTEZELLE
 		GESAMTCODE_RCS
-		GRUPPE1
-		GRUPPE2
-		GRUPPE3
-		GRUPPE4
-		GRUPPE5
-		KENNZAHL
+		DIMENSION1
+		DIMENSION2
+		DIMENSION3
+		DIMENSION4
+		DIMENSION5
+    KENNZAHL
+		KENNZAHL_REPLACE
 		REFERENZNUMMER
 		hierarchie
 		// RAUM
 		Raumebene
 		RaumebeneParent
+    ERWARTETE_AKTUALISIERUNG
+    DATENSTAND
 		
 }
 
