@@ -6,7 +6,7 @@
 		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/property/{Gruppe}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/property/{Dimension}",
 		"columns": [
 			{
 				"virtual": true,
@@ -15,27 +15,15 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/name",
-				"titles": "Gruppenname"
+				"titles": "Dimensionname"
 			},
 			{
 				"propertyUrl": "http://schema.org/identifier",
-				"titles": "Gruppe"
+				"titles": "Dimension"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Gruppencode"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Gruppencodename"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Gruppencodesort"
 			},
 			{
 				"suppressOutput": true,
@@ -59,19 +47,19 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Bemerkung"
+				"titles": "Dimensioncode"
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Hierarchie"
+				"titles": "Dimensioncodename"
 			},
 			{
 				"suppressOutput": true,
-				"titles": "DWH_Name"
+				"titles": "Dimensioncodesort"
 			},
 			{
 				"suppressOutput": true,
-				"titles": "DWH_Code"
+				"titles": "Dimensionfilter"
 			}
 		]
 	}

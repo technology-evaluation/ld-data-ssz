@@ -1,18 +1,18 @@
 output csvw
 
 map DIMENSIONEN_GRUPPENCODE from HDB_DIMENSIONEN {
-	subject template codeIri with Gruppencode;
+	subject template codeIri with Dimensioncode;
 
 	types
 		skos.Collection
 		schema.DefinedTermSet
 
 	properties
-		schema.name from Gruppencodename;
-		schema.identifier from Gruppencode;
-		schema.position from Gruppencodesort;
+		schema.name from Dimensioncodename;
+		schema.identifier from Dimensioncode;
+		schema.position from Dimensioncodesort;
 		// TODO broader vs member. Is parent correct like this? Is isPartOf correct for Gruppe?
 		skos.broader template codeIri with Parentcode;
-		schema.isPartOf template collectionIri with Gruppe;
-		example.hierarchie from Hierarchie;
+		schema.isPartOf template collectionIri with Dimension;
+		//example.hierarchie from Hierarchie;
 }

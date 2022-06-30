@@ -61,18 +61,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "Methode"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "DWH_Name"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "DWH_Wert"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Bemerkung"
 			}
 		]
 	}

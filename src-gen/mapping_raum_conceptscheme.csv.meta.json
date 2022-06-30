@@ -45,10 +45,6 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "RaumHierarchie"
-			},
-			{
-				"suppressOutput": true,
 				"titles": "WikidataURI"
 			},
 			{
@@ -118,6 +114,10 @@
 			{
 				"suppressOutput": true,
 				"titles": "AggloCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumFilter"
 			}
 		]
 	}

@@ -1,13 +1,13 @@
 output csvw
 
 map DIMENSIONEN_GRUPPE_COLLECTION from HDB_DIMENSIONEN {
-	subject template collectionIri with Gruppe;
+	subject template collectionIri with Dimension;
 
 	types
 		skos.Collection
 		schema.DefinedTermSet
 
 	properties
-		schema.name from Gruppenname;
-		skos.member template codeIri with Gruppencode;
+		schema.name from Dimensionname;
+		skos.member template codeIri with Dimensioncode;
 }

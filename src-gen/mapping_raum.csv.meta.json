@@ -46,10 +46,6 @@
 				"titles": "Raum"
 			},
 			{
-				"propertyUrl": "http://example.org/hierarchie",
-				"titles": "RaumHierarchie"
-			},
-			{
 				"suppressOutput": true,
 				"titles": "Raumebene"
 			},
@@ -120,6 +116,10 @@
 			{
 				"suppressOutput": true,
 				"titles": "AggloCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumFilter"
 			}
 		]
 	}
