@@ -6,6 +6,7 @@ dialect SSZ {
 logical-source HDB {
   type csv
   source "file:input/HDB.csv"
+  null "Dummy"
   dialect SSZ
 
   referenceables

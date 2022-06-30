@@ -1,7 +1,5 @@
 output csvw
 
-// TODO missing:     "null":"Dummy",
-
 map HDBMapping from HDB {
   subject template "https://ld.stadt-zuerich.ch/statistics/{0}-{1}-{2}-{3}-{4}-{5}/observation/{6}-{7}-{8}-{9}-{10}-{11}-{12}" with KENNZAHL DIMENSION1 DIMENSION2 DIMENSION3 DIMENSION4 DIMENSION5 DIMENSIONCODE1 DIMENSIONCODE2 DIMENSIONCODE3 DIMENSIONCODE4 DIMENSIONCODE5 RAUM ZEIT ;
 
