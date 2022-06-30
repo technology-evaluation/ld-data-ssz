@@ -90,20 +90,17 @@ logical-source HDB_DIMENSIONEN {
 
   referenceables
     Index
-    Gruppe
-    Gruppenname
-    Gruppencode
-    Gruppencodename
-    Gruppencodesort
     Parentcode
     Parentcodename
     GlossarID
     Link
     Beschreibung
-    Bemerkung
-    Hierarchie
-    DWH_Name
-    DWH_Code
+    Dimension
+    Dimensionname
+    Dimensioncode
+    Dimensioncodename
+    Dimensioncodesort
+    Dimensionfilter
 }
 
 logical-source HDB_GLOSSAR {
@@ -141,20 +138,6 @@ logical-source HDB_KENZAHLEN {
     GlossarID
     Beschreibung
     Methode
-    DWH_Name
-    DWH_Wert
-    Bemerkung
-}
-
-logical-source HDB_MAPPING {
-  type csv
-  source "file:input/HDB_MAPPING.csv"
-  dialect SSZ
-
-  referenceables
-    GESAMTCODE_RCS
-    REFERENZNUMMER
-    TITEL
 }
 
 logical-source HDB_QUELLE {
@@ -183,7 +166,6 @@ logical-source HDB_RAUM {
     Raumebene
     RaumebeneParent
     RaumSort
-    RaumHierarchie
     WikidataURI
     Beschreibung
     Mapping
@@ -202,6 +184,7 @@ logical-source HDB_RAUM {
     GmdeCd
     StaatCd
     AggloCd
+    RaumFilter
 }
 
 logical-source HDB_ZEIT {
