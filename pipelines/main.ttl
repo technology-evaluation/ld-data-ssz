@@ -49,8 +49,6 @@
   p:steps [
     p:stepList (
       <cubesAndDimensionsTo>
-      <removeInvalidDates>
-      <transformTriples>
       <serialize>
       <writeFile>
     )
@@ -83,8 +81,8 @@
     code:link <node:barnard59-base/concat.js#object>
   ];
   code:arguments (
-    <cubesTo>
-    <dimensionsTo>
+    <cubes>
+    <dimensions>
   ).
 
 <readFile> a p:Step;
@@ -210,14 +208,6 @@
     )
   ].
 
-<transformTriples> a p:Step;
-  code:implementedBy [ a code:EcmaScriptModule;
-    code:link <node:barnard59-base#map>
-  ];
-  code:arguments([ a code:EcmaScriptModule;
-    code:link <file:../lib/transform.js#default>;
-  ]).
-
 <writeDimensionFile> a p:Step;
   code:implementedBy [ a code:EcmaScriptModule;
     code:link <node:fs#createWriteStream>
@@ -251,14 +241,6 @@
   ];
   code:arguments ([ a code:EcmaScriptModule;
     code:link <file:../lib/isNotCsvwTriple.js#default>
-  ]).
-
-<removeInvalidDates> a p:Step ;
-  code:implementedBy [ a code:EcmaScriptModule;
-    code:link <node:barnard59-base/filter.js#default>
-  ];
-  code:arguments ([ a code:EcmaScriptModule;
-    code:link <file:../lib/isNotDate.js#default>
   ]).
 
 <toDataset> a p:Step;

@@ -8,7 +8,7 @@
     "postinstall": "mkdirp output input",
     "fetch": "dotenv -e .env.defaults -e .env -- ./start.sh Fetch",
     "fetchDiff": "dotenv -e .env.defaults -e .env -- ./start.sh FetchDiff",
-    "output:file": "dotenv -e .env.defaults -e .env -- ./start.sh MainFile",
+    "output:file": "barnard59 run -v --pipeline=http://ssz.lindas.ch/pipeline/toFile pipelines/main.ttl",
     "output:store": "dotenv -e .env.defaults -e .env -- ./start.sh MainStore",
     "output:dimensions:store": "dotenv -e .env.defaults -e .env -- ./start.sh DimensionsStore",
     "output:observations:store": "dotenv -e .env.defaults -e .env -- ./start.sh ObservationsStore",
