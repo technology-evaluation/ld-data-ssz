@@ -107,7 +107,7 @@
 #
 # Cube Pipeline & Steps
 #
-<cubesTo> a p:Pipeline, p:ReadableObjectMode;
+<cubes> a p:Pipeline, p:ReadableObjectMode;
   p:steps [
     p:stepList (
       <listCubeCsvwMetaFiles>
@@ -119,8 +119,7 @@
   p:variables <defaultVars>;
   p:steps [
     p:stepList (
-      <listCubeCsvwMetaFiles>
-      <forEachCubeCsvwMetaFile>
+      <cubes>
       <serialize>
       <writeCubeFile>
     )
@@ -163,16 +162,7 @@
 #
 # Dimension Pipeline & Steps
 #
-<dimensionsTo> a p:Pipeline, p:ReadableObjectMode;
-  p:steps [
-    p:stepList (
-      <listDimensionCsvwMetaFiles>
-      <forEachDimensionCsvwMetaFile>
-    )
-  ].
-
-<dimensionsToFile> a p:Pipeline;
-  p:variables <defaultVars>;
+<dimensions> a p:Pipeline, p:ReadableObjectMode;
   p:steps [
     p:stepList (
       <listDimensionCsvwMetaFiles>
@@ -183,6 +173,14 @@
       <flatten>
       <sameAsIri>
       #<removeInvalidDates>
+    )
+  ].
+
+<dimensionsToFile> a p:Pipeline;
+  p:variables <defaultVars>;
+  p:steps [
+    p:stepList (
+      <dimensions>
       <serialize>
       <writeDimensionFile>
     )
