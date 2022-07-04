@@ -7,8 +7,8 @@
 	},
 	"tableSchema": {
 		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/{KENNZAHL}-{DIMENSION1}-{DIMENSION2}-{DIMENSION3}-{DIMENSION4}-{DIMENSION5}/observation/{DIMENSIONCODE1}-{DIMENSIONCODE2}-{DIMENSIONCODE3}-{DIMENSIONCODE4}-{DIMENSIONCODE5}-{RAUM}-{ZEIT}",
-    "null":"Dummy",
-    "columns": [
+		"null": "Dummy",
+		"columns": [
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",

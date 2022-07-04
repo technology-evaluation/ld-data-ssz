@@ -9,11 +9,11 @@ map HDBMapping from HDB {
 	properties
     schema.identifier from GESAMTCODE ;
   	example.GESAMTCODE_RCS from GESAMTCODE_RCS ;
-    property.ZEIT template codeIri with ZEIT ;
+    property.ZEIT template termIri with ZEIT ;
     property.TIME template zeitIri with JAHR MONAT TAG ;
     example.BEZUGSZEIT from BEZUGSZEIT ;
 	  //example.BEZUGSPERIODE from BEZUGSPERIODE ; // TODO no longer there?
-    property.RAUM template codeIri with RAUM ;
+    property.RAUM template termIri with RAUM ;
     example.KENNZAHL from KENNZAHL ;
     example.DIMENSION1 from DIMENSION1 ;
     example.DIMENSION2 from DIMENSION2 ;
