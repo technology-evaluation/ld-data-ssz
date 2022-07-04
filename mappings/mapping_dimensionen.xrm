@@ -1,5 +1,7 @@
 output csvw
 
+// Note that these are just the properties used in the cube
+
 map DIMENSIONEN from HDB_DIMENSIONEN {
 	subject template propertyIri with Dimension;
 
