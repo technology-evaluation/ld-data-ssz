@@ -48,4 +48,4 @@ pipeline_test:
   environment:
     name: TEST
   script:
-      - npm run dimensions-to-file
+    - ./scripts/main.sh
