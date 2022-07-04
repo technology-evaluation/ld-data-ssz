@@ -139,6 +139,8 @@ vocabulary example {
     RaumebeneParent
     ERWARTETE_AKTUALISIERUNG
     DATENSTAND
+    raumfilter
+    containsraum
 }
 
 vocabulary schema {
@@ -160,12 +162,15 @@ vocabulary schema {
     hasDefinedTerm
     isPartOf
     hasPart
+    containsPlace
+    containedInPlace
     description
     sameAs
     position
     validFrom
     validThrough
     disambiguatingDescription
+    url
 }
 
 vocabulary rdf {
