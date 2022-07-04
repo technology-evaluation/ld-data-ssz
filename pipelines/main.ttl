@@ -177,6 +177,11 @@
     p:stepList (
       <listDimensionCsvwMetaFiles>
       <forEachDimensionCsvwMetaFile>
+      <createRaumDefinedTermSet>
+      <flatten>
+      <createRaumHierarchie>
+      <flatten>
+      <sameAsIri>
       #<removeInvalidDates>
       <serialize>
       <writeDimensionFile>
@@ -365,7 +370,7 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-filter#all> ;
+			code:link <file:../lib/steps-filter.js#all> ;
 		]
 	) .
 
@@ -377,7 +382,7 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-map#all> ;
+			code:link <file:../lib/steps-map.js#all> ;
 		]
 	) .
 
@@ -389,7 +394,7 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-map#referenceTimeToIri> ;
+			code:link <file:../lib/steps-map.js#referenceTimeToIri> ;
 		]
 	) .
 
@@ -401,11 +406,11 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-map#removeXxx> ;
+			code:link <file:../lib/steps-map.js#removeXxx> ;
 		]
 	) .
 
-<createHierarchie> a p:Step ;
+<createRaumDefinedTermSet> a p:Step ;
 	code:implementedBy [
 		rdf:type code:EcmaScriptModule ;
 		code:link <node:barnard59-base#map> ;
@@ -413,6 +418,30 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-map#createHierarchie> ;
+			code:link <file:../lib/steps-map.js#createRaumDefinedTermSet> ;
+		]
+	) .
+
+<createRaumHierarchie> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map.js#createRaumHierarchie> ;
+		]
+	) .
+
+<sameAsIri> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map.js#sameAsIri> ;
 		]
 	) .
