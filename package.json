@@ -6,7 +6,7 @@
   "description": "Barnard pipeline with sensible defaults",
   "scripts": {
     "postinstall": "mkdirp output input",
-    "fetch": "dotenv -e .env.defaults -e .env -- ./start.sh Fetch",
+    "fetch": "barnard59 run -v --pipeline=http://ssz.lindas.ch/pipeline/fetch pipelines/fetch.ttl --variable=SSH_HOST --variable=SSH_PORT --variable=SSH_USER --variable=SSH_PRIVATE_KEY",
     "fetchDiff": "dotenv -e .env.defaults -e .env -- ./start.sh FetchDiff",
     "output:file": "barnard59 run -v --pipeline=http://ssz.lindas.ch/pipeline/toFile pipelines/main.ttl",
     "output:store": "dotenv -e .env.defaults -e .env -- ./start.sh MainStore",
