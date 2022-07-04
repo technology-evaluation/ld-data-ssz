@@ -11,11 +11,6 @@
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
-			},
-			{
-				"virtual": true,
-				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
 				"valueUrl": "http://schema.org/DefinedTerm"
 			},
 			{
@@ -23,13 +18,13 @@
 				"titles": "Codename"
 			},
 			{
-				"propertyUrl": "http://schema.org/identifier",
+				"propertyUrl": "http://schema.org/termCode",
 				"titles": "Code"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
+				"propertyUrl": "http://schema.org/inDefinedTermSet",
 				"titles": "Referenztabelle",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{Referenztabelle}"
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Referenztabelle}"
 			},
 			{
 				"suppressOutput": true,

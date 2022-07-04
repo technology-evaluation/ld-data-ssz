@@ -22,11 +22,6 @@
 				"titles": "Einheit_Kurz"
 			},
 			{
-				"propertyUrl": "http://qudt.org/schema/qudt/unit",
-				"titles": "Einheit_URI",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/unit/{Einheit_URI}"
-			},
-			{
 				"suppressOutput": true,
 				"titles": "Index"
 			},

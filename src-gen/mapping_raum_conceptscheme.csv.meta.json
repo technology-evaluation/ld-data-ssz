@@ -6,13 +6,8 @@
 		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{Raumebene}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Raumebene}",
 		"columns": [
-			{
-				"virtual": true,
-				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://www.w3.org/2004/02/skos/core#ConceptScheme"
-			},
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
@@ -23,9 +18,18 @@
 				"titles": "Raumebene"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
+				"propertyUrl": "http://schema.org/identifier",
+				"titles": "Raumebene"
+			},
+			{
+				"propertyUrl": "http://schema.org/isPartOf",
 				"titles": "RaumebeneParent",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{RaumebeneParent}"
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{RaumebeneParent}"
+			},
+			{
+				"propertyUrl": "http://schema.org/hasDefinedTerm",
+				"titles": "Raum",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Raum}"
 			},
 			{
 				"suppressOutput": true,

@@ -11,12 +11,12 @@
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://www.w3.org/2004/02/skos/core#Concept"
+				"valueUrl": "http://schema.org/Place"
 			},
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://schema.org/Place"
+				"valueUrl": "http://schema.org/DefinedTerm"
 			},
 			{
 				"propertyUrl": "http://schema.org/name",
@@ -24,9 +24,9 @@
 				"titles": "RaumLang"
 			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#inScheme",
+				"propertyUrl": "http://schema.org/inDefinedTermSet",
 				"titles": "Raumebene",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/scheme/{Raumebene}"
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Raumebene}"
 			},
 			{
 				"propertyUrl": "http://schema.org/position",
@@ -38,12 +38,24 @@
 				"titles": "Beschreibung"
 			},
 			{
+				"propertyUrl": "http://schema.org/disambiguatingDescription",
+				"titles": "GueltigkeitsbereicheID"
+			},
+			{
 				"propertyUrl": "http://schema.org/sameAs",
 				"titles": "WikidataURI"
 			},
 			{
-				"propertyUrl": "http://schema.org/identifier",
+				"propertyUrl": "http://schema.org/termCode",
 				"titles": "Raum"
+			},
+			{
+				"propertyUrl": "http://example.org/containsraum",
+				"titles": "Mapping"
+			},
+			{
+				"propertyUrl": "http://example.org/raumfilter",
+				"titles": "RaumFilter"
 			},
 			{
 				"suppressOutput": true,
@@ -52,14 +64,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "RaumebeneParent"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Mapping"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "GueltigkeitsbereicheID"
 			},
 			{
 				"suppressOutput": true,
@@ -116,10 +120,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "AggloCd"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "RaumFilter"
 			}
 		]
 	}

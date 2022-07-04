@@ -6,13 +6,8 @@
 		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Dimensioncode}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Dimensionfilter}",
 		"columns": [
-			{
-				"virtual": true,
-				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://www.w3.org/2004/02/skos/core#Collection"
-			},
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
@@ -20,25 +15,16 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/name",
-				"titles": "Dimensioncodename"
+				"titles": "Dimensionfilter"
 			},
 			{
 				"propertyUrl": "http://schema.org/identifier",
-				"titles": "Dimensioncode"
+				"titles": "Dimensionfilter"
 			},
 			{
-				"propertyUrl": "http://schema.org/position",
-				"titles": "Dimensioncodesort"
-			},
-			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#broader",
-				"titles": "Parentcode",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
-			},
-			{
-				"propertyUrl": "http://schema.org/isPartOf",
-				"titles": "Dimension",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/collection/{Dimension}"
+				"propertyUrl": "http://schema.org/hasDefinedTerm",
+				"titles": "Dimensioncode",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Dimensioncode}"
 			},
 			{
 				"suppressOutput": true,
@@ -74,7 +60,15 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Dimensionfilter"
+				"titles": "Dimensioncode"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Dimensioncodename"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Dimensioncodesort"
 			}
 		]
 	}
