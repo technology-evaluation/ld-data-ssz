@@ -49,3 +49,7 @@ pipeline_test:
     name: TEST
   script:
     - ./scripts/main.sh
+  artifacts:
+    paths:
+      - output/output.nt
+    expire_in: 1 day
