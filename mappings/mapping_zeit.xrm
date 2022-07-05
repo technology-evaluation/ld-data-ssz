@@ -1,11 +1,11 @@
 output csvw
 
 map ZEIT from HDB_ZEIT {
-	subject template codeIri with ZEIT;
+	subject template termIri with ZEIT;
 
 	types
 		time.TemporalEntity
-		skos.Concept
+    schema.DefinedTerm
 
 	properties
 		schema.name from ZEIT;
