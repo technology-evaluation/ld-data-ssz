@@ -39,9 +39,9 @@ pipeline_int:
     - ./scripts/main.sh
 
 pipeline_test:
-  only:
+#  only:
 #    - develop
-    variables:
+#    variables:
     #  - $RELEASE == "zazuko"
   tags:
     - medium
