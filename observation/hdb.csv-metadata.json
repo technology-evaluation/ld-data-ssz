@@ -67,23 +67,28 @@
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}",
-				"titles": "DIMENSIONCODE1"
+				"titles": "DIMENSIONCODE1",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{DIMENSIONCODE1}"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION2}",
-				"titles": "DIMENSIONCODE2"
+				"titles": "DIMENSIONCODE2",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{DIMENSIONCODE2}"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION3}",
-				"titles": "DIMENSIONCODE3"
+				"titles": "DIMENSIONCODE3",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{DIMENSIONCODE3}"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION4}",
-				"titles": "DIMENSIONCODE4"
+				"titles": "DIMENSIONCODE4",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{DIMENSIONCODE4}"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION5}",
-				"titles": "DIMENSIONCODE5"
+				"titles": "DIMENSIONCODE5",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{DIMENSIONCODE5}"
 			},
 			{
 				"propertyUrl": "http://example.org/CODE",
@@ -266,6 +271,26 @@
 			{
 				"suppressOutput": true,
 				"titles": "Text"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DIMENSIONCODE1"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DIMENSIONCODE2"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DIMENSIONCODE3"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DIMENSIONCODE4"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DIMENSIONCODE5"
 			}
 		]
 	}

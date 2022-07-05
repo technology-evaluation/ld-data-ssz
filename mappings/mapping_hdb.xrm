@@ -20,11 +20,11 @@ map HDBMapping from HDB {
     example.DIMENSION3 from DIMENSION3 ;
     example.DIMENSION4 from DIMENSION4 ;
     example.DIMENSION5 from DIMENSION5 ;
-    property.REPLACE from DIMENSIONCODE1 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}
-    property.REPLACE from DIMENSIONCODE2 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION2}
-    property.REPLACE from DIMENSIONCODE3 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION3}
-    property.REPLACE from DIMENSIONCODE4 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION4}
-    property.REPLACE from DIMENSIONCODE5 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION5}
+    property.REPLACE template termIri with DIMENSIONCODE1 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}
+    property.REPLACE template termIri with DIMENSIONCODE2 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION2}
+    property.REPLACE template termIri with DIMENSIONCODE3 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION3}
+    property.REPLACE template termIri with DIMENSIONCODE4 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION4}
+    property.REPLACE template termIri with DIMENSIONCODE5 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION5}
     example.CODE from CODE ;
     example.KENNZAHL_REPLACE from WERT ; // http://example.org/measure/{KENNZAHL}
     //example.CODENAME from CODENAME ; // TODO no longer there
