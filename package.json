@@ -34,6 +34,7 @@
     "dotenv-cli": "^5.1.0",
     "esm": "^3.2.25",
     "get-stream": "^6.0.1",
+    "lodash": "^4.17.21",
     "rdf-ext": "^2.0.1",
     "rdf-stream-to-dataset-stream": "^1.0.0",
     "readable-stream": "^3.6.0",
