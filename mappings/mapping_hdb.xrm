@@ -8,40 +8,30 @@ map HDBMapping from HDB {
 
 	properties
     schema.identifier from GESAMTCODE ;
-  	example.GESAMTCODE_RCS from GESAMTCODE_RCS ;
+  	//example.GESAMTCODE_RCS from GESAMTCODE_RCS ;
     property.ZEIT template termIri with ZEIT ;
     property.TIME template zeitIri with JAHR MONAT TAG ;
     example.BEZUGSZEIT from BEZUGSZEIT ;
 	  //example.BEZUGSPERIODE from BEZUGSPERIODE ; // TODO no longer there?
     property.RAUM template termIri with RAUM ;
-    example.KENNZAHL from KENNZAHL ;
-    example.DIMENSION1 from DIMENSION1 ;
-    example.DIMENSION2 from DIMENSION2 ;
-    example.DIMENSION3 from DIMENSION3 ;
-    example.DIMENSION4 from DIMENSION4 ;
-    example.DIMENSION5 from DIMENSION5 ;
     property.REPLACE template termIri with DIMENSIONCODE1 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}
     property.REPLACE template termIri with DIMENSIONCODE2 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION2}
     property.REPLACE template termIri with DIMENSIONCODE3 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION3}
     property.REPLACE template termIri with DIMENSIONCODE4 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION4}
     property.REPLACE template termIri with DIMENSIONCODE5 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION5}
-    example.CODE from CODE ;
+    //example.CODE from CODE ;
     example.KENNZAHL_REPLACE from WERT ; // http://example.org/measure/{KENNZAHL}
-    //example.CODENAME from CODENAME ; // TODO no longer there
-    example.REFERENZNUMMER from REFERENZNUMMER ;
-    example.QUELLE from QUELLEID ;
-    example.FUSSNOTEKENNZAHL from FUSSNOTEKENNZAHL ;
-    example.FUSSNOTEATTRIBUT from FUSSNOTEATTRIBUT ;
-    example.FUSSNOTEKENNZAHLATTRIBUT from FUSSNOTEKENNZAHLATTRIBUT ;
-    example.FUSSNOTEZEIT from FUSSNOTEZEIT ;
-    example.FUSSNOTERAUM from FUSSNOTERAUM ;
-    example.FUSSNOTEZELLE from FUSSNOTEZELLE ;
-    example.GLOSSARID from GLOSSARID ;
-    // all the GRUPPENCODESORT1 do not exist anymore in HDB.csv
-    // no more KENNZAHLKLASSE
-    example.ANZ_GRUPPEN from ANZ_GRUPPEN ;
-    example.ERWARTETE_AKTUALISIERUNG from ERWARTETE_AKTUALISIERUNG with datatype xsd.date ;
-    example.DATENSTAND from DATENSTAND with datatype xsd.date ;
-    example.UPDATE from UPDATE ; // TODO no datatype?	
+    //example.REFERENZNUMMER from REFERENZNUMMER ;
+    //example.QUELLE from QUELLEID ;
+    //example.FUSSNOTEKENNZAHL from FUSSNOTEKENNZAHL ;
+    //example.FUSSNOTEATTRIBUT from FUSSNOTEATTRIBUT ;
+    //example.FUSSNOTEKENNZAHLATTRIBUT from FUSSNOTEKENNZAHLATTRIBUT ;
+    //example.FUSSNOTEZEIT from FUSSNOTEZEIT ;
+    //example.FUSSNOTERAUM from FUSSNOTERAUM ;
+    //example.FUSSNOTEZELLE from FUSSNOTEZELLE ;
+    //example.GLOSSARID from GLOSSARID ;
+    //example.ERWARTETE_AKTUALISIERUNG from ERWARTETE_AKTUALISIERUNG with datatype xsd.date ;
+    //example.DATENSTAND from DATENSTAND with datatype xsd.date ;
+    //example.UPDATE from UPDATE ; // TODO no datatype?	
 	
 }
