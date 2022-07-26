@@ -9,7 +9,6 @@ map RAUM from HDB_RAUM {
 
 	properties
 		schema.name from RaumLang with language-tag de;
-		schema.inDefinedTermSet template termsetIri with Raumebene; // TODO do we keep this?
 		schema.position from RaumSort with datatype xsd.integer;
 		schema.description from Beschreibung;
     schema.disambiguatingDescription from GueltigkeitsbereicheID;

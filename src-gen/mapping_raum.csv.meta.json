@@ -24,11 +24,6 @@
 				"titles": "RaumLang"
 			},
 			{
-				"propertyUrl": "http://schema.org/inDefinedTermSet",
-				"titles": "Raumebene",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Raumebene}"
-			},
-			{
 				"propertyUrl": "http://schema.org/position",
 				"datatype": "integer",
 				"titles": "RaumSort"
