@@ -1,25 +1,36 @@
 {
 	"@context": "http://www.w3.org/ns/csvw",
-	"url": "../input/HDB_RAUM.csv",
+	"url": "file:input/HDB_RAUM.csv",
 	"dialect": {
-		"delimiter": ","
-		,"doubleQuote": true
+		"delimiter": ",",
+		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/collection/{RaumHierarchie}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Raumebene}",
 		"columns": [
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://www.w3.org/2004/02/skos/core#Collection"
-			}
-			,
+				"valueUrl": "http://schema.org/DefinedTermSet"
+			},
 			{
-				"propertyUrl": "http://www.w3.org/2004/02/skos/core#member",
+				"propertyUrl": "http://schema.org/name",
+				"titles": "Raumebene"
+			},
+			{
+				"propertyUrl": "http://schema.org/identifier",
+				"titles": "Raumebene"
+			},
+			{
+				"propertyUrl": "http://schema.org/isPartOf",
+				"titles": "RaumebeneParent",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{RaumebeneParent}"
+			},
+			{
+				"propertyUrl": "http://schema.org/hasDefinedTerm",
 				"titles": "Raum",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Raum}"
-			}
-			,
+			},
 			{
 				"suppressOutput": true,
 				"titles": "Raum"
@@ -30,19 +41,11 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "Raumebene"
-			},
-			{
-				"suppressOutput": true,
 				"titles": "RaumebeneParent"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "RaumSort"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "RaumHierarchie"
 			},
 			{
 				"suppressOutput": true,
@@ -115,7 +118,11 @@
 			{
 				"suppressOutput": true,
 				"titles": "AggloCd"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "RaumFilter"
 			}
-		] 
+		]
 	}
 }
