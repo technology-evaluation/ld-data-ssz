@@ -50,10 +50,6 @@
 				"titles": "Raum"
 			},
 			{
-				"propertyUrl": "http://example.org/containsraum",
-				"titles": "Mapping"
-			},
-			{
 				"propertyUrl": "http://example.org/raumfilter",
 				"titles": "RaumFilter"
 			},
@@ -64,6 +60,10 @@
 			{
 				"suppressOutput": true,
 				"titles": "RaumebeneParent"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Mapping"
 			},
 			{
 				"suppressOutput": true,
