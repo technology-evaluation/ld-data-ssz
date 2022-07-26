@@ -33,6 +33,9 @@ async function main () {
       zeit
     })
 
+    const newIri = iri.replace(/\/.{3}-.{3}-.{3}-.{3}-.{3}-.{3}\//, `/${cubes[0].id}/`)
+    console.log(newIri)
+
     console.log(cubes)
   } catch (err) {
     console.error(err)

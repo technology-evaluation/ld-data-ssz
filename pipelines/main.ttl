@@ -144,11 +144,27 @@
       <readCsv>
       <parseCsv>
       <removeCsvwTriples>
+      <routeTriples>
       <toDataset>
       <toObservation>
       <buildCubeShape>
       <flatten>
     )
+  ].
+
+<routeTriples> a p:Step;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:../lib/router.js#default>
+  ];
+  code:arguments [
+    code:name "cubes";
+    code:value "../data/HDB_CUBES.csv"
+  ], [
+    code:name "dimensions";
+    code:value "../data/HDB_DIMENSIONEN.csv"
+  ], [
+    code:name "zeit";
+    code:value "../data/HDB_ZEIT.csv"
   ].
 
 <writeCubeFile> a p:Step;
