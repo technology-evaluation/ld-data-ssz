@@ -112,6 +112,7 @@
       <forEachCubeCsvwMetaFile>
       <toISODate>
       <toNumber>
+      <removeNullValues>
     )
   ].
 
@@ -259,6 +260,14 @@
   ];
   code:arguments ([ a code:EcmaScriptModule;
     code:link <file:../lib/isNotCsvwTriple.js#default>
+  ]).
+
+<removeNullValues> a p:Step ;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <node:barnard59-base/filter.js#default>
+  ];
+  code:arguments ([ a code:EcmaScriptModule;
+    code:link <file:../lib/steps-filter.js#removeNullValues>
   ]).
 
 <toDataset> a p:Step;
