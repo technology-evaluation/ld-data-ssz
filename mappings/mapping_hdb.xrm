@@ -7,11 +7,11 @@ map HDBMapping from HDB {
 		cube.Observation
 
 	properties
-    schema.identifier from GESAMTCODE ;
+    //schema.identifier from GESAMTCODE ;
   	//example.GESAMTCODE_RCS from GESAMTCODE_RCS ;
     property.ZEIT template termIri with ZEIT ;
     property.TIME template zeitIri with JAHR MONAT TAG ;
-    example.BEZUGSZEIT from BEZUGSZEIT ;
+    //example.BEZUGSZEIT from BEZUGSZEIT ; // this is probably not used here, should be fine via ZEIT
 	  //example.BEZUGSPERIODE from BEZUGSPERIODE ; // TODO no longer there?
     property.RAUM template termIri with RAUM ;
     property.REPLACE template termIri with DIMENSIONCODE1 ; // https://ld.stadt-zuerich.ch/statistics/property/{DIMENSION1}

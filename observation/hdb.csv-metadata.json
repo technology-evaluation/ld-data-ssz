@@ -15,10 +15,6 @@
 				"valueUrl": "https://cube.link/Observation"
 			},
 			{
-				"propertyUrl": "http://schema.org/identifier",
-				"titles": "GESAMTCODE"
-			},
-			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/ZEIT",
 				"titles": "ZEIT",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{ZEIT}"
@@ -27,10 +23,6 @@
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/TIME",
 				"titles": "JAHR",
 				"valueUrl": "http://example.org/zeit/{JAHR}-{MONAT}-{TAG}"
-			},
-			{
-				"propertyUrl": "http://example.org/BEZUGSZEIT",
-				"titles": "BEZUGSZEIT"
 			},
 			{
 				"propertyUrl": "https://ld.stadt-zuerich.ch/statistics/property/RAUM",
@@ -96,6 +88,10 @@
 			},
 			{
 				"suppressOutput": true,
+				"titles": "GESAMTCODE"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "ZEIT"
 			},
 			{
@@ -109,6 +105,10 @@
 			{
 				"suppressOutput": true,
 				"titles": "JAHR"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "BEZUGSZEIT"
 			},
 			{
 				"suppressOutput": true,
