@@ -111,6 +111,7 @@
       <listCubeCsvwMetaFiles>
       <forEachCubeCsvwMetaFile>
       <toISODate>
+      <toNumber>
     )
   ].
 
@@ -452,5 +453,17 @@
 		[
 			rdf:type code:EcmaScriptModule ;
 			code:link <file:../lib/steps-map.js#toISODate> ;
+		]
+	) .
+
+  <toNumber> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map.js#toNumber> ;
 		]
 	) .
