@@ -189,6 +189,8 @@
       <createRaumHierarchie>
       <flatten>
       <sameAsIri>
+      <referenceTimeToIri>
+      <flatten>
       #<removeInvalidDates>
     )
   ].
