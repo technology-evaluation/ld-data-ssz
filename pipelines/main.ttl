@@ -20,6 +20,9 @@
     p:name "outputFile";
     p:value "output/output.nt"
   ], [ a p:Variable;
+    p:name "cubeBaseIri";
+    p:value "https://ld.stadt-zuerich.ch/statistics/"
+  ], [ a p:Variable;
     p:name "cubeMetadataFile";
     p:value "assets/cubes.ttl"
   ], [ a p:Variable;
@@ -152,6 +155,7 @@
       <toObservation>
       <buildCubeShape>
       <flatten>
+      <routeNames>
     )
   ].
 
@@ -168,6 +172,21 @@
   ], [
     code:name "zeit";
     code:value "../data/HDB_ZEIT.csv"
+  ].
+
+<routeNames> a p:Step;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:../lib/routerNames.js#default>
+  ];
+  code:arguments [
+    code:name "baseIri";
+    code:value "cubeBaseIri"^^p:VariableName
+  ], [
+    code:name "cubes";
+    code:value "../data/HDB_CUBES.csv"
+  ], [
+    code:name "dimensions";
+    code:value "../data/HDB_DIMENSIONEN.csv"
   ].
 
 <writeCubeFile> a p:Step;
