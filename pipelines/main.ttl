@@ -113,9 +113,6 @@
     p:stepList (
       <listCubeCsvwMetaFiles>
       <forEachCubeCsvwMetaFile>
-      <toISODate>
-      <toNumber>
-      <removeNullValues>
     )
   ].
 
@@ -149,7 +146,8 @@
     p:stepList (
       <readCsv>
       <parseCsv>
-      <removeCsvwTriples>
+      <filterAll>
+      <mapAll>
       <routeTriples>
       <toDataset>
       <toObservation>
