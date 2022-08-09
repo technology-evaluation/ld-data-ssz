@@ -10,4 +10,5 @@ map DIMENSIONEN_FILTER from HDB_DIMENSIONEN {
 		schema.name from Dimensionfilter;
     schema.identifier from Dimensionfilter;
 		schema.hasDefinedTerm template termIri with Dimensioncode;
+    ssz.filterOf template propertyIri with Dimension;
 }

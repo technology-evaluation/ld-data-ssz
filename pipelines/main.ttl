@@ -126,6 +126,15 @@
     )
   ].
 
+<static> a p:Pipeline, p:ReadableObjectMode;
+  p:variables <staticVars>;
+  p:steps [
+    p:stepList (
+      <readFile>
+      <parseN3>
+    )
+  ].
+
 <listCubeCsvwMetaFiles> a p:Step;
   code:implementedBy [ a code:EcmaScriptModule;
     code:link <node:barnard59-base#glob>
@@ -146,8 +155,8 @@
     p:stepList (
       <readCsv>
       <parseCsv>
-      <filterAll>
       <mapAll>
+      <filterAll>
       <routeTriples>
       <toDataset>
       <toObservation>
@@ -420,7 +429,7 @@
 	code:arguments (
 		[
 			rdf:type code:EcmaScriptModule ;
-			code:link <file:../lib/steps-map.js#referenceTimeToIri> ;
+			code:link <file:../lib/steps-map.js#createZeitDefinedTermSet> ;
 		]
 	) .
 
@@ -484,7 +493,7 @@
 		]
 	) .
 
-  <toNumber> a p:Step ;
+<toNumber> a p:Step ;
 	code:implementedBy [
 		rdf:type code:EcmaScriptModule ;
 		code:link <node:barnard59-base#map> ;

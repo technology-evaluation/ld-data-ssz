@@ -27,6 +27,11 @@
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Dimensioncode}"
 			},
 			{
+				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/filterOf",
+				"titles": "Dimension",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/property/{Dimension}"
+			},
+			{
 				"suppressOutput": true,
 				"titles": "Index"
 			},
