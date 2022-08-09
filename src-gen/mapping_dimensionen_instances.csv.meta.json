@@ -35,9 +35,9 @@
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
 			},
 			{
-				"propertyUrl": "http://schema.org/inDefinedTermSet",
-				"titles": "Dimensionfilter",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Dimensionfilter}"
+				"propertyUrl": "http://example.org/dimensionsfilter",
+				"titles": "Dimension",
+				"valueUrl": "transform://{Dimension}/{Dimensionfilter}"
 			},
 			{
 				"propertyUrl": "http://schema.org/inDefinedTermSet",

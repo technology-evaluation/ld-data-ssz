@@ -12,7 +12,7 @@ map DIMENSIONEN_INSTANCES from HDB_DIMENSIONEN {
 		schema.termCode from Dimensioncode;
 		schema.position from Dimensioncodesort;
 		schema.isPartOf template termIri with Parentcode;
-		schema.inDefinedTermSet template termsetIri with Dimensionfilter; // TODO this will create broken IRIs, contains more than one?
+    example.dimensionsfilter template 'transform://{0}/{1}' with Dimension Dimensionfilter ;
     schema.inDefinedTermSet template termsetIri with Dimension; // TODO do we do that? Then we know that WHA9000 is part of WHA. If so we need to define the DefinedTermSet
     example.GLOSSARID from GlossarID;
     schema.url from Link;

@@ -212,6 +212,8 @@
       <forEachDimensionCsvwMetaFile>
       <createRaumDefinedTermSet>
       <flatten>
+      <createDimensionDefinedTermSet>
+      <flatten>
       <createRaumHierarchie>
       <flatten>
       <sameAsIri>
@@ -442,6 +444,18 @@
 		[
 			rdf:type code:EcmaScriptModule ;
 			code:link <file:../lib/steps-map.js#removeXxx> ;
+		]
+	) .
+
+<createDimensionDefinedTermSet> a p:Step ;
+	code:implementedBy [
+		rdf:type code:EcmaScriptModule ;
+		code:link <node:barnard59-base#map> ;
+	] ;
+	code:arguments (
+		[
+			rdf:type code:EcmaScriptModule ;
+			code:link <file:../lib/steps-map.js#createDimensionDefinedTermSet> ;
 		]
 	) .
 
