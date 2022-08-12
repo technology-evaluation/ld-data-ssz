@@ -14,6 +14,11 @@
 				"valueUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
 			},
 			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "https://cube.link/KeyDimension"
+			},
+			{
 				"propertyUrl": "http://schema.org/name",
 				"titles": "Dimensionname"
 			},

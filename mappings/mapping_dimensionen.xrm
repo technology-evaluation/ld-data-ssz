@@ -7,6 +7,7 @@ map DIMENSIONEN from HDB_DIMENSIONEN {
 
 	types
 		rdf.Property
+    cube.KeyDimension
 
 	properties
 		schema.name from Dimensionname;
