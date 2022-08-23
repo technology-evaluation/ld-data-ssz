@@ -172,13 +172,13 @@
   ];
   code:arguments [
     code:name "cubes";
-    code:value "../data/HDB_CUBES.csv"
+    code:value "./input/HDB_CUBES.csv"
   ], [
     code:name "dimensions";
-    code:value "../data/HDB_DIMENSIONEN.csv"
+    code:value "./input/HDB_DIMENSIONEN.csv"
   ], [
     code:name "zeit";
-    code:value "../data/HDB_ZEIT.csv"
+    code:value "./input/HDB_ZEIT.csv"
   ].
 
 <routeNames> a p:Step;
@@ -190,10 +190,10 @@
     code:value "cubeBaseIri"^^p:VariableName
   ], [
     code:name "cubes";
-    code:value "../data/HDB_CUBES.csv"
+    code:value "./input/HDB_CUBES.csv"
   ], [
     code:name "dimensions";
-    code:value "../data/HDB_DIMENSIONEN.csv"
+    code:value "./input/HDB_DIMENSIONEN.csv"
   ].
 
 <writeCubeFile> a p:Step;
