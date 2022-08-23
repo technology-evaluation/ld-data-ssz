@@ -47,6 +47,48 @@ Once install is finished you can run:
 
 As a result, a file is written to the `output` directory on your local filesystem.
 
+### Auslösen der Pipeline
+
+Die Pipeline läuft in der GitLab Infrastruktur der Bundes, erreichbar unter [gitlab.ldbar.ch](https://gitlab.ldbar.ch/). Die Pipeline selber wird mit Git versioniert und sowohl auf [Github](https://github.com/StatistikStadtZuerich/ld-data) wie in die Bundes-Instanz von [Gitlab](https://gitlab.ldbar.ch/pipelines/statistik-stadt-zuerich) gepushed.
+
+Die Pipeline besteht immer aus zwei Git Branches:
+
+* `develop`: Entwicklung Umgebung. Sollte für Tests & Bugfixes verwendet werden. Für diese Umgebung wird auf die `integ`-Anlieferung auf dem sftp-Server zugegriffen. Die Daten werden auf die Integrations-Umgebung von LINDAS gespielt, erreichbar unter https://ld.integ.stadt-zuerich.ch/.
+* `master`: Produktive Umgebung. Dieser Git-Branch ist geschützt und kann nur über Pull-requests geschrieben werden. Damit soll sichergestellt werden, dass nur getestete Versionen der Pipeline produktiv geschaltet werden.  Für diese Umgebung wird auf die `prod`-Anlieferung auf dem sftp-Server zugegriffen. Die Daten werden auf die Produktions-Umgebung von LINDAS gespielt, erreichbar unter https://ld.stadt-zuerich.ch/.
+
+#### Per Hook
+
+Die Auslösung der Pipeline passiert über sogenannte Gitlab Hooks. Diese können unter anderem die Pipeline ausführen, wie in der [Gitlab-Hilfe dokumentiert](https://docs.gitlab.com/ee/ci/triggers/). Ein Hook ist bei Gitlab ein HTTP POST-Request, welcher über einen Parameter sagt, welcher Branch der Pipeline ausgeführt werden soll.
+
+Die Pipeline kann wie folgt ausgelöst werden:
+
+```bash
+curl -X POST \
+     -F token=bibop-my-secret-token \
+     -F ref=develop \
+     https://gitlab.ldbar.ch/api/v4/projects/66/trigger/pipeline
+```
+
+In diesem Beispiel würde der `develop`-Brach getriggert. `bibop-my-secret-token`muss durch den entsprechenden Token aus GitLab ersetzt werden. Die Tokens können in *Settings->CI/CD->Pipeline Triggers* erstellt und gelöscht werden. Direkter Link: https://gitlab.ldbar.ch/pipelines/statistik-stadt-zuerich/-/settings/ci_cd.
+
+#### Per Web GUI
+
+Alternativ kann die Pipeline auch durch das CI/CD Menü direkt getriggert werden. Dazu wird in CI/CD->Pipelines oben rechts der Knopf "Run Pipeline" geklickt. Im nächsten Fenster muss ausgewählt werden, welcher Branch ausgeführt werden sollte, siehe Beschreibung der Branches im Intro. Direkter Link: https://gitlab.ldbar.ch/pipelines/statistik-stadt-zuerich/-/pipelines
+
+#### Pipeline Status & Notification
+
+Den Status der Pipeline kann man über das Menü CI/CD einsehen, direkt erreichbar über https://gitlab.ldbar.ch/pipelines/statistik-stadt-zuerich/-/pipelines. Bei erfolgreichem Durchlauf der Pipeline sollte der Status grün sein. Tritt während der Pipeline ein Fehler auf, ändert sich der Status auf Rot & wird als `failed` deklariert.
+
+Bei einem fehlerhaften Durchlauf wird automatisch eine Email an die auf dem Projekt erfassten Personen verschickt. Falls zusätzliche Adressen die Email erhalten sollen, können in *Settings->Integrations->Pipeline status emails* weitere Adressen erfasst werden. Direkter Link: https://gitlab.ldbar.ch/pipelines/statistik-stadt-zuerich/-/settings/integrations/pipelines_email/edit.
+
+#### Fehleranalyse
+
+Im Falle eines Fehlers muss das Log der Pipeline genauer untersucht werden. Daraus sollte ersichtlich sein, welcher Fehler vorliegt. Typische Fehler für die Pipeline:
+
+* Es liegt keine Anlieferung vor auf dem sftp-Server: Nach einer erfolgreichen Transformation wird die letzte Anlieferung in das Verzeichnis `done` der jeweiligen Umgebung verschoben. Sprich ohne neue Anlieferung wird die Pipeline keine Daten mehr vorfinden. Alternativ kann die entsprechende Datei auch aus dem Done-Verzeichnis zurückkopiert werden.
+* Die Pipeline hat ein Problem während der Transformation: In diesem Fall muss die Logdatei individuell ausgewertet und interpretiert werden.
+* Die Pipeline kann die transformierten Daten nicht hochladen: In diesem Fall scheint ein Problem mit dem LINDAS SPARQL-Endpunkt vorzuliegen. Die Fehlermeldung muss entsprechend interpretiert werden.
+
 
 # License
 This program is licensed under [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause):
