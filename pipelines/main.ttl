@@ -177,6 +177,9 @@
     code:name "dimensions";
     code:value "./input/HDB_DIMENSIONEN.csv"
   ], [
+    code:name "raum";
+    code:value "./input/HDB_RAUM.csv"
+  ], [
     code:name "zeit";
     code:value "./input/HDB_ZEIT.csv"
   ].
