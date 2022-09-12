@@ -154,6 +154,7 @@ vocabulary schema {
     DefinedTerm
     DefinedTermSet
     Place
+    Dataset
 
   properties
     name

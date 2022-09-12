@@ -1,0 +1,12 @@
+output csvw
+
+map DATENOBJEKTE from HDB_DATENOBJEKTE {
+	subject template viewIri with id;
+
+	types
+		schema.Dataset
+
+  properties
+    schema.description from DOBeschreibung;
+    schema.name from DOName;
+}
