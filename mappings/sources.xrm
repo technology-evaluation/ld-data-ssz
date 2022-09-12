@@ -203,8 +203,218 @@ logical-source HDB_ZEIT {
     PERIODEENDE
 }
 
+logical-source HDB_DATENOBJEKTE {
+  type csv
+  source "file:input/HDB_DATENOBJEKTE.csv"
+  dialect SSZ
 
+  referenceables
+    id
+    DOAktualisierungID
+    DOAktualisierungsDatum
+    DOBeschreibungLink1
+    DOBeschreibungLink2
+    DOBeschreibungLink3
+    DODatenbezugBemerkungen
+    DODatenbezugLink1
+    DODatenbezugLink2
+    DODatenbezugLink3
+    DODatenlieferantID
+    DODatenvon
+    DODatenzugang0
+    DODatenzugangID
+    DODienstabteilungID
+    DOGeschaeftsbereich
+    DOHerkunft
+    DOHerkunftBemerkungen
+    DOHerkunftID
+    DOIntegritaet
+    DOIntegritaetID
+    DOMetadatenErfasserId
+    DOMetadatenFreigabeId
+    DONutzungszweck
+    DOOGDBemerkungen
+    DOOGDFreigabeId
+    DOOGDFreigabedatum
+    DOOGDLienzID
+    DOOGDMassnahmen
+    DOOGDMassnahmenID
+    DOOGDPrioritaet
+    DOOGDPrioritaetID
+    DOOGDPruefung
+    DOOGDPruefungID
+    DOOGDRechtsgrundlagen
+    DOOGDRechtsgrundlagenID
+    DORaeumlicheBeziehungID
+    DORechtsgrundlagen
+    DORechtsgrundlagenBemerkungen
+    DORechtsgrundlagenID
+    DORechtsgrundlagenLink1
+    DORechtsgrundlagenLink2
+    DORechtsgrundlagenLink3
+    DORolleDatenKuratorId
+    DORolleDatenVerantwortlicherId
+    DORolletechnDatenmanagerId
+    DOSchluesselwoerter1
+    DOSchluesselwoerterTermset
+    DOVertraulichkeit
+    DOVertraulichkeitBemerkungen
+    DOVertraulichkeitID
+    DOVertraulichkeitsPruefdatum
+    StatusText
+    Title
+    DOVertraulichkeitsPruefstelleId
+    DOBeschreibung
+    DOAktualisierung
+    DOBeschreibungBemerkungen
+    DODatenaustausch
+    DODatenaustauschID
+    DODatenelementID
+    DODatenlieferant
+    DOKategorieID
+    DOLaufnummer
+    DOMDQuellsystem
+    DOMDQuellsystemID
+    DOMetadatenFreigabedatum
+    DOOGDLienz
+    DORaeumlicheBeziehung0
+    DORisiken
+    DOSchluesselwoerter
+    DOVeroffentlichungID "DOVeröffentlichungID"
+    DOVeroeffentlichung
+    DOWeitergabe
+    DOWeitergabeID
+    DOuebergordneterDB
+    WFDOKoor
+    DODienstabteilung
+    DOAktualisierungDaten
+    DODatenbis
+    StatusNummer
+    DOKategorie
+    DOName
+    DOOGDStatus
+    DOOGDStatusID
+    DOuebergordneterDBID
+}
 
+logical-source HDB_DATENATTRIBUTE {
+  type csv
+  source "file:input/HDB_DATENATTRIBUTE.csv"
+  dialect SSZ
 
+  referenceables
+    id
+    DAAktualisierung
+    DAAktualisierungDaten
+    DAAktualisierungID
+    DAAktualisierungsDatum
+    DABeschreibungBemerkungen
+    DABeschreibungLink1
+    DABeschreibungLink2
+    DABeschreibungLink3
+    DADatenaustausch
+    DADatenaustauschID
+    DADatenbezugBemerkungen
+    DADatenbezugLink1
+    DADatenbezugLink2
+    DADatenbezugLink3
+    DADatenbis
+    DADatenelementIdentifikator
+    DADatenlieferant
+    DADatenlieferantID
+    DADatenvon
+    DADatenzugang
+    DADatenzugangID
+    DADienstabteilung
+    DADienstabteilungID
+    DAFachgesetz
+    DAFachgesetzBemerkungen
+    DAFachgesetzID
+    DAFachgesetzLink1
+    DAFachgesetzLink2
+    DAFachgesetzLink3
+    DAFeldwerteliste
+    DAGeschaeftsbereich
+    DAHerkunft
+    DAHerkunftBemerkungen
+    DAHerkunftID
+    DAIntegritaet
+    DAIntegritaetID
+    DAKategorie
+    DAKategorieID
+    DALaufnummer
+    DAMDQuellsystemIdentifikator
+    DAMetadatenErfasserId
+    DAMetadatenFreigabeId
+    DAMetadatenFreigabedatum
+    DANachvollziehbarkeit
+    DANachvollziehbarkeitID
+    DANutzungszweck
+    DAOGDBemerkungen
+    DAOGDFreigabeId
+    DAOGDFreigabedatum
+    DAOGDLizenz
+    DAOGDLizenzID
+    DAOGDMassnahmen
+    DAOGDMassnahmenID
+    DAOGDPrioritaet
+    DAOGDPrioritaetID
+    DAOGDPruefung
+    DAOGDPruefungID
+    DAOGDRechtsgrundlagen
+    DAOGDRechtsgrundlagenID
+    DAOGDStatus
+    DAOrganisationsrecht
+    DARisiken
+    DARolleDatenKuratorId
+    DARolleDatenVerantwortlicherId
+    DARolletechnDatenmanagerId
+    DASSZAuswertungsregel
+    DASSZLevel
+    DASSZParent
+    DASSZSort
+    DASchluesselwoerter
+    DASchluesselwoerter0
+    DASchluesselwoerterTermset
+    DAVerfuegbarkeit
+    DAVerfuegbarkeitID
+    DAVeroeffentlichung
+    DAVeroeffentlichungID
+    DAVertraulichkeit
+    DAVertraulichkeitBemerkungen
+    DAVertraulichkeitID
+    DAVertraulichkeitsPruefdatum
+    DAWeitergabe
+    DAWeitergabeID
+    StatusNummer
+    StatusText
+    Title
+    DAVertraulichkeitsPruefstelleId
+    DABeschreibung
+    WFDAKoor
+    DAMDQuellsystem
+    DAName
+    DAtechFeldname
+    DAuebergordnetesDO
+    DAuebergordnetesDOID
+}
 
+logical-source HDB_RECHTSGRUNDLAGEN {
+  type csv
+  source "file:input/HDB_RECHTSGRUNDLAGEN.csv"
+  dialect SSZ
+
+  referenceables
+    id
+    StatusNummer
+    StatusText
+    Title
+    RGBezeichnung
+    RGGesetzesnummer
+    RGGesetzesnummerRGBezeichnung
+    WFRGKoor
+    RGDatenelementID
+    RGLink
+    RGLaufnummer
+}
 
