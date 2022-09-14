@@ -9,4 +9,6 @@ map DATENOBJEKTE from HDB_DATENOBJEKTE {
   properties
     schema.description from DOBeschreibung;
     schema.name from DOName;
+    schema.alternateName from DOMDQuellsystemID;
+    schema.identifier from id;
 }

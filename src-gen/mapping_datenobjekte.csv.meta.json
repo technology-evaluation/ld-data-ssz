@@ -22,7 +22,11 @@
 				"titles": "DOName"
 			},
 			{
-				"suppressOutput": true,
+				"propertyUrl": "http://schema.org/alternateName",
+				"titles": "DOMDQuellsystemID"
+			},
+			{
+				"propertyUrl": "http://schema.org/identifier",
 				"titles": "id"
 			},
 			{
@@ -276,10 +280,6 @@
 			{
 				"suppressOutput": true,
 				"titles": "DOMDQuellsystem"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "DOMDQuellsystemID"
 			},
 			{
 				"suppressOutput": true,

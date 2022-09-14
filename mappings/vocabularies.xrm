@@ -173,6 +173,7 @@ vocabulary schema {
     validThrough
     disambiguatingDescription
     url
+    alternateName
 }
 
 vocabulary rdf {
@@ -213,7 +214,12 @@ vocabulary time {
 vocabulary ssz {
   prefix "ssz" "https://ld.stadt-zuerich.ch/schema/"
 
+  classes
+    Attribute
+    LegalFoundation
+
   properties
+    view
     rounding
     referenceTime
     hasBeginning
