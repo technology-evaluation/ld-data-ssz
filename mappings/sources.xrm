@@ -211,32 +211,32 @@ logical-source HDB_DATENOBJEKTE {
   referenceables
     id
     DOAktualisierungID
-    DOAktualisierungsDatum
+    DOAndereDienstabteilung
+    DOAndereDienstabteilungID
     DOBeschreibungLink1
     DOBeschreibungLink2
     DOBeschreibungLink3
+    DODatenaustausch
+    DODatenaustauschID
+    DODatenbearbeitungszweck
     DODatenbezugBemerkungen
     DODatenbezugLink1
     DODatenbezugLink2
     DODatenbezugLink3
-    DODatenlieferantID
+    DODatenelementID
     DODatenvon
     DODatenzugang0
     DODatenzugangID
     DODienstabteilungID
     DOGeschaeftsbereich
-    DOHerkunft
-    DOHerkunftBemerkungen
-    DOHerkunftID
-    DOIntegritaet
-    DOIntegritaetID
+    DOKategorieID
+    DOLaufnummer
     DOMetadatenErfasserId
     DOMetadatenFreigabeId
-    DONutzungszweck
     DOOGDBemerkungen
     DOOGDFreigabeId
     DOOGDFreigabedatum
-    DOOGDLienzID
+    DOOGDLizenzID
     DOOGDMassnahmen
     DOOGDMassnahmenID
     DOOGDPrioritaet
@@ -248,53 +248,50 @@ logical-source HDB_DATENOBJEKTE {
     DORaeumlicheBeziehungID
     DORechtsgrundlagen
     DORechtsgrundlagenBemerkungen
-    DORechtsgrundlagenID
     DORechtsgrundlagenLink1
     DORechtsgrundlagenLink2
     DORechtsgrundlagenLink3
     DORolleDatenKuratorId
     DORolleDatenVerantwortlicherId
     DORolletechnDatenmanagerId
-    DOSchluesselwoerter1
     DOSchluesselwoerterTermset
+    DOSchutzstufe
+    DOSchutzstufeID
+    DOVeroeffentlichung
+    DOVeroeffentlichungID
     DOVertraulichkeit
     DOVertraulichkeitBemerkungen
     DOVertraulichkeitID
     DOVertraulichkeitsPruefdatum
-    StatusText
-    Title
-    DOVertraulichkeitsPruefstelleId
-    DOBeschreibung
-    DOAktualisierung
-    DOBeschreibungBemerkungen
-    DODatenaustausch
-    DODatenaustauschID
-    DODatenelementID
-    DODatenlieferant
-    DOKategorieID
-    DOLaufnummer
-    DOMDQuellsystem
-    DOMDQuellsystemID
-    DOMetadatenFreigabedatum
-    DOOGDLienz
-    DORaeumlicheBeziehung0
-    DORisiken
-    DOSchluesselwoerter
-    DOVeroffentlichungID "DOVeröffentlichungID"
-    DOVeroeffentlichung
     DOWeitergabe
     DOWeitergabeID
-    DOuebergordneterDB
-    WFDOKoor
+    StatusText
+    Title
+    DOAndereDienstabteilungEindeutig
+    DOVertraulichkeitsPruefstelleId
+    DOAktualisierung
+    DOBeschreibung
+    DOBeschreibungBemerkungen
+    DODatenlieferant
+    DODatenlieferantID
     DODienstabteilung
-    DOAktualisierungDaten
-    DODatenbis
-    StatusNummer
     DOKategorie
+    DOMDQuellsystem
+    DOMDQuellsystemID
     DOName
+    DOOGDLizenz
     DOOGDStatus
     DOOGDStatusID
+    DORaeumlicheBeziehung
+    DORechtsgrundlagenID
+    DOSchluesselwoerter1
     DOuebergordneterDBID
+    StatusNummer
+    WFDOKoor
+    DOAktualisierungsDatum
+    DODatenbis
+    DOMetadatenFreigabedatum
+    DOuebergordneterDB
 }
 
 logical-source HDB_DATENATTRIBUTE {

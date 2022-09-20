@@ -14,7 +14,7 @@
 				"valueUrl": "https://ld.stadt-zuerich.ch/schema/Attribute"
 			},
 			{
-				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/view",
+				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/dataObject",
 				"titles": "DAuebergordnetesDOID",
 				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/view/{DAuebergordnetesDOID}"
 			},

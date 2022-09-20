@@ -7,7 +7,7 @@ map DATENATTRIBUTE from HDB_DATENATTRIBUTE {
 		ssz.Attribute
 
   properties
-    ssz.view template viewIri with DAuebergordnetesDOID;
+    ssz.dataObject template viewIri with DAuebergordnetesDOID;
     
 
 }

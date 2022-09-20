@@ -174,6 +174,34 @@ vocabulary schema {
     disambiguatingDescription
     url
     alternateName
+    startDate
+    endDate
+}
+
+vocabulary dct {
+  prefix "dct" "http://purl.org/dc/terms/"
+
+  properties
+    identifier
+    description
+    accrualPeriodicity
+    issued
+    modified
+    publisher
+    title
+    license
+    spatialRelationship
+    language
+}
+
+vocabulary dcat {
+  prefix "dcat" "http://www.w3.org/ns/dcat#"
+
+  properties
+    contactPoint
+    keyword
+    landingPage
+    theme
 }
 
 vocabulary rdf {
@@ -220,10 +248,14 @@ vocabulary ssz {
 
   properties
     view
+    dataObject
     rounding
     referenceTime
     hasBeginning
     hasEnd
     filterOf
+    legalFoundation
+    dataQuality
+    usageNotes
 }
 

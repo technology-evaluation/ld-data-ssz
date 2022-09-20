@@ -11,4 +11,45 @@ map DATENOBJEKTE from HDB_DATENOBJEKTE {
     schema.name from DOName;
     schema.alternateName from DOMDQuellsystemID;
     schema.identifier from id;
+
+    // is it possible to concat two fields or define some function to calc the value?
+    //schema.temporalCoverage from DODatenvon + '/' DODatenbis;
+    schema.startDate from DODatenvon;
+    schema.endDate from DODatenbis;
+    
+    dct.accrualPeriodicity from DOAktualisierung;
+
+    dct.language constant "de";
+    dct.issued from DOMetadatenFreigabedatum with datatype xsd.date;
+    dct.modified from DOAktualisierungsDatum with datatype xsd.date;
+    ssz.legalFoundation template metaLegalIri with DOOGDRechtsgrundlagenID;
+    dct.spatialRelationship from DORaeumlicheBeziehung;
+    dct.publisher template orgIri with DODienstabteilungID;
+    dcat.theme from DOKategorie; // TODO: map values to IRIs
+    dcat.keyword from DOSchluesselwoerter1; // TODO: how to map list ?
+    dct.license from  DOOGDLizenz;
+    ssz.usageNotes from DOBeschreibungBemerkungen;
+    //ssz.dataQuality from DORisiken; // TODO: why is this missing?
+}
+
+map PUBLISHER from HDB_DATENOBJEKTE {
+	subject template orgIri with DODatenlieferantID;
+
+	types
+		schema.Organization
+
+  properties
+    schema.identifier from DODatenlieferantID;
+    schema.name from DODatenlieferant;
+}
+
+map DATAOWNER from HDB_DATENOBJEKTE {
+	subject template orgIri with DODienstabteilungID;
+
+	types
+		schema.Organization
+
+  properties
+    schema.identifier from DODienstabteilungID;
+    schema.name from DODienstabteilung;
 }
