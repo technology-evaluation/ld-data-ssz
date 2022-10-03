@@ -32,24 +32,3 @@ map DATENOBJEKTE from HDB_DATENOBJEKTE {
     //ssz.dataQuality from DORisiken; // TODO: why is this missing?
 }
 
-map PUBLISHER from HDB_DATENOBJEKTE {
-	subject template orgIri with DODatenlieferantID;
-
-	types
-		schema.Organization
-
-  properties
-    schema.identifier from DODatenlieferantID;
-    schema.name from DODatenlieferant;
-}
-
-map DATAOWNER from HDB_DATENOBJEKTE {
-	subject template orgIri with DODienstabteilungID;
-
-	types
-		schema.Organization
-
-  properties
-    schema.identifier from DODienstabteilungID;
-    schema.name from DODienstabteilung;
-}

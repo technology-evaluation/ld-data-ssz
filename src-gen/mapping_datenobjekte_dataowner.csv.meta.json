@@ -6,85 +6,24 @@
 		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/view/{id}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/meta/org/{DODienstabteilungID}",
 		"columns": [
 			{
 				"virtual": true,
 				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-				"valueUrl": "http://schema.org/Dataset"
-			},
-			{
-				"propertyUrl": "http://schema.org/description",
-				"titles": "DOBeschreibung"
-			},
-			{
-				"propertyUrl": "http://schema.org/name",
-				"titles": "DOName"
-			},
-			{
-				"propertyUrl": "http://schema.org/alternateName",
-				"titles": "DOMDQuellsystemID"
+				"valueUrl": "http://schema.org/Organization"
 			},
 			{
 				"propertyUrl": "http://schema.org/identifier",
+				"titles": "DODienstabteilungID"
+			},
+			{
+				"propertyUrl": "http://schema.org/name",
+				"titles": "DODienstabteilung"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "id"
-			},
-			{
-				"propertyUrl": "http://schema.org/startDate",
-				"titles": "DODatenvon"
-			},
-			{
-				"propertyUrl": "http://schema.org/endDate",
-				"titles": "DODatenbis"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/accrualPeriodicity",
-				"titles": "DOAktualisierung"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/language",
-				"virtual": true,
-				"valueUrl": "de"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/issued",
-				"datatype": "date",
-				"titles": "DOMetadatenFreigabedatum"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/modified",
-				"datatype": "date",
-				"titles": "DOAktualisierungsDatum"
-			},
-			{
-				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/legalFoundation",
-				"titles": "DOOGDRechtsgrundlagenID",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/meta/legal/{DOOGDRechtsgrundlagenID}"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/spatialRelationship",
-				"titles": "DORaeumlicheBeziehung"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/publisher",
-				"titles": "DODienstabteilungID",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/meta/org/{DODienstabteilungID}"
-			},
-			{
-				"propertyUrl": "http://www.w3.org/ns/dcat#theme",
-				"titles": "DOKategorie"
-			},
-			{
-				"propertyUrl": "http://www.w3.org/ns/dcat#keyword",
-				"titles": "DOSchluesselwoerter1"
-			},
-			{
-				"propertyUrl": "http://purl.org/dc/terms/license",
-				"titles": "DOOGDLizenz"
-			},
-			{
-				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/usageNotes",
-				"titles": "DOBeschreibungBemerkungen"
 			},
 			{
 				"suppressOutput": true,
@@ -144,15 +83,15 @@
 			},
 			{
 				"suppressOutput": true,
+				"titles": "DODatenvon"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "DODatenzugang0"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "DODatenzugangID"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "DODienstabteilungID"
 			},
 			{
 				"suppressOutput": true,
@@ -320,6 +259,18 @@
 			},
 			{
 				"suppressOutput": true,
+				"titles": "DOAktualisierung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOBeschreibung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOBeschreibungBemerkungen"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "DODatenlieferant"
 			},
 			{
@@ -328,11 +279,23 @@
 			},
 			{
 				"suppressOutput": true,
-				"titles": "DODienstabteilung"
+				"titles": "DOKategorie"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "DOMDQuellsystem"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOMDQuellsystemID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOName"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOOGDLizenz"
 			},
 			{
 				"suppressOutput": true,
@@ -344,7 +307,15 @@
 			},
 			{
 				"suppressOutput": true,
+				"titles": "DORaeumlicheBeziehung"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "DORechtsgrundlagenID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOSchluesselwoerter1"
 			},
 			{
 				"suppressOutput": true,
@@ -357,6 +328,18 @@
 			{
 				"suppressOutput": true,
 				"titles": "WFDOKoor"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOAktualisierungsDatum"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DODatenbis"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DOMetadatenFreigabedatum"
 			},
 			{
 				"suppressOutput": true,
