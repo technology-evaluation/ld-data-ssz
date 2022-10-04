@@ -6,7 +6,7 @@
 		"doubleQuote": true
 	},
 	"tableSchema": {
-		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Code}",
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/code/{CODE}",
 		"columns": [
 			{
 				"virtual": true,
@@ -15,24 +15,24 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/name",
-				"titles": "Codename"
+				"titles": "CODENAME"
 			},
 			{
 				"propertyUrl": "http://schema.org/termCode",
-				"titles": "Code"
+				"titles": "CODE"
 			},
 			{
 				"propertyUrl": "http://schema.org/inDefinedTermSet",
-				"titles": "Referenztabelle",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{Referenztabelle}"
+				"titles": "REFERENZTABELLE",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/termset/{REFERENZTABELLE}"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "REFERENZTABELLE"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Referenztabelle"
 			}
 		]
 	}
