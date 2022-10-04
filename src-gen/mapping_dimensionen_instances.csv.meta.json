@@ -19,7 +19,7 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/description",
-				"titles": "Beschreibung"
+				"titles": "BESCHREIBUNG"
 			},
 			{
 				"propertyUrl": "http://schema.org/termCode",
@@ -31,8 +31,8 @@
 			},
 			{
 				"propertyUrl": "http://schema.org/isPartOf",
-				"titles": "Parentcode",
-				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{Parentcode}"
+				"titles": "PARENTCODE",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/code/{PARENTCODE}"
 			},
 			{
 				"propertyUrl": "http://example.org/dimensionsfilter",
@@ -46,23 +46,23 @@
 			},
 			{
 				"propertyUrl": "http://example.org/GLOSSARID",
-				"titles": "GlossarID"
+				"titles": "GLOSSARID"
 			},
 			{
 				"propertyUrl": "http://schema.org/url",
-				"titles": "Link"
+				"titles": "LINK"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "PARENTCODE"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "PARENTCODENAME"
 			},
 			{
 				"suppressOutput": true,
 				"titles": "Index"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Parentcode"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Parentcodename"
 			},
 			{
 				"suppressOutput": true,
@@ -71,6 +71,14 @@
 			{
 				"suppressOutput": true,
 				"titles": "Dimensionname"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DimensionOrigin"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DimensionOriginCode"
 			},
 			{
 				"suppressOutput": true,

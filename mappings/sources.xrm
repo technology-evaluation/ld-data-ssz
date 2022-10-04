@@ -89,17 +89,19 @@ logical-source HDB_DIMENSIONEN {
   dialect SSZ
 
   referenceables
+    PARENTCODE
+    PARENTCODENAME
+    GLOSSARID
+    LINK
+    BESCHREIBUNG
     Index
-    Parentcode
-    Parentcodename
-    GlossarID
-    Link
-    Beschreibung
     Dimension
     Dimensionname
     Dimensioncode
     Dimensioncodename
     Dimensioncodesort
+    DimensionOrigin
+    DimensionOriginCode
     Dimensionfilter
 }
 

@@ -28,27 +28,27 @@
 			},
 			{
 				"suppressOutput": true,
+				"titles": "PARENTCODE"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "PARENTCODENAME"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "GLOSSARID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "LINK"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "BESCHREIBUNG"
+			},
+			{
+				"suppressOutput": true,
 				"titles": "Index"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Parentcode"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Parentcodename"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "GlossarID"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Link"
-			},
-			{
-				"suppressOutput": true,
-				"titles": "Beschreibung"
 			},
 			{
 				"suppressOutput": true,
@@ -61,6 +61,14 @@
 			{
 				"suppressOutput": true,
 				"titles": "Dimensioncodesort"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DimensionOrigin"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DimensionOriginCode"
 			},
 			{
 				"suppressOutput": true,
