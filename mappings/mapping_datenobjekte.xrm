@@ -19,7 +19,7 @@ map DATENOBJEKTE from HDB_DATENOBJEKTE {
     
     dct.accrualPeriodicity from DOAktualisierung;
 
-    dct.language constant "de";
+    dct.language constant "http://www.wikidata.org/entity/Q188";
     dct.issued from DOMetadatenFreigabedatum with datatype xsd.date;
     dct.modified from DOAktualisierungsDatum with datatype xsd.date;
     ssz.legalFoundation template metaLegalIri with DOOGDRechtsgrundlagenID;

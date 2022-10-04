@@ -44,7 +44,7 @@
 			{
 				"propertyUrl": "http://purl.org/dc/terms/language",
 				"virtual": true,
-				"valueUrl": "de"
+				"valueUrl": "http://www.wikidata.org/entity/Q188"
 			},
 			{
 				"propertyUrl": "http://purl.org/dc/terms/issued",
