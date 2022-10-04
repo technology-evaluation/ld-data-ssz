@@ -36,7 +36,7 @@
     p:value "observation/*.json"
   ], [ a p:Variable;
     p:name "dimensionCsvMappingFilePattern";
-#    p:value "src-gen/mapping_+(datenobjekte|datenattribute|rechtsgrundlage).csv.meta.json"
+#    p:value "src-gen/mapping_+(datenobjekte*|datenattribute|rechtsgrundlage).csv.meta.json"
     p:value "src-gen/mapping_!(hdb|datenattribute).csv.meta.json" 
 
   ], [ a p:Variable;
@@ -257,6 +257,7 @@
       <readCsv>
       <parseCsv>
       <removeCsvwTriples>
+      <removeEmptyCode>
     )
   ].
 
@@ -301,6 +302,14 @@
   ];
   code:arguments ([ a code:EcmaScriptModule;
     code:link <file:../lib/steps-filter.js#removeNullValues>
+  ]).
+
+<removeEmptyCode> a p:Step ;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <node:barnard59-base/filter.js#default>
+  ];
+  code:arguments ([ a code:EcmaScriptModule;
+    code:link <file:../lib/steps-filter.js#removeEmptyCode>
   ]).
 
 <toDataset> a p:Step;
