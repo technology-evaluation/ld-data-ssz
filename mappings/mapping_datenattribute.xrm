@@ -1,0 +1,13 @@
+output csvw
+
+map DATENATTRIBUTE from HDB_DATENATTRIBUTE {
+	subject template metaAttributeIri with id;
+
+	types
+		ssz.Attribute
+
+  properties
+    ssz.dataObject template viewIri with DAuebergordnetesDOID;
+    
+
+}

@@ -1,0 +1,399 @@
+{
+	"@context": "http://www.w3.org/ns/csvw",
+	"url": "file:input/HDB_DATENATTRIBUTE.csv",
+	"dialect": {
+		"delimiter": ",",
+		"doubleQuote": true
+	},
+	"tableSchema": {
+		"aboutUrl": "https://ld.stadt-zuerich.ch/statistics/meta/attribute/{id}",
+		"columns": [
+			{
+				"virtual": true,
+				"propertyUrl": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+				"valueUrl": "https://ld.stadt-zuerich.ch/schema/Attribute"
+			},
+			{
+				"propertyUrl": "https://ld.stadt-zuerich.ch/schema/dataObject",
+				"titles": "DAuebergordnetesDOID",
+				"valueUrl": "https://ld.stadt-zuerich.ch/statistics/view/{DAuebergordnetesDOID}"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "id"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAAktualisierung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAAktualisierungDaten"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAAktualisierungID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAAktualisierungsDatum"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DABeschreibungBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DABeschreibungLink1"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DABeschreibungLink2"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DABeschreibungLink3"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenaustausch"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenaustauschID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenbezugBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenbezugLink1"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenbezugLink2"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenbezugLink3"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenbis"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenelementIdentifikator"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenlieferant"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenlieferantID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenvon"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenzugang"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADatenzugangID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADienstabteilung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DADienstabteilungID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetz"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetzBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetzID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetzLink1"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetzLink2"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFachgesetzLink3"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAFeldwerteliste"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAGeschaeftsbereich"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAHerkunft"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAHerkunftBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAHerkunftID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAIntegritaet"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAIntegritaetID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAKategorie"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAKategorieID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DALaufnummer"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAMDQuellsystemIdentifikator"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAMetadatenErfasserId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAMetadatenFreigabeId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAMetadatenFreigabedatum"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DANachvollziehbarkeit"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DANachvollziehbarkeitID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DANutzungszweck"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDFreigabeId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDFreigabedatum"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDLizenz"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDLizenzID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDMassnahmen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDMassnahmenID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDPrioritaet"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDPrioritaetID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDPruefung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDPruefungID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDRechtsgrundlagen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDRechtsgrundlagenID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOGDStatus"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAOrganisationsrecht"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DARisiken"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DARolleDatenKuratorId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DARolleDatenVerantwortlicherId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DARolletechnDatenmanagerId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASSZAuswertungsregel"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASSZLevel"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASSZParent"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASSZSort"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASchluesselwoerter"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASchluesselwoerter0"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DASchluesselwoerterTermset"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVerfuegbarkeit"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVerfuegbarkeitID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVeroeffentlichung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVeroeffentlichungID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVertraulichkeit"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVertraulichkeitBemerkungen"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVertraulichkeitID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVertraulichkeitsPruefdatum"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAWeitergabe"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAWeitergabeID"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StatusNummer"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "StatusText"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "Title"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAVertraulichkeitsPruefstelleId"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DABeschreibung"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "WFDAKoor"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAMDQuellsystem"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAName"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAtechFeldname"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAuebergordnetesDO"
+			},
+			{
+				"suppressOutput": true,
+				"titles": "DAuebergordnetesDOID"
+			}
+		]
+	}
+}
